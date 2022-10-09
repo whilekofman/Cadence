@@ -3,7 +3,7 @@ class ApplicationController < ActionController::API
 
     rescue_from StandardError, with: :unhandled_error
 
-    rescue_from ActionController::InvalidAuthentictiyToken,
+    rescue_from ActionController::InvalidAuthenticityToken,
         with: :invalid_authenticity_token
 
     
@@ -63,11 +63,12 @@ class ApplicationController < ActionController::API
                 status: :internal_server_error
             
             logger.error "\n#{@message}:\n\t#{@stack.join("\n\t")}\n"
+        end
     end
 
     def invalid_authenticity_token
         render json: { message: 'Invalid authenticity token, have checked if you were forged? ' }, 
-            status :unprocessably_entity
+            status: :unprocessable_entity
     end
 
     def attach_authenticity_token
