@@ -25,14 +25,16 @@ class User < ApplicationRecord
   
   
   
-  def self.find_by_credentials(email, password)
-  
-    user = User.find_by(email: email)
+  def self.find_by_credentials(credential, password)
+    field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :null
+    user = User.find_by(field => credential)
     user&.authenticate(password)
+    # user&.authenticate(password) ? user : nil
   
   end
 
   def reset_session_token!
+    # self.session_token = generate_unique_session_token
     self.update!(session_token: generate_unique_session_token)
     self.session_token
   end

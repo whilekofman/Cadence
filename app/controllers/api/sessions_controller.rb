@@ -4,13 +4,13 @@ class Api::SessionsController < ApplicationController
       @user = current_user
       render 'api/users/show'
     else
-      render json { user: nil }
+      render json: { user: nil }
     end
   end
 
  def create
-    @user = User.find_by_credentials(params[:email], params[:password])
-
+    @user = User.find_by_credentials(params[:credential], params[:password])
+  
     if @user
       login!(@user)
       render 'api/users/show'
