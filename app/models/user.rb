@@ -51,4 +51,3 @@ class User < ApplicationRecord
 
 end
 
-User.create(fname: 'usr', lname: 'lame', email: 'usr@email.io', password: 'starwars')
