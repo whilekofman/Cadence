@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import configureStore from './store';
 import './index.css';
@@ -23,9 +23,10 @@ function Root() {
   )
 }
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Root />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+  ReactDOM.render(
+    <React.StrictMode>
+      <Root />
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+
