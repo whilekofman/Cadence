@@ -59,15 +59,15 @@ class ApplicationController < ActionController::API
         else
             @message = "#{error.class} - #{error.message}"
             @stack = Rails::BacktraceCleaner.new.clean(error.backtrace)
-            render 'api/error/internal_server_error',
+            render 'api/errors/internal_server_error',
                 status: :internal_server_error
-            
+                        
             logger.error "\n#{@message}:\n\t#{@stack.join("\n\t")}\n"
         end
     end
 
     def invalid_authenticity_token
-        render json: { message: 'Invalid authenticity token, have checked if you were forged? ' }, 
+        render json: { message: 'Invalid authenticity token, have checked if you might have been forged? ' }, 
             status: :unprocessable_entity
     end
 
