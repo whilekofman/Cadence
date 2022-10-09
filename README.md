@@ -1,28 +1,12 @@
-<<<<<<< HEAD
-# Cadence
-=======
-# README
+# Welcome to the Cadence!
+### Cadence is a full stack clone of the popular activity tracker and social network Cadence.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<a href='#'>Check out Cadence here!</a>
 
-Things you may want to cover:
+***
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
->>>>>>> fa3e238 (create rails back end and react-redux front end)
++  <a href='https://github.com/whilekofman/Strkr/wiki/MVP-List'>MVP List</a>
++  <a href='https://github.com/whilekofman/Strkr/wiki/Schema'>Schema</a>
++  <a href='https://github.com/whilekofman/Strkr/wiki/Sample-State'>Sample State</a>
++  <a href='https://github.com/whilekofman/Strkr/wiki/Frontend-Routes-and-Components'> Frontend Routes and Components</a>
++  <a href='https://github.com/whilekofman/Strkr/wiki/Backend-Routes'>Backend Routes</a>
