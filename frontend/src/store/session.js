@@ -17,18 +17,36 @@ export const getSession = ({ session }) => session ? session.user : null
 export const storeCurrentUser = user => {
     if (user) sessionStorage.setItem("currentUser", JSON.stringify({user}));
     sessionStorage.removeItem("currentUser", null)
-    // debugger
 }
- 
+
+export const signup = user => async dispatch => {
+    
+    const { email, fname, lname, weight, password } = user;
+    const res = await csrfFetch('api/users', {
+        method: 'POST',
+        body: JSON.stringify({
+            fname,
+            lname,
+            email,
+            weight,
+            password
+            
+        })
+    })
+    const data = await res.json();
+    storeCurrentUser(data.user);
+    dispatch(setCurrentUser(data.user))
+    return res;
+}
+
 export const login = ({ credential, password }) => async dispatch => {
-    const res = await csrfFetch('/api/session', {
+    const res = await csrfFetch('api/session', {
         method: 'POST',
         body: JSON.stringify({ credential, password })
     });
     const data = await res.json();
     storeCurrentUser(data.user)
     dispatch(setCurrentUser(data.user));
-    // debugger
     return res;
 }
 
@@ -37,7 +55,6 @@ export const logout = () => async dispatch => {
         method: 'DELETE',
     });
     storeCurrentUser(null);
-    // debugger
     dispatch(removeCurrentUser());
     return res;
 }
@@ -83,4 +100,3 @@ const sessionReducer = (state = initialState, action ) => {
 
 export default sessionReducer;
 
-// await store.dispatch(sessionActions.login({ credential: 'test@test.io', password: 'password' }))

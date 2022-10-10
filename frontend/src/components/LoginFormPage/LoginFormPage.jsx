@@ -8,9 +8,9 @@ import { getSession } from "../../store/session";
 
 const LoginFormPage = () => { 
     const dispatch = useDispatch()
-    // const sessionUser = useSelector(state => state.session.user)
+
     const sessionUser = useSelector(getSession);
-    // const sessionUser = useSelector(getSession(currentUser));
+
     const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
@@ -26,11 +26,16 @@ const LoginFormPage = () => {
                 let data;
                 try {
                     data = await res.clone().json();
+                    debugger
                 } catch {
                     data = await res.text();
+                    
+                    debugger
                 }
-                if (data?.errors) setErrors([data]);
+                if (data?.errors) setErrors(data.errors);
                 else setErrors(["you may have made a mistake"]);
+                debugger
+                return errors
             });
     }
 

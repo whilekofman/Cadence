@@ -3,13 +3,13 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from '../../store/session'
 import { getSession } from "../../store/session";
-import { useState } from 'react';
+// import { useState } from 'react';
 
 const SessionButton = () => {
     const dispatch = useDispatch()
 
     
-    const [errors, setErrors] = useState([])
+    // const [errors, setErrors] = useState([])
     
     const sessionUser = useSelector(getSession);
     
@@ -32,18 +32,18 @@ const SessionButton = () => {
     const handleSubmit = e => {
         e.preventDefault();
 
-        setErrors([]);
+        // setErrors([]);
         return dispatch (sessionActions.logout({ }))
-            .catch(async (res) => {
-                let data;
-                try {
-                    data = await res.clone().json();
-                } catch {
-                    data = await res.text();
-                }
-                if (data?.errors) setErrors([data]);
-                else setErrors(["you may have made a mistake"]);
-            });
+            // .catch(async (res) => {
+            //     let data;
+            //     try {
+            //         data = await res.clone().json();
+            //     } catch {
+            //         data = await res.text();
+            //     }
+            //     if (data?.errors) setErrors([data]);
+            //     else setErrors(["you may have made a mistake"]);
+            // });
     }
     const buttonReturned = sessionUser ? 
         (
