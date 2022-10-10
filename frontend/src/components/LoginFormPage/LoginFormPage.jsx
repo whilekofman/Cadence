@@ -2,18 +2,19 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from '../../store/session'
-// import { getSession } from "../../store/session";
+import { getSession } from "../../store/session";
 
 
 
 const LoginFormPage = () => { 
     const dispatch = useDispatch()
-    const sessionUser = useSelector(state => state.session.user)
-    // const sessionUser = useSelector(getSession);
+    // const sessionUser = useSelector(state => state.session.user)
+    const sessionUser = useSelector(getSession);
     // const sessionUser = useSelector(getSession(currentUser));
-    const [credential, setCredential] = useState();
+    const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
+    
     if (sessionUser) return <Redirect to="/" />
     
     const handleSubmit = e => {
@@ -29,26 +30,26 @@ const LoginFormPage = () => {
                     data = await res.text();
                 }
                 if (data?.errors) setErrors([data]);
-                else setErrors([res.statusText]);
+                else setErrors(["you may have made a mistake"]);
             });
     }
 
-    const handleLogout = e =>{
-        e.preventDefault();
+    // const handleLogout = e =>{
+    //     e.preventDefault();
 
-        setErrors([]);
-        return dispatch (sessionActions.logout({  credential, password  }))
-            .catch(async (res) => {
-                let data;
-                try {
-                    data = await res.clone().json();
-                } catch {
-                    data = await res.text();
-                }
-                if (data?.errors) setErrors([data]);
-                else setErrors([res.statusText]);
-            });
-    }
+    //     setErrors([]);
+    //     return dispatch (sessionActions.logout({  credential, password  }))
+    //         .catch(async (res) => {
+    //             let data;
+    //             try {
+    //                 data = await res.clone().json();
+    //             } catch {
+    //                 data = await res.text();
+    //             }
+    //             if (data?.errors) setErrors([data]);
+    //             else setErrors([res.statusText]);
+    //         });
+    // }
 
     return ( 
         <>
@@ -74,7 +75,7 @@ const LoginFormPage = () => {
                         />
                 </label>
                 <button type="submit">Login</button>
-                <button onClick={handleLogout}>Logout</button>
+                {/* <button onClick={handleLogout}>Logout</button> */}
             </form>
         </>
      );
