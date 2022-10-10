@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@800&display=swap');
+
+.full-width {
+    border-bottom: 1px solid black;
+    height: 60px;
+}
+.navbar {
+    display: flex;
+    max-width: 960px;
+    height: 60px;
+    flex-direction: row;
+    align-items: center;
+    line-height: 18px;
+    position: relative;
+    justify-content: space-between;
+    padding-left: 10%;
+    padding-right: 5%;
+    /* padding-inline-end: 10rem; */
+    
+}
+.cadencetitle {
+    font-family: 'Sora', sans-serif;
+    color: orange;
+}
+
+.logo {
+    height: 56px;
+}
+
+/* .orange {
+    background-color: orange;
+} */
+
+.loginBut {
+    background-color: white;
+    width: 100px;
+    border-radius: 2px;
+}
+
+.signupBut {
+    background-color: orange;
+    width: 100px;
+    border-radius: 2px;
+
+}
