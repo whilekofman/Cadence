@@ -8,7 +8,6 @@ async function csrfFetch(url, options = {}){
 
         options.headers['X-CSRF-Token'] = sessionStorage.getItem('X-CSRF-Token'); 
     } 
-
     const res = await fetch(url, options);
 
     if (res.status >= 400) throw res;
@@ -22,7 +21,7 @@ export const storeCSRFToken = response => {
 }
 
 export const restoreCSRF = async () => {
-    const response = await csrfFetch('api/session');
+    const response = await csrfFetch('/api/session');
     storeCSRFToken(response);
     return response
 }
