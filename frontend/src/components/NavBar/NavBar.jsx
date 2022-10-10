@@ -1,26 +1,21 @@
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import skatelogo from '../../assets/logo/skatelogo.png'
+import SessionButton from './SessionButton';
 const NavBar = () => {
-    const usePath = () => {
-        const location = useLocation();
-        return location.pathname;
-    }
+    // const usePath = () => {
+    //     const location = useLocation();
+    //     return location.pathname;
+    // }
 
     // const { login }  = useParams()
     // console.log(useParams())
     // console.log(login)
     // debugger
-    const buttonText = usePath() === '/login' ? "Sign Up" : "Log In"
-    const buttonLink = usePath() === '/login' ? "/signup" : "/login"
+    // const buttonText = usePath() === '/login' ? "Sign Up" : "Log In"
+    // const buttonLink = usePath() === '/login' ? "/signup" : "/login"
 
-    const buttonClassName = usePath() === '/login' ? 'signupBut' : 'loginBut' 
+    // const buttonClassName = usePath() === '/login' ? 'signupBut' : 'loginBut' 
     
-
-    console.log(buttonText)
-
-    const onClick = e => {
-        <Link to={buttonLink}></Link>
-    }
 
     return ( 
 
@@ -30,8 +25,9 @@ const NavBar = () => {
                 <NavLink to='/'><img src={skatelogo}alt='cadencelogo' className='logo'></img></NavLink>
 
                 {/* <NavLink activeClassName="orange" to="/login">{buttonText}</NavLink> */}
-                <NavLink to={buttonLink}>
-                <button className={buttonClassName}>{buttonText}</button></NavLink>
+                {/* <NavLink to={buttonLink}>
+                <button className={buttonClassName}>{buttonText}</button></NavLink> */}
+                <SessionButton />
 
             </nav>
         </div>
