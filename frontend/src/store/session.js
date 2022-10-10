@@ -12,12 +12,12 @@ export const removeCurrentUser = () => ({
     type: REMOVE_CURRENT_USER,
 });
 
-export const getSession = ({ session }) => session ? Object.values(session) : []
+export const getSession = ({ session }) => session ? session.user : null
 
 export const storeCurrentUser = user => {
-    if (user) sessionStorage.setItem("currentUser", JSON.stringify(user));
-
-    else sessionStorage.removeItem("currentUser")
+    if (user) sessionStorage.setItem("currentUser", JSON.stringify({user}));
+    else sessionStorage.removeItem("currentUser", null)
+    // debugger
 }
  
 export const login = ({ credential, password }) => async dispatch => {
@@ -26,7 +26,9 @@ export const login = ({ credential, password }) => async dispatch => {
         body: JSON.stringify({ credential, password })
     });
     const data = await res.json();
+    storeCurrentUser(data.user)
     dispatch(setCurrentUser(data.user));
+    // debugger
     return res;
 }
 
@@ -35,7 +37,7 @@ export const logout = () => async dispatch => {
         method: 'DELETE',
     });
     storeCurrentUser(null);
-    debugger
+    // debugger
     dispatch(removeCurrentUser());
     return res;
 }
@@ -45,12 +47,21 @@ const initialState = {
 }
 
 
-const sessionReducer = (nextState = initialState, action ) => {
+const sessionReducer = (state = initialState, action ) => {
+    let nextState = {...state}
     switch (action.type) {
+        
         case SET_CURRENT_USER:
-            return { ...nextState, ...action.user };
+            nextState.user = action.user
+            return nextState;
         case REMOVE_CURRENT_USER:
-            return { ...nextState, user: null };
+            // return { ...nextState, user: null };
+            return nextState.user = null;
+
+        // case SET_CURRENT_USER:
+        //     return { ...nextState, ...action.user };
+        // case REMOVE_CURRENT_USER:
+        //     return { ...nextState, user: null };
         default:
             return initialState;
     }

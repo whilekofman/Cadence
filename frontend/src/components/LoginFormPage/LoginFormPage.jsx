@@ -8,7 +8,8 @@ import * as sessionActions from '../../store/session'
 
 const LoginFormPage = () => { 
     const dispatch = useDispatch()
-    const sessionUser = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state.session.user)
+    // const sessionUser = useSelector(getSession);
     // const sessionUser = useSelector(getSession(currentUser));
     const [credential, setCredential] = useState();
     const [password, setPassword] = useState('');
