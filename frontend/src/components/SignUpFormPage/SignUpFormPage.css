@@ -1,26 +1,83 @@
 /* @import '../../assets/loginback/bar.jpeg' */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@800&display=swap');
 
 .body {
     background-image: url('../../assets/loginback/bar.jpeg');
     background-position: fill;
+    height: 1000px;
 }
-
-.jointoday-container {
-    color: white;
-    justify-content: center;
-
-}
-
 .formwindow {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    height: 700px;
+    margin: -.4rem;
 }
+
+.jointoday-container {
+    display: flex;
+    color: white;
+    background-color: black;
+    opacity: calc(80%);
+    justify-content: center;
+    font-size: small;
+    width: 400px;
+    font-family: 'Sora', sans-serif;
+    
+}
+
+
 .signupform {
     display: flex;
+    width: 400px;
+    background-color: black;
+    opacity: calc(65%);
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 }
-.email {
-    padding-bottom: 5%;
+
+.form-field {
+    height: 50px;
+    
+}
+.form-text-box {
+    height: 30px;
+    width: 300px;
+    background-color: black;
+    color: white;
+    border-radius: 7px;
+
+}
+
+.signup-but {
+    background-color: rgb(255, 123, 0);
+    font-family: 'Sora', sans-serif;
+    font-weight: 100;
+    color: white;
+    height: 50px;
+    width: 310px;
+    cursor: pointer;
+    border-radius: 7px;
+
+}
+
+
+.signup-disclaimer > p {
+    justify-content: center;
+    color: white;
+    font-size: smaller;
+    padding-left: 20%;
+    padding-right: 20%;
+} 
+
+.alreadymember {
+    padding-bottom: 10%;
+    
+}
+.link-text {
+    color:white;
+
 }

@@ -38,7 +38,7 @@ const SessionButton = () => {
     const buttonReturned = sessionUser ? 
         (
             <form onSubmit={handleSubmit}>
-                <button>Log Out</button>
+                <button className={buttonClassName}>Log Out</button>
             </form>
         ) 
         
