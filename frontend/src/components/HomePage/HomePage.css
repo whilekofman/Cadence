@@ -27,6 +27,7 @@
 }
 .demo-login {
     background-color: #4267B2;
+    font-family: 'Sora', sans-serif;
     color: white;
     height: 50px;
     width: 400px;
@@ -34,10 +35,19 @@
 }
 
 .email-signup {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     background-color: transparent;
+    font-family: 'Sora', sans-serif;
     color: black;
     height: 50px;
     width: 400px;
+
+}
+
+.fa-regular {
+    flex-direction: row;
 }
 .email-signup:hover {
     background-color: #4267B2;

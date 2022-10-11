@@ -69,7 +69,7 @@ const SignUpFormPage = () => {
                     </ul>
                     <span className="form-field">
                         <label>
-                            <input className="form-text-box"
+                                <input className="form-text-box"
                                 type="email"
                                 value={email}
                                 onChange={e => setEmail(e.target.value)}
