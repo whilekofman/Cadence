@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from '../../store/session'
 import { getSession } from "../../store/session";
+import DemoButton from "./DemoButton";
 
 
 
@@ -21,39 +22,29 @@ const LoginFormPage = () => {
         e.preventDefault();
 
         setErrors([]);
-        return dispatch (sessionActions.login({  credential, password  }))
-            .catch(async (res) => {
+        return dispatch (sessionActions.login({ 
+            credential, 
+            password  
+        })).catch(async (res) => {
                 let data;
                 try {
                     data = await res.clone().json();
-                    debugger
                 } catch {
                     data = await res.text();
                     
-                    debugger
                 }
                 if (data?.errors) setErrors(data.errors);
                 else setErrors(["you may have made a mistake"]);
-                debugger
                 return errors
             });
     }
 
-    // const handleLogout = e =>{
+    // const handleDemoLogin = e => {
     //     e.preventDefault();
-
-    //     setErrors([]);
-    //     return dispatch (sessionActions.logout({  credential, password  }))
-    //         .catch(async (res) => {
-    //             let data;
-    //             try {
-    //                 data = await res.clone().json();
-    //             } catch {
-    //                 data = await res.text();
-    //             }
-    //             if (data?.errors) setErrors([data]);
-    //             else setErrors([res.statusText]);
-    //         });
+    //     return dispatch (sessionActions.login({  credential: 'first@new.io', password: 'password' }))
+    // }
+    // const demoButton = () => {
+    //     <button className='demo-login' type="submit" onClick={handleDemoLogin}>Login Demo User</button>
     // }
 
     return ( 
@@ -65,22 +56,23 @@ const LoginFormPage = () => {
                 </ul>
                 <label>Email:
                     <input
-                        type="text"
+                        type="email"
                         value={credential}
-                        onChange={(e) => setCredential(e.target.value)}
+                        onChange={e => setCredential(e.target.value)}
                         required
-                        />
+                    />
                 </label>
                 <label>Password:
                     <input
                         type="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={e => setPassword(e.target.value)}
                         required
-                        />
+                    />
                 </label>
                 <button type="submit">Login</button>
-                {/* <button onClick={handleLogout}>Logout</button> */}
+                <DemoButton />
+                {/* <button className='demo-login' type="submit" onClick={handleDemoLogin}>Login Demo User</button> */}
             </form>
         </>
      );

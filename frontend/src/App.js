@@ -2,6 +2,8 @@ import LoginFormPage from "./components/LoginFormPage";
 import { Switch } from "react-router-dom";
 import { Route } from "react-router-dom"
 import NavBar from "./components/NavBar";
+import SignUpFormPage from "./components/SignUpFormPage/SignUpFormPage";
+import HomePage from "./components/HomePage/HomePage";
 
 
 
@@ -11,15 +13,13 @@ function App() {
     <NavBar />
       <Switch>
         <Route exact path="/">
-          <h1>Welcome To Cadence</h1>
-          <h2>Stay tuned</h2>
-          {/* <Link to="/login">Click to login</Link> */}
-          <>
-            <></>
-          </>
+          <HomePage />
         </Route>
         <Route path="/login">
           <LoginFormPage />
+        </Route>
+        <Route path="/signup">
+          <SignUpFormPage />
         </Route>
       </Switch>
     </>

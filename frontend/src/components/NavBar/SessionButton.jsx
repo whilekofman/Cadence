@@ -32,18 +32,8 @@ const SessionButton = () => {
     const handleSubmit = e => {
         e.preventDefault();
 
-        // setErrors([]);
         return dispatch (sessionActions.logout({ }))
-            // .catch(async (res) => {
-            //     let data;
-            //     try {
-            //         data = await res.clone().json();
-            //     } catch {
-            //         data = await res.text();
-            //     }
-            //     if (data?.errors) setErrors([data]);
-            //     else setErrors(["you may have made a mistake"]);
-            // });
+
     }
     const buttonReturned = sessionUser ? 
         (

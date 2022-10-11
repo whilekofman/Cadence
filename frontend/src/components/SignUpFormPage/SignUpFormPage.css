@@ -1,0 +1,26 @@
+/* @import '../../assets/loginback/bar.jpeg' */
+
+.body {
+    background-image: url('../../assets/loginback/bar.jpeg');
+    background-position: fill;
+}
+
+.jointoday-container {
+    color: white;
+    justify-content: center;
+
+}
+
+.formwindow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.signupform {
+    display: flex;
+    flex-direction: column;
+
+}
+.email {
+    padding-bottom: 5%;
+}
