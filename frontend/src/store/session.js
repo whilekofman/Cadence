@@ -31,12 +31,9 @@ export const signup = user => async dispatch => {
             weight,
             password            
         }),
-        // header: {
-        //     "Content-Type" : "application/json"
-        // }
+
     })
     const data = await res.json();
-    debugger
     storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user))
     return res;

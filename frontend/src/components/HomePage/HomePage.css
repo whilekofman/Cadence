@@ -3,6 +3,7 @@
 
 
 .splash {
+    border-top: 1px solid gray;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,6 +26,7 @@
     align-items: center;
     padding-top: 20%;
 }
+
 .demo-login {
     background-color: #4267B2;
     font-family: 'Sora', sans-serif;

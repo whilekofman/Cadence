@@ -23,8 +23,7 @@ const HomePage = () => {
                 </div>           
             </div>
         </body>
-
-        
+    
      );
 }
  

@@ -2,11 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@800&display=swap');
 
 .body-su {
+
     background: url('../../assets/loginback/inmotion.jpeg');
+    padding-top: 1%;
     background-size: cover;
     height: 90vh;
     width: 99vw;
-    /* background-position: fill; */
+    background-position: fill;
     /* height: 1000px; */
 }
 .formwindow {
@@ -60,7 +62,7 @@
 
 .form-text-box:focus {
     background-color: white;
-    color: black
+    color: black;
 }
 
 

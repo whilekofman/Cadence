@@ -52,7 +52,7 @@ const SignUpFormPage = () => {
     
 
     return ( 
-        <body className="body-su">
+        <div className="body-su">
             {/* <img src={bar} className="background" alt="BAR" /> */}
             <div className="formwindow">
                 <div className="jointoday-container">
@@ -128,7 +128,7 @@ const SignUpFormPage = () => {
                 </form>
             </div>
         
-        </body>
+        </div>
      );
 }
  

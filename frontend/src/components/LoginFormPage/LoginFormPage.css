@@ -3,6 +3,7 @@
 .body {
     background: url('../../assets/loginback/logback.jpeg');
     background-size: cover;
+    padding-top: 1%;
     height: 90vh;
     width: 99vw;
     /* background-position: fill; */
@@ -30,7 +31,14 @@
     font-family: 'Sora', sans-serif;
 
 }
-
+.demodiv {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.65);
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+}
 
 .loginform {
     display: flex;
