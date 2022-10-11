@@ -19,7 +19,7 @@ const HomePage = () => {
                 <div className="buttons">
                     <DemoButton />
                     <p className='seperator text'>or</p>
-                    <Link to={'/signup'}><button className='email-signup'><i class="fa-regular fa-envelope">Sign up with Email</i></button></Link> 
+                    <Link to={'/signup'}><button className='email-signup'>Sign up with Email</button></Link> 
                 </div>           
             </div>
         </body>

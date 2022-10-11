@@ -1,8 +1,8 @@
 /* @import '../../assets/loginback/bar.jpeg' */
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@800&display=swap');
 
-.body {
-    background: url('../../assets/loginback/bar.jpeg');
+.body-su {
+    background: url('../../assets/loginback/inmotion.jpeg');
     background-size: cover;
     height: 90vh;
     width: 99vw;

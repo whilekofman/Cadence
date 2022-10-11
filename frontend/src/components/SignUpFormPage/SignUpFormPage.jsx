@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import * as sessionActions from '../../store/session'
 import { getSession } from "../../store/session";
-import bar from '../../assets/loginback/bar.jpeg'
 
 
 
@@ -32,7 +31,6 @@ const SignUpFormPage = () => {
             return errors
         }
         setErrors([])
-        // if (password === confirmPassword) 
         return dispatch(sessionActions.signup({ 
             email,
             fname,
@@ -54,7 +52,7 @@ const SignUpFormPage = () => {
     
 
     return ( 
-        <body className="body">
+        <body className="body-su">
             {/* <img src={bar} className="background" alt="BAR" /> */}
             <div className="formwindow">
                 <div className="jointoday-container">

@@ -35,20 +35,18 @@
 }
 
 .email-signup {
-    display: flex;
+    /* display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-between; */
     background-color: transparent;
-    font-family: 'Sora', sans-serif;
+    /* font-family: 'Sora', sans-serif; */
     color: black;
     height: 50px;
     width: 400px;
 
 }
 
-.fa-regular {
-    flex-direction: row;
-}
+
 .email-signup:hover {
     background-color: #4267B2;
     cursor: pointer;
