@@ -2,9 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@800&display=swap');
 
 .body {
-    background-image: url('../../assets/loginback/bar.jpeg');
-    background-position: fill;
-    height: 1000px;
+    background: url('../../assets/loginback/bar.jpeg');
+    background-size: cover;
+    height: 90vh;
+    width: 99vw;
+    /* background-position: fill; */
+    /* height: 1000px; */
 }
 .formwindow {
     display: flex;
@@ -31,8 +34,7 @@
 .signupform {
     display: flex;
     width: 400px;
-    background-color: black;
-    opacity: calc(65%);
+    background-color: rgba(0, 0, 0, 0.65);
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -44,7 +46,7 @@
     
 }
 .form-text-box {
-    height: 30px;
+    height: 35px;
     width: 300px;
     background-color: black;
     color: white;
@@ -52,8 +54,19 @@
 
 }
 
+.errors {
+    color: red;
+}
+
+.form-text-box:focus {
+    background-color: white;
+    color: black
+}
+
+
 .signup-but {
     background-color: rgb(255, 123, 0);
+    opacity: calc(100%);
     font-family: 'Sora', sans-serif;
     font-weight: 100;
     color: white;

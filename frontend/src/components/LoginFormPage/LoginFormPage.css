@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@800&display=swap');
+
+.body {
+    background: url('../../assets/loginback/bar.jpeg');
+    background-size: cover;
+    height: 90vh;
+    width: 99vw;
+    /* background-position: fill; */
+    /* height: 1000px; */
+}
+
+.formwindow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    margin: -.4rem;
+}
+
+.jointoday-container {
+    display: flex;
+    color: white;
+    background-color: black;
+    opacity: calc(80%);
+    justify-content: center;
+    font-size: small;
+    width: 400px;
+    font-family: 'Sora', sans-serif;
+
+}
+
+
+.signupform {
+    display: flex;
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0.65);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.form-field {
+    height: 50px;
+
+}
+
+.form-text-box {
+    height: 35px;
+    width: 300px;
+    background-color: black;
+    color: white;
+    border-radius: 7px;
+
+}
+
+.errors {
+    color: red;
+}
+
+.form-text-box:focus {
+    background-color: white;
+    color: black
+}
+
+
+.signup-but {
+    background-color: rgb(255, 123, 0);
+    opacity: calc(100%);
+    font-family: 'Sora', sans-serif;
+    font-weight: 100;
+    color: white;
+    height: 50px;
+    width: 310px;
+    cursor: pointer;
+    border-radius: 7px;
+
+}
+
+
+.signup-disclaimer>p {
+    justify-content: center;
+    color: white;
+    font-size: smaller;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.alreadymember {
+    padding-bottom: 10%;
+
+}
+
+.link-text {
+    color: white;
+
+}
