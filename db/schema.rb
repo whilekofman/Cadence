@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_11_203822) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_12_180652) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,29 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_203822) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "activities", force: :cascade do |t|
+    t.bigint "athlete_id", null: false
+    t.string "sport", null: false
+    t.float "distance", null: false
+    t.integer "hours", null: false
+    t.integer "minutes", null: false
+    t.integer "seconds", null: false
+    t.string "title", null: false
+    t.integer "intensity", null: false
+    t.float "hr"
+    t.text "pnotes"
+    t.integer "tags"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "description"
+    t.integer "purpose"
+    t.date "start_time"
+    t.index ["athlete_id"], name: "index_activities_on_athlete_id"
+    t.index ["distance"], name: "index_activities_on_distance"
+    t.index ["intensity"], name: "index_activities_on_intensity"
+    t.index ["sport"], name: "index_activities_on_sport"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "fname", null: false
     t.string "lname", null: false
@@ -59,4 +82,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_203822) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "activities", "users", column: "athlete_id"
 end

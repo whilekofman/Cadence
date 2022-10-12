@@ -15,13 +15,18 @@
 class User < ApplicationRecord
   has_secure_password
 
+  has_one_attached :profile_photo
+
   validates :fname, :lname, length: { in: 1..18 }, format: { without: URI::MailTo::EMAIL_REGEXP, message:  "can't be an email" }
   validates :email, length: { in: 3..255 }, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
   validates :session_token, presence: true, uniqueness: true
   validates :password, length: { in: 6..20, allow_nil: true }
   # validates :date_of_birth, :sex, presence: true
   # TODO when adding progile photo to db may add validation for presence here
-  before_validation :ensure_session_token 
+  before_validation :ensure_session_token
+
+  has_many :activitiess, 
+    class_name: :Activity 
   
   
   
