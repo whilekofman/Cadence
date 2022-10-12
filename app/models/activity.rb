@@ -17,7 +17,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  description :text
-#  type        :integer
+#  purpose     :integer
 #  start_time  :date
 #
 class Activity < ApplicationRecord
@@ -37,5 +37,6 @@ class Activity < ApplicationRecord
   belongs_to :athlete,
     class_name: :User
 
+  
   
 end

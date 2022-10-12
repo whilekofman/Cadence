@@ -17,7 +17,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  description :text
-#  type        :integer
+#  purpose     :integer
 #  start_time  :date
 #
 FactoryBot.define do
