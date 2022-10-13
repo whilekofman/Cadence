@@ -25,9 +25,9 @@ class User < ApplicationRecord
   # TODO when adding progile photo to db may add validation for presence here
   before_validation :ensure_session_token
 
-  has_many :activitiess, 
-    class_name: :Activity 
-  
+  has_many :activities, 
+    class_name: :Activity,
+    foreign_key: :athlete_id 
   
   
   def self.find_by_credentials(credential, password)
