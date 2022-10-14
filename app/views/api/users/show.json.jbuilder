@@ -1,4 +1,4 @@
-# json.partial! 'users', user: user
+# json.partial! 'user', user: user
 
 
 # 

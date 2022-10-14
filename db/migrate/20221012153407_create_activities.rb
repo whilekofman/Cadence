@@ -22,6 +22,6 @@ class CreateActivities < ActiveRecord::Migration[7.0]
     add_index :activities, :intensity
   end
 
-  belongs_to :user, 
-    class_name: :user
+  # belongs_to :user, 
+  #   class_name: :user
 end
