@@ -14,9 +14,13 @@ export const removeCurrentUser = () => ({
 
 export const getSession = ({ session }) => session ? session.user : null
 
+// export const sessionUser = sessionStorage.getItem('currentUser') ? currentUser : null
+
 export const storeCurrentUser = user => {
-    if (user) sessionStorage.setItem("currentUser", JSON.stringify({user}));
-    sessionStorage.removeItem("currentUser", null)
+    if (user) {sessionStorage.setItem("currentUser", JSON.stringify(user)) 
+    } else {
+    sessionStorage.removeItem("currentUser")
+    }
 }
 
 export const signup = user => async dispatch => {
@@ -77,7 +81,6 @@ const initialState = {
 }
 
 
-
 const sessionReducer = (state = initialState, action ) => {
     let nextState = {...state}
     switch (action.type) {
@@ -87,8 +90,8 @@ const sessionReducer = (state = initialState, action ) => {
             return nextState;
         case REMOVE_CURRENT_USER:
             // return { ...nextState, user: null };
-            return nextState.user = null;
-
+            nextState.user = null;
+            return nextState
         // case SET_CURRENT_USER:
         //     return { ...nextState, ...action.user };
         // case REMOVE_CURRENT_USER:

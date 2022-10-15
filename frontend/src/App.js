@@ -7,21 +7,28 @@ import HomePage from "./components/HomePage/HomePage";
 import { useSelector } from "react-redux";
 import { getSession } from "./store/session";
 import UserIndexPage from "./components/UserIndex/UserIndexPage";
+import ActivityIndexPage from "./components/ActivityIndexPage";
 
-
+// <UserIndexPage />
 function App() {
   const sessionUser = useSelector(getSession)
-  const userPath = sessionUser ?  <UserIndexPage /> : <HomePage />
+  
+  const userPath = sessionUser ? <UserIndexPage />  : <HomePage />
+  // debugger
   return (
     <>
     <NavBar />
       <Switch>
         <Route exact path="/">
+          
           {userPath}
           {/* <HomePage /> */}
         </Route>
         <Route path="/login">
           <LoginFormPage />
+        </Route>
+        <Route path="/activities">
+          <ActivityIndexPage />          
         </Route>
         <Route path="/signup" >
           <SignUpFormPage />

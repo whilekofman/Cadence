@@ -1,26 +1,33 @@
 class Api::ActivitiesController < ApplicationController
     def index
-        if params[user_id: :id] != nil
-            @activity.athlete_id = params[:users], params[:id]
-            debugger
-            @activities = Activity.find_by(athlete_id: params[@activity.athlete_id])
-            # render :index
-        else
-            @activities = Activity.all
-            debugger
-            # render :
-        end
-
-
         
+        # if params[:user_id] != nil
+        #     @activities.athlete_id = params[athlete_id: user_id: :user_id]
+        #     debugger
+        #     @activities = Activity.where(athlete_id: params[@activity.athlete_id])
+        #     # render :index
+        # else
+        #     #@activities = Activity.all
+        #     #debugger
+        #     # render :
+        # end
+
+        @activities = Activity.all#.order('desc') 
 
         render :index
     end
 
     def show
-        @activity.athlete_id = current_user.id
+        @activity = Activity.find(params[:id])
+        # debugger
+        if @activity
+            render :show
+        else
+            render json: { errors: @activity.errors.full_messages }, status: :unprocessable_entity
+        end
+        # @activity.athlete_id = current_user.id
 
-        @activity = Activity.find_by(athlete_id: params[@activity.athlete_id])
+        # @activity = Activity.find_by(athlete_id: params[@activity.athlete_id])
 
     end
 
@@ -32,11 +39,9 @@ class Api::ActivitiesController < ApplicationController
 
     end
 
-    def show 
-
-    end
-
     def destroy
+        @activity.destroy
+        head :no_content
     end
 
     def edit

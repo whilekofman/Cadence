@@ -1,5 +1,6 @@
-# json.partial! 'user', user: user
-
+# json.user do
+#   json.partial! 'user', user: @user
+# end
 
 # 
 

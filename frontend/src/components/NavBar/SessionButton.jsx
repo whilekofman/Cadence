@@ -21,13 +21,15 @@ const SessionButton = () => {
     // const logOutButton = 
     
     // const buttonText = usePath() === '/login' ? "Sign Up" : sessionUser ? "Log Out" : "Log In"
-    const buttonText = usePath() === '/login' ? "Sign Up" : "Log In"
+    const buttonText = usePath() === '/login' ? "Sign Up" : sessionUser ? "Log Out" : "Log In"
 
     
     // const buttonText = usePath() === '/login' ? "Sign Up" : "Log In"
     const buttonLink = usePath() === '/login' ? "/signup" : "/login"
 
     const buttonClassName = usePath() === '/login' ? 'signupBut' : sessionUser ? 'logoutBut' : 'loginBut' 
+
+    
 
     const handleSubmit = e => {
         e.preventDefault();
