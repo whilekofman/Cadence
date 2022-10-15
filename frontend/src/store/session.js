@@ -9,7 +9,7 @@ export const setCurrentUser = user => ({
 });
 
 export const removeCurrentUser = () => ({
-    type: REMOVE_CURRENT_USER,
+    type: REMOVE_CURRENT_USER
 });
 
 export const getSession = ({ session }) => session ? session.user : null
@@ -81,7 +81,7 @@ const initialState = {
 }
 
 
-const sessionReducer = (state = initialState, action ) => {
+const sessionReducer = ( state = initialState, action ) => {
     let nextState = {...state}
     switch (action.type) {
         
@@ -97,7 +97,8 @@ const sessionReducer = (state = initialState, action ) => {
         // case REMOVE_CURRENT_USER:
         //     return { ...nextState, user: null };
         default:
-            return initialState;
+            // return initialState;
+            return { ...nextState }
     }
 }
 

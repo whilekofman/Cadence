@@ -1,6 +1,9 @@
 class Api::ActivitiesController < ApplicationController
     def index
         
+        @activities = Activity.all
+
+        render :index
         # if params[:user_id] != nil
         #     @activities.athlete_id = params[athlete_id: user_id: :user_id]
         #     debugger
@@ -11,10 +14,8 @@ class Api::ActivitiesController < ApplicationController
         #     #debugger
         #     # render :
         # end
+        #.order('desc') 
 
-        @activities = Activity.all#.order('desc') 
-
-        render :index
     end
 
     def show

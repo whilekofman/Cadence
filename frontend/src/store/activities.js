@@ -28,9 +28,9 @@ export const fetchActivities = () => async dispatch => {
     const data = await res.json();
     dispatch(retrieveActivities(data))
 }
-const initialState = {
-    user: JSON.parse(sessionStorage.getItem("currrentUser"))
-} 
+// const initialState = {
+//     user: JSON.parse(sessionStorage.getItem("currrentUser"))
+// } 
  
 const activityReducer = ( state = {}, action ) => {
     let nextState = { ...state };
@@ -39,6 +39,7 @@ const activityReducer = ( state = {}, action ) => {
         case RETRIEVE_ACTIVITIES:
             // nextState.activities = action.activities
             nextState = { ...nextState, ...action.activities }
+            // debugger
             return nextState
         default:
             return state

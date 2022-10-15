@@ -27,15 +27,3 @@ class Api::UsersController < ApplicationController
     params.require(:user).permit(:email, :fname, :lname, :password)
   end
 end
-
-# signupRequestOptions = {
-#     method: 'POST',
-#     headers: { 'Content-Type': 'application/json' },
-#     body: JSON.stringify({ 
-#       email: 'coolemail@hotmail.net', 
-#       fname: 'star',
-#       lname: 'wars',
-#       password: 'starwars',
-#       weight: '175.2'
-#     })
-#   }

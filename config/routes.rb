@@ -18,3 +18,6 @@ Rails.application.routes.draw do
     resource :session, only: [:show, :create, :destroy]
   end
 end
+
+
+# h = Activity.new(athlete_id: 1, sport: 'run', distance: 3.12, hours: 0, minutes: 24, seconds: 42, title: '5k', description: 'what happened to my indurance', intensity: 3, hr: 125.2, purpose: 1, start_time: '2022-10-01 13:29:18')

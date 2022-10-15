@@ -5,8 +5,8 @@ import sessionReducer from './session';
 
 
 export const rootReducer = combineReducers({
-    activities: activityReducer,
-    session: sessionReducer
+    session: sessionReducer,
+    activities: activityReducer
 
 });
 
