@@ -18,9 +18,9 @@ const ActivityIndexItem = ( {
         pnotes, 
         tags,
         purpose,
-        start_time
+        startTime
     } 
-    }, { user }  ) => {
+    }) => {
     // const dispatch = useDispatch()
     
     // const athleteId =  
@@ -29,12 +29,15 @@ const ActivityIndexItem = ( {
 
     return (
         <>
-            <li key={id}>
+            <ul>
+                <Link to={`/activities`}>{athleteId}</Link>
+                <div>{startTime}</div>
                 <div>{title}</div>
                 <div>{description}</div>
-                
-                <Link to={`/activities`}>{athleteId}</Link>
-            </li>
+                <div>{sport}</div>
+                <div>{distance} miles</div>
+                <div>{hours}:{minutes}</div>
+            </ul>
         </>
 
      );

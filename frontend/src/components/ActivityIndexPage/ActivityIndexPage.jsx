@@ -16,17 +16,17 @@ const ActivityIndexPage = () => {
     useEffect(() => {
         // dispatch(sessionUser)
         dispatch(fetchActivities())
-    }, [])
+    }, [dispatch])
 
     const activityListElements = activities.map((activity) => <li key={activity.id}><ActivityIndexItem activity={activity} /></li>)
     // {activity.title}
 
     return ( 
-        <ul>
+        <>
             <li>where am I</li>
             {activityListElements}
-            
-        </ul>
+        </>
+
      );
 }
  
