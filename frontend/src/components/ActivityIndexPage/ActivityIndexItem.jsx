@@ -1,8 +1,7 @@
-// import { useDispatch } from "react-redux";
 
 import { Link } from "react-router-dom";
 
-const ActivityIndexItem = ( { activity, user } ) => {
+const ActivityIndexItem = ( { activity } ) => {
     // activity: {
     //     id,
     //         athleteId,
@@ -21,9 +20,9 @@ const ActivityIndexItem = ( { activity, user } ) => {
     //         startTime
     // } 
     const {
-        id,
         athleteId,
-        // athleteName,
+        fname,
+        lname,
         title,
         description,
         sport,
@@ -37,16 +36,14 @@ const ActivityIndexItem = ( { activity, user } ) => {
         purpose,
         startTime
     } = activity
-    // const dispatch = useDispatch()
-    // const { userId, fname, lname } = user
-    // // const athleteId =  
-    // const { userId, fname, lname } = user
-    // const userFname = userId === athleteId ? user.fname : '' 
+
+   
+
     return (
         <>
 
                 <Link to={`/activities`}>{athleteId}</Link>
-                {/* <div>does this display {athleteName}</div> */}
+                <div>{fname} {lname}</div>
                 <div>{startTime}</div>
                 <div>{title}</div>
                 <div>{description}</div>

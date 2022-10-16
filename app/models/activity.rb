@@ -37,6 +37,16 @@ class Activity < ApplicationRecord
   belongs_to :athlete,
     class_name: :User
 
+  def fname
+    return athlete.fname
+  end
 
+  def lname
+    return athlete.lname
+  end
+
+  def start_time
+    
+  end
   
 end

@@ -20,8 +20,7 @@ export const retrieveUser = user => ({
 // })
 
 export const getUsers = ({ users }) => users ? Object.values(users) : []
-
-export const getUser = user => ({ users }) => users ? users[user] : null
+export const getUser = userId => ({ users }) => users ? users[userId] : null
 
 export const fetchUsers = () => async dispatch => {
     const res = await csrfFetch('api/users')
