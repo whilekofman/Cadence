@@ -28,13 +28,10 @@ export const fetchActivities = () => async dispatch => {
     const data = await res.json();
     dispatch(retrieveActivities(data))
 }
-// const initialState = {
-//     user: JSON.parse(sessionStorage.getItem("currrentUser"))
-// } 
+
  
 const activityReducer = ( state = {}, action ) => {
     let nextState = { ...state };
-    // debugger
     switch (action.type) {
         case RETRIEVE_ACTIVITIES:
             // nextState.activities = action.activities
@@ -42,7 +39,7 @@ const activityReducer = ( state = {}, action ) => {
             // debugger
             return nextState
         default:
-            return state
+            return nextState
     }
 }
 

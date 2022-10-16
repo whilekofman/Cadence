@@ -1,6 +1,6 @@
 class Api::ActivitiesController < ApplicationController
     def index
-        
+        @users = User.all
         @activities = Activity.all
 
         render :index

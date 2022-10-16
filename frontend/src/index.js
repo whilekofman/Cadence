@@ -8,6 +8,7 @@ import App from './App';
 import csrfFetch from './store/csrf';
 import * as sessionActions from './store/session'
 import * as activitytActions from './store/activities'
+import * as userActions from './store/users'
 
 const store = configureStore();
 
@@ -16,6 +17,7 @@ if (process.env.NODE_ENV !== 'production') {
   window.csrfFetch = csrfFetch;
   window.sessionActions = sessionActions
   window.activitytActions = activitytActions
+  window.userActions = userActions
 }
 
 function Root() {
@@ -37,8 +39,8 @@ const renderApplication = () => {
   );
 }
 
-if (sessionStorage.getItem("X-CSRF-Token") !== null ||
-  sessionStorage.getItem("currentUser") !== null ) { 
+if (sessionStorage.getItem("X-CSRF-Token") === null ||
+  sessionStorage.getItem("currentUser") !== null) { 
   store.dispatch(sessionActions.restoreSession()).then(renderApplication);
 } else {
   renderApplication();

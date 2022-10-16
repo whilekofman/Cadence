@@ -71,8 +71,8 @@ export const restoreSession = () => async dispatch => {
     return res;
 }
 
-export const storeCSRFToken = response => {
-    const csrfToken = response.headers.get("X-CSRF-Token")
+export const storeCSRFToken = res => {
+    const csrfToken = res.headers.get("X-CSRF-Token")
     if (csrfToken) sessionStorage.setItem("X-CSRF-Token", csrfToken);
 }
 

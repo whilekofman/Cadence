@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, Redirect, useLocation } from 'react-router-dom';
 
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from '../../store/session'
@@ -33,13 +33,13 @@ const SessionButton = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-
-        return dispatch (sessionActions.logout({ }))
+        
+        dispatch (sessionActions.logout({ }))
 
     }
     const buttonReturned = sessionUser ? 
         (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>                
                 <button className={buttonClassName}>Log Out</button>
             </form>
         ) 

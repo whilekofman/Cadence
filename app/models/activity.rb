@@ -37,6 +37,6 @@ class Activity < ApplicationRecord
   belongs_to :athlete,
     class_name: :User
 
-  
+
   
 end
