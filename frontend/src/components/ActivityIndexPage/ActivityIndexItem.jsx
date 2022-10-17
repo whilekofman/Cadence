@@ -20,7 +20,6 @@ const ActivityIndexItem = ( { activity } ) => {
     //         startTime
     // } 
     const {
-        athleteId,
         fname,
         lname,
         title,
