@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { getSession } from "./store/session";
 import UserIndexPage from "./components/UserIndex/UserIndexPage";
 import ActivityIndexPage from "./components/ActivityIndexPage";
+import ActivityShowPage from "./components/ActivityShowPage";
 
 // <UserIndexPage />
 function App() {
@@ -15,6 +16,9 @@ function App() {
   
   const userPath = sessionUser ? <UserIndexPage />  : <HomePage />
   // debugger
+  // const activityPath = "/activities/:activityId"
+  // debugger
+
   return (
     <>
     <NavBar />
@@ -27,8 +31,11 @@ function App() {
         <Route path="/login">
           <LoginFormPage />
         </Route>
-        <Route path="/activities">
+        <Route exact path="/activities">
           <ActivityIndexPage />          
+        </Route>
+        <Route path='/activities/:activityId'>
+          <ActivityShowPage />
         </Route>
         <Route path="/signup" >
           <SignUpFormPage />

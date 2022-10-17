@@ -21,7 +21,8 @@ export const removeActivity = activityId => ({
 
 export const getActivities = ({ activities }) => activities ? Object.values(activities) : []
 
-export const getActivity = activity => ({ activities }) => activities ? activities[activity] : null
+export const getActivity = activityId => ({ activities }) => activities ? activities[activityId] : null
+
 
 export const fetchActivities = () => async dispatch => {
     const res = await csrfFetch('/api/activities')
@@ -29,17 +30,41 @@ export const fetchActivities = () => async dispatch => {
     dispatch(retrieveActivities(data))
 }
 
+export const deleteActivity = activityId => async dispatch => {
+    // const res = 
+    await csrfFetch(`api/activities/${activityId}`, {
+        method: 'DELETE'
+    })
+    dispatch (removeActivity(activityId))
+}
+
+export const fetchActivity = (activityId) => async dispatch => {
+    const res = await csrfFetch(`/api/activities/${activityId}`)
+    debugger
+    if (res.ok){
+        const data = await res.json()
+        dispatch(retrieveActivity(data))
+    } else { throw res }
+}
+
  
 const activityReducer = ( state = {}, action ) => {
     let nextState = { ...state };
+    // debugger
     switch (action.type) {
         case RETRIEVE_ACTIVITIES:
             // nextState.activities = action.activities
             nextState = { ...nextState, ...action.activities }
+            return nextState
+        case RETRIEVE_ACTIVITY:
+            nextState[action.activityId] = action.activity
             // debugger
             return nextState
-        default:
+        case REMOVE_ACTIVITY:
+            delete nextState[action.activityId]
             return nextState
+        default:
+            return {...nextState}
     }
 }
 

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
     # resources :activities, only: [:index]
     
-    resources :activities, only: [:index, :show]#, :create, :edit, :destroy]
+    resources :activities, only: [:index, :show, :create, :edit, :destroy]
     
     resource :session, only: [:show, :create, :destroy]
   end

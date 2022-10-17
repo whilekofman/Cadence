@@ -21,15 +21,15 @@ const ActivityIndexPage = () => {
         dispatch(fetchActivities())
     }, [dispatch])
 
-    const activityListElements = activities.map((activity) => <li className='activity' key={activity.id}><ActivityIndexItem activity={activity} /></li>)
+    const activityListElements = activities.map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem activity={activity} /></div>)
     // {activity.title}
     
     return ( 
         <>
             <div className='activity-index-body'>
-                <ul className="activity-container">
+                <div className="activity-container">
                     {activityListElements}
-                </ul>
+                </div>
             </div>
         </>
 

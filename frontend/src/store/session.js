@@ -82,6 +82,7 @@ const initialState = {
 
 
 const sessionReducer = ( state = initialState, action ) => {
+    // Object.freeze(state)
     let nextState = {...state}
     switch (action.type) {
         

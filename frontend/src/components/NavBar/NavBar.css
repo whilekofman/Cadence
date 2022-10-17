@@ -3,6 +3,13 @@
 .full-width {
     /* border-bottom: 1px solid gray; */
     height: 60px;
+
+}
+.test{ 
+    background-color: black;
+    color: white;
+    position: fixed;
+    z-index: 100;
 }
 .navbar {
     display: flex;

@@ -1,6 +1,5 @@
 class Api::ActivitiesController < ApplicationController
     def index
-        @users = User.all
         @activities = Activity.all
 
         render :index
@@ -34,19 +33,36 @@ class Api::ActivitiesController < ApplicationController
 
     def create
         @activity = Activity.new(activity_params)
-        @activity.athlete_id = current_user.id
+        if @activity.save 
+            render :show
+        else
+            render json: { errors: @activity.errors.full_messages, status: :unprocessable_entity }
+        end
+        # @activity.athlete_id = current_user.id
         # if activity.save
         #     redirect_to Something_path
 
     end
 
     def destroy
-        @activity.destroy
-        head :no_content
+        @activity = Activity.find(params[:id])
+        if @activity
+            @activity.destroy
+            head :no_content
+        else
+            render json: { errors: @activity.errors.full_messages, status: :unprocessable_entity }
+        end
+
     end
 
-    def edit
+    def update
+        @activity = Activity.find(params[:id])
 
+        if @activity.update(activity_params)
+            render :show
+        else
+            render json: { errors: @activity.errors.full_messages, status: :unprocessable_entity }
+        end
     end
 
     private

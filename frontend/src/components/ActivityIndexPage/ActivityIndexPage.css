@@ -1,24 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@800&display=swap');
+
 .activity-index-body {
-    border-top: 1px solid gray;
+    /* border-top: 1px solid gray; */
     padding-top: 1%;
     /* height: 90vh;
     width: 99vw; */
     display: flex;
+    font-family: 'Sora', sans-serif;
     justify-content: center;
-    background-color: rgb(236, 235, 231);
+    background-color: #BABABB;
     margin: 10;
+    position: absolute;
+    width: 100%;
+    height: 100%; 
+    left: 0;
     
 }
 
 .activity-container {
     width: 550px;
-    padding: 10, 50;
-    background-color: white;
+    padding-top: 20px;
+    /* background-color: transparent; */
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.top-bar{
+    display: flex;
+    flex-direction: column;
+    padding-left: 24px;
+
+}
+.sport {
+    size: 2.5rem;
 }
 .activity {
-    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: white;
+    /* border: 1px solid black; */
+    margin-top: 10px;
 }
 .fa-solid {
     font-size: 2.5rem;
+}
+
+.title {
+    display: flex;
+    padding-left: 23px; 
+}
+.title-link:link {
+    color: black;
+    text-decoration: none;
+    font-size: larger;
+    padding-left: 24px;
+
+    
+}
+.title-link:visited {
+    color: black;
+}
+.athlete-name-activity {
+    width: 500px;
+    /* border: 1px solid black; */
+    display: flex;
+    
+}
+
+.name {
+    padding-left: 20px;
+}
+
+.profile-pic {
+    width: 40px;
+    /* border: 1px solid black; */
+}
+
+.title {
+    padding-top: 10px;
+    height: 30px;
+    /* border: 1px solid black; */
+}
+
+.matrix {
+    padding-left: 80px;
+    height: 50px;
+    /* border: 1px solid black; */
+    display: flex;
+}
+.description {
+    padding-left: 80px;
+    font-size: .7rem;
+    padding-bottom: 10px;
+}
+.time {
+    width: 80px;
+    /* border: 1px solid black; */
+}
+
+.speed-box {
+    width: 80px;
+    font-weight: small;
+    /* border: 1px solid black; */
+}
+
+.speed {
+    width: 80px;
+    /* border: 1px solid black */
+}
+
+.distance {
+    width:80px;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
 }
