@@ -57,9 +57,13 @@ const ActivityIndexItem = ( { activity } ) => {
     return (
         <>
 
-            <Link to={`/activities`}><i class="fa-solid fa-user"></i></Link>
-            <div>{fname} {lname}</div>
-            <div>{startTime}</div>
+            <div className='top-bar'>
+                <Link to={`/activities`}><i className="fa-solid fa-user"></i></Link>
+                <span className="athlete-name-activity">
+                <div>{fname} {lname}</div>
+                </span>
+                <div>{startTime}</div>
+            </div>
             <div>{title}</div>
             <div>{durationConvert( {hours, minutes, seconds} )}</div>
             <div>{description}</div>

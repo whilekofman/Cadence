@@ -1,4 +1,4 @@
-import { NavLink, Redirect, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from '../../store/session'

@@ -1,8 +1,8 @@
 .activity-index-body {
     border-top: 1px solid gray;
     padding-top: 1%;
-    height: 90vh;
-    width: 99vw;
+    /* height: 90vh;
+    width: 99vw; */
     display: flex;
     justify-content: center;
     background-color: rgb(236, 235, 231);
@@ -11,7 +11,14 @@
 }
 
 .activity-container {
-    width: 550;
-    padding: 0, 50;
+    width: 550px;
+    padding: 10, 50;
     background-color: white;
+    list-style: none;
+}
+.activity {
+    padding-bottom: 10px;
+}
+.fa-solid {
+    font-size: 2.5rem;
 }
