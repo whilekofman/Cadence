@@ -68,6 +68,7 @@ export const restoreSession = () => async dispatch => {
     const data = await res.json();
     storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user));
+    debugger
     return res;
 }
 
@@ -82,7 +83,7 @@ const initialState = {
 
 
 const sessionReducer = ( state = initialState, action ) => {
-    // Object.freeze(state)
+    Object.freeze(state)
     let nextState = {...state}
     switch (action.type) {
         

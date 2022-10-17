@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
-import inline from '../../assets/logo/skatelogo.png'
-import bike from '../../assets/logo/bikelogo.png'
+// import inline from '../../assets/logo/skatelogo.png'
+// import bike from '../../assets/logo/bikelogo.png'
 
 const ActivityIndexItem = ( { activity } ) => {
 
@@ -103,7 +103,6 @@ const ActivityIndexItem = ( { activity } ) => {
                 </div>
              </div>
             
-            <div></div>
 
 
 
@@ -132,11 +131,7 @@ export default ActivityIndexItem;
     //         startTime
     // } 
 
-                {/* <div>{intensity}</div>
-            <div>{hr}</div>
-            <div>{pnotes}</div>
-            <div>{tags}</div>
-            <div>{purpose}</div> */}
+
 
                     // intensity,
         // hr,

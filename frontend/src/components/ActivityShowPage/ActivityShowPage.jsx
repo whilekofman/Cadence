@@ -46,7 +46,7 @@ const ActivityShowPage = () => {
 
     useEffect(() => {
         dispatch(fetchActivity(activityId))
-    }, [dispatch, activityId])
+    }, [activityId])
     
         // const {
         // id,
@@ -71,6 +71,7 @@ const ActivityShowPage = () => {
         <>
             Am I where I belong? 
             <div className="id">{id}</div>
+            <div>{fname} {lname}</div>
         </>
      );
 }

@@ -34,10 +34,10 @@ function App() {
         <Route exact path="/activities">
           <ActivityIndexPage />          
         </Route>
-        <Route path='/activities/:activityId'>
+        <Route exact path='/activities/:activityId'>
           <ActivityShowPage />
         </Route>
-        <Route path="/signup" >
+        <Route exact path="/signup" >
           <SignUpFormPage />
         </Route>
       </Switch>
