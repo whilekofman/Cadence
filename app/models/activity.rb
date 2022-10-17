@@ -45,8 +45,10 @@ class Activity < ApplicationRecord
     return athlete.lname
   end
 
-  def start_time
-    
+  def athlete_profile_photo
+    return athlete.profile_picture.record
   end
+
+  
   
 end

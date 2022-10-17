@@ -23,6 +23,8 @@ class User < ApplicationRecord
   validates :password, length: { in: 6..20, allow_nil: true }
   # validates :date_of_birth, :sex, presence: true
   # TODO when adding progile photo to db may add validation for presence here
+  has_one_attached :profile_picture
+
   before_validation :ensure_session_token
 
   has_many :activities, 
