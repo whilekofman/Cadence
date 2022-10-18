@@ -6,41 +6,46 @@ import { fetchActivity, getActivity } from "../../store/activities";
 const ActivityShowPage = () => {
     const { activityId } = useParams();
  
-        // id,       
-        // // fname,
-        // // lname,
-        // startTime,
-        // title,
-        // description,
-        // sport,
-        // distance,
-        // hours,
-        // minutes,
-        // seconds,
-        // intensity,
-        // hr,
-        // pnotes,
-        // tags,
-        // purpose 
+    // const {
+      
+    //     fname,
+    //     lname,
+    //     startTime,
+    //     title,
+    //     description,
+    //     sport,
+    //     distance,
+    //     hours,
+    //     minutes,
+    //     seconds,
+    //     intensity,
+    //     hr,
+    //     pnotes,
+    //     tags,
+    //     purpose 
     const activity = useSelector(getActivity(activityId))
+
     // debugger
 
     const dispatch = useDispatch()
     // debugger
 
     useEffect(() => {
+        debugger
         dispatch(fetchActivity(activityId))
 
-    }, [])
-    useEffect(() => {
-        debugger
-        if (!activity) {
-         dispatch(fetchActivity(activityId))
-        }
-    }, [activity])
-
+    }, [activityId] )
+    // useEffect(() => {
+    //     debugger
+    //     if (!activity) {
+    //      dispatch(fetchActivity(activityId))
+    //     }
+    // }, [activity])
+    if (!activity) {
+        return null
+    }
     
-        const {
+    const {
         id,
         fname,
         lname,
@@ -62,7 +67,7 @@ const ActivityShowPage = () => {
     return ( 
         <>
             Am I where I belong? 
-            <div className="id">{id}</div>
+            <div className="id">{id}</div> 
             <div>{fname} {lname}</div>
 
             {startTime}

@@ -1,5 +1,5 @@
 async function csrfFetch(url, options = {}){
-    debugger
+    // debugger
     options.method = options.method || "GET";
 
     options.headers = options.headers || {};
@@ -10,7 +10,7 @@ async function csrfFetch(url, options = {}){
         options.headers['X-CSRF-Token'] = sessionStorage.getItem('X-CSRF-Token'); 
     } 
     const res = await fetch(url, options);
-    debugger
+    // debugger
 
     if (res.status >= 400) throw res;
 

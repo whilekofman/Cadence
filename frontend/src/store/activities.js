@@ -32,7 +32,7 @@ export const fetchActivities = () => async dispatch => {
 
 export const deleteActivity = activityId => async dispatch => {
     // const res = 
-    await csrfFetch(`api/activities/${activityId}`, {
+    await csrfFetch(`/api/activities/${activityId}`, {
         method: 'DELETE'
     })
     dispatch (removeActivity(activityId))
@@ -52,7 +52,7 @@ export const fetchActivity = (id) => async dispatch => {
  
 const activityReducer = ( state = {}, action ) => {
     let nextState = { ...state };
-    debugger
+    // debugger
     Object.freeze(state)
     switch (action.type) {
         case RETRIEVE_ACTIVITIES:
@@ -62,7 +62,7 @@ const activityReducer = ( state = {}, action ) => {
         case RETRIEVE_ACTIVITY:
             nextState[action.activity.id] = action.activity
             // nextState.action.activity = action.activity
-            debugger
+            // debugger
             return { ...nextState }
         case REMOVE_ACTIVITY:
             delete nextState[action.activityId]
