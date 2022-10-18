@@ -16,7 +16,7 @@ function App() {
   
   const userPath = sessionUser ? <UserIndexPage />  : <HomePage />
   // debugger
-  // const activityPath = "/activities/:activityId"
+  const activityPath = "/activities/:activityId"
   // debugger
 
   return (
@@ -34,7 +34,7 @@ function App() {
         <Route exact path="/activities">
           <ActivityIndexPage />          
         </Route>
-        <Route exact path='/activities/:activityId'>
+        <Route exact path={activityPath}>
           <ActivityShowPage />
         </Route>
         <Route exact path="/signup" >

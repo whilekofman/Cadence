@@ -7,8 +7,8 @@ import userReducer from './users'
 
 export const rootReducer = combineReducers({
     session: sessionReducer,
-    activities: activityReducer,
-    users: userReducer
+    activities: activityReducer
+    // users: userReducer
 
 });
 

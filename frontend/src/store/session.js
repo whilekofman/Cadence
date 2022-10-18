@@ -68,7 +68,6 @@ export const restoreSession = () => async dispatch => {
     const data = await res.json();
     storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user));
-    debugger
     return res;
 }
 

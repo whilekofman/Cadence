@@ -19,7 +19,6 @@ class Api::ActivitiesController < ApplicationController
 
     def show
         @activity = Activity.find(params[:id])
-        # debugger
         if @activity
             render :show
         else

@@ -39,14 +39,15 @@ const ActivityShowPage = () => {
         pnotes,
         tags,
         purpose  } = useSelector(getActivity(activityId))
-    debugger
+    // debugger
 
     const dispatch = useDispatch()
     // debugger
 
     useEffect(() => {
         dispatch(fetchActivity(activityId))
-    }, [activityId])
+
+    }, [activityId, dispatch])
     
         // const {
         // id,
@@ -72,6 +73,20 @@ const ActivityShowPage = () => {
             Am I where I belong? 
             <div className="id">{id}</div>
             <div>{fname} {lname}</div>
+
+            {startTime}
+            {title}
+            {description}
+            {sport}
+            {distance}
+            {hours}
+            {minutes}
+            {seconds}
+            {intensity}
+            {hr}
+            {pnotes}
+            {tags}
+            {purpose} 
         </>
      );
 }

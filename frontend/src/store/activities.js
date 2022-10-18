@@ -38,12 +38,12 @@ export const deleteActivity = activityId => async dispatch => {
     dispatch (removeActivity(activityId))
 }
 
-export const fetchActivity = (activityId) => async dispatch => {
-    const res = await fetch(`/api/activities/${activityId}`)
-    debugger
+export const fetchActivity = (id) => async dispatch => {
+    const res = await fetch(`/api/activities/${id}`)
+    // debugger
     if (res.ok){
         const data = await res.json()
-        debugger
+        // debugger
         dispatch(retrieveActivity(data))
         return data
     } else { throw res }
@@ -58,11 +58,11 @@ const activityReducer = ( state = {}, action ) => {
         case RETRIEVE_ACTIVITIES:
             // nextState.activities = action.activities
             nextState = { ...nextState, ...action.activities }
-            return nextState
+            return { ...nextState } 
         case RETRIEVE_ACTIVITY:
-            nextState[action.activityId] = action.activity
-            // debugger
-            return nextState
+            nextState[action.activity.id] = action.activity
+            debugger
+            return { ...nextState }
         case REMOVE_ACTIVITY:
             delete nextState[action.activityId]
             return nextState

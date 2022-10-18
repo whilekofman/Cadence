@@ -54,7 +54,7 @@ const ActivityIndexItem = ( { activity } ) => {
         
             :  
         
-            ((distance / ( timeInSeconds / 3600 ) * 100 ) / 100 ).toFixed(2) 
+            ( (distance / ( timeInSeconds / 3600 ) * 100 ) / 100 ).toFixed(2) 
             
         // debugger
         return speed
