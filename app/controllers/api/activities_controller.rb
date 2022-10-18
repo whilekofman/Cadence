@@ -56,8 +56,7 @@ class Api::ActivitiesController < ApplicationController
 
     def update
         @activity = Activity.find(params[:id])
-
-        if @activity.update(activity_params)
+        if @activity.athlete_id === current_user.id && @activity.update(activity_params)
             render :show
         else
             render json: { errors: @activity.errors.full_messages, status: :unprocessable_entity }

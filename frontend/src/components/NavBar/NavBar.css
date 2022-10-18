@@ -29,6 +29,7 @@
 
 .logo {
     height: 56px;
+    z-index: 100;    
 }
 
 /* .orange {

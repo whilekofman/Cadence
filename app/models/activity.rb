@@ -48,6 +48,7 @@ class Activity < ApplicationRecord
   def athlete_profile_photo
     return athlete.profile_picture.record
   end
+ 
 
   
   

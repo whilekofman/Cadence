@@ -4,6 +4,7 @@
         #     @athleteFname = User.find(athlete_id).fname
         #     @athleteLname = User.find(athlete_id).lname
             json.partial! 'activity', activity: activity
+            # json.photoUrl activity.athlete_profile_photo 
         end
     # end
  end
