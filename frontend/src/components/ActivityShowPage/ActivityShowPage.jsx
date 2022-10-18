@@ -22,7 +22,25 @@ const ActivityShowPage = () => {
         // pnotes,
         // tags,
         // purpose 
-    const {
+    const activity = useSelector(getActivity(activityId))
+    // debugger
+
+    const dispatch = useDispatch()
+    // debugger
+
+    useEffect(() => {
+        dispatch(fetchActivity(activityId))
+
+    }, [])
+    useEffect(() => {
+        debugger
+        if (!activity) {
+         dispatch(fetchActivity(activityId))
+        }
+    }, [activity])
+
+    
+        const {
         id,
         fname,
         lname,
@@ -38,36 +56,9 @@ const ActivityShowPage = () => {
         hr,
         pnotes,
         tags,
-        purpose  } = useSelector(getActivity(activityId))
-    // debugger
-
-    const dispatch = useDispatch()
-    // debugger
-
-    useEffect(() => {
-        dispatch(fetchActivity(activityId))
-
-    }, [activityId, dispatch])
-    
-        // const {
-        // id,
-        // fname,
-        // lname,
-        // startTime,
-        // title,
-        // description,
-        // sport,
-        // distance,
-        // hours,
-        // minutes,
-        // seconds,
-        // intensity,
-        // hr,
-        // pnotes,
-        // tags,
-        // purpose
+        purpose
         
-    // } = activity
+    } = activity
     return ( 
         <>
             Am I where I belong? 

@@ -28,7 +28,7 @@ function App() {
           {userPath}
           {/* <HomePage /> */}
         </Route>
-        <Route path="/login">
+        <Route exact path="/login">
           <LoginFormPage />
         </Route>
         <Route exact path="/activities">

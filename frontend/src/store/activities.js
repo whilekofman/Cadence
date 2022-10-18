@@ -39,7 +39,7 @@ export const deleteActivity = activityId => async dispatch => {
 }
 
 export const fetchActivity = (id) => async dispatch => {
-    const res = await fetch(`/api/activities/${id}`)
+    const res = await csrfFetch(`/api/activities/${id}`)
     // debugger
     if (res.ok){
         const data = await res.json()
@@ -52,7 +52,7 @@ export const fetchActivity = (id) => async dispatch => {
  
 const activityReducer = ( state = {}, action ) => {
     let nextState = { ...state };
-    // debugger
+    debugger
     Object.freeze(state)
     switch (action.type) {
         case RETRIEVE_ACTIVITIES:
@@ -61,6 +61,7 @@ const activityReducer = ( state = {}, action ) => {
             return { ...nextState } 
         case RETRIEVE_ACTIVITY:
             nextState[action.activity.id] = action.activity
+            // nextState.action.activity = action.activity
             debugger
             return { ...nextState }
         case REMOVE_ACTIVITY:
