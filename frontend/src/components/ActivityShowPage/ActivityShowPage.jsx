@@ -60,7 +60,6 @@ const ActivityShowPage = () => {
                 
                 </div>
             } else {
-                debugger 
 
             return <div className='description-show'>{desc}</div>
             }

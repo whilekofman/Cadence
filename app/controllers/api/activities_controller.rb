@@ -1,7 +1,6 @@
 class Api::ActivitiesController < ApplicationController
     def index
-        @activities = Activity.all
-
+        @activities = Activity.all.order('start_time DESC')
         render :index
         # if params[:user_id] != nil
         #     @activities.athlete_id = params[athlete_id: user_id: :user_id]
