@@ -63,7 +63,7 @@ export const newActivity = activity => async dispatch => {
 }
  
 export const updateActivity = activity => async dispatch => {
-    const res = await fetch(`api/activities/${activity.id}`, {
+    const res = await csrfFetch(`api/activities/${activity.id}`, {
         method: 'PATCH',
         body: JSON.stringify(activity),
         headers: {
@@ -71,7 +71,9 @@ export const updateActivity = activity => async dispatch => {
         }
     })
     const data = await res.json()
+    debugger
     dispatch(retrieveActivity(data))
+    debugger
 }
 
 

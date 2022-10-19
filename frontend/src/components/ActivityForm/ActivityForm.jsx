@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
-import { fetchActivity, getActivity } from "../../store/activities";
+import { fetchActivity, getActivity, newActivity, updateActivity } from "../../store/activities";
 import { getSession } from "../../store/session";
 
 const ActivityForm = () => {
@@ -14,6 +14,7 @@ const ActivityForm = () => {
 
     // const [fname, setFname]=useState(activity.fname)
     // const [lname, setLname]=useState(activity.lname)
+    const [athleteId, setAthleteId] = useState(currentUser.id)
     const [title, setTitle]=useState(activity.title)
     const [description, setDescription]=useState(activity.description)
     const [sport, setSport]=useState(activity.sport)
@@ -21,6 +22,7 @@ const ActivityForm = () => {
     const [hours, setHours]=useState(activity.hours)
     const [minutes, setMinutes]=useState(activity.minutes)
     const [seconds, setSeconds]=useState(activity.seconds)
+    const [startTime, setStartTime] = useState(activity.startTime.slice(0, -5))
     const [hr, setHr]=useState(activity.hr)
     const [intensity, setIntensity]=useState(activity.intensity)
     const [pnotes, setPnotes]=useState(activity.pnotes)
@@ -28,8 +30,11 @@ const ActivityForm = () => {
     const [purpose, setPurpose]=useState(activity.purpose)
     const [errorsDuration, setErrorsDuration] = useState([])
     // const [createdAt, setCreatedAt]=useState(activity.createdAt)
-
-
+    const createdAt = activity.createdAt
+    const updatedAt = activity.createdAt
+    const activityDateFormFormat =(activity.startTime.slice(0,-5))
+    // const activityDate = new Date(activityDateISO)
+    // debugger
     useEffect( async => {
         if (!currentUser) 
         <Redirect to="/login" />
@@ -38,6 +43,9 @@ const ActivityForm = () => {
     useEffect(() => {
         dispatch(fetchActivity(activityId))
     }, [activityId])
+    useDispatch(() => {
+        
+    })
 
     // let [fname, setFname] = useState(fname)
 
@@ -50,9 +58,36 @@ const ActivityForm = () => {
     
  
 
-    const [formHeader, activityAction] = activity ? ['Manual Update'] : ['Manual Entry']
+    const [formHeader, buttonText, buttonClass, activityAction] = activity ? ['Manual Update', 'Update Activity', 'update-activity', updateActivity, athleteId] : ['Manual Entry', 'Create Activity', 'create-activity', newActivity]
+    // debugger
+
+    const handleClick = () => {
+
+        const activity = { 
+                athleteId,
+                startTime,
+                title,
+                description,
+                sport,
+                distance,
+                hours,
+                minutes,
+                seconds,
+                startTime,
+                hr,
+                intensity,
+                pnotes,
+                tags,
+                purpose,
+                createdAt,
+                updatedAt
+            } 
+            debugger
+        if (activityId) activity.id = activityId
+        dispatch(activityAction(activity))
+    }
+
     
-    // inputSet
 
     const handleCheckInteger = (e, stateSetter) => {
         const checkEntry = e;
@@ -61,23 +96,18 @@ const ActivityForm = () => {
             return stateSetter(0)
         } 
         if (stateSetter === setMinutes || stateSetter === setSeconds){
-            // debugger
             if (checkEntry > 59) {
                 setErrorsDuration(['should be less than 60']) 
                 return stateSetter(59)
-            }// debugger
+            }
         } 
         setErrorsDuration([])
         return stateSetter(checkEntry)
-        // } else 
-        //     (stateSetter === setMinutes || stateSetter === setSeconds)
-        //         if (checkEntry > 59) stateSetter(59)   
-        
-        //     return stateSetter(checkEntry)
-        // }        
+  
     }
+    
 
-
+    // debugger
     return ( 
         <div className="form-page">
             <h1>{formHeader}</h1>
@@ -139,6 +169,62 @@ const ActivityForm = () => {
 
                     </div>
                 </div>
+                <div className="row-two">
+                    <div className="sport-box-form">
+                        <label className="sport-text">
+                            Sport
+                            <select className="sport-dropdown" >
+                                <option value="run" onChange={ e => setSport(e.target.value)}>Run</option>
+                                <option value="inline" onChange={ e => setSport(e.target.value)}>Inline Skating</option>
+                                <option value="bike" onChange={ e => setSport(e.target.value)}>Bike Ride</option>
+                                <option value="ebike" onChange={ e => setSport(e.target.value)}>⚡️⚡️Bike⚡️⚡️</option>
+
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <div className="start-time-box-form">
+                    <label className="start-time-label">Date and Time of Activity
+                        <input type="datetime-local" 
+                            value={startTime}
+                            onChange={e => setStartTime(e.target.value)}
+                        />
+                    </label>
+                    <div className="hr-form-box">
+                        <label className="hr-form-label">Heart Rate
+                            <input type="number"
+                                className="hr-input-field"
+                                value={hr}
+                                onChange={e => setHr(e.target.value)}
+                            />
+                        </label>
+                    </div>
+                </div>
+                <div className="title-description-box-form">
+                    <div className="title-box-form">
+                        <label className='title-box-form-label'>
+                            <input 
+                            type="text" 
+                            className=
+                            "title-form" 
+                            value={title}
+                            onChange={e => setTitle(e.target.value)}
+                            />
+                        </label>
+                    </div>
+                    <div className="description-box-form">
+                        <label className="decription-box-form-label">Description
+                            <div className="description-form-field">
+                                <input type="text" 
+                                className="description-form-input" 
+                                value={description}
+                                onChange={e => setDescription(e.target.value)}
+                                />
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                 <button type="submit"className={buttonClass} onClick={handleClick}>{buttonText}</button>
             </form>
         </div>
      );
