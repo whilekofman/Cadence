@@ -49,16 +49,17 @@ ApplicationRecord.transaction do
   stuart= User.create!(
     fname: 'Stuart',
     lname: 'Fries',
-    email: 'fries@new.io'
+    email: 'fries@new.io',
     password: 'password'
   )
 
   jim = User.create!(
-    fname: 'Stuart',
-    lname: 'Fries',
-    email: 'fries@new.io',
-    password: 'password',
+    fname: 'Jim',
+    lname: 'Bo',
+    email: 'jim.bo@new.io',
+    password: 'password'
   )
+  puts 'do a do with an activity'
   run1 = Activity.create!(
       athlete_id: eugene.id, 
       sport: 'run', 
@@ -106,7 +107,7 @@ ApplicationRecord.transaction do
     ari_inline = Activity.create!(
       athlete_id: ari.id, 
       sport: 'inline', 
-      distance: .8, 
+      distance: 0.8, 
       hours: 0, 
       minutes: 06, 
       seconds: 00, 
