@@ -21,7 +21,7 @@ const ActivityForm = () => {
         dispatch(fetchActivity(activityId))
     }, [activityId])
 
-    let [fname, setFname] = useState(fname)
+    // let [fname, setFname] = useState(fname)
 
     // debugger
     if (activity) {

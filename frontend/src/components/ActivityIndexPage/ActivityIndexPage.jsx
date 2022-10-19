@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { fetchActivities, getActivities } from "../../store/activities";
+import { getSession } from "../../store/session";
 // import { getUsers } from "../../store/users";
 import ActivityIndexItem from "./ActivityIndexItem";
 // import { getSession } from "../../store/session";
@@ -13,9 +15,14 @@ const ActivityIndexPage = () => {
 
     const dispatch = useDispatch();
     const activities = useSelector(getActivities)
+
+    const currentUser = useSelector(getSession)
     // const users = useSelector(getUsers)
     // console.log(users)
-    
+    useEffect( async => {
+        if (!currentUser) 
+        <Redirect to="/login" />
+    }, [])
     useEffect(() => {
         // dispatch(sessionUser)
         dispatch(fetchActivities())

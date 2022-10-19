@@ -47,14 +47,14 @@ const ActivityShowPage = () => {
 // (<button className="edit-activity-button"><Link to={editPath}>Edit</Link></button>)
     // const editPath = `/activities/${activityId}/edit`
     
-    const editButton = currentUser.id === athleteId ?
-        <ActivityEditButton actId={activityId} /> : ''
+    const editButton = !currentUser || currentUser.id !== athleteId ?
+       '' :  <ActivityEditButton actId={activityId} />
     // debugger
 
     const setDisplayDescription = (desc) => { 
         // debugger
-        if (!desc) {
-            // debugger
+        if (!desc && currentUser && (currentUser.id === athleteId)) {
+            
             return <div className='add-description'>
                 Add a description
                 
