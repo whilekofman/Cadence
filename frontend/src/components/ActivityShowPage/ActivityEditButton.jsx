@@ -9,3 +9,11 @@ export const ActivityEditButton = ({actId}) => {
     )
     
 }
+
+export const ActivityEditLink = ({ actId }) => {
+    const path = `/activities/${actId}/edit`
+    // debugger
+    return (
+        <Link className='activity-add-description' to={path}>Add a description</Link>
+    )
+}

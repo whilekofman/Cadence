@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { fetchActivity, getActivity } from "../../store/activities";
 import { getSession } from "../../store/session";
 import { speedTypeChange, speedValue } from "../../store/util/speedconverter";
-import { ActivityEditButton } from "./ActivityEditButton";
+import { ActivityEditButton, ActivityEditLink } from "./ActivityEditButton";
 
 const ActivityShowPage = () => {
     const { activityId } = useParams();
@@ -56,10 +56,11 @@ const ActivityShowPage = () => {
         if (!desc && currentUser && (currentUser.id === athleteId)) {
             
             return <div className='add-description'>
-                Add a description
+                <ActivityEditLink className='add-description-link'actId={activityId}></ActivityEditLink>
                 
-                </div> 
+                </div>
             } else {
+                debugger 
 
             return <div className='description-show'>{desc}</div>
             }

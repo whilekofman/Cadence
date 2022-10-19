@@ -14,6 +14,11 @@
     left: 0;
 }
 
+.add-description:link,
+:visited {
+    text-decoration: none;
+    color: black
+}
 .activity-show-box {
     display: flex;
     flex-direction: column;
@@ -82,13 +87,16 @@
     /* border: 3px solid red; */
 }
 .add-description{
-
     padding-left: 6px;
     padding-right: 6px;
     background-color: lightgray;
     width: fit-content;
     font-size: .7rem;
+    
 }
+
+
+
 .details-box-right{
     display: flex;
     align-content: center;
