@@ -12,7 +12,7 @@
      */
     background-color: #e9e9e9;
     margin: 10;
-    position: relative;
+    position: fixed;
     width: 100%;
     height: 100vh; 
     left: 0;

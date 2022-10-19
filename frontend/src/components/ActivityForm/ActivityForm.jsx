@@ -1,6 +1,7 @@
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getActivity } from "../../store/activities";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect, useParams } from "react-router-dom";
+import { fetchActivity, getActivity } from "../../store/activities";
 import { getSession } from "../../store/session";
 
 const ActivityForm = () => {
@@ -9,11 +10,24 @@ const ActivityForm = () => {
     const activity = useSelector(getActivity(activityId))
 
     const currentUser = useSelector(getSession);
-    debugger
+    const dispatch = useDispatch()
+
+    useEffect( async => {
+        if (!currentUser) 
+        <Redirect to="/login" />
+    }, [])
+
+    useEffect(() => {
+        dispatch(fetchActivity(activityId))
+    }, [activityId])
+
+    let [fname, setFname] = useState(fname)
+
+    // debugger
     if (activity) {
-        debugger
+        // debugger
         if (currentUser.id === activity.athleteId){
-            debugger
+            // debugger
             const {
                 fname,
                 lname,
@@ -26,23 +40,44 @@ const ActivityForm = () => {
                 minutes,
                 seconds,
                 hr,
-                speed,
                 intensity,
                 pnotes,
                 tags,
-                purpose
+                purpose,
+                createdAt,
+                updatedAt
             
             } = activity 
         } else {
             return <div className="Errors">You are not allowed to do that</div> 
-        }
+        } 
+    } else {
+        let     fname = '',
+                lname = '',
+                startTime = '',
+                title = '',
+                description = '',
+                sport = '',
+                distance = 0,
+                hours = 0,
+                minutes = 0,
+                seconds = 0,
+                hr = 0,
+                intensity = '',
+                pnotes = '',
+                tags = '',
+                purpose = ''
     }
+    const [formHeader, activityAction] = activity ? ['Manual Update', ] : ['Manual Entry']
 
-    const [formType, action, typeText] = activity ? ['Manual Update', ] : ['Manual Entry']
+
 
     return ( 
         <div className="form-page">
-            <h1>Add a new Activity</h1>
+            <h1>{formHeader}</h1>
+            <form>
+
+            </form>
         </div>
      );
 }

@@ -10,7 +10,7 @@ import UserIndexPage from "./components/UserIndex/UserIndexPage";
 import ActivityIndexPage from "./components/ActivityIndexPage";
 import ActivityShowPage from "./components/ActivityShowPage";
 import ActivityForm from "./components/ActivityForm";
-import { Component } from "react";
+
 
 // <UserIndexPage />
 function App() {
@@ -18,6 +18,7 @@ function App() {
   
   // const userPath = sessionUser ? <UserIndexPage />  : <HomePage />
   const userPath = sessionUser ? <ActivityIndexPage />  : <HomePage />
+  const redirectPath = sessionUser ? <ActivityForm /> : <LoginFormPage />
   // debugger
   const activityPath = "/activities/:activityId"
   // debugger
@@ -35,17 +36,18 @@ function App() {
           <LoginFormPage />
         </Route>
         <Route exact path="/activities/new">
-          <ActivityForm />
-        </Route>
-        <Route exact path="/activities/:activityId/edit/">
-          <ActivityForm />
-        </Route>
-        <Route exact path="/activities">
-          <ActivityIndexPage />          
+          {redirectPath}
         </Route>
         <Route exact path={activityPath}>
           <ActivityShowPage />
         </Route>
+        <Route exact path="/activities/:activityId/edit/">
+          {redirectPath}
+        </Route>
+        <Route exact path="/activities">
+          <ActivityIndexPage />          
+        </Route>
+
         <Route exact path="/signup" >
           <SignUpFormPage />
         </Route>

@@ -38,7 +38,7 @@ export const deleteActivity = activityId => async dispatch => {
     dispatch (removeActivity(activityId))
 }
 
-export const fetchActivity = (id) => async dispatch => {
+export const fetchActivity = id => async dispatch => {
     const res = await csrfFetch(`/api/activities/${id}`)
     // debugger
     if (res.ok){
@@ -49,7 +49,32 @@ export const fetchActivity = (id) => async dispatch => {
     } else { throw res }
 }
 
+export const newActivity = activity => async dispatch => {
+    const res = csrfFetch('/api/activities', {
+        method: 'POST',
+        body: JSON.stringify(activity),
+        headers: {
+            'Content-Type' : 'application/json'
+        }
+    })
+    const data = await res.json()
+    dispatch(retrieveActivity(data))
+
+}
  
+export const updateActivity = activity => async dispatch => {
+    const res = await fetch(`api/activities/${activity.id}`, {
+        method: 'PATCH',
+        body: JSON.stringify(activity),
+        headers: {
+            'Content-Type' : 'application/json'
+        }
+    })
+    const data = await res.json()
+    dispatch(retrieveActivity(data))
+}
+
+
 const activityReducer = ( state = {}, action ) => {
     let nextState = { ...state };
     // debugger
@@ -68,7 +93,7 @@ const activityReducer = ( state = {}, action ) => {
             delete nextState[action.activityId]
             return nextState
         default:
-            return { ...nextState }
+            return nextState 
     }
 }
 
