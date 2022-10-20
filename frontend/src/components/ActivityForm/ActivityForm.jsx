@@ -3,15 +3,36 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
 import { fetchActivity, getActivity, newActivity, updateActivity } from "../../store/activities";
 import { getSession } from "../../store/session";
+import * as activityActions from "../../store/activities"
 
 const ActivityForm = () => {
     const { activityId } = useParams();
     
-    const activity = useSelector(getActivity(activityId))
+    let activity =  useSelector(getActivity(activityId)) 
 
     const currentUser = useSelector(getSession);
     const dispatch = useDispatch()
+    
+    if (!activityId){
+         activity = {
 
+                title: '',
+                description: '',
+                sport: '',
+                distance: 0,
+                hours: 0,
+                minutes: 0,
+                seconds: 0,
+                startTime: 0,
+                hr: 0,
+                intensity: 0,
+                pnotes: '',
+                tags: 0,
+                purpose: '',
+                createdAt: '',
+                updatedAt: ''
+        }
+    }
     // const [fname, setFname]=useState(activity.fname)
     // const [lname, setLname]=useState(activity.lname)
     const [athleteId, setAthleteId] = useState(currentUser.id)
@@ -22,13 +43,17 @@ const ActivityForm = () => {
     const [hours, setHours]=useState(activity.hours)
     const [minutes, setMinutes]=useState(activity.minutes)
     const [seconds, setSeconds]=useState(activity.seconds)
-    const [startTime, setStartTime] = useState(activity.startTime.slice(0, -5))
+    let [startTime, setStartTime] = useState(activity.startTime.slice(0, -5))
+    // const [htmlStartTime, setHtmlStartTime] = useState(activity.startTime.slice(0, -5))
     const [hr, setHr]=useState(activity.hr)
-    const [intensity, setIntensity]=useState(activity.intensity)
+    const [intensity, setIntensity]=useState(2)
     const [pnotes, setPnotes]=useState(activity.pnotes)
     const [tags, setTags]=useState(activity.tags)
     const [purpose, setPurpose]=useState(activity.purpose)
     const [errorsDuration, setErrorsDuration] = useState([])
+    const [errors, setErrors] = useState([])
+    const [success, setSuccess] = useState([])
+    // const [startTime, setStartTime] = useState(activity.startTime)
     // const [createdAt, setCreatedAt]=useState(activity.createdAt)
     const createdAt = activity.createdAt
     const updatedAt = activity.createdAt
@@ -41,7 +66,7 @@ const ActivityForm = () => {
     }, [])
 
     useEffect(() => {
-        dispatch(fetchActivity(activityId))
+        if(activityId) dispatch(fetchActivity(activityId))
     }, [activityId])
     useDispatch(() => {
         
@@ -58,14 +83,19 @@ const ActivityForm = () => {
     
  
 
-    const [formHeader, buttonText, buttonClass, activityAction] = activity ? ['Manual Update', 'Update Activity', 'update-activity', updateActivity, athleteId] : ['Manual Entry', 'Create Activity', 'create-activity', newActivity]
+    const [formHeader, buttonText, buttonClass, activityAction] = activity ? 
+            ['Manual Update', 'Update Activity', 'update-activity', activityActions.updateActivity, athleteId] 
+        : 
+            ['Manual Entry', 'Create Activity', 'create-activity', activityActions.newActivity]
     // debugger
-
-    const handleClick = () => {
-
+    
+    const handleClick = e => {
+        e.preventDefault();
+        startTime = startTime.concat('.000Z')
+        debugger
         const activity = { 
                 athleteId,
-                startTime,
+                // startTime,
                 title,
                 description,
                 sport,
@@ -73,7 +103,7 @@ const ActivityForm = () => {
                 hours,
                 minutes,
                 seconds,
-                startTime,
+                startTime, //startTime.concat('.000Z'),
                 hr,
                 intensity,
                 pnotes,
@@ -83,10 +113,24 @@ const ActivityForm = () => {
                 updatedAt
             } 
             debugger
-        if (activityId) activity.id = activityId
-        dispatch(activityAction(activity))
+        if (activityId) activity.id = Number(activityId)
+        // debugger
+        dispatch(activityAction(activity)).catch(async res => {
+            let data;
+            try {
+                data = await res.clone().json();
+            } catch {
+                data = await res.text();
+            }
+            if (data?.errors) setErrors(data.errors);
+            else setErrors(["Please help"]) 
+            
+        setSuccess(['You have successfully updated this activity'])
+        })
     }
-
+    if (!activity) {
+        return null
+    }
     
 
     const handleCheckInteger = (e, stateSetter) => {
@@ -110,6 +154,8 @@ const ActivityForm = () => {
     // debugger
     return ( 
         <div className="form-page">
+            <h1>{errors}</h1>
+            <h1>{success}</h1>
             <h1>{formHeader}</h1>
             <form>
                 <div className="top">
@@ -173,11 +219,11 @@ const ActivityForm = () => {
                     <div className="sport-box-form">
                         <label className="sport-text">
                             Sport
-                            <select className="sport-dropdown" >
-                                <option value="run" onChange={ e => setSport(e.target.value)}>Run</option>
-                                <option value="inline" onChange={ e => setSport(e.target.value)}>Inline Skating</option>
-                                <option value="bike" onChange={ e => setSport(e.target.value)}>Bike Ride</option>
-                                <option value="ebike" onChange={ e => setSport(e.target.value)}>⚡️⚡️Bike⚡️⚡️</option>
+                            <select className="sport-dropdown"  >
+                                <option value='run' onChange={ e => setSport(e.target.value)}>Run</option>
+                                <option value='inline' onChange={ e => setSport(e.target.value)}>Inline Skating</option>
+                                <option value='bike' onChange={ e => setSport(e.target.value)}>Bike Ride</option>
+                                <option value='ebike' onChange={ e => setSport(e.target.value)}>⚡️⚡️Bike⚡️⚡️</option>
 
                             </select>
                         </label>

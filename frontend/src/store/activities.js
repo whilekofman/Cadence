@@ -63,17 +63,35 @@ export const newActivity = activity => async dispatch => {
 }
  
 export const updateActivity = activity => async dispatch => {
-    const res = await csrfFetch(`api/activities/${activity.id}`, {
+    try {
+        const res = csrfFetch(`/api/activities/${activity.id}`, {
         method: 'PATCH',
         body: JSON.stringify(activity),
         headers: {
             'Content-Type' : 'application/json'
-        }
-    })
-    const data = await res.json()
-    debugger
-    dispatch(retrieveActivity(data))
-    debugger
+            }
+        })
+        // debugger
+        const data = await res.json()
+        debugger
+        dispatch(retrieveActivity(data))
+        
+    } catch (error) {
+        debugger
+        console.log(error)
+    }
+    // const res = await csrfFetch(`api/activities/${activity.id}`, {
+    //     method: 'PATCH',
+    //     body: JSON.stringify(activity),
+        
+    //     headers: {
+    //         'Content-Type' : 'application/json'
+    //     }
+    // })
+    // const data = await res.json()
+    // debugger
+    // dispatch(retrieveActivity(data))
+    // debugger
 }
 
 

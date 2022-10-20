@@ -54,8 +54,10 @@ class Api::ActivitiesController < ApplicationController
     end
 
     def update
+        # debugger
         @activity = Activity.find(params[:id])
         if @activity.athlete_id === current_user.id && @activity.update(activity_params)
+            # debugger
             render :show
         else
             render json: { errors: @activity.errors.full_messages, status: :unprocessable_entity }
@@ -64,6 +66,6 @@ class Api::ActivitiesController < ApplicationController
 
     private
     def activity_params
-        params.require(:activity).permit(:athlete_id, :sport, :distance, :hours, :minutes, :seconds, :title, :intensity, :hr, :pnotes, :tags, :description, :purpose, :start_time, :created_at, :updated_at)
+        params.require(:activity).permit(:id, :athlete_id, :sport, :distance, :hours, :minutes, :seconds, :title, :intensity, :hr, :pnotes, :tags, :description, :purpose, :start_time, :created_at, :updated_at)
     end
 end
