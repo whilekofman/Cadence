@@ -22,14 +22,13 @@
 }
 
 .github {
-    border: 1px solid black;
     max-width: 25%;
     padding-top: 5px;
-    padding-bottom: 5px
+    padding-bottom: 20px
 
 }
 .git-logo {
-    max-width: 120px;
+    max-width: 58px;
 }
 
 
@@ -39,7 +38,7 @@
     height: auto;
 }
 .li-logo{
-    max-width: 120px;
+    max-width: 58px;
 }
 /* .linkedinlogo.img{
 

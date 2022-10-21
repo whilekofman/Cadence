@@ -8,7 +8,7 @@ const Footer = () => {
             <div className="footer">
                 <div className="github">
                 <a href='https://github.com/whilekofman/Cadence#readme'>
-                        <img src={Octocat} className='git-log'/>
+                        <img src={Octocat} className='git-logo'/>
                     </a>
                 </div>
                 <div className="linkedin">
