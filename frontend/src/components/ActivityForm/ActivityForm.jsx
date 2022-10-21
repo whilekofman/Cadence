@@ -13,64 +13,113 @@ const ActivityForm = () => {
     const currentUser = useSelector(getSession);
     const dispatch = useDispatch()
     
-    if (!activityId){
-         activity = {
+    // if (!activityId){
+    //      activity = {
 
-                title: '',
-                description: '',
-                sport: '',
-                distance: 0,
-                hours: 0,
-                minutes: 0,
-                seconds: 0,
-                startTime: 0,
-                hr: 0,
-                intensity: 0,
-                pnotes: '',
-                tags: 0,
-                purpose: '',
-                createdAt: '',
-                updatedAt: ''
-        }
-    }
+    //             title: '',
+    //             description: '',
+    //             sport: '',
+    //             distance: 0,
+    //             hours: 0,
+    //             minutes: 0,
+    //             seconds: 0,
+    //             startTime: 0,
+    //             hr: 0,
+    //             intensity: 0,
+    //             pnotes: '',
+    //             tags: 0,
+    //             purpose: '',
+    //             createdAt: '',
+    //             updatedAt: ''
+    //     }
+    // }
     // const [fname, setFname]=useState(activity.fname)
     // const [lname, setLname]=useState(activity.lname)
-    const [athleteId, setAthleteId] = useState(currentUser.id)
-    const [title, setTitle]=useState(activity.title)
-    const [description, setDescription]=useState(activity.description)
-    const [sport, setSport]=useState(activity.sport)
-    const [distance, setDistance]=useState(activity.distance)
-    const [hours, setHours]=useState(activity.hours)
-    const [minutes, setMinutes]=useState(activity.minutes)
-    const [seconds, setSeconds]=useState(activity.seconds)
-    let [startTime, setStartTime] = useState(activity.startTime.slice(0, -5))
+    // const [athleteId, setAthleteId] = useState(currentUser.id)
+    // const [title, setTitle]=useState(activity.title)
+    // const [description, setDescription]=useState(activity.description)
+    // const [sport, setSport]=useState(activity.sport)
+    // const [distance, setDistance]=useState(activity.distance)
+    // const [hours, setHours]=useState(activity.hours)
+    // const [minutes, setMinutes]=useState(activity.minutes)
+    // const [seconds, setSeconds]=useState(activity.seconds)
+    // let [startTime, setStartTime] = useState(activity.startTime.slice(0, -5))
+    // // const [htmlStartTime, setHtmlStartTime] = useState(activity.startTime.slice(0, -5))
+    // const [hr, setHr]=useState(activity.hr)
+    // const [intensity, setIntensity]=useState(2)
+    // const [pnotes, setPnotes]=useState(activity.pnotes)
+    // const [tags, setTags]=useState(activity.tags)
+    // const [purpose, setPurpose]=useState(activity.purpose)
+    // const [errorsDuration, setErrorsDuration] = useState([])
+    // const [errors, setErrors] = useState([])
+    // const [success, setSuccess] = useState([])
+    // // const [startTime, setStartTime] = useState(activity.startTime)
+    // // const [createdAt, setCreatedAt]=useState(activity.createdAt)
+    // const createdAt = activity.createdAt
+    // const updatedAt = activity.createdAt
+    // const activityDateFormFormat =(activity.startTime.slice(0,-5))
+    // const activityDate = new Date(activityDateISO)
+     const [athleteId, setAthleteId] = useState(0)
+    const [title, setTitle]=useState('')
+    const [description, setDescription]=useState('')
+    const [sport, setSport]=useState('')
+    const [distance, setDistance]=useState('')
+    const [hours, setHours]=useState('')
+    const [minutes, setMinutes]=useState('')
+    const [seconds, setSeconds]=useState('')
+    let [startTime, setStartTime] = useState('')
     // const [htmlStartTime, setHtmlStartTime] = useState(activity.startTime.slice(0, -5))
-    const [hr, setHr]=useState(activity.hr)
+    const [hr, setHr]=useState('')
     const [intensity, setIntensity]=useState(2)
-    const [pnotes, setPnotes]=useState(activity.pnotes)
-    const [tags, setTags]=useState(activity.tags)
-    const [purpose, setPurpose]=useState(activity.purpose)
+    const [pnotes, setPnotes]=useState('')
+    const [tags, setTags]=useState('')
+    const [purpose, setPurpose]=useState('')
     const [errorsDuration, setErrorsDuration] = useState([])
     const [errors, setErrors] = useState([])
     const [success, setSuccess] = useState([])
-    // const [startTime, setStartTime] = useState(activity.startTime)
-    // const [createdAt, setCreatedAt]=useState(activity.createdAt)
-    const createdAt = activity.createdAt
-    const updatedAt = activity.createdAt
+    // const [createdAt, setCreatedAt] = useState(Date.now)
+    // // const [startTime, setStartTime] = useState(activity.startTime)
+    // // const [createdAt, setCreatedAt]=useState(activity.createdAt)
+    // const createdAt = activity.createdAt
+    // const updatedAt = activity.createdAt
     const activityDateFormFormat =(activity.startTime.slice(0,-5))
-    // const activityDate = new Date(activityDateISO)
     // debugger
     useEffect( async => {
         if (!currentUser) 
         <Redirect to="/login" />
     }, [])
 
+
+    useEffect( async=> {
+        if (activityId){
+        setAthleteId(currentUser.id)
+        setTitle(activity.title)
+        setDescription(activity.description)
+        setSport(activity.sport)
+        setDistance(activity.distance)
+        setHours(activity.hours)
+        setMinutes(activity.minutes)
+        setSeconds(activity.seconds)
+        setStartTime(activity.startTime.slice(0, -5))
+        // // const [htmlStartTime, setHtmlStartTime] = useState(activity.startTime.slice(0, -5))
+        setHr(activity.hr)
+        setIntensity(2)
+        setPnotes(activity.pnotes)
+        setTags(activity.tags)
+        setPurpose(activity.purpose)
+        }
+    }, [] ) 
+
     useEffect(() => {
         if(activityId) dispatch(fetchActivity(activityId))
     }, [activityId])
-    useDispatch(() => {
+    //  debugger
+    if (!activity) {
+        return null
+    }
+    // useDispatch(() => {
         
-    })
+    // })
 
     // let [fname, setFname] = useState(fname)
 
@@ -81,7 +130,7 @@ const ActivityForm = () => {
             return <h1 className="Errors">You can't edit someone else activity silly!</h1> 
         } 
     
- 
+    
 
     const [formHeader, buttonText, buttonClass, activityAction] = activity ? 
             ['Manual Update', 'Update Activity', 'update-activity', activityActions.updateActivity, athleteId] 
@@ -91,7 +140,7 @@ const ActivityForm = () => {
     
     const handleClick = e => {
         e.preventDefault();
-        startTime = startTime.concat('.000Z')
+        startTime = startTime.split('T').join(' ') //.concat('.000Z')
         debugger
         const activity = { 
                 athleteId,
@@ -109,8 +158,8 @@ const ActivityForm = () => {
                 pnotes,
                 tags,
                 purpose,
-                createdAt,
-                updatedAt
+                // createdAt,
+                // updatedAt
             } 
             debugger
         if (activityId) activity.id = Number(activityId)
@@ -128,9 +177,7 @@ const ActivityForm = () => {
         setSuccess(['You have successfully updated this activity'])
         })
     }
-    if (!activity) {
-        return null
-    }
+
     
 
     const handleCheckInteger = (e, stateSetter) => {
@@ -148,6 +195,12 @@ const ActivityForm = () => {
         setErrorsDuration([])
         return stateSetter(checkEntry)
   
+    }
+        const handleSubmitDelete = e => {
+        e.preventDefault();
+        
+        dispatch(activityActions.deleteActivity(activity.id))
+        
     }
     
 
@@ -271,6 +324,9 @@ const ActivityForm = () => {
                     </div>
                 </div>
                  <button type="submit"className={buttonClass} onClick={handleClick}>{buttonText}</button>
+            </form>
+            <form onSubmit={handleSubmitDelete}>                
+                <button className='delete-activity'>Delete Activity</button>
             </form>
         </div>
      );

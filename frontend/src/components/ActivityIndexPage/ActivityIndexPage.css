@@ -24,13 +24,14 @@
     padding-top: 20px;
     /* background-color: transparent; */
     list-style: none;
+    padding-bottom: 180px;
     display: flex;
     flex-direction: column;
     align-items: center;
     
 }
 .top-bar{
-    display: flex;
+    display: flex;  
     flex-direction: column;
     padding-left: 24px;
 

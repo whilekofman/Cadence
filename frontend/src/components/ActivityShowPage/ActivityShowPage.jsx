@@ -78,7 +78,8 @@ const ActivityShowPage = () => {
                     <div className="title-box-left">
                         <div className="profile-pic-show"></div>
                             <div className="inner-title-box">
-                                <div className="activity-start">{startTime}
+                                <div className="activity-start">
+                                    {new Date (startTime).toLocaleString()}
                                 <div className="activity-title">{title}</div>
                                 {setDisplayDescription(description)}
                             </div>

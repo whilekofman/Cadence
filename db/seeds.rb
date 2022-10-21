@@ -73,6 +73,20 @@ ApplicationRecord.transaction do
       purpose: 1, 
       start_time: '2022-10-01 13:29:18'
     )
+    stuart_canada = Activity.create!(
+      athlete_id: stuart.id, 
+      sport: 'inline', 
+      distance: 982.5, 
+      hours: 99, 
+      minutes: 22, 
+      seconds: 14, 
+      title: 'Ride to Canada', 
+      description: 'Big WIN', 
+      intensity: 4, 
+      hr: 125, 
+      purpose: 1, 
+      start_time: '2022-09-29 9:29:18'
+    )
 
       inline1 = Activity.create!(
       athlete_id: eugene.id, 
@@ -126,7 +140,7 @@ ApplicationRecord.transaction do
       hours: 1, 
       minutes: 20, 
       seconds: 41, 
-      title: 'Airport ride to the gate', 
+      title: 'WNS', 
       description: '', 
       intensity: 0, 
       hr: 0, 
@@ -134,14 +148,14 @@ ApplicationRecord.transaction do
       start_time: '2022-6-05 14:29:18'
     )
 
-    ari_inline2 = Activity.create!(
-      athlete_id: ari.id, 
+    jim_inline1 = Activity.create!(
+      athlete_id: jim.id, 
       sport: 'inline', 
-      distance: 12, 
-      hours: 1, 
-      minutes: 20, 
+      distance: 100, 
+      hours: 12, 
+      minutes: 43, 
       seconds: 41, 
-      title: 'Airport ride to the gate', 
+      title: '100 mile anual ride', 
       description: '', 
       intensity: 0, 
       hr: 0, 

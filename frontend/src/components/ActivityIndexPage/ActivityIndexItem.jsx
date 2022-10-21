@@ -20,8 +20,10 @@ const ActivityIndexItem = ( { activity } ) => {
 
         
     } = activity
-    
+    const displayTime = new Date(startTime).toLocaleString();
 
+
+    
     
     const durationConvert = ( { hours, minutes, seconds } ) => {
         if ( hours > 0 ) {
@@ -75,7 +77,7 @@ const ActivityIndexItem = ( { activity } ) => {
                     </div>
                     <div className="name">
                         {fname} {lname}<br />
-                        {startTime}
+                        {displayTime}
                     </div>
                     
                     

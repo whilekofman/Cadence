@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import skatelogo from '../../assets/logo/skatelogo.png'
 import SessionButton from './SessionButton';
+import li from '../../assets/logo/li.png'
+
 const NavBar = () => {
 
     
@@ -8,7 +10,7 @@ const NavBar = () => {
     return ( 
         
         <div className='full-width'>
-            <div className='test'>TEST</div>
+            {/* <div className='test'>TEST</div> */}
             <nav className='navbar'>
                 {/* <h1 className='cadencetitle'><NavLink  to='/'>Cadence</NavLink></h1> */}
                 <NavLink to='/'><img src={skatelogo}alt='cadencelogo' className='logo'></img></NavLink>

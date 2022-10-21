@@ -10,6 +10,7 @@ import UserIndexPage from "./components/UserIndex/UserIndexPage";
 import ActivityIndexPage from "./components/ActivityIndexPage";
 import ActivityShowPage from "./components/ActivityShowPage";
 import ActivityForm from "./components/ActivityForm";
+import Footer from "./components/Footer/Footer";
 
 
 // <UserIndexPage />
@@ -52,6 +53,8 @@ function App() {
           <SignUpFormPage />
         </Route>
       </Switch>
+    <Footer />
+
     </>
   );
 }

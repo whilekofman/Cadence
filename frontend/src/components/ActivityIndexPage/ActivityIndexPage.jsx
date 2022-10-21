@@ -27,7 +27,8 @@ const ActivityIndexPage = () => {
         // dispatch(sessionUser)
         dispatch(fetchActivities())
     }, [dispatch])
-
+    // activities = activities.sort((activity1, activity2) => activity1.startTime > activity2.startTime )
+    // debugger
     const activityListElements = activities.map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem activity={activity} /></div>)
     // {activity.title}
     

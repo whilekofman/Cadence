@@ -20,6 +20,7 @@ export const removeActivity = activityId => ({
 })
 
 export const getActivities = ({ activities }) => activities ? Object.values(activities) : []
+// debugger
 
 export const getActivity = activityId => ({ activities }) => activities ? activities[activityId] : null
 
@@ -31,11 +32,11 @@ export const fetchActivities = () => async dispatch => {
 }
 
 export const deleteActivity = activityId => async dispatch => {
-    // const res = 
-    await csrfFetch(`/api/activities/${activityId}`, {
+    const res = await csrfFetch(`/api/activities/${activityId}`, {
         method: 'DELETE'
     })
     dispatch (removeActivity(activityId))
+    return res
 }
 
 export const fetchActivity = id => async dispatch => {
@@ -50,7 +51,7 @@ export const fetchActivity = id => async dispatch => {
 }
 
 export const newActivity = activity => async dispatch => {
-    const res = csrfFetch('/api/activities', {
+    const res = await csrfFetch('/api/activities', {
         method: 'POST',
         body: JSON.stringify(activity),
         headers: {
@@ -64,21 +65,21 @@ export const newActivity = activity => async dispatch => {
  
 export const updateActivity = activity => async dispatch => {
     try {
-        const res = csrfFetch(`/api/activities/${activity.id}`, {
+        const res = await csrfFetch(`/api/activities/${activity.id}`, {
         method: 'PATCH',
         body: JSON.stringify(activity),
         headers: {
             'Content-Type' : 'application/json'
             }
         })
-        // debugger
-        const data = await res.json()
         debugger
+        const data = await res.json()
+        // debugger
         dispatch(retrieveActivity(data))
         
     } catch (error) {
-        debugger
-        console.log(error)
+        // debugger
+        // console.log(error)
     }
     // const res = await csrfFetch(`api/activities/${activity.id}`, {
     //     method: 'PATCH',

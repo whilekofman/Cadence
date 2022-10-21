@@ -1,6 +1,9 @@
 class Api::ActivitiesController < ApplicationController
+    wrap_parameters include: Activity.attribute_names + ["athleteId","startTime"]
     def index
-        @activities = Activity.all.order('start_time DESC')
+        @activities = Activity.order(start_time: :desc)
+        # @activities.order(start_time: :desc)
+        puts @activities
         render :index
         # if params[:user_id] != nil
         #     @activities.athlete_id = params[athlete_id: user_id: :user_id]
@@ -47,6 +50,7 @@ class Api::ActivitiesController < ApplicationController
         if @activity
             @activity.destroy
             head :no_content
+            render :index
         else
             render json: { errors: @activity.errors.full_messages, status: :unprocessable_entity }
         end
@@ -66,6 +70,6 @@ class Api::ActivitiesController < ApplicationController
 
     private
     def activity_params
-        params.require(:activity).permit(:id, :athlete_id, :sport, :distance, :hours, :minutes, :seconds, :title, :intensity, :hr, :pnotes, :tags, :description, :purpose, :start_time, :created_at, :updated_at)
+        params.require(:activity).permit(:id, :athlete_id, :sport, :distance, :hours, :minutes, :seconds, :title, :intensity, :hr, :pnotes, :tags, :description, :purpose, :start_time)
     end
 end

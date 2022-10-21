@@ -8,6 +8,7 @@
 @import './components/HomePage/HomePage.css';
 @import './components/SignUpFormPage/SignUpFormPage.css';
 @import './components/ActivityShowPage/ActivityShowPage.css';
+@import './components/Footer/Footer.css'
 /* TODO Add site wide styles */
 
 /* * {
