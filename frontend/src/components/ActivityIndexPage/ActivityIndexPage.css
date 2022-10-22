@@ -39,6 +39,10 @@
 .sport {
     size: 2.5rem;
 }
+
+.sport-logo{
+    max-width: 50px;
+}
 .activity {
     padding-top: 20px;
     padding-bottom: 20px;

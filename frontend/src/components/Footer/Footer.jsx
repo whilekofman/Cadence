@@ -19,7 +19,10 @@ const Footer = () => {
 
                 </div>
             </div>
-        </div>
+            <div className="plus-icon-credit">
+                <a target="_blank" href="https://icons8.com/icon/103162/plus">Plus</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>" 
+            </div>
+         </div>
      );
 }
  

@@ -31,6 +31,13 @@
     max-width: 58px;
 }
 
+.plus-icon-credit{
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+}
 
 .linkedin{
     padding-top: 5px;

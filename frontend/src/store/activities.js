@@ -36,7 +36,7 @@ export const deleteActivity = activityId => async dispatch => {
         method: 'DELETE'
     })
     dispatch (removeActivity(activityId))
-    return res
+    // return res
 }
 
 export const fetchActivity = id => async dispatch => {
@@ -72,7 +72,7 @@ export const updateActivity = activity => async dispatch => {
             'Content-Type' : 'application/json'
             }
         })
-        debugger
+        // debugger
         const data = await res.json()
         // debugger
         dispatch(retrieveActivity(data))

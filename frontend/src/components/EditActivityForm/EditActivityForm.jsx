@@ -33,82 +33,54 @@ const ActivityForm = () => {
     //             updatedAt: ''
     //     }
     // }
-    // const [fname, setFname]=useState(activity.fname)
-    // const [lname, setLname]=useState(activity.lname)
-    // const [athleteId, setAthleteId] = useState(currentUser.id)
-    // const [title, setTitle]=useState(activity.title)
-    // const [description, setDescription]=useState(activity.description)
-    // const [sport, setSport]=useState(activity.sport)
-    // const [distance, setDistance]=useState(activity.distance)
-    // const [hours, setHours]=useState(activity.hours)
-    // const [minutes, setMinutes]=useState(activity.minutes)
-    // const [seconds, setSeconds]=useState(activity.seconds)
-    // let [startTime, setStartTime] = useState(activity.startTime.slice(0, -5))
-    // // const [htmlStartTime, setHtmlStartTime] = useState(activity.startTime.slice(0, -5))
-    // const [hr, setHr]=useState(activity.hr)
-    // const [intensity, setIntensity]=useState(2)
-    // const [pnotes, setPnotes]=useState(activity.pnotes)
-    // const [tags, setTags]=useState(activity.tags)
-    // const [purpose, setPurpose]=useState(activity.purpose)
-    // const [errorsDuration, setErrorsDuration] = useState([])
-    // const [errors, setErrors] = useState([])
-    // const [success, setSuccess] = useState([])
-    // // const [startTime, setStartTime] = useState(activity.startTime)
-    // // const [createdAt, setCreatedAt]=useState(activity.createdAt)
-    // const createdAt = activity.createdAt
-    // const updatedAt = activity.createdAt
-    // const activityDateFormFormat =(activity.startTime.slice(0,-5))
-    // const activityDate = new Date(activityDateISO)
-     const [athleteId, setAthleteId] = useState(0)
-    const [title, setTitle]=useState('')
-    const [description, setDescription]=useState('')
-    const [sport, setSport]=useState('')
-    const [distance, setDistance]=useState('')
-    const [hours, setHours]=useState('')
-    const [minutes, setMinutes]=useState('')
-    const [seconds, setSeconds]=useState('')
-    let [startTime, setStartTime] = useState('')
-    // const [htmlStartTime, setHtmlStartTime] = useState(activity.startTime.slice(0, -5))
-    const [hr, setHr]=useState('')
+
+    const [athleteId, setAthleteId] = useState(currentUser.id)
+    const [title, setTitle]=useState(activity.title)
+    const [description, setDescription]=useState(activity.description)
+    const [sport, setSport]=useState(activity.sport)
+    const [distance, setDistance]=useState(activity.distance)
+    const [hours, setHours]=useState(activity.hours)
+    const [minutes, setMinutes]=useState(activity.minutes)
+    const [seconds, setSeconds]=useState(activity.seconds)
+    let [startTime, setStartTime] = useState(activity.startTime.slice(0, -5))
+    const [hr, setHr]=useState(activity.hr)
     const [intensity, setIntensity]=useState(2)
-    const [pnotes, setPnotes]=useState('')
-    const [tags, setTags]=useState('')
-    const [purpose, setPurpose]=useState('')
+    const [pnotes, setPnotes]=useState(activity.pnotes)
+    const [tags, setTags]=useState(activity.tags)
+    const [purpose, setPurpose]=useState(activity.purpose)
     const [errorsDuration, setErrorsDuration] = useState([])
     const [errors, setErrors] = useState([])
     const [success, setSuccess] = useState([])
-    // const [createdAt, setCreatedAt] = useState(Date.now)
-    // // const [startTime, setStartTime] = useState(activity.startTime)
-    // // const [createdAt, setCreatedAt]=useState(activity.createdAt)
-    // const createdAt = activity.createdAt
-    // const updatedAt = activity.createdAt
-    const activityDateFormFormat =(activity.startTime.slice(0,-5))
-    // debugger
+
     useEffect( async => {
         if (!currentUser) 
         <Redirect to="/login" />
     }, [])
+    useEffect( async => {
+    if (!activityId) 
+        <Redirect to="/" />
+    }, [])
 
 
-    useEffect( async=> {
-        if (activityId){
-        setAthleteId(currentUser.id)
-        setTitle(activity.title)
-        setDescription(activity.description)
-        setSport(activity.sport)
-        setDistance(activity.distance)
-        setHours(activity.hours)
-        setMinutes(activity.minutes)
-        setSeconds(activity.seconds)
-        setStartTime(activity.startTime.slice(0, -5))
-        // // const [htmlStartTime, setHtmlStartTime] = useState(activity.startTime.slice(0, -5))
-        setHr(activity.hr)
-        setIntensity(2)
-        setPnotes(activity.pnotes)
-        setTags(activity.tags)
-        setPurpose(activity.purpose)
-        }
-    }, [] ) 
+    // useEffect( async=> {
+    //     if (activityId){
+    //     setAthleteId(currentUser.id)
+    //     setTitle(activity.title)
+    //     setDescription(activity.description)
+    //     setSport(activity.sport)
+    //     setDistance(activity.distance)
+    //     setHours(activity.hours)
+    //     setMinutes(activity.minutes)
+    //     setSeconds(activity.seconds)
+    //     setStartTime(activity.startTime.slice(0, -5))
+    //     // // const [htmlStartTime, setHtmlStartTime] = useState(activity.startTime.slice(0, -5))
+    //     setHr(activity.hr)
+    //     setIntensity(2)
+    //     setPnotes(activity.pnotes)
+    //     setTags(activity.tags)
+    //     setPurpose(activity.purpose)
+    //     }
+    // }, [] ) 
 
     useEffect(() => {
         if(activityId) dispatch(fetchActivity(activityId))
@@ -132,19 +104,18 @@ const ActivityForm = () => {
     
     
 
-    const [formHeader, buttonText, buttonClass, activityAction] = activity ? 
+    const [formHeader, buttonText, buttonClass, activityAction] = 
             ['Manual Update', 'Update Activity', 'update-activity', activityActions.updateActivity, athleteId] 
-        : 
-            ['Manual Entry', 'Create Activity', 'create-activity', activityActions.newActivity]
+        
+            // ['Manual Entry', 'Create Activity', 'create-activity', activityActions.newActivity]
     // debugger
     
     const handleClick = e => {
         e.preventDefault();
         startTime = startTime.split('T').join(' ') //.concat('.000Z')
-        debugger
+        // debugger
         const activity = { 
                 athleteId,
-                // startTime,
                 title,
                 description,
                 sport,
@@ -152,16 +123,15 @@ const ActivityForm = () => {
                 hours,
                 minutes,
                 seconds,
-                startTime, //startTime.concat('.000Z'),
+                startTime, 
                 hr,
                 intensity,
                 pnotes,
                 tags,
-                purpose,
-                // createdAt,
-                // updatedAt
+                purpose
+
             } 
-            debugger
+            // debuggeret
         if (activityId) activity.id = Number(activityId)
         // debugger
         dispatch(activityAction(activity)).catch(async res => {
@@ -202,9 +172,13 @@ const ActivityForm = () => {
         dispatch(activityActions.deleteActivity(activity.id))
         
     }
+
+    const handleSelect = e => {
+        setSport(e.target.value)
+    }
     
 
-    // debugger
+
     return ( 
         <div className="form-page">
             <h1>{errors}</h1>
@@ -220,7 +194,7 @@ const ActivityForm = () => {
                                 value={distance}
                                 
                                 onChange={ (e) => handleCheckInteger(e.target.value, setDistance) }
-                                // onChange={e => setDistance(e.target.value)}    
+ 
                             />
                         </label>
                         
@@ -272,7 +246,7 @@ const ActivityForm = () => {
                     <div className="sport-box-form">
                         <label className="sport-text">
                             Sport
-                            <select className="sport-dropdown"  >
+                            <select className="sport-dropdown" defaultValue={sport} onChange={handleSelect}>
                                 <option value='run' onChange={ e => setSport(e.target.value)}>Run</option>
                                 <option value='inline' onChange={ e => setSport(e.target.value)}>Inline Skating</option>
                                 <option value='bike' onChange={ e => setSport(e.target.value)}>Bike Ride</option>

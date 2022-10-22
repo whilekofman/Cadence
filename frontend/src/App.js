@@ -9,8 +9,9 @@ import { getSession } from "./store/session";
 import UserIndexPage from "./components/UserIndex/UserIndexPage";
 import ActivityIndexPage from "./components/ActivityIndexPage";
 import ActivityShowPage from "./components/ActivityShowPage";
-import ActivityForm from "./components/ActivityForm";
+import ActivityForm from "./components/EditActivityForm";
 import Footer from "./components/Footer/Footer";
+import NewActivityForm from "./components/NewActivityForm";
 
 
 // <UserIndexPage />
@@ -37,7 +38,7 @@ function App() {
           <LoginFormPage />
         </Route>
         <Route exact path="/activities/new">
-          {redirectPath}
+          <NewActivityForm />
         </Route>
         <Route exact path={activityPath}>
           <ActivityShowPage />

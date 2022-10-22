@@ -1,8 +1,9 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from '../../store/session'
 import { getSession } from "../../store/session";
+import AddActivtyButton from './AddActivityButton';
 // import { useState } from 'react';
 
 const SessionButton = () => {
@@ -29,7 +30,7 @@ const SessionButton = () => {
 
     const buttonClassName = usePath() === '/login' ? 'signupBut' : sessionUser ? 'logoutBut' : 'loginBut' 
 
-    
+
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -48,11 +49,15 @@ const SessionButton = () => {
         : 
         
         ( 
-    
-            <NavLink to={buttonLink}>
-                <button className={buttonClassName}>{buttonText}</button>
-            </NavLink>
-
+            <div className="logout-add">
+                <NavLink to={buttonLink}>
+                    <button className={buttonClassName}>{buttonText}</button>
+                </NavLink>
+                {/* <div className="add-activity-button-div">
+                    <AddActivtyButton />
+                </div> */}
+                
+            </div>
         );
     return buttonReturned
 }

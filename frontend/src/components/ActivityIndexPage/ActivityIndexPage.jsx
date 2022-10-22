@@ -8,7 +8,6 @@ import ActivityIndexItem from "./ActivityIndexItem";
 // import { getSession } from "../../store/session";
 // import * as activityActions from '../../store/activities'
 
-
 const ActivityIndexPage = () => {
 
 

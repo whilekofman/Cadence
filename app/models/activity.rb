@@ -18,7 +18,7 @@
 #  updated_at  :datetime         not null
 #  description :text
 #  purpose     :integer
-#  start_time  :date
+#    :date
 #
 class Activity < ApplicationRecord
   validates :sport, inclusion: { in: ['run', 'bike', 'inline', 'ebike'] } 

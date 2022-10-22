@@ -1,7 +1,9 @@
 
 import { Link } from "react-router-dom";
 // import inline from '../../assets/logo/skatelogo.png'
-// import bike from '../../assets/logo/bikelogo.png'
+import bikelogo from '../../assets/logo/bikelogo.png'
+import skatelogo from '../../assets/logo/skatelogo.png'
+import runlogo from '../../assets/logo/runlogo.png'
 
 const ActivityIndexItem = ( { activity } ) => {
 
@@ -34,6 +36,7 @@ const ActivityIndexItem = ( { activity } ) => {
         }
 
     }
+    const sportImg = sport === 'run' ? runlogo : sport === 'inline' ? skatelogo : bikelogo 
 
     const runningSpeed = ( { hours, minutes, seconds, distance }) => {
         const timeInSeconds = (hours * 3600) + (minutes * 60) + seconds
@@ -85,7 +88,9 @@ const ActivityIndexItem = ( { activity } ) => {
                 </div>
             </div>
             <div className="title">
-                <div className="sport">{sport}</div>
+                {/* <div className="sport">{sport}</div> */}
+                <div className="sport"><img src={sportImg} className='sport-logo'/></div>
+
                 <Link className="title-link" to={`/activities/${id}`}>{title}</Link>
             </div>
              
