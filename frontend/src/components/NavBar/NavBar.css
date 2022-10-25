@@ -3,7 +3,19 @@
 .full-width {
     /* border-bottom: 1px solid gray; */
     height: 60px;
+    z-index: 100;
+    top: 0;
+    position: sticky;
+    background-color: white;
+
+
 }
+/* .test{ 
+    background-color: black;
+    color: white;
+    position: fixed;
+    z-index: 100;
+} */
 .navbar {
     display: flex;
     max-width: 100%;
@@ -11,17 +23,20 @@
     flex-direction: row;
     align-items: center;
     line-height: 18px;
-    position: relative;
+    top: 0;
+    position: sticky;
     justify-content: space-around;
+    z-index: 100;
     
 }
-.cadencetitle {
+/* .cadencetitle {
     font-family: 'Sora', sans-serif;
     color: orange;
-}
+} */
 
 .logo {
     height: 56px;
+    z-index: 100;    
 }
 
 /* .orange {
@@ -53,4 +68,16 @@
         border-radius: 5px;
         height: 30px
 }
+.session-button-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+.plus-icon{
+    max-width: 45px;
+}
+
 

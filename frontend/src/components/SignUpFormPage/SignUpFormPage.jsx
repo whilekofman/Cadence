@@ -36,12 +36,12 @@ const SignUpFormPage = () => {
             fname,
             lname,
             password
-        })).catch(async resp => {
+        })).catch(async res => {
                 let data;
                 try {
-                    data = await resp.clone().json();
+                    data = await res.clone().json();
                 } catch {
-                    data = await resp.text();
+                    data = await res.text();
                     
                 }
                 if (data?.errors) setErrors(data.errors);

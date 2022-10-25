@@ -12,7 +12,7 @@ const HomePage = () => {
     // const 
     return ( 
         
-        <body className="splash">
+        <div className="splash">
             <h1 className="statement">The # app for runners cyclists and skaters</h1>
             <div className='content'>
                 <img src={splashbackground} alt="splashimage" />
@@ -22,7 +22,7 @@ const HomePage = () => {
                     <Link to={'/signup'}><button className='email-signup'>Sign up with Email</button></Link> 
                 </div>           
             </div>
-        </body>
+        </div>
     
      );
 }

@@ -1,0 +1,52 @@
+.footer-full-width {
+    /* border-bottom: 1px solid gray; */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding-top: 20px;
+    z-index: 100;
+    align-items: center;
+    background-color: rgb(36, 36, 40);
+    /* height: 900px; */
+
+}
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    justify-content: space-around;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+
+.github {
+    max-width: 25%;
+    padding-top: 5px;
+    padding-bottom: 20px
+
+}
+.git-logo {
+    max-width: 58px;
+}
+
+.plus-icon-credit{
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.linkedin{
+    padding-top: 5px;
+    max-width: 25%;
+    height: auto;
+}
+.li-logo{
+    max-width: 58px;
+}
+/* .linkedinlogo.img{
+
+} */

@@ -39,13 +39,6 @@ const LoginFormPage = () => {
             });
     }
 
-    // const handleDemoLogin = e => {
-    //     e.preventDefault();
-    //     return dispatch (sessionActions.login({  credential: 'first@new.io', password: 'password' }))
-    // }
-    // const demoButton = () => {
-    //     <button className='demo-login' type="submit" onClick={handleDemoLogin}>Login Demo User</button>
-    // }
 
     return ( 
         <div className="body">

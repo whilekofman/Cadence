@@ -9,14 +9,18 @@ export const setCurrentUser = user => ({
 });
 
 export const removeCurrentUser = () => ({
-    type: REMOVE_CURRENT_USER,
+    type: REMOVE_CURRENT_USER
 });
 
 export const getSession = ({ session }) => session ? session.user : null
 
+// export const sessionUser = sessionStorage.getItem('currentUser') ? currentUser : null
+
 export const storeCurrentUser = user => {
-    if (user) sessionStorage.setItem("currentUser", JSON.stringify({user}));
-    sessionStorage.removeItem("currentUser", null)
+    if (user) {sessionStorage.setItem("currentUser", JSON.stringify(user)) 
+    } else {
+    sessionStorage.removeItem("currentUser")
+    }
 }
 
 export const signup = user => async dispatch => {
@@ -40,7 +44,7 @@ export const signup = user => async dispatch => {
 }
 
 export const login = ({ credential, password }) => async dispatch => {
-    const res = await csrfFetch('api/session', {
+    const res = await csrfFetch('/api/session', {
         method: 'POST',
         body: JSON.stringify({ credential, password })
     });
@@ -51,7 +55,7 @@ export const login = ({ credential, password }) => async dispatch => {
 }
 
 export const logout = () => async dispatch => {
-    const res = await csrfFetch ('api/session', {
+    const res = await csrfFetch ('/api/session', {
         method: 'DELETE',
     });
     storeCurrentUser(null);
@@ -59,7 +63,7 @@ export const logout = () => async dispatch => {
     return res;
 }
 export const restoreSession = () => async dispatch => {
-    const res = await csrfFetch('api/session');
+    const res = await csrfFetch('/api/session');
     storeCSRFToken(res);
     const data = await res.json();
     storeCurrentUser(data.user);
@@ -67,8 +71,8 @@ export const restoreSession = () => async dispatch => {
     return res;
 }
 
-export const storeCSRFToken = response => {
-    const csrfToken = response.headers.get("X-CSRF-Token")
+export const storeCSRFToken = res => {
+    const csrfToken = res.headers.get("X-CSRF-Token")
     if (csrfToken) sessionStorage.setItem("X-CSRF-Token", csrfToken);
 }
 
@@ -77,8 +81,8 @@ const initialState = {
 }
 
 
-
-const sessionReducer = (state = initialState, action ) => {
+const sessionReducer = ( state = initialState, action ) => {
+    Object.freeze(state)
     let nextState = {...state}
     switch (action.type) {
         
@@ -87,14 +91,15 @@ const sessionReducer = (state = initialState, action ) => {
             return nextState;
         case REMOVE_CURRENT_USER:
             // return { ...nextState, user: null };
-            return nextState.user = null;
-
+            nextState.user = null;
+            return nextState
         // case SET_CURRENT_USER:
         //     return { ...nextState, ...action.user };
         // case REMOVE_CURRENT_USER:
         //     return { ...nextState, user: null };
         default:
-            return initialState;
+            // return initialState;
+            return state
     }
 }
 

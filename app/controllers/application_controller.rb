@@ -67,7 +67,7 @@ class ApplicationController < ActionController::API
     end
 
     def invalid_authenticity_token
-        render json: { message: 'Invalid authenticity token, have checked if you might have been forged? ' }, 
+        render json: { message: 'Invalid authenticity token, have you checked if you might have been forged? ' }, 
             status: :unprocessable_entity
     end
 

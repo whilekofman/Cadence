@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@800&display=swap');
+
+.activity-index-body {
+    /* border-top: 1px solid gray; */
+    padding-top: 1%;
+    /* height: 90vh;
+    width: 99vw; */
+    display: flex;
+    font-family: 'Sora', sans-serif;
+    justify-content: center;
+    /* background-color: #BABABB;
+     */
+    background-color: #e9e9e9;
+    margin: 10;
+    position: relative;
+    width: 100%;
+    height: fit-content; 
+    left: 0;
+    
+}
+
+.activity-container {
+    width: 550px;
+    padding-top: 15px;
+    /* background-color: transparent; */
+    list-style: none;
+    padding-bottom: 125px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.top-bar{
+    display: flex;  
+    flex-direction: column;
+    padding-left: 24px;
+
+}
+.sport {
+    size: 2.5rem;
+}
+
+.sport-logo{
+    max-width: 50px;
+}
+.activity {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: white;
+    /* border: 1px solid black; */
+    margin-top: 10px;
+}
+.fa-solid {
+    font-size: 2.5rem;
+}
+
+.title {
+    display: flex;
+    padding-left: 23px; 
+}
+.title-link:link {
+    color: black;
+    text-decoration: none;
+    font-size: larger;
+    padding-left: 24px;
+
+    
+}
+.title-link:visited {
+    color: black;
+}
+.athlete-name-activity {
+    width: 500px;
+    /* border: 1px solid black; */
+    display: flex;
+    
+}
+
+.name {
+    padding-left: 20px;
+}
+
+.profile-pic {
+    width: 40px;
+    /* border: 1px solid black; */
+}
+
+.title {
+    padding-top: 10px;
+    height: 30px;
+    /* border: 1px solid black; */
+}
+
+.matrix {
+    padding-left: 80px;
+    height: 50px;
+    /* border: 1px solid black; */
+    display: flex;
+}
+.description {
+    padding-left: 80px;
+    font-size: .7rem;
+    padding-bottom: 10px;
+}
+.time {
+    width: 80px;
+    /* border: 1px solid black; */
+}
+
+.speed-box {
+    width: 80px;
+    font-weight: small;
+    /* border: 1px solid black; */
+}
+
+.speed {
+    width: 80px;
+    /* border: 1px solid black */
+}
+
+.distance {
+    width:80px;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+}
