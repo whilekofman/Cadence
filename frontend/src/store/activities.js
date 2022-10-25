@@ -36,7 +36,6 @@ export const deleteActivity = activityId => async dispatch => {
         method: 'DELETE'
     })
     dispatch (removeActivity(activityId))
-    // return res
 }
 
 export const fetchActivity = id => async dispatch => {
