@@ -22,26 +22,26 @@ In its current state cadence will present a user with a different splash page de
 ## Previews
 ***
 ### Splash
-<img src='./public/assets/screenshots/splash.png'>
+<img src='./screenshots/splash.png'>
 
 ### Login
-<img src='./public/assets/screenshots/login.png'>
+<img src='./screenshots/login.png'>
 
 ### Signup
-<img src='./public/assets/screenshots/Signup.png'>
+<img src='./screenshots/Signup.png'>
 
 ### Location and session aware navigation
-<img src='./public/assets/screenshots/flow.gif'>
+<img src='./screenshots/flow.gif'>
 
 ## Code Snippets
 ***
 
-<img src='./public/assets/screenshots/demobutton.png'>
+<img src='./screenshots/demobutton.png'>
 The login demo-user is its own component.  This made it possile to reuse the same component on multiple pages.  Using the path gave the ability to assign different classnames to the button depending on where it was located which provide the ability to style differntly. 
 
 ***
 
-<img src='./public/assets/screenshots/session.png'>
+<img src='./screenshots/session.png'>
 
 The session button which takes users to the login and signup pages is also location aware and will direct to the sign up page if a user clicks it from the login page or will lead to the sign up page if a user clicks it from the login page.  The button will also keep track of a logged in user, in which case it will handle logout functionality.  
 
