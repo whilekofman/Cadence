@@ -8,54 +8,36 @@ import AddActivtyButton from './AddActivityButton';
 
 const SessionButton = () => {
     const dispatch = useDispatch()
-
-    
-    // const [errors, setErrors] = useState([])
-    
     const sessionUser = useSelector(getSession);
-    
     
     const usePath = () => {
         const location = useLocation();
         return location.pathname;
     }
-    // const logOutButton = 
-    
-    // const buttonText = usePath() === '/login' ? "Sign Up" : sessionUser ? "Log Out" : "Log In"
+
     const buttonText = usePath() === '/login' ? "Sign Up" : sessionUser ? "Log Out" : "Log In"
 
     
-    // const buttonText = usePath() === '/login' ? "Sign Up" : "Log In"
     const buttonLink = usePath() === '/login' ? "/signup" : "/login"
 
     const buttonClassName = usePath() === '/login' ? 'signupBut' : sessionUser ? 'logoutBut' : 'loginBut' 
 
-
-
     const handleSubmit = e => {
         e.preventDefault();
-        
-        dispatch(sessionActions.logout({ }))
-        
+        dispatch(sessionActions.logout({ }))        
     }
     const buttonReturned = sessionUser ? 
         (
             <form onSubmit={handleSubmit}>                
                 <button className={buttonClassName}>Log Out</button>
-            </form>
-            
+            </form>           
         ) 
-        
         : 
-        
         ( 
             <div className="logout-add">
                 <NavLink to={buttonLink}>
                     <button className={buttonClassName}>{buttonText}</button>
                 </NavLink>
-                {/* <div className="add-activity-button-div">
-                    <AddActivtyButton />
-                </div> */}
                 
             </div>
         );

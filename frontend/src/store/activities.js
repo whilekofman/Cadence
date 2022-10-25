@@ -20,7 +20,6 @@ export const removeActivity = activityId => ({
 })
 
 export const getActivities = ({ activities }) => activities ? Object.values(activities) : []
-// debugger
 
 export const getActivity = activityId => ({ activities }) => activities ? activities[activityId] : null
 
@@ -71,27 +70,13 @@ export const updateActivity = activity => async dispatch => {
             'Content-Type' : 'application/json'
             }
         })
-        // debugger
         const data = await res.json()
-        // debugger
         dispatch(retrieveActivity(data))
         
     } catch (error) {
-        // debugger
-        // console.log(error)
+
     }
-    // const res = await csrfFetch(`api/activities/${activity.id}`, {
-    //     method: 'PATCH',
-    //     body: JSON.stringify(activity),
-        
-    //     headers: {
-    //         'Content-Type' : 'application/json'
-    //     }
-    // })
-    // const data = await res.json()
-    // debugger
-    // dispatch(retrieveActivity(data))
-    // debugger
+
 }
 
 

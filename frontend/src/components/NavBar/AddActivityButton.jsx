@@ -7,15 +7,19 @@ const AddActivtyButton = () => {
     const currentUser = useSelector(getSession)
 
     const addActivtyButton = currentUser ? ( 
-    <div className="makeplussmaller">
-    <Link to='activities/new' className='plus-link'>
-        <img src={plus} alt="plusicon" className="plus-icon"  />
-    </Link>
-    </div>
-     ) : <></>
-     return (
+        <div className="makeplussmaller">
+            <Link to='activities/new' className='plus-link'>
+                <img src={plus} alt="plusicon" className="plus-icon"  />
+            </Link>
+            
+        </div>
+        ) 
+        : 
+        <></>
+        
+    return (
         addActivtyButton
-     )
+    )
 }
  
 export default AddActivtyButton;
