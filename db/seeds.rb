@@ -10,6 +10,8 @@
 ApplicationRecord.transaction do 
   puts "Destroying tables..."
   # Unnecessary if using `rails db:seed:replant`
+
+  Activity.destroy_all
   User.destroy_all
 
   puts "Resetting primary keys..."
