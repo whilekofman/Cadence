@@ -9,6 +9,7 @@ const ActivityForm = () => {
     const { activityId } = useParams();
     
     let activity =  useSelector(getActivity(activityId)) 
+    console.log(activity)
 
     const currentUser = useSelector(getSession);
     const dispatch = useDispatch()
@@ -56,9 +57,11 @@ const ActivityForm = () => {
         if (!currentUser) 
         <Redirect to="/login" />
     }, [])
+    
     useEffect( async => {
     if (!activityId) 
         <Redirect to="/" />
+    
     }, [])
 
 
@@ -169,7 +172,9 @@ const ActivityForm = () => {
         const handleSubmitDelete = e => {
         e.preventDefault();
         
-        dispatch(activityActions.deleteActivity(activity.id))
+        dispatch(activityActions.deleteActivity(activity.id)).then(
+            <Redirect to='/' />
+        )
         
     }
 

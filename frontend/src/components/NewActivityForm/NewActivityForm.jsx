@@ -112,6 +112,7 @@ const NewActivityForm = () => {
                 purpose
 
             } 
+            console.log(activity)
             // debugger
         // debugger
         dispatch(activityAction(activity)).catch(async res => {
