@@ -9,7 +9,6 @@ const ActivityForm = () => {
     const { activityId } = useParams();
     
     let activity =  useSelector(getActivity(activityId)) 
-    console.log(activity)
 
     const currentUser = useSelector(getSession);
     const dispatch = useDispatch()
@@ -58,11 +57,16 @@ const ActivityForm = () => {
         <Redirect to="/login" />
     }, [])
     
-    useEffect( async => {
+    useEffect( (async) => {
     if (!activityId) 
         <Redirect to="/" />
     
     }, [])
+    useEffect(() => {
+        if (activityId) dispatch(fetchActivity(activityId))
+        console.log(activityId)
+    }, [activityId])
+    //  debugger
 
 
     // useEffect( async=> {
@@ -85,13 +89,7 @@ const ActivityForm = () => {
     //     }
     // }, [] ) 
 
-    useEffect(() => {
-        if(activityId) dispatch(fetchActivity(activityId))
-    }, [activityId])
-    //  debugger
-    if (!activity) {
-        return null
-    }
+
     // useDispatch(() => {
         
     // })
