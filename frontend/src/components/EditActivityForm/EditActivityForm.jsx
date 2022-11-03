@@ -1,38 +1,17 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect, useParams, useHistory } from "react-router-dom";
 import { fetchActivity, getActivity, newActivity, updateActivity } from "../../store/activities";
 import { getSession } from "../../store/session";
 import * as activityActions from "../../store/activities"
 
 const ActivityForm = () => {
     const { activityId } = useParams();
-    
     let activity =  useSelector(getActivity(activityId)) 
 
     const currentUser = useSelector(getSession);
     const dispatch = useDispatch()
     
-    // if (!activityId){
-    //      activity = {
-
-    //             title: '',
-    //             description: '',
-    //             sport: '',
-    //             distance: 0,
-    //             hours: 0,
-    //             minutes: 0,
-    //             seconds: 0,
-    //             startTime: 0,
-    //             hr: 0,
-    //             intensity: 0,
-    //             pnotes: '',
-    //             tags: 0,
-    //             purpose: '',
-    //             createdAt: '',
-    //             updatedAt: ''
-    //     }
-    // }
 
     const [athleteId, setAthleteId] = useState(currentUser.id)
     const [title, setTitle]=useState(activity.title)
@@ -56,46 +35,17 @@ const ActivityForm = () => {
         if (!currentUser) 
         <Redirect to="/login" />
     }, [])
-    useEffect( async => {
+    
+    useEffect( (async) => {
     if (!activityId) 
         <Redirect to="/" />
+    
     }, [])
-
-
-    // useEffect( async=> {
-    //     if (activityId){
-    //     setAthleteId(currentUser.id)
-    //     setTitle(activity.title)
-    //     setDescription(activity.description)
-    //     setSport(activity.sport)
-    //     setDistance(activity.distance)
-    //     setHours(activity.hours)
-    //     setMinutes(activity.minutes)
-    //     setSeconds(activity.seconds)
-    //     setStartTime(activity.startTime.slice(0, -5))
-    //     // // const [htmlStartTime, setHtmlStartTime] = useState(activity.startTime.slice(0, -5))
-    //     setHr(activity.hr)
-    //     setIntensity(2)
-    //     setPnotes(activity.pnotes)
-    //     setTags(activity.tags)
-    //     setPurpose(activity.purpose)
-    //     }
-    // }, [] ) 
-
     useEffect(() => {
-        if(activityId) dispatch(fetchActivity(activityId))
+        if (activityId) dispatch(fetchActivity(activityId))
+        console.log(activityId)
     }, [activityId])
-    //  debugger
-    if (!activity) {
-        return null
-    }
-    // useDispatch(() => {
-        
-    // })
-
-    // let [fname, setFname] = useState(fname)
-
-    // debugger
+    
     if (activity && currentUser && 
         currentUser.id !== activity.athleteId) {
         // debugger
@@ -166,10 +116,12 @@ const ActivityForm = () => {
         return stateSetter(checkEntry)
   
     }
-        const handleSubmitDelete = e => {
+    const handleSubmitDelete = e => {
         e.preventDefault();
         
-        dispatch(activityActions.deleteActivity(activity.id))
+        dispatch(activityActions.deleteActivity(activity.id)).then(
+            <Redirect to='/' />
+        )
         
     }
 
@@ -307,3 +259,57 @@ const ActivityForm = () => {
 }
  
 export default ActivityForm;
+
+
+    // if (!activityId){
+    //      activity = {
+
+    //             title: '',
+    //             description: '',
+    //             sport: '',
+    //             distance: 0,
+    //             hours: 0,
+    //             minutes: 0,
+    //             seconds: 0,
+    //             startTime: 0,
+    //             hr: 0,
+    //             intensity: 0,
+    //             pnotes: '',
+    //             tags: 0,
+    //             purpose: '',
+    //             createdAt: '',
+    //             updatedAt: ''
+    //     }
+    // }
+
+//  debugger
+
+
+    // useEffect( async=> {
+    //     if (activityId){
+    //     setAthleteId(currentUser.id)
+    //     setTitle(activity.title)
+    //     setDescription(activity.description)
+    //     setSport(activity.sport)
+    //     setDistance(activity.distance)
+    //     setHours(activity.hours)
+    //     setMinutes(activity.minutes)
+    //     setSeconds(activity.seconds)
+    //     setStartTime(activity.startTime.slice(0, -5))
+    //     // // const [htmlStartTime, setHtmlStartTime] = useState(activity.startTime.slice(0, -5))
+    //     setHr(activity.hr)
+    //     setIntensity(2)
+    //     setPnotes(activity.pnotes)
+    //     setTags(activity.tags)
+    //     setPurpose(activity.purpose)
+    //     }
+    // }, [] ) 
+
+
+    // useDispatch(() => {
+        
+    // })
+
+    // let [fname, setFname] = useState(fname)
+
+    // debugger

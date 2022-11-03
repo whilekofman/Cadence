@@ -37,15 +37,17 @@ function App() {
         <Route exact path="/login">
           <LoginFormPage />
         </Route>
+        <Route exact path="/activities/:activityId/edit">
+          {redirectPath}
+        </Route>
         <Route exact path="/activities/new">
           <NewActivityForm />
         </Route>
+
         <Route exact path={activityPath}>
           <ActivityShowPage />
         </Route>
-        <Route exact path="/activities/:activityId/edit/">
-          {redirectPath}
-        </Route>
+
         <Route exact path="/activities">
           <ActivityIndexPage />          
         </Route>
