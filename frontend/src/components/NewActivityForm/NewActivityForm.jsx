@@ -113,8 +113,7 @@ const NewActivityForm = () => {
 
             } 
             console.log(activity)
-            // debugger
-        // debugger
+
         dispatch(activityAction(activity)).catch(async res => {
             let data;
             try {
@@ -147,12 +146,12 @@ const NewActivityForm = () => {
         return stateSetter(checkEntry)
   
     }
-        const handleSubmitDelete = e => {
-        e.preventDefault();
+    //     const handleSubmitDelete = e => {
+    //     e.preventDefault();
         
-        dispatch(activityActions.deleteActivity(activity.id))
+    //     dispatch(activityActions.deleteActivity(activity.id))
         
-    }
+    // }
     const handleSelect = e => {
         setSport(e.target.value)
     }
