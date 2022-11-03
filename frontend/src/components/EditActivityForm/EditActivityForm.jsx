@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect, useParams, useHistory } from "react-router-dom";
 import { fetchActivity, getActivity, newActivity, updateActivity } from "../../store/activities";
 import { getSession } from "../../store/session";
 import * as activityActions from "../../store/activities"
 
 const ActivityForm = () => {
     const { activityId } = useParams();
-    
     let activity =  useSelector(getActivity(activityId)) 
 
     const currentUser = useSelector(getSession);

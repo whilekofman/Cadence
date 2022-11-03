@@ -8,7 +8,7 @@ const AddActivtyButton = () => {
 
     const addActivtyButton = currentUser ? ( 
         <div className="makeplussmaller">
-            <Link to='activities/new' className='plus-link'>
+            <Link to='/activities/new' className='plus-link'>
                 <img src={plus} alt="plusicon" className="plus-icon"  />
             </Link>
             

@@ -49,7 +49,7 @@ class Api::ActivitiesController < ApplicationController
         if @activity
             @activity.destroy
             # head :no_content
-            render :index
+            redirect_to :index
         else
             render json: { errors: @activity.errors.full_messages, status: :unprocessable_entity }
         end
