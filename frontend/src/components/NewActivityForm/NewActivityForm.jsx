@@ -34,7 +34,7 @@ const NewActivityForm = () => {
     const [athleteId, setAthleteId] = useState(currentUser.id)
     const [title, setTitle]=useState(activity.title)
     const [description, setDescription]=useState(activity.description)
-    const [sport, setSport]=useState(activity.sport)
+    const [sport, setSport]=useState('run')
     const [distance, setDistance]=useState(activity.distance)
     const [hours, setHours]=useState(activity.hours)
     const [minutes, setMinutes]=useState(activity.minutes)

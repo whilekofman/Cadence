@@ -13,26 +13,6 @@ const ActivityForm = () => {
     const currentUser = useSelector(getSession);
     const dispatch = useDispatch()
     
-    // if (!activityId){
-    //      activity = {
-
-    //             title: '',
-    //             description: '',
-    //             sport: '',
-    //             distance: 0,
-    //             hours: 0,
-    //             minutes: 0,
-    //             seconds: 0,
-    //             startTime: 0,
-    //             hr: 0,
-    //             intensity: 0,
-    //             pnotes: '',
-    //             tags: 0,
-    //             purpose: '',
-    //             createdAt: '',
-    //             updatedAt: ''
-    //     }
-    // }
 
     const [athleteId, setAthleteId] = useState(currentUser.id)
     const [title, setTitle]=useState(activity.title)
@@ -66,37 +46,7 @@ const ActivityForm = () => {
         if (activityId) dispatch(fetchActivity(activityId))
         console.log(activityId)
     }, [activityId])
-    //  debugger
-
-
-    // useEffect( async=> {
-    //     if (activityId){
-    //     setAthleteId(currentUser.id)
-    //     setTitle(activity.title)
-    //     setDescription(activity.description)
-    //     setSport(activity.sport)
-    //     setDistance(activity.distance)
-    //     setHours(activity.hours)
-    //     setMinutes(activity.minutes)
-    //     setSeconds(activity.seconds)
-    //     setStartTime(activity.startTime.slice(0, -5))
-    //     // // const [htmlStartTime, setHtmlStartTime] = useState(activity.startTime.slice(0, -5))
-    //     setHr(activity.hr)
-    //     setIntensity(2)
-    //     setPnotes(activity.pnotes)
-    //     setTags(activity.tags)
-    //     setPurpose(activity.purpose)
-    //     }
-    // }, [] ) 
-
-
-    // useDispatch(() => {
-        
-    // })
-
-    // let [fname, setFname] = useState(fname)
-
-    // debugger
+    
     if (activity && currentUser && 
         currentUser.id !== activity.athleteId) {
         // debugger
@@ -167,7 +117,7 @@ const ActivityForm = () => {
         return stateSetter(checkEntry)
   
     }
-        const handleSubmitDelete = e => {
+    const handleSubmitDelete = e => {
         e.preventDefault();
         
         dispatch(activityActions.deleteActivity(activity.id)).then(
@@ -310,3 +260,57 @@ const ActivityForm = () => {
 }
  
 export default ActivityForm;
+
+
+    // if (!activityId){
+    //      activity = {
+
+    //             title: '',
+    //             description: '',
+    //             sport: '',
+    //             distance: 0,
+    //             hours: 0,
+    //             minutes: 0,
+    //             seconds: 0,
+    //             startTime: 0,
+    //             hr: 0,
+    //             intensity: 0,
+    //             pnotes: '',
+    //             tags: 0,
+    //             purpose: '',
+    //             createdAt: '',
+    //             updatedAt: ''
+    //     }
+    // }
+
+//  debugger
+
+
+    // useEffect( async=> {
+    //     if (activityId){
+    //     setAthleteId(currentUser.id)
+    //     setTitle(activity.title)
+    //     setDescription(activity.description)
+    //     setSport(activity.sport)
+    //     setDistance(activity.distance)
+    //     setHours(activity.hours)
+    //     setMinutes(activity.minutes)
+    //     setSeconds(activity.seconds)
+    //     setStartTime(activity.startTime.slice(0, -5))
+    //     // // const [htmlStartTime, setHtmlStartTime] = useState(activity.startTime.slice(0, -5))
+    //     setHr(activity.hr)
+    //     setIntensity(2)
+    //     setPnotes(activity.pnotes)
+    //     setTags(activity.tags)
+    //     setPurpose(activity.purpose)
+    //     }
+    // }, [] ) 
+
+
+    // useDispatch(() => {
+        
+    // })
+
+    // let [fname, setFname] = useState(fname)
+
+    // debugger

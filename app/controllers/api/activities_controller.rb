@@ -3,7 +3,6 @@ class Api::ActivitiesController < ApplicationController
     def index
         @activities = Activity.order(start_time: :desc)
         # @activities.order(start_time: :desc)
-        puts @activities
         render :index
         # if params[:user_id] != nil
         #     @activities.athlete_id = params[athlete_id: user_id: :user_id]
@@ -49,7 +48,7 @@ class Api::ActivitiesController < ApplicationController
         @activity = Activity.find(params[:id])
         if @activity
             @activity.destroy
-            head :no_content
+            # head :no_content
             render :index
         else
             render json: { errors: @activity.errors.full_messages, status: :unprocessable_entity }
