@@ -23,7 +23,7 @@ const NewActivityForm = () => {
                 hours: 0,
                 minutes: 0,
                 seconds: 0,
-                startTime: '',
+                startTime: new Date().toISOString(),
                 hr: 0,
                 intensity: 0,
                 pnotes: '',
