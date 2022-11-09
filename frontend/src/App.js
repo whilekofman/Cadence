@@ -22,6 +22,7 @@ function App() {
   const userPath = sessionUser ? <ActivityIndexPage />  : <HomePage />
   const redirectPath = sessionUser ? <ActivityForm /> : <LoginFormPage />
   // debugger
+  // const editPath =`/activities/${activityId}/edit`
   const activityPath = "/activities/:activityId"
   // debugger
 
