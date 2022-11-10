@@ -42,7 +42,9 @@ function App() {
           {redirectPath}
         </Route>
         <Route exact path="/activities/new">
-          <NewActivityForm />
+          {/* <NewActivityForm /> */}
+          {redirectPath}
+
         </Route>
 
         <Route exact path={activityPath}>

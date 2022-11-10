@@ -82,8 +82,8 @@ const ActivityForm = () => {
             return <h1 className="Errors">You can't edit someone else activity silly!</h1> 
     } 
     
-    const [formHeader, buttonText, buttonClass, activityAction] = 
-        ['Manual Update', 'Update Activity', 'update-activity', activityActions.updateActivity, athleteId] 
+    const [formHeader, buttonText, buttonClass, activityAction] = activity ?
+        ['Manual Update', 'Update Activity', 'update-activity', activityActions.updateActivity, athleteId] : ['Manual Entry', 'Create Activity', 'create-activity', activityActions.newActivity]
 
     const handleCheckInteger = (e, stateSetter) => {
         const checkEntry = e;
@@ -151,7 +151,6 @@ const ActivityForm = () => {
         })
     }
     
-
 
     return ( 
         <div className="form-page">
