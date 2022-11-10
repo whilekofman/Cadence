@@ -66,7 +66,7 @@ const ActivityForm = () => {
     const [hours, setHours]=useState('')
     const [minutes, setMinutes]=useState('')
     const [seconds, setSeconds]=useState('')
-    let [startTime, setStartTime] = useState('')
+    let [startTime, setStartTime] = useState(new Date().toISOString().slice(0, -5))
     const [hr, setHr]=useState('')
     const [intensity, setIntensity]=useState(2)
     const [pnotes, setPnotes]=useState('')

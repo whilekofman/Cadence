@@ -34,7 +34,7 @@ export const deleteActivity = activityId => async dispatch => {
     const res = await csrfFetch(`/api/activities/${activityId}`, {
         method: 'DELETE'
     })
-    dispatch (removeActivity(activityId))
+    dispatch(removeActivity(activityId))
 }
 
 export const fetchActivity = id => async dispatch => {
@@ -96,6 +96,7 @@ const activityReducer = ( state = {}, action ) => {
             return { ...nextState }
         case REMOVE_ACTIVITY:
             delete nextState[action.activityId]
+            debugger
             return nextState
         default:
             return nextState 
