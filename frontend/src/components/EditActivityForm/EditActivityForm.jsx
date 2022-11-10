@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Redirect, useHistory } from "react-router-dom";
+import { useParams, Redirect, useHistory, useLocation } from "react-router-dom";
 import { fetchActivity, getActivity } from "../../store/activities";
 import { getSession } from "../../store/session";
 import * as activityActions from "../../store/activities"
@@ -9,7 +9,7 @@ import * as activityActions from "../../store/activities"
 const ActivityForm = () => {
     const { activityId } = useParams();
     const activity = useSelector(getActivity(activityId))
-
+    const location = useLocation()
     const currentUser = useSelector(getSession)
     const history = useHistory()
     const dispatch = useDispatch()
@@ -45,18 +45,37 @@ const ActivityForm = () => {
             setDescription(value => activity.description)
             setSport(value => activity.sport)
             setDistance(value => activity.distance)
-            setHours(activity.hours)
-            setMinutes(activity.minutes)
-            setSeconds(activity.seconds)
-            setStartTime(activity.startTime.slice(0, -5))
-            setHr(activity.hr)
-            setIntensity(activity.intensity)
-            setPnotes(activity.pnotes)
-            setTags(activity.tags)
-            setPurpose(activity.purpose)
-        } 
+            setHours(value => activity.hours)
+            setMinutes(value => activity.minutes)
+            setSeconds(value => activity.seconds)
+            setStartTime(value => activity.startTime.slice(0, -5))
+            setHr(value => activity.hr)
+            setIntensity(value => activity.intensity)
+            setPnotes(value => activity.pnotes)
+            setTags(value => activity.tags)
+            setPurpose(value => activity.purpose)
+        } else {
+            setTitle(value => '')
+            setDescription(value => '')
+            setSport(value => 'run')
+            setDistance(value => 0)
+            setHours(value => 0)
+            setMinutes(value => 0)
+            setSeconds(value => 0)
+            setStartTime(value => new Date().toISOString().slice(0, -5))
+            setHr(value => 0)
+            setIntensity(value => 2)
+            setPnotes(value => '')
+            setTags(value => 0)
+            setPurpose(value => '')
+        }
+        
 
     }, [activity, activityId])
+
+    // useEffect(() => {
+    //     if (!activity) dispatch(activityActions.clearActivity())
+    // }, [location.pathname])
 
     const [athleteId, setAthleteId] = useState(currentUser.id)
     const [title, setTitle] = useState('')

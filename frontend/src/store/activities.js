@@ -3,6 +3,7 @@ import csrfFetch from "./csrf"
 export const RETRIEVE_ACTIVITIES = 'activities/RETRIEVE_ACTIVITIES'
 export const RETRIEVE_ACTIVITY = 'activity/RETRIEVE_ACTIVITY'
 export const REMOVE_ACTIVITY = 'activity/REMOVE_ACTIVITY'
+export const CLEAR_ACTIVITY = 'activity/CLEAR_ACTIVITY'
 
 export const retrieveActivities = activities => ({
     type: RETRIEVE_ACTIVITIES,
@@ -19,10 +20,18 @@ export const removeActivity = activityId => ({
     activityId
 })
 
+export const clearActivity = () => ({
+    type: CLEAR_ACTIVITY
+
+})
+
 export const getActivities = ({ activities }) => activities ? Object.values(activities) : []
 
 export const getActivity = activityId => ({ activities }) => activities ? activities[activityId] : null
 
+export const removeActivities = () => async dispatch => {
+    dispatch(clearActivity)
+}
 
 export const fetchActivities = () => async dispatch => {
     const res = await csrfFetch('/api/activities')
@@ -98,6 +107,8 @@ const activityReducer = ( state = {}, action ) => {
             delete nextState[action.activityId]
             
             return nextState
+        case CLEAR_ACTIVITY:
+            return {}
         default:
             return state 
     }
