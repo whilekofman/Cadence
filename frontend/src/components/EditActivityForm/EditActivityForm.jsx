@@ -75,7 +75,12 @@ const ActivityForm = () => {
     const [errorsDuration, setErrorsDuration] = useState([])
     const [errors, setErrors] = useState([])
     const [success, setSuccess] = useState([])
-
+    const [formHeader, setFormHeader] = useState(activity ? 'Manual Update' : 'Manual Entry')
+    const [buttonText, setButtonText] = useState(activity ? 'Update Activity' : 'Create Activity')
+    const [buttonClass, setButtonClass] = useState(activity ? 'update-activity' : 'create-activity')
+    const [activityAction, setActivityAction] = useState(activity ? activityActions.updateActivity : activityActions.newActivity)
+        // const [formHeader, buttonText, buttonClass, activityAction] = activity ?
+    //     ['Manual Update', 'Update Activity', 'update-activity', activityActions.updateActivity, athleteId] : ['Manual Entry', 'Create Activity', 'create-activity', activityActions.newActivity]
 
     if (activity && currentUser && 
         currentUser.id !== activity.athleteId) {
@@ -83,8 +88,8 @@ const ActivityForm = () => {
             return <h1 className="Errors">You can't edit someone else activity silly!</h1> 
     } 
     
-    const [formHeader, buttonText, buttonClass, activityAction] = activity ?
-        ['Manual Update', 'Update Activity', 'update-activity', activityActions.updateActivity, athleteId] : ['Manual Entry', 'Create Activity', 'create-activity', activityActions.newActivity]
+    // const [formHeader, buttonText, buttonClass, activityAction] = activity ?
+    //     ['Manual Update', 'Update Activity', 'update-activity', activityActions.updateActivity, athleteId] : ['Manual Entry', 'Create Activity', 'create-activity', activityActions.newActivity]
 
     const handleCheckInteger = (e, stateSetter) => {
         const checkEntry = e;
