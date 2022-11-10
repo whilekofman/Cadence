@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Redirect } from "react-router-dom";
+import { useParams, Redirect, useHistory } from "react-router-dom";
 import { fetchActivity, getActivity } from "../../store/activities";
 import { getSession } from "../../store/session";
 import * as activityActions from "../../store/activities"
@@ -11,7 +11,7 @@ const ActivityForm = () => {
     const activity = useSelector(getActivity(activityId))
 
     const currentUser = useSelector(getSession)
-
+    const history = useHistory()
     const dispatch = useDispatch()
 
     useEffect(()=> {
@@ -105,16 +105,19 @@ const ActivityForm = () => {
      const handleSubmitDelete = e => {
         e.preventDefault();
         
-        dispatch(activityActions.deleteActivity(activity.id)).then(
-            <Redirect to='/' />
-        )
+        dispatch(activityActions.deleteActivity(activity.id))//.then(
+        dispatch(activityActions.fetchActivities)
+            // <Redirect to='/' />
+        // )
+        history.push(`/activities`)
+
         
     }
 
     const handleSelect = e => {
         setSport(e.target.value)
     }
-        const handleClick = e => {
+    const handleClick = e => {
         e.preventDefault();
         startTime = startTime.split('T').join(' ') //.concat('.000Z')
         // debugger
@@ -150,6 +153,7 @@ const ActivityForm = () => {
             
         setSuccess(['You have successfully updated this activity'])
         })
+        history.push(`/activities/${activityId}`)
     }
     
 
