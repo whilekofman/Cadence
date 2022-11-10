@@ -96,10 +96,10 @@ const activityReducer = ( state = {}, action ) => {
             return { ...nextState }
         case REMOVE_ACTIVITY:
             delete nextState[action.activityId]
-            debugger
+            
             return nextState
         default:
-            return nextState 
+            return state 
     }
 }
 

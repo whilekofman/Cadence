@@ -5,6 +5,7 @@ import { getSession } from "../../store/session";
 
 const AddActivtyButton = () => {
     const currentUser = useSelector(getSession)
+    
 
     const addActivtyButton = currentUser ? ( 
         <div className="makeplussmaller">

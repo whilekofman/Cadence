@@ -49,7 +49,7 @@ class Api::ActivitiesController < ApplicationController
         if @activity
             @activity.destroy
             # head :no_content
-            redirect_to :index
+            render json: { message: 'you did a delete' }
         else
             render json: { errors: @activity.errors.full_messages, status: :unprocessable_entity }
         end

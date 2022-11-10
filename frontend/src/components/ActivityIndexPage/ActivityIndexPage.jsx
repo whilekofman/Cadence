@@ -16,14 +16,20 @@ const ActivityIndexPage = () => {
     const activities = useSelector(getActivities)
 
     const currentUser = useSelector(getSession)
+    // useEffect( () => {
+    //     if (!currentUser) 
+    //     <Redirect to="/login" />
+    // }, [])
 
-    useEffect( async => {
-        if (!currentUser) 
-        <Redirect to="/login" />
-    }, [])
     useEffect(() => {
         dispatch(fetchActivities())
-    }, [dispatch])
+    }, [])
+
+    if (!currentUser){
+        return <>
+            {<Redirect to='/login' />}
+        </>
+    }
 
     const activityListElements = activities.map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem activity={activity} /></div>)
     
