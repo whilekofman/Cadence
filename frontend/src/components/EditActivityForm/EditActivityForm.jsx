@@ -54,6 +54,7 @@ const ActivityForm = () => {
             setPnotes(value => activity.pnotes)
             setTags(value => activity.tags)
             setPurpose(value => activity.purpose)
+            setRedirectPage(`/activities/${activityId}`)
         } else {
             setTitle(value => '')
             setDescription(value => '')
@@ -68,6 +69,8 @@ const ActivityForm = () => {
             setPnotes(value => '')
             setTags(value => 0)
             setPurpose(value => '')
+            // setRedirectPage(`/activities/${activity.last}`)
+
         }
         
 
@@ -94,7 +97,7 @@ const ActivityForm = () => {
     const [errorsDuration, setErrorsDuration] = useState([])
     const [errors, setErrors] = useState([])
     const [success, setSuccess] = useState([])
-    
+    const [redirectPage, setRedirectPage] = useState('')
 
     if (activity && currentUser && 
         currentUser.id !== activity.athleteId) {
@@ -176,7 +179,8 @@ const ActivityForm = () => {
         })
         dispatch(activityActions.fetchActivities)
         // history.push(`/activities/${activityId}`)
-        history.goBack()
+        // history.goBack()
+        history.push(redirectPage)
 
     }
     const cancelButton = e => {
