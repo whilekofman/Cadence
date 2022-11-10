@@ -94,7 +94,7 @@ const ActivityForm = () => {
     const [errorsDuration, setErrorsDuration] = useState([])
     const [errors, setErrors] = useState([])
     const [success, setSuccess] = useState([])
-
+    
 
     if (activity && currentUser && 
         currentUser.id !== activity.athleteId) {
@@ -103,7 +103,9 @@ const ActivityForm = () => {
     } 
     
     const [formHeader, buttonText, buttonClass, activityAction] = activity ?
-        ['Manual Update', 'Update Activity', 'update-activity', activityActions.updateActivity, athleteId] : ['Manual Entry', 'Create Activity', 'create-activity', activityActions.newActivity]
+        ['Manual Update', 'Update Activity', 'update-activity', activityActions.updateActivity] : ['Manual Entry', 'Create Activity', 'create-activity', activityActions.newActivity]
+
+    
 
     const handleCheckInteger = (e, stateSetter) => {
         const checkEntry = e;
@@ -173,9 +175,14 @@ const ActivityForm = () => {
         setSuccess(['You have successfully updated this activity'])
         })
         dispatch(activityActions.fetchActivities)
-        history.push(`/activities/${activityId}`)
+        // history.push(`/activities/${activityId}`)
+        history.goBack()
+
     }
-    
+    const cancelButton = e => {
+        e.preventDefault();
+        history.goBack()
+    }
 
     return ( 
         <div className="form-page">
@@ -273,7 +280,7 @@ const ActivityForm = () => {
                 </div>
                 <div className="title-description-box-form">
                     <div className="title-box-form">
-                        <label className='title-box-form-label'>
+                        <label className='title-box-form-label'>Title:
                             <input 
                             type="text" 
                             className=
@@ -300,6 +307,7 @@ const ActivityForm = () => {
             <form onSubmit={handleSubmitDelete}>                
                 <button className='delete-activity'>Delete Activity</button>
             </form>
+            <button className="cancel-edit-activity" onClick={cancelButton}>Cancel</button>
         </div>
      );
 }
