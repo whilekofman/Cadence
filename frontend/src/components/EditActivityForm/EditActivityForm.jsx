@@ -15,8 +15,9 @@ const ActivityForm = () => {
     const dispatch = useDispatch()
 
     useEffect(()=> {
-        dispatch(fetchActivity(activityId))
-          
+        if (activityId) {
+            dispatch(fetchActivity(activityId))
+        }
         // if (activity){
         
         //     setTitle(value => activity.title)
@@ -55,7 +56,7 @@ const ActivityForm = () => {
             setPurpose(activity.purpose)
         } 
 
-    }, [activity])
+    }, [activity, activityId])
 
     const [athleteId, setAthleteId] = useState(currentUser.id)
     const [title, setTitle] = useState('')
