@@ -48,10 +48,8 @@ export const deleteActivity = activityId => async dispatch => {
 
 export const fetchActivity = id => async dispatch => {
     const res = await csrfFetch(`/api/activities/${id}`)
-    // debugger
     if (res.ok){
         const data = await res.json()
-        // debugger
         dispatch(retrieveActivity(data))
         return data
     } else { throw res }
@@ -67,7 +65,6 @@ export const newActivity = (activity, history) => async dispatch => {
     })
     const data = await res.json()
     dispatch(retrieveActivity(data))
-    // dispatch(pushActivity(data.id, history))
     history.push(`/activities/${data.id}`)
     
 
@@ -94,26 +91,19 @@ export const updateActivity = (activity, history) => async dispatch => {
 
 }
 
-// export const pushActivity = (id, history) => async dispatch => {
-//     history.push(`/activities/${id}`)
-// }
 
 
 
 
 const activityReducer = ( state = {}, action ) => {
     let nextState = { ...state };
-    // debugger
     Object.freeze(state)
     switch (action.type) {
         case RETRIEVE_ACTIVITIES:
-            // nextState.activities = action.activities
             nextState = { ...nextState, ...action.activities }
             return { ...nextState } 
         case RETRIEVE_ACTIVITY:
             nextState[action.activity.id] = action.activity
-            // nextState.action.activity = action.activity
-            // debugger
             return { ...nextState }
         case REMOVE_ACTIVITY:
             delete nextState[action.activityId]

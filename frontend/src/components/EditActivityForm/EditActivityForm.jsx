@@ -18,23 +18,6 @@ const ActivityForm = () => {
         if (activityId) {
             dispatch(fetchActivity(activityId))
         }
-        // if (activity){
-        
-        //     setTitle(value => activity.title)
-        //     setDescription(value => activity.description)
-        //     setSport(value => activity.sport)
-        //     setDistance(value => activity.distance)
-        //     setHours(activity.hours)
-        //     setMinutes(activity.minutes)
-        //     setSeconds(activity.seconds)
-        //     setStartTime(activity.startTime.slice(0, -5))
-        //     setHr(activity.hr)
-        //     setIntensity(activity.intensity)
-        //     setPnotes(activity.pnotes)
-        //     setTags(activity.tags)
-        //     setPurpose(activity.purpose)
-        // } 
-
     }, [dispatch, activityId])
 
     useEffect(()=> {
