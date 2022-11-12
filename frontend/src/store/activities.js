@@ -44,6 +44,7 @@ export const deleteActivity = activityId => async dispatch => {
         method: 'DELETE'
     })
     dispatch(removeActivity(activityId))
+    dispatch(fetchActivities)
 }
 
 export const fetchActivity = id => async dispatch => {

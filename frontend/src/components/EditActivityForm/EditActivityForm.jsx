@@ -37,7 +37,6 @@ const ActivityForm = () => {
             setPnotes(activity.pnotes)
             setTags(activity.tags)
             setPurpose(activity.purpose)
-            // setRedirectPage(`/activities/${activityId}`)
         } else {
             setTitle('')
             setDescription('')
@@ -52,16 +51,13 @@ const ActivityForm = () => {
             setPnotes('')
             setTags(0)
             setPurpose('')
-            // setRedirectPage(`/activities/${activity.last}`)
 
         }
         
 
     }, [activity, activityId])
 
-    // useEffect(() => {
-    //     if (!activity) dispatch(activityActions.clearActivity())
-    // }, [location.pathname])
+
 
     const [athleteId, setAthleteId] = useState(currentUser.id)
     const [title, setTitle] = useState('')
@@ -113,7 +109,7 @@ const ActivityForm = () => {
         e.preventDefault();
         
         dispatch(activityActions.deleteActivity(activity.id))//.then(
-        dispatch(activityActions.fetchActivities)
+        // dispatch(activityActions.fetchActivities)
             // <Redirect to='/' />
         // )
         history.push(`/activities`)
@@ -165,8 +161,10 @@ const ActivityForm = () => {
                     <div className="distance-form-div">
                         <label className="distance-label">
                             Distance
-                            <input className="distance-input"
-                                type='number' 
+                            <input 
+                                className="distance-input"
+                                type='number'
+                                name="distance" 
                                 value={distance}
                                 
                                 onChange={ (e) => handleCheckInteger(e.target.value, setDistance) }
