@@ -41,20 +41,20 @@ const ActivityForm = () => {
 
         if (activity){
         
-            setTitle(value => activity.title)
-            setDescription(value => activity.description)
-            setSport(value => activity.sport)
-            setDistance(value => activity.distance)
-            setHours(value => activity.hours)
-            setMinutes(value => activity.minutes)
-            setSeconds(value => activity.seconds)
-            setStartTime(value => activity.startTime.slice(0, -5))
-            setHr(value => activity.hr)
-            setIntensity(value => activity.intensity)
+            setTitle(activity.title)
+            setDescription(activity.description)
+            setSport(activity.sport)
+            setDistance(activity.distance)
+            setHours(activity.hours)
+            setMinutes(activity.minutes)
+            setSeconds(activity.seconds)
+            setStartTime(activity.startTime.slice(0, -5))
+            setHr(activity.hr)
+            setIntensity(activity.intensity)
             setPnotes(value => activity.pnotes)
             setTags(value => activity.tags)
             setPurpose(value => activity.purpose)
-            setRedirectPage(`/activities/${activityId}`)
+            // setRedirectPage(`/activities/${activityId}`)
         } else {
             setTitle(value => '')
             setDescription(value => '')
@@ -162,25 +162,9 @@ const ActivityForm = () => {
                 purpose
 
             } 
-            // debuggeret
         if (activityId) activity.id = Number(activityId)
-        // debugger
-        dispatch(activityAction(activity)).catch(async res => {
-            let data;
-            try {
-                data = await res.clone().json();
-            } catch {
-                data = await res.text();
-            }
-            if (data?.errors) setErrors(data.errors);
-            else setErrors(["Please help"]) 
-            
-        setSuccess(['You have successfully updated this activity'])
-        })
-        dispatch(activityActions.fetchActivities)
-        // history.push(`/activities/${activityId}`)
-        // history.goBack()
-        history.push(redirectPage)
+
+        dispatch(activityAction(activity, history))
 
     }
     const cancelButton = e => {
