@@ -153,10 +153,10 @@ const ActivityForm = () => {
 
     return ( 
         <div className="form-page">
-            <h1>{errors}</h1>
-            <h1>{success}</h1>
-            <h1>{formHeader}</h1>
+            {/* <h1>{errors}</h1> */}
+            {/* <h1>{success}</h1> */}
             <form>
+            <h1>{formHeader}</h1>
                 <div className="top">
                     <div className="distance-form-div">
                         <label className="distance-label">

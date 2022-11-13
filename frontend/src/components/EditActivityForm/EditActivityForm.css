@@ -1,0 +1,12 @@
+.form-page {
+    max-width: 1232px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 435px;
+}
+
+.top {
+    max-width: 1032px;
+    height: 40px;
+}
