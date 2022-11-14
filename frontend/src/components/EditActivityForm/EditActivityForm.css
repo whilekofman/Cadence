@@ -2,20 +2,60 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+    border: none;
 }
 input[type=number] {
     -moz-appearance: textfield;
+    border: none;
 }
-
+.top-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 35px;
+    border-bottom: solid rgb(168, 168, 184) 1px;
+    margin-bottom: 10px;
+}
 .form-page {
     max-width: 1232px;
     display: flex;
     flex-direction: column;
+    margin-left: 5px;
     /* justify-content: left; */
     /* justify-content: center; */
     /* padding-left: 435px; */
 }
 
+.distance-form-container{
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
 .distance-form-label {
     padding-bottom: 4px;
+}
+
+.distance-form-entry {
+    display: flex;
+    flex-direction: row;
+    height: 36px;
+    border: solid rgb(168, 168, 184) 1px;
+}
+.distance-input {
+    text-align: center;
+    height: 34px;
+    border: solid rgb(168, 168, 184) 1px;
+}
+
+.unit {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 94px;
+    height: 36px;
+    text-align: left;
+    padding-left: 6px;
+    border: solid rgb(168, 168, 184) .5px;
 }
