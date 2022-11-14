@@ -85,7 +85,7 @@ const ActivityForm = () => {
     } 
     
     const [formHeader, buttonText, buttonClass, activityAction] = activity ?
-        ['Manual Update', 'Update Activity', 'update-activity', activityActions.updateActivity] : ['Manual Entry', 'Create Activity', 'create-activity', activityActions.newActivity]
+        ['Manual Update', 'Update Activity', 'update-activity', activityActions.updateActivity] : ['Manual Entry', 'Create', 'create-activity', activityActions.newActivity]
 
     
 
@@ -124,6 +124,7 @@ const ActivityForm = () => {
         e.preventDefault();
         startTime = startTime.split('T').join(' ') //.concat('.000Z')
         // debugger
+
         const activity = { 
                 athleteId,
                 title,
@@ -142,7 +143,7 @@ const ActivityForm = () => {
 
             } 
         if (activityId) activity.id = Number(activityId)
-
+        
         dispatch(activityAction(activity, history))
 
     }
@@ -156,7 +157,7 @@ const ActivityForm = () => {
             {/* <h1>{errors}</h1> */}
             {/* <h1>{success}</h1> */}
             <form>
-            <h1>{formHeader}</h1>
+            <h1 className="form-header">{formHeader}</h1>
                 <div className="top">
                     <div className="distance-form-div">
                         <label className="distance-label">
@@ -171,6 +172,7 @@ const ActivityForm = () => {
  
                             />
                         </label>
+                        <div className="unit">Mile</div>
                         
                     </div>
                     <div className="duration-form-div">
