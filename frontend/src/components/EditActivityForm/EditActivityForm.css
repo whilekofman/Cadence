@@ -10,7 +10,7 @@ input[type=number] {
 }
 .top-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding-bottom: 35px;
     border-bottom: solid rgb(168, 168, 184) 1px;
     margin-bottom: 10px;
@@ -58,4 +58,87 @@ input[type=number] {
     text-align: left;
     padding-left: 6px;
     border: solid rgb(168, 168, 184) .5px;
+}
+
+.duration-form-container {
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    /* border: solid rgb(66, 66, 220) 1px; */
+    margin-left: 35px;
+    
+
+}
+
+.duration-form-label {
+    padding-bottom: 4px;
+    /* border: solid rgb(232, 17, 17) 1px; */
+}
+.duration-inputs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 240px;
+    height: 36px;
+    /* border: solid rgb(168, 168, 184) .5px; */
+}
+
+.duration-inputs p{
+    color: rgb(168, 168, 184);
+    text-align: right;
+    align-items: center;
+}
+
+.duration-inputs input{
+    width: 40px;
+
+}
+.hours-form-box{
+    width: 80px;
+    height: 36px;
+    border: solid rgb(168, 168, 184) .5px;
+    align-items: center;
+}
+
+/* .hours-form-box p{
+    color: rgb(168, 168, 184);
+    text-align: right;
+} */
+.minutes-form-box {
+    width: 80px;
+    height: 36px;
+    border: solid rgb(168, 168, 184) .5px;
+}
+.seconds-form-box {
+    display: flex;
+    align-items: center;
+    width: 80px;
+    height: 36px;
+    border: solid rgb(168, 168, 184) .5px;
+}
+
+/* .time-text{
+    display: flex;
+    align-items: center;
+    text-align: right;
+    justify-content: right;
+
+}
+
+.time-text p{
+    /* display: flex; */
+    /* align-items: center; */
+/* } */ 
+
+.time-input {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    /* justify-content: center; */
+    height: 34px;
+    width: 10px;
+    margin-left: 20px;
+    margin-right: 20px
+    /* border: solid rgb(168, 168, 184) 1px; */
 }

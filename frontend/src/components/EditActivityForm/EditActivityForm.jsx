@@ -183,7 +183,33 @@ const ActivityForm = () => {
                         
                     </div>
                     <div className="duration-form-container">
-                        
+                        <div className="duration-form-label">
+                            <label className="dur-label">Duration</label>
+                        </div>
+                        <div className="duration-inputs">
+                            <div className="hours-form-box">
+
+                                <div className="time-text"><p>hr</p></div>
+                            </div>
+                            <div className="minutes-form-box">
+                                
+                                <div className="time-text"><p>min</p></div>
+                            </div>
+                            <div className="seconds-form-box">
+                                <div className="time-input">
+                                    <input 
+                                    type="number" 
+                                    value={seconds}
+                                    onChange={ (e) => handleCheckInteger(e.target.value, setSeconds)}
+                                    />
+                                    <div className="second-errors">{errorsDuration}</div>
+                                </div>
+                                
+                            <div className="time-text"><p>s</p></div>
+
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
