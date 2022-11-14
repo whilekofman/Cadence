@@ -241,6 +241,15 @@ const ActivityForm = () => {
                     </div>
 
                 </div>
+
+                <div className="form-details-container">
+                    <div className="form-sport-container">
+                        <div className="form-sport-label-container">
+                            <label className="form-sport-label">Sport</label>
+                        </div>
+                    </div>
+
+                </div>
             
 
             </form>
