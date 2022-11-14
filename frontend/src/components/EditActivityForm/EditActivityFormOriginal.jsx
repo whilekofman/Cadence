@@ -405,6 +405,92 @@ export default ActivityForm;
             <button className="cancel-edit-activity" onClick={cancelButton}>Cancel</button>
         </div>
      );
+     input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.form-page {
+    max-width: 1232px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: left; */
+    /* justify-content: center; */
+    /* padding-left: 435px; */
+}
+
+.top {
+    max-width: 1032px;
+    height: 95px;
+    display: flex;
+    flex-direction: row;
+}
+.distance-label {
+    display: flex;
+    width: 255px;
+    flex-direction: column;
+    justify-content: left;
+    /* height: 34px; */
+}
+.dist-label {
+    padding-bottom: 10px;
+    justify-content: left;
+}
+
+.distance-form-div{ 
+    display: flex;
+    width: 255px;
+    flex-direction: row;
+    text-align: center;
+    padding-right: 35px;
+
+}
+.input-distance {
+    display: flex;
+    flex-direction: row;
+    height: 35px;
+}
+
+.distance-input {
+    /* height: 35px; */
+    /* justify-content: center; */
+    text-align: center;
+    align-items: center;
+
+}
+
+.unit-container {
+    border: solid grey 1px;
+    width: 110px;
+    /* position: relative; */
+    /* height: 35px; */
+    /* text-align: center;
+    justify-content: center;
+    align-items: center; */
+    /* margin-bottom: 35px; */
+
+}
+
+.unit{
+
+    top: 20%;
+    position: relative; 
+    
+
+}
+.durtation-label {
+    display: flex;
+}
+
+.duration-form-div {
+    display: flex;
+    width: 255px;
+    flex: row;
+}
     // if (!activityId){
     //      activity = {
 
