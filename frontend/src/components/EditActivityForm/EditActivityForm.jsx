@@ -173,53 +173,57 @@ const ActivityForm = () => {
                                     onChange={ (e) => handleCheckInteger(e.target.value, setDistance) }
  
                                 />
-                            <div className="unit">miles</div>
+                            <div className="unit-container">
+                                <div className="unit">miles</div>
+                            </div>
                         </div>
                     </div>
 
                         
                     </div>
                     <div className="duration-form-div">
-                        <label className="duration-label">
-                            Duration
-                            <div className="form-hours">
-                                    <input
-                                     className="hours-input" type="number" 
-                                     value={hours}
-                                     onChange=
-                                     { (e) => handleCheckInteger(e.target.value, setHours)}
-                                     />
-                                <div className="input-hours-inner">
-                                    hr
+                        <div className="duration-container">
+                            <label className="duration-label">
+                                Duration</label>
+                                <div className="form-hours">
+                                        <input
+                                        className="hours-input" type="number" 
+                                        value={hours}
+                                        onChange=
+                                        { (e) => handleCheckInteger(e.target.value, setHours)}
+                                        />
+                                    <div className="input-hours-inner">
+                                        hr
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="form-minutes">
-                                <input 
-                                type="number" 
-                                value={minutes}
-                                onChange={(e) => handleCheckInteger(e.target.value, setMinutes)}
-                                />
-                                <div className="minute-errors">{errorsDuration}</div>
-                                <div
-                                     className="input-minutes-inner">
-                                    min
+                                <div className="form-minutes">
+                                    <input 
+                                    type="number" 
+                                    value={minutes}
+                                    onChange={(e) => handleCheckInteger(e.target.value, setMinutes)}
+                                    />
+                                    <div className="minute-errors">{errorsDuration}</div>
+                                    <div
+                                        className="input-minutes-inner">
+                                        min
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="form-seconds">
-                                <input 
-                                type="number" 
-                                value={seconds}
-                                onChange={ (e) => handleCheckInteger(e.target.value, setSeconds)}
-                                />
-                                <div className="second-errors">{errorsDuration}</div>
+                                <div className="form-seconds">
+                                    <input 
+                                    type="number" 
+                                    value={seconds}
+                                    onChange={ (e) => handleCheckInteger(e.target.value, setSeconds)}
+                                    />
+                                    <div className="second-errors">{errorsDuration}</div>
 
-                                <div
-                                    className="input-seconds-inner">
-                                    s
+                                    <div
+                                        className="input-seconds-inner">
+                                        s
+                                    </div>
                                 </div>
-                            </div>
-                        </label>
-
+                                
+                            
+                        </div>
                     </div>
                 </div>
                 <div className="row-two">

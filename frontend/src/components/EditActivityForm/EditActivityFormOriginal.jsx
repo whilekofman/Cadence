@@ -268,6 +268,143 @@ const ActivityForm = () => {
 export default ActivityForm;
 
 
+
+ <div className="form-page">
+            {/* <h1>{errors}</h1> */}
+            {/* <h1>{success}</h1> */}
+            <form>
+            <h1 className="form-header">{formHeader}</h1>
+                <div className="top">
+                    <div className="distance-form-div">
+                        <div className="distance-label">
+                            <label className="dist-label">
+                                Distance</label>
+                                <div className="input-distance">
+                                <input 
+                                    className="distance-input"
+                                    type='number'
+                                    name="distance" 
+                                    value={distance}
+                                
+                                    onChange={ (e) => handleCheckInteger(e.target.value, setDistance) }
+ 
+                                />
+                            <div className="unit-container">
+                                <div className="unit">miles</div>
+                            </div>
+                        </div>
+                    </div>
+
+                        
+                    </div>
+                    <div className="duration-form-div">
+                        <div className="duration-container">
+                            <label className="duration-label">
+                                Duration</label>
+                                <div className="form-hours">
+                                        <input
+                                        className="hours-input" type="number" 
+                                        value={hours}
+                                        onChange=
+                                        { (e) => handleCheckInteger(e.target.value, setHours)}
+                                        />
+                                    <div className="input-hours-inner">
+                                        hr
+                                    </div>
+                                </div>
+                                <div className="form-minutes">
+                                    <input 
+                                    type="number" 
+                                    value={minutes}
+                                    onChange={(e) => handleCheckInteger(e.target.value, setMinutes)}
+                                    />
+                                    <div className="minute-errors">{errorsDuration}</div>
+                                    <div
+                                        className="input-minutes-inner">
+                                        min
+                                    </div>
+                                </div>
+                                <div className="form-seconds">
+                                    <input 
+                                    type="number" 
+                                    value={seconds}
+                                    onChange={ (e) => handleCheckInteger(e.target.value, setSeconds)}
+                                    />
+                                    <div className="second-errors">{errorsDuration}</div>
+
+                                    <div
+                                        className="input-seconds-inner">
+                                        s
+                                    </div>
+                                </div>
+                                
+                            
+                        </div>
+                    </div>
+                </div>
+                <div className="row-two">
+                    <div className="sport-box-form">
+                        <label className="sport-text">
+                            Sport
+                            <select className="sport-dropdown" defaultValue={sport} onChange={handleSelect}>
+                                <option value='run' onChange={ e => setSport(e.target.value)}>Run</option>
+                                <option value='inline' onChange={ e => setSport(e.target.value)}>Inline Skating</option>
+                                <option value='bike' onChange={ e => setSport(e.target.value)}>Bike Ride</option>
+                                <option value='ebike' onChange={ e => setSport(e.target.value)}>⚡️⚡️Bike⚡️⚡️</option>
+
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <div className="start-time-box-form">
+                    <label className="start-time-label">Date and Time of Activity
+                        <input type="datetime-local" 
+                            value={startTime}
+                            onChange={e => setStartTime(e.target.value)}
+                        />
+                    </label>
+                    <div className="hr-form-box">
+                        <label className="hr-form-label">Heart Rate
+                            <input type="number"
+                                className="hr-input-field"
+                                value={hr}
+                                onChange={e => setHr(e.target.value)}
+                            />
+                        </label>
+                    </div>
+                </div>
+                <div className="title-description-box-form">
+                    <div className="title-box-form">
+                        <label className='title-box-form-label'>Title:
+                            <input 
+                            type="text" 
+                            className=
+                            "title-form" 
+                            value={title}
+                            onChange={e => setTitle(e.target.value)}
+                            />
+                        </label>
+                    </div>
+                    <div className="description-box-form">
+                        <label className="decription-box-form-label">Description
+                            <div className="description-form-field">
+                                <input type="text" 
+                                className="description-form-input" 
+                                value={description}
+                                onChange={e => setDescription(e.target.value)}
+                                />
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                 <button type="submit"className={buttonClass} onClick={handleClick}>{buttonText}</button>
+            </form>
+            <form onSubmit={handleSubmitDelete}>                
+                <button className='delete-activity'>Delete Activity</button>
+            </form>
+            <button className="cancel-edit-activity" onClick={cancelButton}>Cancel</button>
+        </div>
+     );
     // if (!activityId){
     //      activity = {
 
