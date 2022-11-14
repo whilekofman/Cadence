@@ -37,25 +37,31 @@ const ActivityForm = () => {
             setPnotes(activity.pnotes)
             setTags(activity.tags)
             setPurpose(activity.purpose)
+
         } else {
             setTitle('')
             setDescription('')
             setSport('run')
             setDistance(0)
-            setHours(0)
-            setMinutes(0)
-            setSeconds(0)
+            setHours('')
+            setMinutes('')
+            setSeconds('')
             setStartTime(new Date().toISOString().slice(0, -5))
             setHr(0)
             setIntensity(2)
             setPnotes('')
             setTags(0)
             setPurpose('')
+            setPlaceHolder('00')
+
 
         }
         
 
     }, [activity, activityId])
+
+    // const placeHolderMS = '00'
+    // const placeHolder = '1'
 
 
 
@@ -73,6 +79,7 @@ const ActivityForm = () => {
     const [pnotes, setPnotes]=useState('')
     const [tags, setTags]=useState('')
     const [purpose, setPurpose]=useState('')
+    const [placeHolder, setPlaceHolder] = useState('00') 
     const [errorsDuration, setErrorsDuration] = useState([])
     const [errors, setErrors] = useState([])
     const [success, setSuccess] = useState([])
@@ -187,19 +194,40 @@ const ActivityForm = () => {
                             <label className="dur-label">Duration</label>
                         </div>
                         <div className="duration-inputs">
-                            <div className="hours-form-box">
+                            <div className="time-form-box">
+                                <div className="time-input">
+                                    <input 
+                                        type="number" 
+                                        value={hours}
+                                        onChange = { (e) => handleCheckInteger(e.target.value, setHours)}
+                                        placeholder={placeHolder}
+
+                                        />
+                                </div>
 
                                 <div className="time-text"><p>hr</p></div>
                             </div>
-                            <div className="minutes-form-box">
+                            <div className="time-form-box">
+                                <div className="time-input">
+                                    <input 
+                                        type="number"
+                                        value={minutes}
+                                        onChange={(e) => handleCheckInteger(e.target.value, setMinutes)}
+                                        placeholder={placeHolder}
+
+                                        />
+                                    <div className="minute-errors">{errorsDuration}</div>
+
+                                </div>
                                 
                                 <div className="time-text"><p>min</p></div>
                             </div>
-                            <div className="seconds-form-box">
+                            <div className="time-form-box">
                                 <div className="time-input">
                                     <input 
                                     type="number" 
                                     value={seconds}
+                                    placeholder={placeHolder}
                                     onChange={ (e) => handleCheckInteger(e.target.value, setSeconds)}
                                     />
                                     <div className="second-errors">{errorsDuration}</div>

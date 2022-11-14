@@ -67,8 +67,6 @@ const ActivityIndexItem = ( { activity } ) => {
 
 
 
-
-
     // { hours }: { minutes }: { seconds }
     return (
         <>

@@ -2,12 +2,14 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-    border: none;
+    border: transparent;
 }
 input[type=number] {
     -moz-appearance: textfield;
-    border: none;
+    border: transparent;
 }
+
+
 .top-container {
     display: flex;
     flex-direction: row;
@@ -24,7 +26,10 @@ input[type=number] {
     /* justify-content: center; */
     /* padding-left: 435px; */
 }
-
+ .form-page input:focus {
+    outline: none; 
+}
+   
 .distance-form-container{
     width: 240px;
     display: flex;
@@ -85,8 +90,8 @@ input[type=number] {
 
 .duration-inputs p{
     color: rgb(168, 168, 184);
-    text-align: right;
-    align-items: center;
+    /* text-align: right;
+    align-items: center; */
 }
 
 .duration-inputs input{
@@ -109,12 +114,15 @@ input[type=number] {
     height: 36px;
     border: solid rgb(168, 168, 184) .5px;
 }
-.seconds-form-box {
+.time-form-box {
     display: flex;
     align-items: center;
     width: 80px;
     height: 36px;
     border: solid rgb(168, 168, 184) .5px;
+}
+::placeholder{
+    color: black;
 }
 
 /* .time-text{
