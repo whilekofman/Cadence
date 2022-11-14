@@ -1,23 +1,70 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 .form-page {
     max-width: 1232px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 435px;
+    /* padding-left: 435px; */
 }
 
 .top {
     max-width: 1032px;
-    height: 40px;
+    height: 95px;
     display: flex;
     flex-direction: row;
+}
+.distance-label {
+    display: flex;
+    width: 255px;
+    flex-direction: column;
+    /* height: 34px; */
+}
+.dist-label {
+    padding-bottom: 10px;
 }
 
 .distance-form-div{ 
     display: flex;
     width: 255px;
     flex-direction: row;
+    text-align: center;
 
+}
+.distance-form-div .input-distance {
+    display: flex;
+    flex-direction: row;
+    height: 35px;
+}
+
+.distance-form-div .distance-input {
+    /* height: 35px; */
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+
+}
+
+.unit {
+    border: solid grey 1px;
+    width: 110px;
+    /* height: 35px; */
+    text-align: center;
+    align-items: center;
+    /* margin-bottom: 35px; */
+
+}
+
+.unit text{
+    top: 50%;
+    position: absolute;
 }
 .durtation-label {
     display: flex;

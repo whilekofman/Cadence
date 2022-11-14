@@ -160,19 +160,23 @@ const ActivityForm = () => {
             <h1 className="form-header">{formHeader}</h1>
                 <div className="top">
                     <div className="distance-form-div">
-                        <label className="distance-label">
-                            Distance
-                            <input 
-                                className="distance-input"
-                                type='number'
-                                name="distance" 
-                                value={distance}
+                        <div className="distance-label">
+                            <label className="dist-label">
+                                Distance</label>
+                                <div className="input-distance">
+                                <input 
+                                    className="distance-input"
+                                    type='number'
+                                    name="distance" 
+                                    value={distance}
                                 
-                                onChange={ (e) => handleCheckInteger(e.target.value, setDistance) }
+                                    onChange={ (e) => handleCheckInteger(e.target.value, setDistance) }
  
-                            />
-                        </label>
-                        <div className="unit">Mile</div>
+                                />
+                            <div className="unit">miles</div>
+                        </div>
+                    </div>
+
                         
                     </div>
                     <div className="duration-form-div">
