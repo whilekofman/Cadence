@@ -20,6 +20,18 @@ input[type=number] {
     align-items: center;
     /* padding-left: 435px; */
 }
+
+.form-container{
+        /* max-width: 1232px; */
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+    /* justify-content: left; */
+    /* justify-content: center; */
+    align-items: center;
+    /* padding-left: 435px; */
+
+}
 .top-container {
     display: flex;
     flex-direction: row;
@@ -210,5 +222,10 @@ input[type=number] {
 
 .description-form-input::placeholder{
     color: gray;
+}
+
+.cancel-delete-buttons{
+    width: max-content;
+    align-items: left;
 }
 
