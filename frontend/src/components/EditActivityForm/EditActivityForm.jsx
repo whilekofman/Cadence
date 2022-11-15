@@ -23,6 +23,7 @@ const ActivityForm = () => {
     useEffect(()=> {
 
         if (activity){
+            console.log(activity.sport)
         
             setTitle(activity.title)
             setDescription(activity.description)
@@ -59,6 +60,7 @@ const ActivityForm = () => {
         
 
     }, [activity, activityId])
+
 
     // const placeHolderMS = '00'
     // const placeHolder = '1'
@@ -245,8 +247,26 @@ const ActivityForm = () => {
                 <div className="form-details-container">
                     <div className="form-sport-container">
                         <div className="form-sport-label-container">
-                            <label className="form-sport-label">Sport</label>
+                            <label className="form-sport-label">Sport
+                            </label>
                         </div>
+
+                            <div className="sport-dropdown">
+                                <select className="sport-dropdown" value={sport} onChange={handleSelect} >
+                                    {/* {console.log(sport)} */}
+                                    <option value='run' onChange={ e => setSport(e.target.value)}>Run</option>
+                                    <option value='inline' onChange={ e => setSport(e.target.value)}>Inline Skating</option>
+                                    <option value='bike' onChange={ e => setSport(e.target.value)}>Bike Ride</option>
+                                    <option value='ebike' onChange={ e => setSport(e.target.value)}>⚡️⚡️Bike⚡️⚡️</option>
+                                </select>
+                            </div>
+
+                    </div>
+                    <div className="form-time-container">
+                        <div className="form-sport-label-container">
+                            
+                        </div>
+
                     </div>
 
                 </div>

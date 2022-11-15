@@ -161,3 +161,21 @@ input[type=number] {
     border-bottom: solid rgb(168, 168, 184) 1px;
     margin-bottom: 10px;
 }
+
+.form-sport-container {
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    /* border: solid rgb(66, 66, 220) 1px; */
+
+
+}
+
+.form-sport-label-container{
+    padding-bottom: 6px;
+}
+
+.sport-dropdown {
+    width: 240px;
+    height: 35px;
+}
