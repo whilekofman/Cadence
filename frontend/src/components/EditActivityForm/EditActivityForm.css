@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@800&display=swap');
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -14,7 +16,7 @@ input[type=number] {
     /* max-width: 1232px; */
     display: flex;
     flex-direction: column;
-    margin-left: 5px;
+    /* margin-left: 5px; */
     /* justify-content: left; */
     /* justify-content: center; */
     align-items: center;
@@ -25,7 +27,7 @@ input[type=number] {
         /* max-width: 1232px; */
     display: flex;
     flex-direction: column;
-    margin-left: 5px;
+    /* margin-left: 5px; */
     /* justify-content: left; */
     /* justify-content: center; */
     align-items: center;
@@ -229,3 +231,26 @@ input[type=number] {
     align-items: left;
 }
 
+.activity-action-button {
+    background-color: rgb(255, 123, 0);
+    width: 240px;
+    height: 35px;
+    border-radius: 5px;
+    font-weight: bolder;
+
+
+}
+.cancel-edit-activity {
+    width: 240px;
+    height: 35px;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+.delete-activity{
+        width: 240px;
+        height: 35px;
+        border-radius: 5px;
+        background-color: red;
+    
+}

@@ -141,8 +141,8 @@ const ActivityForm = () => {
             return <h1 className="Errors">You can't edit someone else activity silly!</h1> 
     } 
     
-    const [formHeader, buttonText, buttonClass, activityAction] = activity ?
-        ['Manual Update', 'Update Activity', 'update-activity', activityActions.updateActivity] : ['Manual Entry', 'Create', 'create-activity', activityActions.newActivity]
+    const [formHeader, buttonText, activityAction] = activity ?
+        ['Manual Update', 'Update Activity', activityActions.updateActivity] : ['Manual Entry', 'Create',  activityActions.newActivity]
 
     
 
@@ -373,17 +373,18 @@ const ActivityForm = () => {
 
                 </div>
                 <div className="action-button">
-                    <button type="submit"className={buttonClass} onClick={handleClick}>{buttonText}</button>
+                    <button type="submit"className='activity-action-button' onClick={handleClick}>{buttonText}</button>
                 </div>
 
             </form>
             <div className="cancel-delete-buttons">
+                <button className="cancel-edit-activity" onClick={cancelButton}>Cancel</button>
+                
                 <div className="delete-button">
                     {renderDelete()}
                 </div>
                 
 
-                <button className="cancel-edit-activity" onClick={cancelButton}>Cancel</button>
             </div>
         </div>
      );
