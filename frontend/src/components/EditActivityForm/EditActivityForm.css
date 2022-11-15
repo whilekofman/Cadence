@@ -155,7 +155,7 @@ input[type=number] {
 .form-details-container {
     display: flex;
     width: 515px;
-    flex-direction: row;
+    flex-direction: column;
     padding-top: 35px;
     padding-bottom: 35px;
     border-bottom: solid rgb(168, 168, 184) 1px;
@@ -171,6 +171,12 @@ input[type=number] {
 
 
 }
+.sport-time-container{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 35px;
+
+}
 
 .form-detail-label-container{
     padding-bottom: 6px;
@@ -183,4 +189,17 @@ input[type=number] {
 
 .form-date-field{
     height: 32px;
+    width: 240px;
+}
+
+.title-form{
+    height: 35px;
+    width: 515px;
+}
+
+.description-form-input {
+    padding-top: 6px;
+    width: 515px;
+    height: 105px;
+    align-items: top;
 }

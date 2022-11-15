@@ -21,19 +21,49 @@ const ActivityForm = () => {
         date.getFullYear(),
         date.getMonth(),
         date.getDate(),
-        // date.getHours() - 5
         date.getHours() - 5,
         date.getMinutes()
-
     )
+
+    if (date.getHours() > 12 && date.getHours() < 17) {
+        console.log('Its the afternoon')
+    }
+
+    const titler = (hour, sport) => {
+        console.log(sport)
+        if (sport !== 'run') {
+            sport = 'ride'
+        } else sport = 'run';
+
+        if(hour >= 22 || hour < 6){
+            return `Night ${sport}`
+        }
+        else if (hour >= 6 && hour < 10) {
+            return `Morning ${sport}`
+        } 
+        else if (hour >= 10 && hour < 14) {
+            return `Lunch ${sport}`
+        }
+        else if (hour >= 10 && hour < 14) {
+            return `Lunch ${sport}`
+        }
+        else if (hour >= 14 && hour < 18) {
+            return `Afternoon ${sport}`
+        }
+        else {
+            return `Night ${sport}`
+        }
+
+    }
     const iso = currentTime.toISOString()
     console.log(`this be current time ${currentTime}, this be ISO ${iso}`)
-
     useEffect(()=> {
         if (activityId) {
             dispatch(fetchActivity(activityId))
         }
     }, [dispatch, activityId])
+
+
 
     useEffect(()=> {
 
@@ -55,7 +85,7 @@ const ActivityForm = () => {
             setPurpose(activity.purpose)
 
         } else {
-            setTitle('')
+            setTitle(titler(date.getHours(), sport))
             setDescription('')
             setSport('run')
             setDistance(0)
@@ -84,9 +114,9 @@ const ActivityForm = () => {
 
 
     const [athleteId, setAthleteId] = useState(currentUser.id)
-    const [title, setTitle] = useState('')
-    const [description, setDescription]=useState('')
     const [sport, setSport]=useState('run')
+    const [title, setTitle] = useState(titler(date.getHours()), sport)
+    const [description, setDescription]=useState('')
     const [distance, setDistance]=useState('')
     const [hours, setHours]=useState('')
     const [minutes, setMinutes]=useState('')
@@ -102,6 +132,13 @@ const ActivityForm = () => {
     const [errors, setErrors] = useState([])
     const [success, setSuccess] = useState([])
     const [redirectPage, setRedirectPage] = useState('')
+
+    useEffect(() => {
+        if(!activity){
+            setTitle(titler(date.getHours(), sport))
+        }
+
+    }, [sport])
 
     if (activity && currentUser && 
         currentUser.id !== activity.athleteId) {
@@ -261,38 +298,70 @@ const ActivityForm = () => {
                 </div>
 
                 <div className="form-details-container">
-                    <div className="form-detail-container">
-                        <div className="form-detail-label-container">
-                            <label className="form-detail-label">Sport
-                            </label>
-                        </div>
-
-                            <div className="sport-dropdown">
-                                <select className="sport-dropdown" value={sport} onChange={handleSelect} >
-                                    {/* {console.log(sport)} */}
-                                    <option value='run' onChange={ e => setSport(e.target.value)}>Run</option>
-                                    <option value='inline' onChange={ e => setSport(e.target.value)}>Inline Skating</option>
-                                    <option value='bike' onChange={ e => setSport(e.target.value)}>Bike Ride</option>
-                                    <option value='ebike' onChange={ e => setSport(e.target.value)}>⚡️⚡️Bike⚡️⚡️</option>
-                                </select>
+                    <div className="sport-time-container">
+                        <div className="form-detail-container">
+                            
+                            <div className="form-detail-label-container">
+                                <label className="form-detail-label">Sport
+                                </label>
                             </div>
 
+                                <div className="sport-dropdown">
+                                    <select className="sport-dropdown" value={sport} onChange={handleSelect} >
+                                        {/* {console.log(sport)} */}
+                                        <option value='run' onChange={ e => setSport(e.target.value)}>Run</option>
+                                        <option value='inline' onChange={ e => setSport(e.target.value)}>Inline Skating</option>
+                                        <option value='bike' onChange={ e => setSport(e.target.value)}>Bike Ride</option>
+                                        <option value='ebike' onChange={ e => setSport(e.target.value)}>⚡️⚡️Bike⚡️⚡️</option>
+                                    </select>
+                                </div>
+
+                        </div>
+                            <div className="form-detail-container">
+                            
+                            <div className="form-detail-label-container">
+                                <label className="form-detail-label">Date & Time
+                                </label>
+                            </div>
+                            <div className="form-detail-start-time">
+                                <input type="datetime-local" className="form-date-field" 
+                                value={startTime}
+                                onChange={e => setStartTime(e.target.value)}
+                                />
+                            </div>
+
+                        </div>
                     </div>
-                        <div className="form-detail-container">
+                    <div className="form-detail-title-container">
                         
                         <div className="form-detail-label-container">
-                            <label className="form-detail-label">Date & Time
+                            <label className="form-detail-label">Title
                             </label>
                         </div>
-                        <div className="form-detail-start-time">
-                            <input type="datetime-local" className="form-date-field" 
-                            value={startTime}
-                            onChange={e => setStartTime(e.target.value)}
+                        <div className="form-detail-title">
+                            <input 
+                            type="text" 
+                            className=
+                            "title-form" 
+                            value={title}
+                            onChange={e => setTitle(e.target.value)}
                             />
-
+                        </div>
+                        <div className="form-detail-label-container">
+                            <label className="form-detail-label">Description
+                            </label>
+                        </div>
+                        <div className="description-form-field">
+                                <input type="text" 
+                                className="description-form-input"
+                                placeholder="How'd it go?  Share more information about your activity." 
+                                value={description}
+                                onChange={e => setDescription(e.target.value)}
+                                />
                         </div>
 
                     </div>
+                    
 
                 </div>
             
