@@ -162,20 +162,25 @@ input[type=number] {
     margin-bottom: 10px;
 }
 
-.form-sport-container {
+.form-detail-container {
     width: 240px;
     display: flex;
     flex-direction: column;
+    padding-right: 35px;
     /* border: solid rgb(66, 66, 220) 1px; */
 
 
 }
 
-.form-sport-label-container{
+.form-detail-label-container{
     padding-bottom: 6px;
 }
 
 .sport-dropdown {
     width: 240px;
     height: 35px;
+}
+
+.form-date-field{
+    height: 32px;
 }

@@ -14,6 +14,21 @@ const ActivityForm = () => {
     const history = useHistory()
     const dispatch = useDispatch()
 
+    const date = new Date();
+    // const isoNow = iso.hh - 5
+    // const iso = date.toISOString()
+    const currentTime = new Date(
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate(),
+        // date.getHours() - 5
+        date.getHours() - 5,
+        date.getMinutes()
+
+    )
+    const iso = currentTime.toISOString()
+    console.log(`this be current time ${currentTime}, this be ISO ${iso}`)
+
     useEffect(()=> {
         if (activityId) {
             dispatch(fetchActivity(activityId))
@@ -47,7 +62,8 @@ const ActivityForm = () => {
             setHours('')
             setMinutes('')
             setSeconds('')
-            setStartTime(new Date().toISOString().slice(0, -5))
+            // setStartTime(new Date().toISOString().slice(0, -5))
+            setStartTime(currentTime.toISOString().slice(0, -5))
             setHr(0)
             setIntensity(2)
             setPnotes('')
@@ -245,9 +261,9 @@ const ActivityForm = () => {
                 </div>
 
                 <div className="form-details-container">
-                    <div className="form-sport-container">
-                        <div className="form-sport-label-container">
-                            <label className="form-sport-label">Sport
+                    <div className="form-detail-container">
+                        <div className="form-detail-label-container">
+                            <label className="form-detail-label">Sport
                             </label>
                         </div>
 
@@ -262,9 +278,18 @@ const ActivityForm = () => {
                             </div>
 
                     </div>
-                    <div className="form-time-container">
-                        <div className="form-sport-label-container">
-                            
+                        <div className="form-detail-container">
+                        
+                        <div className="form-detail-label-container">
+                            <label className="form-detail-label">Date & Time
+                            </label>
+                        </div>
+                        <div className="form-detail-start-time">
+                            <input type="datetime-local" className="form-date-field" 
+                            value={startTime}
+                            onChange={e => setStartTime(e.target.value)}
+                            />
+
                         </div>
 
                     </div>
