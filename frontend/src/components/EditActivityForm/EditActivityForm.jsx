@@ -25,12 +25,11 @@ const ActivityForm = () => {
         date.getMinutes()
     )
 
-    if (date.getHours() > 12 && date.getHours() < 17) {
-        console.log('Its the afternoon')
-    }
+    // if (date.getHours() > 12 && date.getHours() < 17) {
+    //     console.log('Its the afternoon')
+    // }
 
     const titler = (hour, sport) => {
-        console.log(sport)
         if (sport !== 'run') {
             sport = 'ride'
         } else sport = 'run';
@@ -55,8 +54,8 @@ const ActivityForm = () => {
         }
 
     }
-    const iso = currentTime.toISOString()
-    console.log(`this be current time ${currentTime}, this be ISO ${iso}`)
+    // const iso = currentTime.toISOString()
+    // console.log(`this be current time ${currentTime}, this be ISO ${iso}`)
     useEffect(()=> {
         if (activityId) {
             dispatch(fetchActivity(activityId))
@@ -106,10 +105,6 @@ const ActivityForm = () => {
         
 
     }, [activity, activityId])
-
-
-    // const placeHolderMS = '00'
-    // const placeHolder = '1'
 
 
 
@@ -271,7 +266,6 @@ const ActivityForm = () => {
                                         placeholder={placeHolder}
 
                                         />
-                                    <div className="minute-errors">{errorsDuration}</div>
 
                                 </div>
                                 
@@ -285,14 +279,16 @@ const ActivityForm = () => {
                                     placeholder={placeHolder}
                                     onChange={ (e) => handleCheckInteger(e.target.value, setSeconds)}
                                     />
-                                    <div className="second-errors">{errorsDuration}</div>
+                                    {/* <div className="second-errors">{errorsDuration}</div> */}
                                 </div>
                                 
-                            <div className="time-text"><p>s</p></div>
+                                <div className="time-text"><p>s</p></div>
 
                             </div>
+
                         </div>
 
+                        <div className="minute-errors">{errorsDuration}</div>
                     </div>
 
                 </div>
@@ -352,7 +348,7 @@ const ActivityForm = () => {
                             </label>
                         </div>
                         <div className="description-form-field">
-                                <input type="text" 
+                                <textarea type="textarea" 
                                 className="description-form-input"
                                 placeholder="How'd it go?  Share more information about your activity." 
                                 value={description}

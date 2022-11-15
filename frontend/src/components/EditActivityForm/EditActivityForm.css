@@ -156,7 +156,7 @@ input[type=number] {
     display: flex;
     width: 515px;
     flex-direction: column;
-    padding-top: 35px;
+    /* padding-top: 35px; */
     padding-bottom: 35px;
     border-bottom: solid rgb(168, 168, 184) 1px;
     margin-bottom: 10px;
@@ -174,12 +174,14 @@ input[type=number] {
 .sport-time-container{
     display: flex;
     flex-direction: row;
-    padding-bottom: 35px;
+    /* padding-bottom: 35px; */
 
 }
 
 .form-detail-label-container{
     padding-bottom: 6px;
+    padding-top: 35px;
+    
 }
 
 .sport-dropdown {
@@ -195,11 +197,18 @@ input[type=number] {
 .title-form{
     height: 35px;
     width: 515px;
+    
 }
 
 .description-form-input {
     padding-top: 6px;
     width: 515px;
     height: 105px;
-    align-items: top;
+    /* vert */
+
 }
+
+.description-form-input::placeholder{
+    color: gray;
+}
+
