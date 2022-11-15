@@ -15,7 +15,7 @@
 class User < ApplicationRecord
   has_secure_password
 
-  has_one_attached :profile_photo
+  # has_one_attached :profile_photo
 
   validates :fname, :lname, length: { in: 1..18 }, format: { without: URI::MailTo::EMAIL_REGEXP, message:  "can't be an email" }
   validates :email, length: { in: 3..255 }, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
