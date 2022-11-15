@@ -11,17 +11,17 @@ input[type=number] {
 
 
 .form-page {
-    max-width: 1232px;
+    /* max-width: 1232px; */
     display: flex;
     flex-direction: column;
     margin-left: 5px;
     /* justify-content: left; */
     /* justify-content: center; */
+    align-items: center;
     /* padding-left: 435px; */
 }
 .top-container {
     display: flex;
-    width: 515px;
     flex-direction: row;
     padding-bottom: 35px;
     border-bottom: solid rgb(168, 168, 184) 1px;

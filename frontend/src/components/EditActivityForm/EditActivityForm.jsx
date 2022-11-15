@@ -179,7 +179,9 @@ const ActivityForm = () => {
     }
     const handleClick = e => {
         e.preventDefault();
+        console.log(startTime)
         startTime = startTime.split('T').join(' ') //.concat('.000Z')
+        // console.log(startTime.hh)
         // debugger
 
         const activity = { 
@@ -355,12 +357,14 @@ const ActivityForm = () => {
                                 onChange={e => setDescription(e.target.value)}
                                 />
                         </div>
-
+                    
                     </div>
                     
 
                 </div>
-            
+                <div className="action-button">
+                    <button type="submit"className={buttonClass} onClick={handleClick}>{buttonText}</button>
+                </div>
 
             </form>
             <form onSubmit={handleSubmitDelete}>                

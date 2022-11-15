@@ -79,7 +79,7 @@ const ActivityShowPage = () => {
                         <div className="profile-pic-show"></div>
                             <div className="inner-title-box">
                                 <div className="activity-start">
-                                    {new Date (startTime).toLocaleString()}
+                                    {new Date (startTime).toLocaleString('en-US', {timeZone: 'UTC'})}
                                 <div className="activity-title">{title}</div>
                                 {setDisplayDescription(description)}
                             </div>

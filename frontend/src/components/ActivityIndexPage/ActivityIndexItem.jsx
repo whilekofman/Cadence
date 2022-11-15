@@ -22,7 +22,7 @@ const ActivityIndexItem = ( { activity } ) => {
 
         
     } = activity
-    const displayTime = new Date(startTime).toLocaleString();
+    const displayTime = new Date(startTime).toLocaleString('en-US', {timeZone: 'UTC'});
 
 
     
@@ -118,47 +118,3 @@ const ActivityIndexItem = ( { activity } ) => {
  
 export default ActivityIndexItem;
 
-    // activity: {
-    //      id,
-    //         athleteId,
-    //         title,
-    //         description,
-    //         sport,
-    //         distance,
-    //         hours,
-    //         minutes,
-    //         seconds,
-    //         intensity,
-    //         hr,
-    //         pnotes,
-    //         tags,
-    //         purpose,
-    //         startTime
-    // } 
-
-
-
-                    // intensity,
-        // hr,
-        // pnotes,
-        // tags,
-        // purpose
-
-                // const runCalc =  ( ( timeInSeconds / distance ) / 60 ) 
-        // const formatRunMinutes = Math.floor(runCalc)
-        // const formatRunSeconds = Math.floor(60 * (runCalc - formatRunMinutes)) / 100
-        // debugger  
-            // things that show on index: { fname, lname, date, distance, speed, duration } 
-
-    // const icons = {
-    //     run: <i className="fa-thin fa-person-running"></i>,
-    //     inline: <image src={inline} alt='inline logo'></image>, 
-    //     bike: <image src={bike} alt='bike logo'></image>
-    // }
-
-    // const icon = sport === 'run' ? 
-    //         <i className="fa-thin fa-person-running"></i> 
-    
-    //     :
-    //         <image src={inline} alt='inline logo'></image> 
-    // // icons.run : icons.inline
