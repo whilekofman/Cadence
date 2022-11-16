@@ -16,10 +16,6 @@ const ActivityIndexPage = () => {
     const activities = useSelector(getActivities)
 
     const currentUser = useSelector(getSession)
-    // useEffect( () => {
-    //     if (!currentUser) 
-    //     <Redirect to="/login" />
-    // }, [])
 
     useEffect(() => {
         dispatch(fetchActivities())

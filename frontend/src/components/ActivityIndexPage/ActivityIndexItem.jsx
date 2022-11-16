@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import bikelogo from '../../assets/logo/bikelogo.png'
 import skatelogo from '../../assets/logo/skatelogo.png'
 import runlogo from '../../assets/logo/runlogo.png'
+import { useEffect, useState } from "react";
 
 const ActivityIndexItem = ( { activity } ) => {
+
 
     const {
         id,
@@ -19,12 +21,28 @@ const ActivityIndexItem = ( { activity } ) => {
         hours,
         minutes,
         seconds,
+        athleteProfilePicture
 
         
     } = activity
+    const [userAvitar, setUserAvitar] = useState(athleteProfilePicture ? athleteProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
+
+    // if (athleteProfilePicture){
+    //     setUserAvitar(<img src={athleteProfilePicture} />)
+    // }
+
+    // useEffect(()=> {
+    //     if (athleteProfilePicture){
+    //         setUserAvitar(<img src={athleteProfilePicture} />)
+    //     }
+    // }, [])
+    // const userAvitar = athleteProfilePicture ? <img src={athleteProfilePicture} />  :  <i className="fa-solid fa-user"></i>
+    // debugger
     const displayTime = new Date(startTime).toLocaleString('en-US', {timeZone: 'UTC'});
 
-
+    // if (athleteProfilePicture) 
+        // {setUserAvitar(<img src={athleteProfilePicture} />)
+// }
     
     
     const durationConvert = ( { hours, minutes, seconds } ) => {
@@ -74,7 +92,8 @@ const ActivityIndexItem = ( { activity } ) => {
             <div className='top-bar'>
                 <div className="athlete-name-activity">
                     <div className="profile-pic">
-                        <i className="fa-solid fa-user"></i>
+                        {/* <i className="fa-solid fa-user"></i> */}
+                        <img src={userAvitar} />
                     </div>
                     <div className="name">
                         {fname} {lname}<br />

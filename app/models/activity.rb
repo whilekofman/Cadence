@@ -45,8 +45,8 @@ class Activity < ApplicationRecord
     return athlete.lname
   end
 
-  def athlete_profile_photo
-    return athlete.profile_picture.record
+  def athlete_profile_picture
+    return athlete.profile_picture.url
   end
  
 
