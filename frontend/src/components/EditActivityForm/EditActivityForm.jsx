@@ -25,6 +25,9 @@ const ActivityForm = () => {
         date.getMinutes()
     )
 
+    // if (date.getHours() > 12 && date.getHours() < 17) {
+    //     console.log('Its the afternoon')
+    // }
 
     const titler = (hour, sport) => {
         if (sport !== 'run') {
@@ -51,7 +54,8 @@ const ActivityForm = () => {
         }
 
     }
-
+    // const iso = currentTime.toISOString()
+    // console.log(`this be current time ${currentTime}, this be ISO ${iso}`)
     useEffect(()=> {
         if (activityId) {
             dispatch(fetchActivity(activityId))
@@ -63,6 +67,7 @@ const ActivityForm = () => {
     useEffect(()=> {
 
         if (activity){
+            // console.log(activity.sport)
         
             setTitle(activity.title)
             setDescription(activity.description)
@@ -83,9 +88,9 @@ const ActivityForm = () => {
             setDescription('')
             setSport('run')
             setDistance(0)
-            setHours('')
-            setMinutes('')
-            setSeconds('')
+            setHours(0)
+            setMinutes(0)
+            setSeconds(0)
             // setStartTime(new Date().toISOString().slice(0, -5))
             setStartTime(currentTime.toISOString().slice(0, -5))
             setHr(0)
@@ -99,20 +104,19 @@ const ActivityForm = () => {
         }
         
 
-    }, [activity, activityId])
+    }, [activityId])
 
 
 
     const [athleteId, setAthleteId] = useState(currentUser.id)
     const [sport, setSport]=useState('run')
-    const [startTime, setStartTime] = useState(new Date().toISOString().slice(0, -5))
-    // const [dateObject, setDateObject] = (new Date(startTime))
     const [title, setTitle] = useState(titler(date.getHours()), sport)
     const [description, setDescription]=useState('')
     const [distance, setDistance]=useState('')
-    const [hours, setHours]=useState('')
-    const [minutes, setMinutes]=useState('')
-    const [seconds, setSeconds]=useState('')
+    const [hours, setHours]=useState(0)
+    const [minutes, setMinutes]=useState(0)
+    const [seconds, setSeconds]=useState(0)
+    let [startTime, setStartTime] = useState(currentTime.toISOString().slice(0, -5))
     const [hr, setHr]=useState('')
     const [intensity, setIntensity]=useState(2)
     const [pnotes, setPnotes]=useState('')
@@ -128,6 +132,7 @@ const ActivityForm = () => {
         if(!activity){
             const currentHour = new Date(startTime).getHours()
             setTitle(titler(currentHour, sport))
+            // setTitle(titler(dateObject.getHours(), sport))
 
         }
 
@@ -135,13 +140,16 @@ const ActivityForm = () => {
 
     if (activity && currentUser && 
         currentUser.id !== activity.athleteId) {
+        // debugger
             return <h1 className="Errors">You can't edit someone else activity silly!</h1> 
     } 
     
     const [formHeader, buttonText, activityAction] = activity ?
         ['Manual Update', 'Update Activity', activityActions.updateActivity] : ['Manual Entry', 'Create',  activityActions.newActivity]
 
-    
+    const handleFocus = e => {
+        e.target.select()
+    }
 
     const handleCheckInteger = (e, stateSetter) => {
         const checkEntry = e;
@@ -176,8 +184,22 @@ const ActivityForm = () => {
     }
     const handleClick = e => {
         e.preventDefault();
-        startTime = startTime.split('T').join(' ') //.concat('.000Z')
-
+        // console.log(startTime)
+        // startTime = startTime.split('T').join(' ') //.concat('.000Z')
+        // console.log(startTime.hh)
+        // debugger
+        // if (distance === 0) {
+        //     setErrors(['Distance can not be zero, sitting still is not an activity'])
+        //     return
+        // }
+        // if (isNaN(hours)) {
+        //     setHours(0)
+        // }
+        // if (isNaN(minutes)){
+        //     setMinutes(0)
+        // }
+        // if (isNaN(seconds)) setSeconds((sec) => sec = 0)
+        debugger
 
         const activity = { 
                 athleteId,
@@ -237,6 +259,7 @@ const ActivityForm = () => {
                                 type='number'
                                 name="distance" 
                                 value={distance}
+                                onFocus={handleFocus}
                             
                                 onChange={ (e) => handleCheckInteger(e.target.value, setDistance) }
 
@@ -258,6 +281,8 @@ const ActivityForm = () => {
                                         value={hours}
                                         onChange = { (e) => handleCheckInteger(e.target.value, setHours)}
                                         placeholder={placeHolder}
+                                        onFocus={handleFocus}
+
 
                                         />
                                 </div>
@@ -271,6 +296,7 @@ const ActivityForm = () => {
                                         value={minutes}
                                         onChange={(e) => handleCheckInteger(e.target.value, setMinutes)}
                                         placeholder={placeHolder}
+                                        onFocus={handleFocus}
 
                                         />
 
@@ -285,6 +311,8 @@ const ActivityForm = () => {
                                     value={seconds}
                                     placeholder={placeHolder}
                                     onChange={ (e) => handleCheckInteger(e.target.value, setSeconds)}
+                                    onFocus={handleFocus}
+
                                     />
                                     {/* <div className="second-errors">{errorsDuration}</div> */}
                                 </div>
@@ -311,6 +339,7 @@ const ActivityForm = () => {
 
                                 <div className="sport-dropdown">
                                     <select className="sport-dropdown" value={sport} onChange={handleSelect} >
+                                        {/* {console.log(sport)} */}
                                         <option value='run' onChange={ e => setSport(e.target.value)}>Run</option>
                                         <option value='inline' onChange={ e => setSport(e.target.value)}>Inline Skating</option>
                                         <option value='bike' onChange={ e => setSport(e.target.value)}>Bike Ride</option>
@@ -373,7 +402,6 @@ const ActivityForm = () => {
             </form>
             <div className="cancel-delete-buttons">
                 <button className="cancel-edit-activity" onClick={cancelButton}>Cancel</button>
-                
                 <div className="delete-button">
                     {renderDelete()}
                 </div>
