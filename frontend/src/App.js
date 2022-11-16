@@ -11,7 +11,6 @@ import ActivityIndexPage from "./components/ActivityIndexPage";
 import ActivityShowPage from "./components/ActivityShowPage";
 import ActivityForm from "./components/EditActivityForm";
 import Footer from "./components/Footer/Footer";
-import NewActivityForm from "./components/NewActivityForm";
 
 
 // <UserIndexPage />

@@ -25,9 +25,6 @@ const ActivityForm = () => {
         date.getMinutes()
     )
 
-    // if (date.getHours() > 12 && date.getHours() < 17) {
-    //     console.log('Its the afternoon')
-    // }
 
     const titler = (hour, sport) => {
         if (sport !== 'run') {
@@ -54,8 +51,7 @@ const ActivityForm = () => {
         }
 
     }
-    // const iso = currentTime.toISOString()
-    // console.log(`this be current time ${currentTime}, this be ISO ${iso}`)
+
     useEffect(()=> {
         if (activityId) {
             dispatch(fetchActivity(activityId))
@@ -67,7 +63,6 @@ const ActivityForm = () => {
     useEffect(()=> {
 
         if (activity){
-            console.log(activity.sport)
         
             setTitle(activity.title)
             setDescription(activity.description)
@@ -110,13 +105,14 @@ const ActivityForm = () => {
 
     const [athleteId, setAthleteId] = useState(currentUser.id)
     const [sport, setSport]=useState('run')
+    const [startTime, setStartTime] = useState(new Date().toISOString().slice(0, -5))
+    // const [dateObject, setDateObject] = (new Date(startTime))
     const [title, setTitle] = useState(titler(date.getHours()), sport)
     const [description, setDescription]=useState('')
     const [distance, setDistance]=useState('')
     const [hours, setHours]=useState('')
     const [minutes, setMinutes]=useState('')
     const [seconds, setSeconds]=useState('')
-    let [startTime, setStartTime] = useState(new Date().toISOString().slice(0, -5))
     const [hr, setHr]=useState('')
     const [intensity, setIntensity]=useState(2)
     const [pnotes, setPnotes]=useState('')
@@ -130,14 +126,15 @@ const ActivityForm = () => {
 
     useEffect(() => {
         if(!activity){
-            setTitle(titler(date.getHours(), sport))
+            const currentHour = new Date(startTime).getHours()
+            setTitle(titler(currentHour, sport))
+
         }
 
-    }, [sport])
+    }, [sport, startTime])
 
     if (activity && currentUser && 
         currentUser.id !== activity.athleteId) {
-        // debugger
             return <h1 className="Errors">You can't edit someone else activity silly!</h1> 
     } 
     
@@ -179,10 +176,8 @@ const ActivityForm = () => {
     }
     const handleClick = e => {
         e.preventDefault();
-        console.log(startTime)
         startTime = startTime.split('T').join(' ') //.concat('.000Z')
-        // console.log(startTime.hh)
-        // debugger
+
 
         const activity = { 
                 athleteId,
@@ -316,7 +311,6 @@ const ActivityForm = () => {
 
                                 <div className="sport-dropdown">
                                     <select className="sport-dropdown" value={sport} onChange={handleSelect} >
-                                        {/* {console.log(sport)} */}
                                         <option value='run' onChange={ e => setSport(e.target.value)}>Run</option>
                                         <option value='inline' onChange={ e => setSport(e.target.value)}>Inline Skating</option>
                                         <option value='bike' onChange={ e => setSport(e.target.value)}>Bike Ride</option>
