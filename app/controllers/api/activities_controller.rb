@@ -6,12 +6,12 @@ class Api::ActivitiesController < ApplicationController
         render :index
         # if params[:user_id] != nil
         #     @activities.athlete_id = params[athlete_id: user_id: :user_id]
-        #     debugger
+        #   
         #     @activities = Activity.where(athlete_id: params[@activity.athlete_id])
         #     # render :index
         # else
         #     #@activities = Activity.all
-        #     #debugger
+        #    
         #     # render :
         # end
         #.order('desc') 
@@ -57,10 +57,10 @@ class Api::ActivitiesController < ApplicationController
     end
 
     def update
-        # debugger
+        
         @activity = Activity.find(params[:id])
         if @activity.athlete_id === current_user.id && @activity.update(activity_params)
-            # debugger
+            
             render :show
         else
             render json: { errors: @activity.errors.full_messages, status: :unprocessable_entity }

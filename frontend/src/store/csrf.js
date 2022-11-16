@@ -1,9 +1,7 @@
 async function csrfFetch(url, options = {}){
-    // debugger
     options.method = options.method || "GET";
 
     options.headers = options.headers || {};
-    // debugger
     if (options.method.toUpperCase() !== "GET") {
     if (!options.headers["Content-Type"] && !(options.body instanceof FormData)) {
         options.headers["Content-Type"] = "application/json";
@@ -16,10 +14,8 @@ async function csrfFetch(url, options = {}){
     //     options.headers['X-CSRF-Token'] = sessionStorage.getItem('X-CSRF-Token'); 
     // } 
     const res = await fetch(url, options);
-    // debugger
 
     if (res.status >= 400) throw res;
-    // debugger
     return res
 }
 

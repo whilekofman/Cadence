@@ -10,7 +10,6 @@ import { ActivityEditButton, ActivityEditLink } from "./ActivityEditButton";
 const ActivityShowPage = () => {
     const { activityId } = useParams();
     const activity = useSelector(getActivity(activityId))
-    // debugger
     const currentUser = useSelector(getSession)
     const dispatch = useDispatch()
 
@@ -55,11 +54,9 @@ const ActivityShowPage = () => {
     
     const editButton = !currentUser || currentUser.id !== athleteId ?
        '' :  <ActivityEditButton actId={activityId} />
-    // debugger
 
     const profilePicture = athleteProfilePicture ? athleteProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg"
     const setDisplayDescription = (desc) => { 
-        // debugger
         if (!desc && currentUser && (currentUser.id === athleteId)) {
             
             return <div className='add-description'>

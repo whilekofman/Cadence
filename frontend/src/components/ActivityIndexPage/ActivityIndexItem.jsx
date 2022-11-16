@@ -38,7 +38,6 @@ const ActivityIndexItem = ( { activity } ) => {
     //     }
     // }, [])
     // const userAvitar = athleteProfilePicture ? <img src={athleteProfilePicture} />  :  <i className="fa-solid fa-user"></i>
-    // debugger
     const displayTime = new Date(startTime).toLocaleString('en-US', {timeZone: 'UTC'});
 
     // if (athleteProfilePicture) 
@@ -80,7 +79,6 @@ const ActivityIndexItem = ( { activity } ) => {
         
             ( (distance / ( timeInSeconds / 3600 ) * 100 ) / 100 ).toFixed(2) 
             
-        // debugger
         return speed
     }
 

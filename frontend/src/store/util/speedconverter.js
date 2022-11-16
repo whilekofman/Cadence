@@ -24,6 +24,5 @@
         
             ( (distance / ( timeInSeconds / 3600 ) * 100 ) / 100 ).toFixed(2) 
             
-        // debugger
         return speed
     }
