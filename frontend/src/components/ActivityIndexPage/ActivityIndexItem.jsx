@@ -26,6 +26,7 @@ const ActivityIndexItem = ( { activity } ) => {
         
     } = activity
     const [userAvitar, setUserAvitar] = useState(athleteProfilePicture ? athleteProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
+    
 
     // if (athleteProfilePicture){
     //     setUserAvitar(<img src={athleteProfilePicture} />)
@@ -91,9 +92,9 @@ const ActivityIndexItem = ( { activity } ) => {
 
             <div className='top-bar'>
                 <div className="athlete-name-activity">
-                    <div className="profile-pic">
+                    <div className="profile-pic-div">
                         {/* <i className="fa-solid fa-user"></i> */}
-                        <img src={userAvitar} />
+                        <img className="profile-pic" src={userAvitar} />
                     </div>
                     <div className="name">
                         {fname} {lname}<br />

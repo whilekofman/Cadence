@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
@@ -8,7 +9,6 @@ import { ActivityEditButton, ActivityEditLink } from "./ActivityEditButton";
 
 const ActivityShowPage = () => {
     const { activityId } = useParams();
-
     const activity = useSelector(getActivity(activityId))
     // debugger
     const currentUser = useSelector(getSession)
@@ -19,9 +19,12 @@ const ActivityShowPage = () => {
 
     }, [dispatch, activityId] )
 
-    if (!activity) {
-        return null
-    }
+    // useEffect(() => {
+        if (!activity) {
+            return null
+        }
+
+
     
     const {
         id,
@@ -37,7 +40,8 @@ const ActivityShowPage = () => {
         minutes,
         seconds,
         hr,
-        speed
+        speed,
+        athleteProfilePicture
         // intensity,
         // pnotes,
         // tags,
@@ -46,6 +50,8 @@ const ActivityShowPage = () => {
     } = activity
 // (<button className="edit-activity-button"><Link to={editPath}>Edit</Link></button>)
     // const editPath = `/activities/${activityId}/edit`
+    // const [userAvitar, setUserAvitar] = useState(athleteProfilePicture ? athleteProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
+
     
     const editButton = !currentUser || currentUser.id !== athleteId ?
        '' :  <ActivityEditButton actId={activityId} />
@@ -67,7 +73,9 @@ const ActivityShowPage = () => {
     const [speedType, append] = sport === 'run' ? ['Pace', ' /mi'] : ['Speed', ' mi/h']
     
     return ( 
+        
         <div className='activity-show'>
+            {/* <img src={userAvitar} alt="help me please" /> */}
             <div className='activity-show-box'>
                 <div className="topbar">
                     <div className="athlete-name">{fname} {lname}</div>
