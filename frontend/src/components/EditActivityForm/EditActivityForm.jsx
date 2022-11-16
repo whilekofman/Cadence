@@ -188,10 +188,14 @@ const ActivityForm = () => {
         // startTime = startTime.split('T').join(' ') //.concat('.000Z')
         // console.log(startTime.hh)
         // debugger
-        // if (distance === 0) {
-        //     setErrors(['Distance can not be zero, sitting still is not an activity'])
-        //     return
-        // }
+        if (distance === 0) {
+            setErrors(['Distance can not be zero, sitting still is not an activity'])
+            return
+        }
+        if (hours + minutes + seconds === 0){
+            setErrors(['Your activity must take at least some time'])
+            return
+        }
         // if (isNaN(hours)) {
         //     setHours(0)
         // }
@@ -199,7 +203,6 @@ const ActivityForm = () => {
         //     setMinutes(0)
         // }
         // if (isNaN(seconds)) setSeconds((sec) => sec = 0)
-        debugger
 
         const activity = { 
                 athleteId,
@@ -240,7 +243,6 @@ const ActivityForm = () => {
 
     return ( 
         <div className="form-page">
-            {/* <h1>{errors}</h1> */}
             {/* <h1>{success}</h1> */}
             <form className="form-container">
                 <div className="title-container">
@@ -325,6 +327,7 @@ const ActivityForm = () => {
 
                         <div className="minute-errors">{errorsDuration}</div>
                     </div>
+                <p>{errors}</p>
 
                 </div>
 
@@ -396,7 +399,7 @@ const ActivityForm = () => {
 
                 </div>
                 <div className="action-button">
-                    <button type="submit"className='activity-action-button' onClick={handleClick}>{buttonText}</button>
+                    <button type="submit"className='activity-action-button' onClick={handleClick} disabled={hours+minutes+seconds === 0 || distance === 0}>{buttonText}</button>
                 </div>
 
             </form>
