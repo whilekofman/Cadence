@@ -61,10 +61,21 @@
 .profile-pic-show {
     height: 120px;
     width: 120px;
+    display: flex;
+    flex-direction: column;
     padding-top: 7px;
     padding-bottom: 7px;
-    border: 1px solid black;
+    margin-left: 10px;
+    /* border: 1px solid black; */
 
+}
+
+.profile-picture-image {
+    height: 120px;
+    width: auto;
+    border-radius: 50%;
+    /* justify-content: center; */
+    /* align-items: center; */
 }
 
 .activity-start{

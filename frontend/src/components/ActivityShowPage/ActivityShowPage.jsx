@@ -20,9 +20,9 @@ const ActivityShowPage = () => {
     }, [dispatch, activityId] )
 
     // useEffect(() => {
-        if (!activity) {
-            return null
-        }
+    if (!activity) {
+        return null
+    }
 
 
     
@@ -57,6 +57,7 @@ const ActivityShowPage = () => {
        '' :  <ActivityEditButton actId={activityId} />
     // debugger
 
+    const profilePicture = athleteProfilePicture ? athleteProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg"
     const setDisplayDescription = (desc) => { 
         // debugger
         if (!desc && currentUser && (currentUser.id === athleteId)) {
@@ -75,7 +76,6 @@ const ActivityShowPage = () => {
     return ( 
         
         <div className='activity-show'>
-            {/* <img src={userAvitar} alt="help me please" /> */}
             <div className='activity-show-box'>
                 <div className="topbar">
                     <div className="athlete-name">{fname} {lname}</div>
@@ -84,15 +84,20 @@ const ActivityShowPage = () => {
                 </div>
                 <div className="topbox">
                     <div className="title-box-left">
-                        <div className="profile-pic-show"></div>
+                        
+                        <div className="profile-pic-show">
+                            <img className="profile-picture-image" src={profilePicture} alt="help me please" />
+                        </div>
                             <div className="inner-title-box">
                                 <div className="activity-start">
                                     {new Date (startTime).toLocaleString('en-US', {timeZone: 'UTC'})}
-                                <div className="activity-title">{title}</div>
+                                <div className="activity-title">
+                                    {title}
+                                </div>
                                 {setDisplayDescription(description)}
+                                </div>
                             </div>
                         </div>
-                    </div>
                     <div className="details-box-right">
                         <div className="distance-show-box">
                             <div className="distance-show-value">
