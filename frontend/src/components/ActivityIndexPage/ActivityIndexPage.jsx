@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { fetchActivities, getActivities } from "../../store/activities";
+import { fetchComments } from "../../store/comments";
 import { getSession } from "../../store/session";
 // import { getUsers } from "../../store/users";
 import ActivityIndexItem from "./ActivityIndexItem";
@@ -19,6 +20,8 @@ const ActivityIndexPage = () => {
 
     useEffect(() => {
         dispatch(fetchActivities())
+        dispatch(fetchComments())
+        
     }, [])
 
     if (!currentUser){

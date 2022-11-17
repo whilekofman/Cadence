@@ -10,7 +10,7 @@ const ActivityForm = () => {
     const { activityId } = useParams();
     const activity = useSelector(getActivity(activityId))
     const location = useLocation()
-    const currentUser = useSelector(getSession)
+    const currentUser = useSelector(getSession) 
     const history = useHistory()
     const dispatch = useDispatch()
 

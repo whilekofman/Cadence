@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 const ActivityIndexItem = ( { activity } ) => {
 
 
+
     const {
         id,
         fname,
@@ -25,6 +26,8 @@ const ActivityIndexItem = ( { activity } ) => {
 
         
     } = activity
+
+    const [showNewCommentBox, setShowNewCommentBox] = ('do-not-show-new-comment')
     const [userAvitar, setUserAvitar] = useState(athleteProfilePicture ? athleteProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
     
 
@@ -81,6 +84,10 @@ const ActivityIndexItem = ( { activity } ) => {
             
         return speed
     }
+    const openCommentBox = e => {
+        e.preventDefault()
+        setShowNewCommentBox('show-new-comment')
+    }
 
 
 
@@ -123,6 +130,16 @@ const ActivityIndexItem = ( { activity } ) => {
                 <div className="time">
                     time <br />
                     {durationConvert( { hours, minutes, seconds } )}
+                </div>
+                
+             </div>
+             <div className="comment">
+                <button onClick={openCommentBox}><div className="material-symbols-outlined">
+                    add_comment
+                </div>
+                </button>
+                <div className="showNewCommentBox">
+                    
                 </div>
              </div>
             

@@ -130,3 +130,11 @@
     width: 40px;
     height: 40px;
 }
+
+.comment{
+    justify-content: flex;
+    flex-direction: column;
+    justify-content: right;
+}
+
+ 
