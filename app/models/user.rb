@@ -29,7 +29,8 @@ class User < ApplicationRecord
 
   has_many :activities, 
     class_name: :Activity,
-    foreign_key: :athlete_id 
+    foreign_key: :athlete_id, 
+    dependant: :destroy
   
   
   def self.find_by_credentials(credential, password)
