@@ -18,7 +18,7 @@
 #  updated_at  :datetime         not null
 #  description :text
 #  purpose     :integer
-#    :date
+#  start_time  :datetime
 #
 class Activity < ApplicationRecord
   validates :sport, inclusion: { in: ['run', 'bike', 'inline', 'ebike'] } 
@@ -36,6 +36,9 @@ class Activity < ApplicationRecord
 
   belongs_to :athlete,
     class_name: :User
+
+  has_many :comments,
+    class_name: :Comment
 
   def fname
     return athlete.fname

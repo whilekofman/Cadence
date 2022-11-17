@@ -6,7 +6,6 @@
 #  fname           :string           not null
 #  lname           :string           not null
 #  email           :string           not null
-#  weight          :float
 #  password_digest :string           not null
 #  session_token   :string           not null
 #  created_at      :datetime         not null
