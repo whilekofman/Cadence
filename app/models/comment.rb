@@ -10,6 +10,10 @@
 #  updated_at  :datetime         not null
 #
 class Comment < ApplicationRecord
-  belongs_to :author
+  validates :author_id, :activity_id, :body, presence: true
+
+  belongs_to :author,
+    class_name: :User
+
   belongs_to :activity
 end

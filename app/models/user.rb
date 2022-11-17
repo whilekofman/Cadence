@@ -31,6 +31,12 @@ class User < ApplicationRecord
     class_name: :Activity,
     foreign_key: :athlete_id, 
     dependent: :destroy
+
+  has_many :comments,
+    class_name: :Comment,
+    foreign_key: :author_id, 
+    dependent: :destroy
+
   
   
   def self.find_by_credentials(credential, password)

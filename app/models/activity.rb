@@ -38,7 +38,8 @@ class Activity < ApplicationRecord
     class_name: :User
 
   has_many :comments,
-    class_name: :Comment
+    class_name: :Comment,
+    dependent: :destroy
 
   def fname
     return athlete.fname
