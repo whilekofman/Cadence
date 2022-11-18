@@ -4,7 +4,6 @@ import csrfFetch from "./csrf"
 export const RETRIEVE_COMMENTS = 'comments/RETRIEVE_COMMENTS'
 export const RETRIEVE_COMMENT = 'comment/RETRIEVE_COMMENT'
 export const REMOVE_COMMENT = 'comment/REMOVE_COMMENT'
-export const CLEAR_COMMENT = 'comment/CLEAR_COMMENT'
 
 export const retrieveComments = comments => ({
     type: RETRIEVE_COMMENTS,
@@ -52,6 +51,7 @@ export const fetchComment = id => async dispatch => {
 }
 
 export const newComment = (comment) => async dispatch => {
+    debugger
     const res = await csrfFetch('/api/comments', {
         method: 'POST',
         body: JSON.stringify(comment),
@@ -59,8 +59,9 @@ export const newComment = (comment) => async dispatch => {
             'Content-Type' : 'application/json'
         }
     })
+    
     const data = await res.json()
-    debugger
+    console.log(data)
     dispatch(retrieveComment(data))
     
 
@@ -97,7 +98,7 @@ const commentReducer = ( state = {}, action ) => {
         case RETRIEVE_COMMENTS:
             nextState = { ...nextState, ...action.comments }
             return { ...nextState } 
-        case RETRIEVE_COMMENTS:
+        case RETRIEVE_COMMENT:
             nextState[action.comment.id] = action.comment
             return { ...nextState }
         case REMOVE_COMMENT:
