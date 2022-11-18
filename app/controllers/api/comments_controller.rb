@@ -14,6 +14,7 @@ class Api::CommentsController < ApplicationController
   def create
     # @activity = Activity.find(params[:activity_id])
     @comment = Comment.new(comment_params)
+    debugger
     if @comment.save
       render "api/activites/show"#json: {success: "comment saved"}
     else
@@ -44,7 +45,6 @@ class Api::CommentsController < ApplicationController
   private 
 
   def comment_params
-    params.require(:comment).permit(:id, :body)
-    #, :author_id, :video_id)
+    params.require(:comment).permit(:id, :body, :author_id, :activity_id)
   end
 end
