@@ -5,7 +5,7 @@ import * as commentActions from "../../store/comments"
 const CommentForm = ({ activity, author }) => {
     const dispatch = useDispatch()
     const [body, setBody] = useState('')
-    console.log(activity, author)
+    console.log({activity}, {author})
     // const userId = user.id
     const hanldeCommentSubmit = e => {
         e.preventDefault();
