@@ -139,7 +139,7 @@ const ActivityIndexItem = ( { activity } ) => {
                 </button>
                 {showCommentBox && 
                     <div className={showNewCommentBox}>
-                            <CommentForm activity={id} author={currentUser.id} />
+                            <CommentForm activityId={id} authorId={currentUser.id} />
                     </div>
                 }
              </div>

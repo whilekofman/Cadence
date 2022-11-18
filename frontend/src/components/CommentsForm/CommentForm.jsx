@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as commentActions from "../../store/comments"
 
-const CommentForm = ({ activity, author }) => {
+const CommentForm = ({ activityId, authorId }) => {
     const dispatch = useDispatch()
     const [body, setBody] = useState('')
-    console.log({activity}, {author})
+    // const activityId = activity
+    console.log(activityId, authorId)
     // const userId = user.id
     const hanldeCommentSubmit = e => {
         e.preventDefault();
@@ -13,8 +14,8 @@ const CommentForm = ({ activity, author }) => {
             
 
             const comment = {
-                activity,
-                author,
+                activityId,
+                authorId,
                 body
             } 
             console.log(comment)
