@@ -12,10 +12,10 @@ class Api::CommentsController < ApplicationController
 #   end
 
   def create
-    @activity = Activity.find(params[:activity_id])
+    # @activity = Activity.find(params[:activity_id])
     @comment = Comment.new(comment_params)
     if @comment.save
-      render "api/activites/show"#json: {success: "comment saved"}
+      # render "api/activites/show"#json: {success: "comment saved"}
     else
       render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
     end

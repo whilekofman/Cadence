@@ -60,6 +60,7 @@ export const newComment = (comment) => async dispatch => {
         }
     })
     const data = await res.json()
+    debugger
     dispatch(retrieveComment(data))
     
 

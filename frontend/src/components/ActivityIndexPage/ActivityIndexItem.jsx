@@ -5,11 +5,14 @@ import bikelogo from '../../assets/logo/bikelogo.png'
 import skatelogo from '../../assets/logo/skatelogo.png'
 import runlogo from '../../assets/logo/runlogo.png'
 import { useEffect, useState } from "react";
+import CommentForm from "../CommentsForm/CommentForm";
+import { getSession } from "../../store/session";
+import { useSelector } from "react-redux";
 
 const ActivityIndexItem = ( { activity } ) => {
 
 
-
+    const currentUser = useSelector(getSession)
     const {
         id,
         fname,
@@ -27,26 +30,15 @@ const ActivityIndexItem = ( { activity } ) => {
         
     } = activity
 
-    const [showNewCommentBox, setShowNewCommentBox] = ('do-not-show-new-comment')
+    const [showNewCommentBox, setShowNewCommentBox] = useState('do-not-show-new-comment')
+    const [showCommentBox, setShowCommentBox] = useState(false)
     const [userAvitar, setUserAvitar] = useState(athleteProfilePicture ? athleteProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
     
 
-    // if (athleteProfilePicture){
-    //     setUserAvitar(<img src={athleteProfilePicture} />)
-    // }
 
-    // useEffect(()=> {
-    //     if (athleteProfilePicture){
-    //         setUserAvitar(<img src={athleteProfilePicture} />)
-    //     }
-    // }, [])
-    // const userAvitar = athleteProfilePicture ? <img src={athleteProfilePicture} />  :  <i className="fa-solid fa-user"></i>
     const displayTime = new Date(startTime).toLocaleString('en-US', {timeZone: 'UTC'});
 
-    // if (athleteProfilePicture) 
-        // {setUserAvitar(<img src={athleteProfilePicture} />)
-// }
-    
+
     
     const durationConvert = ( { hours, minutes, seconds } ) => {
         if ( hours > 0 ) {
@@ -85,8 +77,14 @@ const ActivityIndexItem = ( { activity } ) => {
         return speed
     }
     const openCommentBox = e => {
-        e.preventDefault()
-        setShowNewCommentBox('show-new-comment')
+        // e.preventDefault()
+        // setShowNewCommentBox('show-new-comment')
+        console.log(showCommentBox)
+
+        setShowCommentBox(value => !value)
+        console.log(showCommentBox)
+        
+
     }
 
 
@@ -134,13 +132,16 @@ const ActivityIndexItem = ( { activity } ) => {
                 
              </div>
              <div className="comment">
-                <button onClick={openCommentBox}><div className="material-symbols-outlined">
+                <button onClick={openCommentBox} >
+                    <div className="material-symbols-outlined">
                     add_comment
                 </div>
                 </button>
-                <div className="showNewCommentBox">
-                    
-                </div>
+                {showCommentBox && 
+                    <div className={showNewCommentBox}>
+                            <CommentForm activity={id} user={currentUser.id} />
+                    </div>
+                }
              </div>
             
 

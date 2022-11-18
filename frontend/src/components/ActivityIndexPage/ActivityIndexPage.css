@@ -137,4 +137,11 @@
     justify-content: right;
 }
 
- 
+ .comment-field {
+    justify-content: center;
+    width: 500px;
+ }
+
+ .comment-input {
+     width: 500px;
+ }
