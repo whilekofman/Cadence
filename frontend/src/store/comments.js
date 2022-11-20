@@ -41,8 +41,8 @@ export const deleteComment = commentId => async dispatch => {
     dispatch(fetchComments)
 }
 
-export const fetchComment = id => async dispatch => {
-    const res = await csrfFetch(`/api/comments/${id}`)
+export const fetchComment = commentId => async dispatch => {
+    const res = await csrfFetch(`/api/comments/${commentId}`)
     if (res.ok){
         const data = await res.json()
         dispatch(retrieveComment(data))
