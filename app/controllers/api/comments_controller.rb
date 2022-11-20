@@ -17,7 +17,7 @@ class Api::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     # debugger
     if @comment.save
-      render json: {success: "comment saved"}
+      render :show#json: {success: "comment saved"}
     else
       render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
     end
@@ -26,8 +26,9 @@ class Api::CommentsController < ApplicationController
   def update
         @activity = Activity.find(params[:activity_id])
         @comment = Comment.find(params[:comment_id])
+        debugger
         if @comment.save
-            render "api/activities/show"
+            render :show
         else
             render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
         end

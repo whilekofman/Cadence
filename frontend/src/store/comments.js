@@ -27,7 +27,7 @@ export const getComments = ({ comments }) => comments ? Object.values(comments) 
 export const getComment = commentId => ({ comments }) => comments ? comments[commentId] : null
 
 
-export const fetchComments = () => async dispatch => {
+export const fetchComments = (activityId) => async dispatch => {
     const res = await csrfFetch(`/api/comments/${activityId}`)
     const data = await res.json();
     dispatch(retrieveComments(data))
@@ -100,6 +100,7 @@ const commentReducer = ( state = {}, action ) => {
             return { ...nextState } 
         case RETRIEVE_COMMENT:
             nextState[action.comment.id] = action.comment
+            debugger
             return { ...nextState }
         case REMOVE_COMMENT:
             delete nextState[action.commentId]
