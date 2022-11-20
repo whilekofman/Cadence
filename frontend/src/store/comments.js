@@ -28,7 +28,7 @@ export const getComment = commentId => ({ comments }) => comments ? comments[com
 
 
 export const fetchComments = () => async dispatch => {
-    const res = await csrfFetch('/api/comments')
+    const res = await csrfFetch(`/api/comments/${activityId}`)
     const data = await res.json();
     dispatch(retrieveComments(data))
 }

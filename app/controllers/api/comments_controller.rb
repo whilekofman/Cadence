@@ -3,6 +3,7 @@ class Api::CommentsController < ApplicationController
 
   def index
     @comments = Comment.includes(users: [:fname, :lname, :profile_picture]).where(activity_id: params[:activity_id])
+    debugger
     render :index
   end
 
