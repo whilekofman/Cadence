@@ -1,5 +1,5 @@
 
-import Comment from "./Comment.jsx"
+import Comment from "./CommentIndex.jsx"
 import './Comment.css'
 
 export default Comment

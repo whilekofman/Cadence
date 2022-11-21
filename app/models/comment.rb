@@ -16,4 +16,17 @@ class Comment < ApplicationRecord
     class_name: :User
 
   belongs_to :activity
+
+  def fname
+    return author.fname
+  end
+
+  def lname
+    return author.lname
+  end
+
+  def author_profile_picture
+    return author.profile_picture.url
+  end
+ 
 end

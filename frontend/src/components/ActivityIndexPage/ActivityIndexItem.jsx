@@ -8,8 +8,7 @@ import { useEffect, useState } from "react";
 import CommentForm from "../CommentsForm/CommentForm";
 import { getSession } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchComments } from "../../store/comments";
-
+import { fetchComments, getComments } from "../../store/comments";
 
 const ActivityIndexItem = ( { activity } ) => {
 
@@ -31,14 +30,31 @@ const ActivityIndexItem = ( { activity } ) => {
 
         
     } = activity
+    const comments = useSelector(getComments) 
+    console.log(comments)
+    const commentCount = comments.length
+
+    const actCommentCount = activityId => {
+        let count = 0
+        const actComment = []
+        comments.forEach((comment) =>{ if(comment.activityId === activityId){
+            count++
+            actComment.push(comment) 
+        }})
+        return {count, actComment}
+    }
+
     const dispatch = useDispatch()
+
     useEffect(()=> {
         dispatch(fetchComments(id))
+        
     }, [])
 
 
     const [showNewCommentBox, setShowNewCommentBox] = useState('do-not-show-new-comment')
     const [showCommentBox, setShowCommentBox] = useState(false)
+    const [showComments, setShowComments] = useState(false)
     const [userAvitar, setUserAvitar] = useState(athleteProfilePicture ? athleteProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
     
 
@@ -84,14 +100,19 @@ const ActivityIndexItem = ( { activity } ) => {
         return speed
     }
     const openCommentBox = e => {
-        // e.preventDefault()
+        e.preventDefault()
         // setShowNewCommentBox('show-new-comment')
-        console.log(showCommentBox)
+        // console.log(showCommentBox)
 
         setShowCommentBox(value => !value)
         console.log(showCommentBox)
         
 
+    }
+    const openComments = e =>{
+        e.preventDefault()
+        setShowComments(flip => !flip)
+        
     }
 
 
@@ -144,6 +165,14 @@ const ActivityIndexItem = ( { activity } ) => {
                     add_comment
                 </div>
                 </button>
+                
+                {/* <div className="comment-count-index">{`Comments ${actCommentCount(id).count}`}</div> */}
+                <Link className="open-comments" onClick={openComments}><div className="comment-count-index">{`Comments ${actCommentCount(id).count}`}</div></Link>
+                {showComments && 
+                    <div className="comment-count-index">{`Comments ${JSON.stringify(actCommentCount(id).actComment)}`}</div>
+                // <div className="comment-count-index">{`Comments ${actCommentCount(id).actComment['body']}`}</div>
+                }
+
                 {showCommentBox && 
                     <div className={showNewCommentBox}>
                             <CommentForm activityId={id} authorId={currentUser.id} />
