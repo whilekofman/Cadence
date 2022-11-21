@@ -9,6 +9,7 @@ import CommentForm from "../CommentsForm/CommentForm";
 import { getSession } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchComments, getComments } from "../../store/comments";
+import CommentIndex from "../Comment/CommentIndex";
 
 const ActivityIndexItem = ( { activity } ) => {
 
@@ -31,13 +32,11 @@ const ActivityIndexItem = ( { activity } ) => {
         
     } = activity
     const comments = useSelector(getComments) 
-    console.log(comments)
-    const commentCount = comments.length
-
+    
     const actCommentCount = activityId => {
         let count = 0
         const actComment = []
-        comments.forEach((comment) =>{ if(comment.activityId === activityId){
+        comments.forEach((comment) =>{ if (comment.activityId === activityId){
             count++
             actComment.push(comment) 
         }})
@@ -111,7 +110,7 @@ const ActivityIndexItem = ( { activity } ) => {
     }
     const openComments = e =>{
         e.preventDefault()
-        setShowComments(flip => !flip)
+        setShowComments(show => !show)
         
     }
 
@@ -167,10 +166,9 @@ const ActivityIndexItem = ( { activity } ) => {
                 </button>
                 
                 {/* <div className="comment-count-index">{`Comments ${actCommentCount(id).count}`}</div> */}
-                <Link className="open-comments" onClick={openComments}><div className="comment-count-index">{`Comments ${actCommentCount(id).count}`}</div></Link>
+                <Link className="open-comments" to="" onClick={openComments}><div className="comment-count-index">{`Comments ${actCommentCount(id).count}`}</div></Link>
                 {showComments && 
-                    <div className="comment-count-index">{`Comments ${JSON.stringify(actCommentCount(id).actComment)}`}</div>
-                // <div className="comment-count-index">{`Comments ${actCommentCount(id).actComment['body']}`}</div>
+                    <CommentIndex comments={comments} activity={id} />
                 }
 
                 {showCommentBox && 
