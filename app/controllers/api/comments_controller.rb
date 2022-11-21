@@ -6,19 +6,21 @@ class Api::CommentsController < ApplicationController
     @comments = Comment.where(activity_id: params[:activity_id])
     
     # @comments = Comment.all
-    debugger
+    # debugger
     render :index
   end
 
   def show
-    @comments = Comment.find(activity_id: params[:activity_id])
+    @comments = Comment.find(params[:id]) 
+    debugger
+    # Comment.find(activity_id: params[:activity_id])
     render :show
   end
 
   def create
     # @activity = Activity.find(params[:activity_id])
     @comment = Comment.new(comment_params)
-    debugger
+    # debugger
     if @comment.save
       render :show#json: {success: "comment saved"}
     else

@@ -7,7 +7,9 @@ import runlogo from '../../assets/logo/runlogo.png'
 import { useEffect, useState } from "react";
 import CommentForm from "../CommentsForm/CommentForm";
 import { getSession } from "../../store/session";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchComments } from "../../store/comments";
+
 
 const ActivityIndexItem = ( { activity } ) => {
 
@@ -29,6 +31,11 @@ const ActivityIndexItem = ( { activity } ) => {
 
         
     } = activity
+    const dispatch = useDispatch()
+    useEffect(()=> {
+        dispatch(fetchComments(id))
+    }, [])
+
 
     const [showNewCommentBox, setShowNewCommentBox] = useState('do-not-show-new-comment')
     const [showCommentBox, setShowCommentBox] = useState(false)
