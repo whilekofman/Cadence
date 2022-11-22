@@ -8,9 +8,9 @@ Rails.application.routes.draw do
     
     resources :users, only: [:create, :index, :show] 
 
-    resources :activities, only: [:index, :show, :create, :update, :destroy] do 
-      resources :comments, only: [:activity_comments_index, :index]  
-    end
+    resources :activities, only: [:index, :show, :create, :update, :destroy]  
+      # resources :comments, only: [:activity_comments_index, :index]  
+    # end
     
     resources :comments, only: [:index, :create, :upddate, :destroy, :show]
     

@@ -19,9 +19,7 @@ class Api::CommentsController < ApplicationController
     # debugger
     render :index
   end
-  def activity_comments_index
-      @comments = Comment.where(activity_id: params[:activity_id])
-  end
+
 
   def show
     @comment = Comment.find_by(activity_id: params[:activity_id], id: params[:id])
