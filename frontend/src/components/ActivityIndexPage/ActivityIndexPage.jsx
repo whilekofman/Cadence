@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { fetchActivities, getActivities } from "../../store/activities";
-import { fetchComments } from "../../store/comments";
+import { fetchComments, getComments } from "../../store/comments";
 import { getSession } from "../../store/session";
 // import { getUsers } from "../../store/users";
 import ActivityIndexItem from "./ActivityIndexItem";
@@ -18,6 +18,14 @@ const ActivityIndexPage = () => {
 
     const currentUser = useSelector(getSession)
 
+    const comments = useSelector(getComments)
+
+
+    useEffect(()=> {
+        dispatch(fetchComments())
+        
+    }, [])
+
     useEffect(() => {
         dispatch(fetchActivities())
         
@@ -29,7 +37,8 @@ const ActivityIndexPage = () => {
         </>
     }
 
-    const activityListElements = activities.map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem activity={activity} /></div>)
+
+    const activityListElements = activities.map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem activity={activity} comments={comments}/></div>)
     
     return ( 
         <>

@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchComments, getComments } from "../../store/comments";
 import CommentIndex from "../Comment/CommentIndex";
 
-const ActivityIndexItem = ( { activity } ) => {
+const ActivityIndexItem = ( { activity, comments } ) => {
 
 
     const currentUser = useSelector(getSession)
@@ -31,28 +31,28 @@ const ActivityIndexItem = ( { activity } ) => {
 
         
     } = activity
-    const comments = useSelector(getComments)
-    console.log(comments) 
-    const filterdComments = comments.filter((comment) => 
-        comment.activityId === id
-        )
+    // const comments = useSelector(getComments)
+    // console.log(comments) 
+    // const filterdComments = comments.filter((comment) => 
+    //     comment.activityId === id
+    //     )
 
-    const actCommentCount = activityId => {
-        let count = 0
-        const actComment = []
-        comments.forEach((comment) =>{ if (comment.activityId === activityId){
-            count++
-            actComment.push(comment) 
-        }})
-        return {count, actComment}
-    }
+    // const actCommentCount = activityId => {
+    //     let count = 0
+    //     const actComment = []
+    //     comments.forEach((comment) =>{ if (comment.activityId === activityId){
+    //         count++
+    //         actComment.push(comment) 
+    //     }})
+    //     return {count, actComment}
+    // }
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
-    useEffect(()=> {
-        dispatch(fetchComments(id))
+    // useEffect(()=> {
+    //     dispatch(fetchComments(id))
         
-    }, [])
+    // }, [])
 
 
     const [showNewCommentBox, setShowNewCommentBox] = useState('do-not-show-new-comment')
@@ -170,10 +170,10 @@ const ActivityIndexItem = ( { activity } ) => {
                 </button>
                 
                 {/* <div className="comment-count-index">{`Comments ${actCommentCount(id).count}`}</div> */}
-                <Link className="open-comments" to="" onClick={openComments}><div className="comment-count-index">{`Comments ${actCommentCount(id).count}`}</div></Link>
+                {/* <Link className="open-comments" to="" onClick={openComments}><div className="comment-count-index">{`Comments ${actCommentCount(id).count}`}</div></Link>
                 {showComments && 
                     <CommentIndex comments={filterdComments} activity={id} />
-                }
+                } */}
 
                 {showCommentBox && 
                     <div className={showNewCommentBox}>

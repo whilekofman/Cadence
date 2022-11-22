@@ -22,7 +22,7 @@ class Api::CommentsController < ApplicationController
 
 
   def show
-    @comment = Comment.find_by(activity_id: params[:activity_id], id: params[:id])
+    @comment = Comment.find_by(activity_id:, id: params[:id])
     # @comment = Comment.find(params[:id]) 
     # Comment.find(activity_id: params[:activity_id])
     render :show
