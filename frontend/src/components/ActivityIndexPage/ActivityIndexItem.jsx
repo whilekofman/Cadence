@@ -31,21 +31,24 @@ const ActivityIndexItem = ( { activity, comments } ) => {
 
         
     } = activity
+    // console.log(comments)
     // const comments = useSelector(getComments)
     // console.log(comments) 
-    // const filterdComments = comments.filter((comment) => 
-    //     comment.activityId === id
-    //     )
+    const filterdComments = comments.filter((comment) => 
+        comment.activityId === id
+    )
 
-    // const actCommentCount = activityId => {
-    //     let count = 0
-    //     const actComment = []
-    //     comments.forEach((comment) =>{ if (comment.activityId === activityId){
-    //         count++
-    //         actComment.push(comment) 
-    //     }})
-    //     return {count, actComment}
-    // }
+    // TESTING
+    const actCommentCount = activityId => {
+        let count = 0
+        const actComment = []
+        comments.forEach((comment) =>{ if (comment.activityId === activityId){
+            count++
+            actComment.push(comment) 
+        }})
+        return {count, actComment}
+    }
+    //END
 
     // const dispatch = useDispatch()
 
@@ -170,10 +173,10 @@ const ActivityIndexItem = ( { activity, comments } ) => {
                 </button>
                 
                 {/* <div className="comment-count-index">{`Comments ${actCommentCount(id).count}`}</div> */}
-                {/* <Link className="open-comments" to="" onClick={openComments}><div className="comment-count-index">{`Comments ${actCommentCount(id).count}`}</div></Link>
+                <Link className="open-comments" to="" onClick={openComments}><div className="comment-count-index">{`${actCommentCount(id).count} Comments`}</div></Link>
                 {showComments && 
                     <CommentIndex comments={filterdComments} activity={id} />
-                } */}
+                }
 
                 {showCommentBox && 
                     <div className={showNewCommentBox}>
