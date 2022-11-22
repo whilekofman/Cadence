@@ -63,7 +63,6 @@ export const newComment = (comment) => async dispatch => {
     })
     
     const data = await res.json()
-    console.log(data)
     dispatch(retrieveComments(data))
 
     // dispatch(retrieveComment(data))

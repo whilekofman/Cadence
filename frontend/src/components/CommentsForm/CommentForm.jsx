@@ -6,7 +6,6 @@ const CommentForm = ({ activityId, authorId }) => {
     const dispatch = useDispatch()
     const [body, setBody] = useState('')
     // const activityId = activity
-    console.log(activityId, authorId)
     // const userId = user.id
     const hanldeCommentSubmit = e => {
         e.preventDefault();
@@ -18,7 +17,6 @@ const CommentForm = ({ activityId, authorId }) => {
                 authorId,
                 body
             } 
-            console.log(comment)
             dispatch(commentActions.newComment(comment))
 
         

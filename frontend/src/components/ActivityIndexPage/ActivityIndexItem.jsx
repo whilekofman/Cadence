@@ -27,7 +27,8 @@ const ActivityIndexItem = ( { activity, comments } ) => {
         hours,
         minutes,
         seconds,
-        athleteProfilePicture
+        athleteProfilePicture,
+        athleteId
 
         
     } = activity
@@ -111,7 +112,6 @@ const ActivityIndexItem = ( { activity, comments } ) => {
         // console.log(showCommentBox)
 
         setShowCommentBox(value => !value)
-        console.log(showCommentBox)
         
 
     }
@@ -121,6 +121,7 @@ const ActivityIndexItem = ( { activity, comments } ) => {
         
     }
 
+    // console.log(`ATHLETE ID ${athleteId}`)
 
 
     // { hours }: { minutes }: { seconds }
@@ -175,9 +176,9 @@ const ActivityIndexItem = ( { activity, comments } ) => {
                 {/* <div className="comment-count-index">{`Comments ${actCommentCount(id).count}`}</div> */}
                 <Link className="open-comments" to="" onClick={openComments}><div className="comment-count-index">{`${actCommentCount(id).count} Comments`}</div></Link>
                 {showComments && 
-                    <CommentIndex comments={filterdComments} activity={id} />
+                    <CommentIndex comments={filterdComments} athlete={athleteId} />
+                    
                 }
-
                 {showCommentBox && 
                     <div className={showNewCommentBox}>
                             <CommentForm activityId={id} authorId={currentUser.id} />

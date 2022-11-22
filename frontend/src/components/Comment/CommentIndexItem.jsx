@@ -1,11 +1,13 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { deleteComment } from "../../store/comments";
 import { getSession } from "../../store/session";
 
-const CommentIndexItem = ( { comment } ) => {
+const CommentIndexItem = ( { comment, athlete } ) => {
 
-    const currentUser = useSelector
-    (getSession)
-
+    const dispatch = useDispatch()
+    const currentUser = useSelector(getSession)
+    // console.log(athlete)
     const {
         id,
         fname,
@@ -17,6 +19,11 @@ const CommentIndexItem = ( { comment } ) => {
         
     } = comment
 
+    const handleDeleteComment = e => {
+        e.preventDefault()
+        dispatch(deleteComment(id))
+        
+    }
 
 
     return ( 
@@ -30,6 +37,11 @@ const CommentIndexItem = ( { comment } ) => {
                 </div>
                 <div className="comment-body">
                     {`${body}`}
+                </div>
+                <div className="delete">
+                    {athlete === authorId &&
+                        <Link onClick={handleDeleteComment} className="delete-comment=link"to="">Delete</Link>
+                    }
                 </div>
             </div>
         </div>

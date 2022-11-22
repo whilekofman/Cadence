@@ -1,5 +1,5 @@
 class Api::CommentsController < ApplicationController
-  wrap_parameters include: Comment.attribute_names + ['body', 'activityId', 'authorId' ]
+  wrap_parameters include: Comment.attribute_names + ['body', 'activityId', 'authorId', 'id' ]
 
   def index
     # @comments = Comment.all
@@ -41,7 +41,7 @@ class Api::CommentsController < ApplicationController
 
   def update
         @activity = Activity.find(params[:activity_id])
-        @comment = Comment.find(params[:comment_id])
+        @comment = Comment.find(params[:id])
         debugger
         if @comment.save
             render :show
@@ -51,7 +51,8 @@ class Api::CommentsController < ApplicationController
     end
 
     def destroy
-        @comment = Comment.find(params[:comment_id])
+        @comment = Comment.find(params[:id])
+        debugger
         if @comment
             @comment.destroy
             render json: { message: 'you did a delete'}
