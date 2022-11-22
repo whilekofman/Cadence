@@ -218,6 +218,7 @@ input[type=number] {
     padding-top: 6px;
     width: 515px;
     height: 105px;
+    resize: none;
     /* vert */
 
 }

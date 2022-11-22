@@ -66,7 +66,6 @@ export const newComment = (comment) => async dispatch => {
     dispatch(retrieveComments(data))
 
     // dispatch(retrieveComment(data))
-    debugger
     
 
 
@@ -101,11 +100,10 @@ const commentReducer = ( state = {}, action ) => {
     switch (action.type) {
         case RETRIEVE_COMMENTS:
             nextState = { ...nextState, ...action.comments }
-            return { ...nextState } 
+            // nextState = action.comments 
+            return nextState 
         case RETRIEVE_COMMENT:
-            debugger
-            nextState[action.comment.id] = action.comment
-            debugger
+            nextState[action.comment.id] = action.comment          
             return { ...nextState }
         case REMOVE_COMMENT:
             delete nextState[action.commentId]

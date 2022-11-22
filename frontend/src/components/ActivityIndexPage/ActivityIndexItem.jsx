@@ -31,8 +31,12 @@ const ActivityIndexItem = ( { activity } ) => {
 
         
     } = activity
-    const comments = useSelector(getComments) 
-    
+    const comments = useSelector(getComments)
+    console.log(comments) 
+    const filterdComments = comments.filter((comment) => 
+        comment.activityId === id
+        )
+
     const actCommentCount = activityId => {
         let count = 0
         const actComment = []
@@ -168,7 +172,7 @@ const ActivityIndexItem = ( { activity } ) => {
                 {/* <div className="comment-count-index">{`Comments ${actCommentCount(id).count}`}</div> */}
                 <Link className="open-comments" to="" onClick={openComments}><div className="comment-count-index">{`Comments ${actCommentCount(id).count}`}</div></Link>
                 {showComments && 
-                    <CommentIndex comments={comments} activity={id} />
+                    <CommentIndex comments={filterdComments} activity={id} />
                 }
 
                 {showCommentBox && 

@@ -2,17 +2,30 @@ class Api::CommentsController < ApplicationController
   wrap_parameters include: Comment.attribute_names + ['body', 'activityId', 'authorId' ]
 
   def index
+    # @comments = Comment.all
+
+    # if params[:one].present? 
+    #   @comments = Comment.where(activity_id: params[:activity_id])
+    #   debugger
+    # else
+    @comments = Comment.all
+    # end
     # @comments = Comment.includes(author: [:fname, :lname, :profile_picture]).where(activity_id: params[:activity_id])
-    @comments = Comment.where(activity_id: params[:activity_id])
+    # @comments_all = Comment.all
+    # # debugger
+    # @comments = Comment.where(activity_id: params[:activity_id])
     
     # @comments = Comment.all
     # debugger
     render :index
   end
+  def activity_comments_index
+      @comments = Comment.where(activity_id: params[:activity_id])
+  end
 
   def show
-    @comments = Comment.find(params[:id]) 
-    debugger
+    @comment = Comment.find_by(activity_id: params[:activity_id], id: params[:id])
+    # @comment = Comment.find(params[:id]) 
     # Comment.find(activity_id: params[:activity_id])
     render :show
   end
