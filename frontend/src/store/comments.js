@@ -91,10 +91,12 @@ export const updateComment = (comment) => async dispatch => {
 }
 
 
+const initialState = {
+    comments: []
+}
 
 
-
-const commentReducer = ( state = {}, action ) => {
+const commentReducer = ( state = initialState, action ) => {
     const nextState = { ...state };
     Object.freeze(state)
     switch (action.type) {
@@ -106,10 +108,20 @@ const commentReducer = ( state = {}, action ) => {
             nextState[action.comment.id] = action.comment;         
             return nextState;
         case REMOVE_COMMENT:
-            delete nextState[action.commentId];
-            debugger
+            delete nextState[action.payload];
             
-            return nextState;
+            // let filterList = nextState.comments.filter((comment) => {
+                
+            //     debugger
+            //     return comment.id !== action
+            // })
+            // console.log(filterList)
+            debugger
+            // return nextState
+            return nextState.comments.filter(comment => comment.id !== action.payload)
+            
+            // return nextState[action.commentId];
+            // return nextState
         default:
             return state;
     }
