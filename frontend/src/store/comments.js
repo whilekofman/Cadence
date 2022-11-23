@@ -39,7 +39,7 @@ export const deleteComment = commentId => async dispatch => {
         method: 'DELETE'
     })
     dispatch(removeComment(commentId))
-    dispatch(fetchComments())
+    // dispatch(fetchComments())
 }
 
 export const fetchComment = commentId => async dispatch => {
@@ -102,13 +102,16 @@ const commentReducer = ( state = initialState, action ) => {
     switch (action.type) {
         case RETRIEVE_COMMENTS:
             return { ...nextState, ...action.comments };
+            debugger
             // nextState = action.comments 
             // return nextState; 
         case RETRIEVE_COMMENT:
             nextState[action.comment.id] = action.comment;         
             return nextState;
         case REMOVE_COMMENT:
-            delete nextState[action.payload];
+            // delete nextState[action.commentId];
+
+            return action.commentId
             
             // let filterList = nextState.comments.filter((comment) => {
                 
@@ -116,9 +119,9 @@ const commentReducer = ( state = initialState, action ) => {
             //     return comment.id !== action
             // })
             // console.log(filterList)
-            debugger
+            // debugger
             // return nextState
-            return nextState.comments.filter(comment => comment.id !== action.payload)
+            return nextState.comments.filter(comment => comment.id !== action.commentId)
             
             // return nextState[action.commentId];
             // return nextState
