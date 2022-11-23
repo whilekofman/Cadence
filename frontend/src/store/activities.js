@@ -67,9 +67,6 @@ export const newActivity = (activity, history) => async dispatch => {
     const data = await res.json()
     dispatch(retrieveActivity(data))
     history.push(`/activities/${data.id}`)
-    
-
-
 }
  
 export const updateActivity = (activity, history) => async dispatch => {

@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import * as commentActions from "../../store/comments"
 
 const CommentForm = ({ activityId, authorId }) => {
     const dispatch = useDispatch()
     const [body, setBody] = useState('')
+    const [submitted, setSubmitted] = useState(false)
     // const activityId = activity
     // const userId = user.id
     const hanldeCommentSubmit = e => {
@@ -18,9 +19,19 @@ const CommentForm = ({ activityId, authorId }) => {
                 body
             } 
             dispatch(commentActions.newComment(comment))
+            dispatch(commentActions.fetchComments())
+
+            setBody('')
+            setSubmitted((val) => !val)
+            
 
         
     }
+
+    useEffect(()=> {
+        dispatch(commentActions.fetchComments())
+        
+    }, [submitted])
 
     return ( 
         <>

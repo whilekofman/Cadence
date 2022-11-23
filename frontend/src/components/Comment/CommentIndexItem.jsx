@@ -1,12 +1,14 @@
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { deleteComment } from "../../store/comments";
+import { deleteComment, fetchComments } from "../../store/comments";
 import { getSession } from "../../store/session";
 
-const CommentIndexItem = ( { comment, athlete } ) => {
+const CommentIndexItem = ( { comment, athlete, updater } ) => {
 
     const dispatch = useDispatch()
     const currentUser = useSelector(getSession)
+    const [deleted, setDeleted] = useState(false)
     // console.log(athlete)
     const {
         id,
@@ -18,12 +20,21 @@ const CommentIndexItem = ( { comment, athlete } ) => {
         authorId
         
     } = comment
-
+    // debugger
     const handleDeleteComment = e => {
         e.preventDefault()
+        // updateLength()
+        console.log('dlete')
         dispatch(deleteComment(id))
+        updater()
+        // setLengthComments((length) => length--)
+        // setDeleted((val) => !val)
         
     }
+
+    // useEffect(()=> {
+    //     dispatch(fetchComments())
+    // }, [deleted])
 
 
     return ( 
@@ -40,7 +51,7 @@ const CommentIndexItem = ( { comment, athlete } ) => {
                 </div>
                 <div className="delete">
                     {athlete === authorId &&
-                        <Link onClick={handleDeleteComment} className="delete-comment=link"to="">Delete</Link>
+                        <Link onClick={handleDeleteComment} className="delete-comment-link" to="">Delete</Link>
                     }
                 </div>
             </div>

@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchComments, getComments } from "../../store/comments";
 import CommentIndex from "../Comment/CommentIndex";
 
-const ActivityIndexItem = ( { activity, comments } ) => {
+const ActivityIndexItem = ( { activity, comments, updater } ) => {
 
 
     const currentUser = useSelector(getSession)
@@ -29,7 +29,6 @@ const ActivityIndexItem = ( { activity, comments } ) => {
         seconds,
         athleteProfilePicture,
         athleteId
-
         
     } = activity
     // console.log(comments)
@@ -38,7 +37,7 @@ const ActivityIndexItem = ( { activity, comments } ) => {
     const filterdComments = comments.filter((comment) => 
         comment.activityId === id
     )
-
+    
     // TESTING
     const actCommentCount = activityId => {
         let count = 0
@@ -176,7 +175,7 @@ const ActivityIndexItem = ( { activity, comments } ) => {
                 {/* <div className="comment-count-index">{`Comments ${actCommentCount(id).count}`}</div> */}
                 <Link className="open-comments" to="" onClick={openComments}><div className="comment-count-index">{`${actCommentCount(id).count} Comments`}</div></Link>
                 {showComments && 
-                    <CommentIndex comments={filterdComments} athlete={athleteId} />
+                    <CommentIndex comments={filterdComments} athlete={athleteId} updater={() => updater()}/>
                     
                 }
                 {showCommentBox && 

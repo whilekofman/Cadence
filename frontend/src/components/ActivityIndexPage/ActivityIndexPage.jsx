@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -11,20 +12,31 @@ import ActivityIndexItem from "./ActivityIndexItem";
 
 const ActivityIndexPage = () => {
 
-
-
+    
     const dispatch = useDispatch();
     const activities = useSelector(getActivities)
-
+    
     const currentUser = useSelector(getSession)
-
+    
     const comments = useSelector(getComments)
+    
+    const [commentCount, setCommentCount] = useState(0)
 
+    console.log(`commentCount ${commentCount}`)
 
     useEffect(()=> {
-        dispatch(fetchComments())
+        // const foo = setInterval(() => {
+            dispatch(fetchComments())
+
+        // }, 1000)
+        // return () => clearInterval(foo)
         
-    }, [])
+    }, [commentCount])
+
+    // useEffect(()=> {
+    //     dispatch(fetchComments())
+        
+    // }, [])
 
     useEffect(() => {
         dispatch(fetchActivities())
@@ -38,7 +50,7 @@ const ActivityIndexPage = () => {
     }
 
 
-    const activityListElements = activities.map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem activity={activity} comments={comments}/></div>)
+    const activityListElements = activities.map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem activity={activity} comments={comments} updater={() => setCommentCount(commentCount + 1)}/></div>)
     
     return ( 
         <>

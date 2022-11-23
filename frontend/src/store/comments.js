@@ -3,7 +3,7 @@ import csrfFetch from "./csrf"
 
 export const RETRIEVE_COMMENTS = 'comments/RETRIEVE_COMMENTS'
 export const RETRIEVE_COMMENT = 'comment/RETRIEVE_COMMENT'
-export const REMOVE_COMMENT = 'comment/REMOVE_COMMENT'
+export const REMOVE_COMMENT = 'commentId/REMOVE_COMMENT'
 
 export const retrieveComments = comments => ({
     type: RETRIEVE_COMMENTS,
@@ -27,7 +27,7 @@ export const getComments = ({ comments }) => comments ? Object.values(comments) 
 export const getComment = commentId => ({ comments }) => comments ? comments[commentId] : null
 
 
-export const fetchComments = (activityId) => async dispatch => {
+export const fetchComments = () => async dispatch => {
     // const res = await csrfFetch(`/api/activities/${activityId}/comments`)
     const res = await csrfFetch(`/api/comments`)
     const data = await res.json();
@@ -39,7 +39,7 @@ export const deleteComment = commentId => async dispatch => {
         method: 'DELETE'
     })
     dispatch(removeComment(commentId))
-    dispatch(fetchComments)
+    dispatch(fetchComments())
 }
 
 export const fetchComment = commentId => async dispatch => {
@@ -53,7 +53,6 @@ export const fetchComment = commentId => async dispatch => {
 }
 
 export const newComment = (comment) => async dispatch => {
-    debugger
     const res = await csrfFetch('/api/comments', {
         method: 'POST',
         body: JSON.stringify(comment),
@@ -63,7 +62,8 @@ export const newComment = (comment) => async dispatch => {
     })
     
     const data = await res.json()
-    dispatch(retrieveComments(data))
+    // debugger
+    // dispatch(retrieveComments(data))
 
     // dispatch(retrieveComment(data))
     
@@ -95,22 +95,23 @@ export const updateComment = (comment) => async dispatch => {
 
 
 const commentReducer = ( state = {}, action ) => {
-    let nextState = { ...state };
+    const nextState = { ...state };
     Object.freeze(state)
     switch (action.type) {
         case RETRIEVE_COMMENTS:
-            nextState = { ...nextState, ...action.comments }
+            return { ...nextState, ...action.comments };
             // nextState = action.comments 
-            return nextState 
+            // return nextState; 
         case RETRIEVE_COMMENT:
-            nextState[action.comment.id] = action.comment          
-            return { ...nextState }
+            nextState[action.comment.id] = action.comment;         
+            return nextState;
         case REMOVE_COMMENT:
-            delete nextState[action.commentId]
+            delete nextState[action.commentId];
+            debugger
             
-            return nextState
+            return nextState;
         default:
-            return state 
+            return state;
     }
 }
 

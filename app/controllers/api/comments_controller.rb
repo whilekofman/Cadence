@@ -39,20 +39,19 @@ class Api::CommentsController < ApplicationController
     end
   end
 
-  def update
-        @activity = Activity.find(params[:activity_id])
-        @comment = Comment.find(params[:id])
-        debugger
-        if @comment.save
-            render :show
-        else
-            render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
-        end
-    end
+  # def update
+  #       @activity = Activity.find(params[:activity_id])
+  #       @comment = Comment.find(params[:id])
+  #       debugger
+  #       if @comment.save
+  #           render :show
+  #       else
+  #           render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
+  #       end
+  #   end
 
     def destroy
         @comment = Comment.find(params[:id])
-        debugger
         if @comment
             @comment.destroy
             render json: { message: 'you did a delete'}
