@@ -50,7 +50,7 @@ const CommentIndexItem = ( { comment, athlete, updater } ) => {
                     {`${body}`}
                 </div>
                 <div className="delete">
-                    {athlete === authorId &&
+                    {(athlete === authorId || currentUser.id === authorId)&&
                         <Link onClick={handleDeleteComment} className="delete-comment-link" to="">Delete</Link>
                     }
                 </div>
