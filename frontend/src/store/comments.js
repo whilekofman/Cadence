@@ -10,14 +10,14 @@ export const retrieveComments = comments => ({
     comments
 })
 
-export const retrieveComment = commment => ({
+export const retrieveComment = comment => ({
     type: RETRIEVE_COMMENT,
-    commment
+    comment
 })
 
-export const removeComment = commmentId => ({
+export const removeComment = commentId => ({
     type: REMOVE_COMMENT,
-    commmentId
+    commentId
 })
 
 
@@ -91,12 +91,12 @@ export const updateComment = (comment) => async dispatch => {
 }
 
 
-const initialState = {
-    comments: []
-}
+// const initialState = {
+//     comments: []
+// }
 
 
-const commentReducer = ( state = initialState, action ) => {
+const commentReducer = ( state = {}, action ) => {
     const nextState = { ...state };
     Object.freeze(state)
     switch (action.type) {
@@ -109,9 +109,28 @@ const commentReducer = ( state = initialState, action ) => {
             nextState[action.comment.id] = action.comment;         
             return nextState;
         case REMOVE_COMMENT:
-            // delete nextState[action.commentId];
+            // console.log(action)
+            // debugger
+            delete nextState[String(action.commentId)];
+            // return nextState.comments.filter(comment => comment.id !== action.commentId)
+            // debugger
+            // const nState = {}
+            // for(let key in nextState){
+            //     if (Number(key) === 215){
+            //         // console.log('I was Hit')
+            //     }
+            //     // if(Number(key) !== action.commentId){
+            //         //     nState[key] = nextState[key]
+            //         //     console.log(`${Object.values(nState[key])} ${Object.values(nextState[key])}`)
+            //     // }
+            //     if (nextState[key].id !== action.commentId){
+            //         console.log(nextState[key].id, action.commentId)
+            //         nState[key] = nextState[key]
+            //     } 
+            // }
+            // debugger
 
-            return action.commentId
+            // return action.commentId
             
             // let filterList = nextState.comments.filter((comment) => {
                 
@@ -120,11 +139,9 @@ const commentReducer = ( state = initialState, action ) => {
             // })
             // console.log(filterList)
             // debugger
-            // return nextState
-            return nextState.comments.filter(comment => comment.id !== action.commentId)
-            
-            // return nextState[action.commentId];
-            // return nextState
+            return nextState
+            // return nextState;
+            // return nState
         default:
             return state;
     }

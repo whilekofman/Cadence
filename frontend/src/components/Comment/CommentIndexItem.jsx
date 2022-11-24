@@ -24,7 +24,7 @@ const CommentIndexItem = ( { comment, athlete, updater } ) => {
     const handleDeleteComment = e => {
         e.preventDefault()
         // updateLength()
-        console.log('dlete')
+        console.log('delete')
         dispatch(deleteComment(id))
         updater()
         // setLengthComments((length) => length--)

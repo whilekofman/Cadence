@@ -4,7 +4,7 @@ import CommentIndexItem from "./CommentIndexItem";
 import { useDispatch } from "react-redux";
 
 const CommentIndex = ( { comments, athlete, updater } ) => {
-
+        // const [cts, setCts] = useState(comments)
     // const commentListElements = comments.map((comment) => if (comment.id === activity) {
     // <div className='comment-index-body' key={comment.id}><CommentIndexItem comment={comment} } /></div>)
     const dispatch = useDispatch()
@@ -38,7 +38,11 @@ const CommentIndex = ( { comments, athlete, updater } ) => {
 //         console.log(lengthComments)
 //         // return true
 //     }
+//     const deleteCommentById = (id) => {
+
+//     }
     const commentListElements = comments.map((comment) => <div className='comment-index-body' key={comment.id}><CommentIndexItem comment={comment} athlete={athlete} updater={() => updater()}/></div>)
+
 
 
 
