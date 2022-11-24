@@ -109,39 +109,11 @@ const commentReducer = ( state = {}, action ) => {
             nextState[action.comment.id] = action.comment;         
             return nextState;
         case REMOVE_COMMENT:
-            // console.log(action)
-            // debugger
-            delete nextState[String(action.commentId)];
-            // return nextState.comments.filter(comment => comment.id !== action.commentId)
-            // debugger
-            // const nState = {}
-            // for(let key in nextState){
-            //     if (Number(key) === 215){
-            //         // console.log('I was Hit')
-            //     }
-            //     // if(Number(key) !== action.commentId){
-            //         //     nState[key] = nextState[key]
-            //         //     console.log(`${Object.values(nState[key])} ${Object.values(nextState[key])}`)
-            //     // }
-            //     if (nextState[key].id !== action.commentId){
-            //         console.log(nextState[key].id, action.commentId)
-            //         nState[key] = nextState[key]
-            //     } 
-            // }
-            // debugger
 
-            // return action.commentId
-            
-            // let filterList = nextState.comments.filter((comment) => {
-                
-            //     debugger
-            //     return comment.id !== action
-            // })
-            // console.log(filterList)
-            // debugger
+            delete nextState[String(action.commentId)];
+           
             return nextState
-            // return nextState;
-            // return nState
+
         default:
             return state;
     }
