@@ -37,13 +37,7 @@ const CommentIndex = ( { comments, athlete, updater } ) => {
 //         setLengthComments(comments.length)
 //         console.log(`first ${lengthComments}`)
 
-//         setLengthComments(length => length - 1)
-//         console.log(lengthComments)
-//         // return true
-//     }
-//     const deleteCommentById = (id) => {
 
-//     }
     const commentListElements = comments.map((comment) => <div className='comment-index-body' key={comment.id}><CommentIndexItem comment={comment} athlete={athlete} /></div>)
 
     const allComments = () => {
