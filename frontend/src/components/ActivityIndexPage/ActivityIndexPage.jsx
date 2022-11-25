@@ -22,7 +22,16 @@ const ActivityIndexPage = () => {
     
     const [commentCount, setCommentCount] = useState(0)
 
+    const [showCommentsModel, setShowCommentsModal] = useState(false)
+
     console.log(`commentCount ${commentCount}`)
+
+    const onShowClick = e => {
+        e.preventDefault()
+        // setShowCommentsModal
+        setShowCommentsModal((show) => !show)
+        console.log(showCommentsModel)
+    }
 
     useEffect(()=> {
         // const foo = setInterval(() => {
@@ -42,6 +51,8 @@ const ActivityIndexPage = () => {
         dispatch(fetchActivities())
         
     }, [])
+
+
 
     if (!currentUser){
         return <>
