@@ -28,9 +28,7 @@ const CommentIndex = ( { comments, athlete, updater } ) => {
     }
     const showAllComments = e => {
         e.preventDefault()
-        console.log(clicked)
         setClicked(click => !click)
-        console.log(clicked)
 
         allComments()
         
@@ -60,7 +58,6 @@ const CommentIndex = ( { comments, athlete, updater } ) => {
 
                 </>
             )
-            console.log(elements)
 
         }
     }

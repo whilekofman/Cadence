@@ -24,14 +24,8 @@ const ActivityIndexPage = () => {
 
     const [showCommentsModel, setShowCommentsModal] = useState(false)
 
-    console.log(`commentCount ${commentCount}`)
+    // console.log(`commentCount ${commentCount}`)
 
-    const onShowClick = e => {
-        e.preventDefault()
-        // setShowCommentsModal
-        setShowCommentsModal((show) => !show)
-        console.log(showCommentsModel)
-    }
 
     useEffect(()=> {
         // const foo = setInterval(() => {

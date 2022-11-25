@@ -184,10 +184,7 @@ const ActivityForm = () => {
     }
     const handleClick = e => {
         e.preventDefault();
-        // console.log(startTime)
         // startTime = startTime.split('T').join(' ') //.concat('.000Z')
-        // console.log(startTime.hh)
-        // debugger
         if (distance === 0) {
             setErrors(['Distance can not be zero, sitting still is not an activity'])
             return
@@ -342,7 +339,6 @@ const ActivityForm = () => {
 
                                 <div className="sport-dropdown">
                                     <select className="sport-dropdown" value={sport} onChange={handleSelect} >
-                                        {/* {console.log(sport)} */}
                                         <option value='run' onChange={ e => setSport(e.target.value)}>Run</option>
                                         <option value='inline' onChange={ e => setSport(e.target.value)}>Inline Skating</option>
                                         <option value='bike' onChange={ e => setSport(e.target.value)}>Bike Ride</option>
