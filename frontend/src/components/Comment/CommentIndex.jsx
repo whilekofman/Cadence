@@ -21,17 +21,6 @@ const CommentIndex = ( { comments, athlete, updater } ) => {
 
 
 
-//    const handleDeleteComment = (e, id ) => {
-//         e.preventDefault()
-//         console.log("HELP")
-        
-//         console.log(id)
-//         // updateLength()
-//         dispatch(deleteComment(id))
-//         // setLengthComments((length) => length--)
-//         // setDeleted((val) => !val)
-        
-//     }
 
 
     const commentListElements = comments.map((comment) => <div className='comment-index-body' key={comment.id}><CommentIndexItem comment={comment} athlete={athlete} /></div>)
