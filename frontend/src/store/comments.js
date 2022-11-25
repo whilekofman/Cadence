@@ -62,7 +62,6 @@ export const newComment = (comment) => async dispatch => {
     })
     
     const data = await res.json()
-    // debugger
     // dispatch(retrieveComments(data))
 
     // dispatch(retrieveComment(data))
@@ -102,7 +101,6 @@ const commentReducer = ( state = {}, action ) => {
     switch (action.type) {
         case RETRIEVE_COMMENTS:
             return { ...nextState, ...action.comments };
-            debugger
             // nextState = action.comments 
             // return nextState; 
         case RETRIEVE_COMMENT:
