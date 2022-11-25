@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 
 const CommentIndex = ( { comments, athlete, updater } ) => {
         // const [cts, setCts] = useState(comments)
+        const [clicked, setClicked] = useState(false)
+        
     // const commentListElements = comments.map((comment) => if (comment.id === activity) {
     // <div className='comment-index-body' key={comment.id}><CommentIndexItem comment={comment} } /></div>)
     // const dispatch = useDispatch()
@@ -44,7 +46,24 @@ const CommentIndex = ( { comments, athlete, updater } ) => {
 //     }
     const commentListElements = comments.map((comment) => <div className='comment-index-body' key={comment.id}><CommentIndexItem comment={comment} athlete={athlete} /></div>)
 
+    const allComments = () => {
+        return (
+            <>
+                {commentListElements}
+            </>
+        
+        )
+ 
+    }
+    const showAllComments = e => {
+        e.preventDefault()
+        console.log(clicked)
+        setClicked(click => !click)
+        console.log(clicked)
 
+        allComments()
+        
+    }
 
     const commentElementsDisplay = (elements) => {
         if (elements.length <= 2){
@@ -54,13 +73,17 @@ const CommentIndex = ( { comments, athlete, updater } ) => {
 
             return (
                 <>
-                    {elements[0]}
-                    {elements[1]}
+                    {/* {elements[0]}
+                    {elements[1]} */}
+                    {elements.shift()}
+                    {elements.shift()}
                     <div className="see-all-comments-container">
-                        <div className="see-all-comments-link" >
-                            See all {elements.length} comments
+                        <div className="see-all-comments-link" onClick={showAllComments} >
+                            See all {elements.length + 2} comments
                         </div>
-                        
+                       {clicked && 
+                        <div className="comments">{elements} </div>
+                       }
                     </div>
                     
 
