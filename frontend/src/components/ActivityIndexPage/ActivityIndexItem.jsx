@@ -175,9 +175,10 @@ const ActivityIndexItem = ( { activity, comments, updater } ) => {
                 {/* <div className="comment-count-index">{`Comments ${actCommentCount(id).count}`}</div> */}
                 <Link className="open-comments" to="" onClick={openComments}><div className="comment-count-index">{`${actCommentCount(id).count} Comments`}</div></Link>
                 {showComments && 
-                    <CommentIndex comments={filterdComments} athlete={athleteId} updater={() => updater()}/>
+                    <CommentIndex comments={filterdComments} athlete={athleteId}/>
                     
                 }
+                {/* updater={() => updater()} */}
                 {showCommentBox && 
                     <div className={showNewCommentBox}>
                             <CommentForm activityId={id} authorId={currentUser.id} />

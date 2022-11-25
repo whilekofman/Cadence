@@ -27,9 +27,17 @@ const CommentForm = ({ activityId, authorId }) => {
 
         
     }
+    const handleEnterKey = e => {
+        if (e.keyCode === 13 && e.shiftKey === false){
+            e.preventDefault()
+            hanldeCommentSubmit(e)
+        } else if(e.keyCode === 13 && e.shiftKey === true) {
+            setBody(body + '\n')
+        }
+    } 
 
     useEffect(()=> {
-        dispatch(commentActions.fetchComments())
+    //     // dispatch(commentActions.fetchComments())
         
     }, [submitted])
 
@@ -43,9 +51,10 @@ const CommentForm = ({ activityId, authorId }) => {
                             className="comment-input"
                             value={body}
                             onChange={e => setBody(e.target.value)}
+                            onKeyDown={handleEnterKey}
                             />
                     </div>
-                    <button className="submit-comment" onClick={hanldeCommentSubmit}>submit comment</button>
+                    <button className="submit-comment" onClick={hanldeCommentSubmit} >submit comment</button>
                 </form>
             </div>
         </>

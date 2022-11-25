@@ -48,9 +48,10 @@ const ActivityIndexPage = () => {
             {<Redirect to='/login' />}
         </>
     }
+    // updater = {() => setCommentCount(commentCount + 1)} 
+    // removed from below 
 
-
-    const activityListElements = activities.map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem activity={activity} comments={comments} updater={() => setCommentCount(commentCount + 1)}/></div>)
+    const activityListElements = activities.map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem activity={activity} comments={comments} /></div>)
     
     return ( 
         <>
