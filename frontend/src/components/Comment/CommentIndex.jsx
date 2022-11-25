@@ -33,10 +33,6 @@ const CommentIndex = ( { comments, athlete, updater } ) => {
         
 //     }
 
-//     const log = () => {
-//         setLengthComments(comments.length)
-//         console.log(`first ${lengthComments}`)
-
 
     const commentListElements = comments.map((comment) => <div className='comment-index-body' key={comment.id}><CommentIndexItem comment={comment} athlete={athlete} /></div>)
 
