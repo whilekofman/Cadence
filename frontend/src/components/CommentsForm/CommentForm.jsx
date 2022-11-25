@@ -20,9 +20,9 @@ const CommentForm = ({ activityId, authorId }) => {
             } 
             dispatch(commentActions.newComment(comment))
             dispatch(commentActions.fetchComments())
+            setSubmitted((val) => !val)
 
             setBody('')
-            setSubmitted((val) => !val)
             
 
         
@@ -31,13 +31,12 @@ const CommentForm = ({ activityId, authorId }) => {
         if (e.keyCode === 13 && e.shiftKey === false){
             e.preventDefault()
             hanldeCommentSubmit(e)
-        } else if(e.keyCode === 13 && e.shiftKey === true) {
-            setBody(body + '\n')
         }
+
     } 
 
     useEffect(()=> {
-    //     // dispatch(commentActions.fetchComments())
+        dispatch(commentActions.fetchComments())
         
     }, [submitted])
 

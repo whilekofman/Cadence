@@ -41,9 +41,9 @@ const CommentIndex = ( { comments, athlete, updater } ) => {
 //     const deleteCommentById = (id) => {
 
 //     }
-    const commentListElements = comments.map((comment) => <div className='comment-index-body' key={comment.id}><CommentIndexItem comment={comment} athlete={athlete} updater={() => updater()}/></div>)
+    const commentListElements = comments.map((comment) => <div className='comment-index-body' key={comment.id}><CommentIndexItem comment={comment} athlete={athlete} /></div>)
 
-
+    // updater = {() => updater()}
 
 
 
