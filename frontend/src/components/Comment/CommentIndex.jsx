@@ -12,14 +12,6 @@ const CommentIndex = ( { comments, athlete, updater } ) => {
     // const dispatch = useDispatch()
 
 
-//     console.log(lengthComments)
-
-//     useEffect(() => {
-//         dispatch(fetchComments())
-
-//     }, [lengthComments])
-
-
 
 
 
