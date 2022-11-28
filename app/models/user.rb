@@ -13,56 +13,56 @@
 #
 
 class User < ApplicationRecord
-  has_secure_password
+    has_secure_password
 
-  # has_one_attached :profile_photo
+    # has_one_attached :profile_photo
 
-  validates :fname, :lname, length: { in: 1..18 }, format: { without: URI::MailTo::EMAIL_REGEXP, message:  "can't be an email" }
-  validates :email, length: { in: 3..255 }, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
-  validates :session_token, presence: true, uniqueness: true
-  validates :password, length: { in: 6..20, allow_nil: true }
-  # validates :date_of_birth, :sex, presence: true
-  # TODO when adding progile photo to db may add validation for presence here
-  has_one_attached :profile_picture
+    validates :fname, :lname, length: { in: 1..18 }, format: { without: URI::MailTo::EMAIL_REGEXP, message:  "can't be an email" }
+    validates :email, length: { in: 3..255 }, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
+    validates :session_token, presence: true, uniqueness: true
+    validates :password, length: { in: 6..20, allow_nil: true }
+    # validates :date_of_birth, :sex, presence: true
+    # TODO when adding progile photo to db may add validation for presence here
+    has_one_attached :profile_picture
 
-  before_validation :ensure_session_token
+    before_validation :ensure_session_token
 
-  has_many :activities, 
-    class_name: :Activity,
-    foreign_key: :athlete_id, 
-    dependent: :destroy
+    has_many :activities, 
+      class_name: :Activity,
+      foreign_key: :athlete_id, 
+      dependent: :destroy
 
-  has_many :comments,
-    class_name: :Comment,
-    foreign_key: :author_id, 
-    dependent: :destroy
+    has_many :comments,
+      class_name: :Comment,
+      foreign_key: :author_id, 
+      dependent: :destroy
 
-  
-  
-  def self.find_by_credentials(credential, password)
-    field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :null
-    user = User.find_by(field => credential)
-    user&.authenticate(password) 
-     
-  end
 
-  def reset_session_token!
-    # self.session_token = generate_unique_session_token
-    self.update!(session_token: generate_unique_session_token)
-    self.session_token
-  end
 
-  private 
-  def generate_unique_session_token
-    loop do
-      session_token = SecureRandom.base64 
-      return session_token unless User.exists?(session_token)
+    def self.find_by_credentials(credential, password)
+      field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :null
+      user = User.find_by(field => credential)
+      user&.authenticate(password) 
+      
     end
-  end
 
-  def ensure_session_token
-    self.session_token ||= generate_unique_session_token
-  end
+    def reset_session_token!
+      # self.session_token = generate_unique_session_token
+      self.update!(session_token: generate_unique_session_token)
+      self.session_token
+    end
+
+    private 
+    def generate_unique_session_token
+      loop do
+        session_token = SecureRandom.base64 
+        return session_token unless User.exists?(session_token)
+      end
+    end
+
+    def ensure_session_token
+      self.session_token ||= generate_unique_session_token
+    end
 
 end
 
