@@ -53,7 +53,7 @@ const CommentForm = ({ activityId, authorId }) => {
                             onKeyDown={handleEnterKey}
                             />
                     </div>
-                    <button className="submit-comment" onClick={hanldeCommentSubmit} >submit comment</button>
+                    <button className="submit-comment" onClick={hanldeCommentSubmit} disabled={!body.length}>submit comment</button>
                 </form>
             </div>
         </>
