@@ -12,55 +12,55 @@ const CommentIndex = ( { comments, athlete, updater } ) => {
     // const dispatch = useDispatch()
 
 
+        const commentListElements = comments.map((comment) => <div className='comment-index-body' key={comment.id}><CommentIndexItem comment={comment} athlete={athlete} /></div>)
 
-
-
-    const commentListElements = comments.map((comment) => <div className='comment-index-body' key={comment.id}><CommentIndexItem comment={comment} athlete={athlete} /></div>)
-
-    const allComments = () => {
-        return (
-            <>
-                {commentListElements}
-            </>
-        
-        )
- 
-    }
-    const showAllComments = e => {
-        e.preventDefault()
-        setClicked(click => !click)
-
-        allComments()
-        
-    }
-
-    const commentElementsDisplay = (elements) => {
-        if (elements.length <= 2){
-            return elements
-        }
-        else {
-
-            return (
+        const allComments = () => {
+                return (
                 <>
-                    {/* {elements[0]}
-                    {elements[1]} */}
-                    {elements.shift()}
-                    {elements.shift()}
-                    <div className="see-all-comments-container">
-                        <div className="see-all-comments-link" onClick={showAllComments} >
-                            See all {elements.length + 2} comments
-                        </div>
-                       {clicked && 
-                        <div className="comments">{elements} </div>
-                       }
-                    </div>
-                    
-
+                        {commentListElements}
                 </>
-            )
-
+                
+                )
+        
         }
-    }
+        const showAllComments = e => {
+                e.preventDefault()
+                setClicked(click => !click)
+
+                allComments()
+                
+        }
+
+        const commentElementsDisplay = (elements) => {
+                if (elements.length <= 2){
+                return elements
+                }
+                else {
+                        const additionalCommentsText = clicked ? `Hide ${elements.length - 2} comments` : `See all ${elements.length} comments`
+                        
+                return (
+                        <>
+                        {/* {elements[0]}
+                        {elements[1]} */}
+                        {elements.shift()}
+                        {elements.shift()}
+                        <div className="see-all-comments-container">
+                        {clicked && 
+                                <div className="comments">{elements} </div>
+                                
+                        }
+                                <div className="see-all-comments-link" onClick={showAllComments} >
+                                {/* See all {elements.length + 2} comments */}
+                                {additionalCommentsText}
+                                </div>
+                        </div>
+                        
+
+                        </>
+                )
+
+                }
+        }
 
 
 
