@@ -10,6 +10,7 @@ const CommentIndexItem = ( { comment, athlete, updater } ) => {
     const currentUser = useSelector(getSession)
     const [deleted, setDeleted] = useState(false)
     // console.log(athlete)
+    
     const {
         id,
         fname,
@@ -30,6 +31,7 @@ const CommentIndexItem = ( { comment, athlete, updater } ) => {
         // setDeleted((val) => !val)
         
     }
+    const [userAvitar, setUserAvitar] = useState(authorProfilePicture ? authorProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
 
     // useEffect(()=> {
     //     dispatch(fetchComments())
@@ -40,7 +42,7 @@ const CommentIndexItem = ( { comment, athlete, updater } ) => {
         <div className="comment-container">
             <div className="comment-card">
                 <div className="commenter-photo-container">
-                    <img src={authorProfilePicture} alt="commenter-photo" className="commenter-photo"/>
+                    <img src={userAvitar} alt="commenter-photo" className="commenter-photo"/>
                 </div>
                 <div className="commenter-name">
                     {`${fname} ${lname} `}
