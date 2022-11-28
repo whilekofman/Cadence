@@ -2,15 +2,15 @@ import LoginFormPage from "./components/LoginFormPage";
 import { Switch } from "react-router-dom";
 import { Route } from "react-router-dom"
 import NavBar from "./components/NavBar";
-import SignUpFormPage from "./components/SignUpFormPage/SignUpFormPage";
-import HomePage from "./components/HomePage/HomePage";
+import SignUpFormPage from "./components/SignUpFormPage";
+import HomePage from "./components/HomePage";
 import { useSelector } from "react-redux";
 import { getSession } from "./store/session";
 import UserIndexPage from "./components/UserIndex/UserIndexPage";
 import ActivityIndexPage from "./components/ActivityIndexPage";
 import ActivityShowPage from "./components/ActivityShowPage";
 import ActivityForm from "./components/EditActivityForm";
-import Footer from "./components/Footer/Footer";
+import Footer from "./components/Footer";
 import CommentForm from "./components/CommentsForm/CommentForm";
 
 

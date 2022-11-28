@@ -47,6 +47,12 @@
     height: 50px;
     
 }
+
+.form-text-box::placeholder{
+    color: white;
+}
+
+
 .form-text-box {
     height: 35px;
     width: 300px;

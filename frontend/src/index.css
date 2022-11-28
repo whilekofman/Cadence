@@ -2,13 +2,13 @@
    v2.0 | 20110126
    License: none (public domain) */
 
-
+/* @import-normalize; */
 @import './assets/CssReset.css';
-@import './components/NavBar/NavBar.css';
-@import './components/HomePage/HomePage.css';
-@import './components/SignUpFormPage/SignUpFormPage.css';
-@import './components/ActivityShowPage/ActivityShowPage.css';
-@import './components/Footer/Footer.css'
+/* @import './components/NavBar/NavBar.css'; */
+/* @import './components/HomePage/HomePage.css'; */
+/* @import './components/SignUpFormPage/SignUpFormPage.css'; */
+/* @import './components/ActivityShowPage/ActivityShowPage.css'; */
+/* @import './components/Footer/Footer.css' */
 /* TODO Add site wide styles */
 
 /* * {
