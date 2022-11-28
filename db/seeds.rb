@@ -10,7 +10,7 @@
 ApplicationRecord.transaction do 
   puts "Destroying tables..."
   # Unnecessary if using `rails db:seed:replant`
-
+  Comment.destroy_all
   Activity.destroy_all
   User.destroy_all
 
@@ -70,7 +70,8 @@ ApplicationRecord.transaction do
       minutes: 24, 
       seconds: 42, 
       title: '5k', 
-      description: 'what happened to my endurance', intensity: 3, 
+      description: 'what happened to my endurance', 
+      intensity: 3, 
       hr: 125.2, 
       purpose: 1, 
       start_time: '2022-10-01 13:29:18'
@@ -179,7 +180,34 @@ ApplicationRecord.transaction do
       purpose: 1, 
       start_time: '2022-10-08 9:29:18'
     )
+    puts 'do a do with comments'
+      comment_1 = Comment.create!(
+        author_id: jim.id,
+        activity_id: stuart_bike.id,
+        body: "Sorry I couldn't join!"
+      )
+      comment_2 = Comment.create!(
+        author_id: stuart.id,
+        activity_id: jim_inline1.id,
+        body: 'I forgot to record on Mine!'
+      )
 
+      comment_3 = Comment.create!(
+        author_id: ari.id,
+        activity_id: inline1.id,
+        body: 'What happened to your knee!?'
+      )
+
+      comment_4 = Comment.create!(
+        author_id: jim.id,
+        activity_id: jim_inline1.id,
+        body: 'No problem Stuart, I know you were there'
+      )
+      comment_5 = Comment.create!(
+        author_id: stuart.id,
+        activity_id: jim_inline1.id,
+        body: 'But the world doesnt!'
+      )
 
   # More users
   # 10.times do
