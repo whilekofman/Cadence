@@ -10,12 +10,13 @@
     justify-content: center;
     /* background-color: #BABABB;
      */
-    background-color: #e9e9e9;
+    /* background-color: #e9e9e9; */
+    background-color: rgb(247, 247, 250);
     margin: 10;
-    position: relative;
+    /* position: relative; */
     width: 100%;
     height: fit-content; 
-    left: 0;
+    /* left: 0; */
     
 }
 

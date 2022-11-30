@@ -166,12 +166,14 @@ const ActivityIndexItem = ( { activity, comments, updater, showModal } ) => {
                 
              </div>
              <div className="comment">
-                <button onClick={openCommentBox} >
-                    <div className="material-symbols-outlined">
-                    add_comment
-                </div>
+                <button>
+                    <div className="material-symbols-outlined thumbs-up">thumbs_up</div>
                 </button>
-                
+                <button onClick={openCommentBox} >
+                    <div className="material-symbols-outlined add-comment">speaker_notes</div>
+                </button>
+
+                                
                 {/* <div className="comment-count-index">{`Comments ${actCommentCount(id).count}`}</div> */}
                 <Link className="open-comments" to="" onClick={openComments}><div className="comment-count-index">{`${actCommentCount(id).count} Comments`}</div></Link>
                 {showComments && 
