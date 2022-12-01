@@ -40,6 +40,10 @@ class Activity < ApplicationRecord
   has_many :comments,
     class_name: :Comment,
     dependent: :destroy
+  
+  has_many :likes,
+    as: :likeable
+
 
   def fname
     return athlete.fname

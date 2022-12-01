@@ -17,6 +17,9 @@ class Comment < ApplicationRecord
 
   belongs_to :activity
 
+  has_many :likes,
+    as: :likeable
+
   def fname
     return author.fname
   end
