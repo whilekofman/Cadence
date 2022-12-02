@@ -9,7 +9,7 @@ const CommentIndexItem = ( { comment, athlete, updater } ) => {
     const dispatch = useDispatch()
     const currentUser = useSelector(getSession)
     const [deleted, setDeleted] = useState(false)
-    // console.log(athlete)
+    console.log(athlete)
     
     const {
         id,
@@ -51,7 +51,7 @@ const CommentIndexItem = ( { comment, athlete, updater } ) => {
                     {`${body}`}
                 </div>
                 <div className="delete">
-                    {(athlete === authorId || currentUser.id === authorId)&&
+                    { (athlete === currentUser.id || currentUser.id === authorId )&&
                         <Link onClick={handleDeleteComment} className="delete-comment-link" to="">Delete</Link>
                     }
                 </div>
