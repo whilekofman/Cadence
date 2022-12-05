@@ -10,6 +10,8 @@
 #  updated_at    :datetime         not null
 #
 class Like < ApplicationRecord
+  validates :liker_id, uniqueness: { scope: [:likeable_id, :likeable_type] }
+
   belongs_to :liker,
     class_name: :User
 
