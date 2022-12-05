@@ -3,7 +3,7 @@ import CommentIndexItem from "./CommentIndexItem";
 // import { deleteComment, fetchComments } from "../../store/comments";
 import { useDispatch } from "react-redux";
 
-const CommentIndex = ( { comments, athlete, updater } ) => {
+const CommentIndex = ( { comments, athlete }) => {
         // const [cts, setCts] = useState(comments)
         const [clicked, setClicked] = useState(false)
         

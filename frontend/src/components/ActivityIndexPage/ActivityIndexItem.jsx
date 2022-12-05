@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchComments, getComments } from "../../store/comments";
 import CommentIndex from "../Comment/CommentIndex";
 
-const ActivityIndexItem = ( { activity, comments, updater, showModal } ) => {
+const ActivityIndexItem = ( { activity, comments, showModal } ) => {
 
 
     const currentUser = useSelector(getSession)

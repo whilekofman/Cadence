@@ -4,12 +4,11 @@ import { Link } from "react-router-dom";
 import { deleteComment, fetchComments } from "../../store/comments";
 import { getSession } from "../../store/session";
 
-const CommentIndexItem = ( { comment, athlete, updater } ) => {
+const CommentIndexItem = ( { comment, athlete } ) => {
 
     const dispatch = useDispatch()
     const currentUser = useSelector(getSession)
     const [deleted, setDeleted] = useState(false)
-    console.log(athlete)
     
     const {
         id,
