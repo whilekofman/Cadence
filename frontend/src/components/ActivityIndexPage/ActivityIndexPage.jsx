@@ -51,7 +51,7 @@ const ActivityIndexPage = () => {
     // removed from below 
 
     const activityListElements = activities
-        .sort((a,b) => a.starTime - b.starTime)
+        // .sort((a,b) => new Date(b.startTime) - new Date(a.startTime))
         .map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem activity={activity} comments={comments} /></div>)
     
     return ( 
