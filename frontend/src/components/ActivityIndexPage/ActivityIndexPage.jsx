@@ -5,10 +5,7 @@ import { Redirect } from "react-router-dom";
 import { fetchActivities, getActivities } from "../../store/activities";
 import { fetchComments, getComments } from "../../store/comments";
 import { getSession } from "../../store/session";
-// import { getUsers } from "../../store/users";
 import ActivityIndexItem from "./ActivityIndexItem";
-// import { getSession } from "../../store/session";
-// import * as activityActions from '../../store/activities'
 
 const ActivityIndexPage = () => {
 
@@ -24,15 +21,10 @@ const ActivityIndexPage = () => {
 
     const [showCommentsModel, setShowCommentsModal] = useState(false)
 
-    // console.log(`commentCount ${commentCount}`)
 
 
     useEffect(()=> {
-        // const foo = setInterval(() => {
             dispatch(fetchComments())
-
-        // }, 1000)
-        // return () => clearInterval(foo)
         
     }, [commentCount])
 
@@ -49,14 +41,18 @@ const ActivityIndexPage = () => {
 
 
     if (!currentUser){
-        return <>
+        return (
+        <>
             {<Redirect to='/login' />}
         </>
+        )
     }
     // updater = {() => setCommentCount(commentCount + 1)} 
     // removed from below 
 
-    const activityListElements = activities.map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem activity={activity} comments={comments} /></div>)
+    const activityListElements = activities
+        .sort((a,b) => a.starTime - b.starTime)
+        .map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem activity={activity} comments={comments} /></div>)
     
     return ( 
         <>

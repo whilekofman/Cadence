@@ -31,5 +31,9 @@ class Comment < ApplicationRecord
   def author_profile_picture
     return author.profile_picture.url
   end
+
+  def likes_count
+    return likes.count
+  end
  
 end

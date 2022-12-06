@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     
     resources :users, only: [:create, :index, :show] 
 
-    resources :activities, only: [:index, :show, :create, :update, :destroy]  
+    resources :activities, only: [:index, :show, :create, :update, :destroy] do
+      get :index, on: :collection
+    end 
+    
+    # get 'activities/user/:user_id' to: 'posts#index'
       # resources :comments, only: [:activity_comments_index, :index]  
     # end
     

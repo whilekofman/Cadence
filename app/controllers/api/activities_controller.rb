@@ -1,21 +1,13 @@
 class Api::ActivitiesController < ApplicationController
     wrap_parameters include: Activity.attribute_names + ["athleteId","startTime"]
     def index
-        @activities = Activity.order(start_time: :desc)
-        # @activities.order(start_time: :desc)
-        render :index
-        # if params[:user_id] != nil
-        #     @activities.athlete_id = params[athlete_id: user_id: :user_id]
-        #   
-        #     @activities = Activity.where(athlete_id: params[@activity.athlete_id])
-        #     # render :index
-        # else
-        #     #@activities = Activity.all
-        #    
-        #     # render :
-        # end
-        #.order('desc') 
 
+        if params[:athlete].present?
+            @activities = Activity.where(athlete_id: params[:athlete])
+        else
+            @activities = Activity.order(start_time: :desc)
+        end
+        render :index
     end
 
     def show
@@ -25,10 +17,6 @@ class Api::ActivitiesController < ApplicationController
         else
             render json: { errors: @activity.errors.full_messages }, status: :unprocessable_entity
         end
-        # @activity.athlete_id = current_user.id
-
-        # @activity = Activity.find_by(athlete_id: params[@activity.athlete_id])
-
     end
 
     def create
@@ -38,17 +26,12 @@ class Api::ActivitiesController < ApplicationController
         else
             render json: { errors: @activity.errors.full_messages, status: :unprocessable_entity }
         end
-        # @activity.athlete_id = current_user.id
-        # if activity.save
-        #     redirect_to Something_path
-
     end
 
     def destroy
         @activity = Activity.find(params[:id])
         if @activity
             @activity.destroy
-            # head :no_content
             render json: { message: 'you did a delete' }
         else
             render json: { errors: @activity.errors.full_messages, status: :unprocessable_entity }
@@ -60,7 +43,6 @@ class Api::ActivitiesController < ApplicationController
         
         @activity = Activity.find(params[:id])
         if @activity.athlete_id === current_user.id && @activity.update(activity_params)
-            
             render :show
         else
             render json: { errors: @activity.errors.full_messages, status: :unprocessable_entity }
