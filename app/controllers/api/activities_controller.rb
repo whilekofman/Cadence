@@ -3,9 +3,9 @@ class Api::ActivitiesController < ApplicationController
     def index
 
         if params[:athlete].present?
-            @activities = Activity.where(athlete_id: params[:athlete]).order(start_time: :desc)
+            @activities = Activity.where(athlete_id: params[:athlete]).order(start_time: :desc).limit(2)
         else
-            @activities = Activity.order(start_time: :desc)
+            @activities = Activity.order(start_time: :desc).limit(2)
         end
         render :index
     end

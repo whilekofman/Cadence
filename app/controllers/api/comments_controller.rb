@@ -4,22 +4,15 @@ class Api::CommentsController < ApplicationController
   def index
     # @comments = Comment.all
     
-    if params[:activity_id].present?
-      @comments = Comment.where(activity_id: params[:activity_id])
+    if params[:activity_ids].present?
+      activity_ids = params[:activity_ids].split(",")
+      @comments = Comment.where(activity_id: activity_ids)
+      # params[:activity_id])
     else
-    # if params[:one].present? 
-    #   @comments = Comment.where(activity_id: params[:activity_id])
-    #   debugger
-    # else 
+
       @comments = Comment.all
     end
-    # @comments = Comment.includes(author: [:fname, :lname, :profile_picture]).where(activity_id: params[:activity_id])
-    # @comments_all = Comment.all
-    # # debugger
-    # @comments = Comment.where(activity_id: params[:activity_id])
-    
-    # @comments = Comment.all
-    # debugger
+
     render :index
   end
 
