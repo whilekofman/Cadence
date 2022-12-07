@@ -24,7 +24,7 @@ const ActivityIndexPage = () => {
 
 
     useEffect(()=> {
-            dispatch(fetchComments())
+            dispatch(fetchComments( ))
         
     }, [commentCount])
 
