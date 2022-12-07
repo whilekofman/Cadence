@@ -33,8 +33,8 @@ const ActivityIndexPage = () => {
         dispatch(fetchActivities())
     }, [])
     const activityListElements = activities
-    .sort((a, b) => new Date(b.startTime) - new Date(a.startTime))
-    .map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem activity={activity} comments={comments} /></div>)
+        .sort((a, b) => new Date(b.startTime) - new Date(a.startTime))
+        .map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem activity={activity} comments={comments} /></div>)
     
     
     
