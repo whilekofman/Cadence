@@ -34,9 +34,11 @@ export const fetchComments = () => async dispatch => {
     dispatch(retrieveComments(data))
 }
 
-export const fetchCommentsActivities = (activityId) => async dispatch => {
-    const res = await csrfFetch(`api/comments/?activity=${activityId}`)
+export const fetchCommentsActivities = (activityIds) => async dispatch => {
+    const res = await csrfFetch(`api/comments/?activity_ids=${activityIds.join(",")}`)
+    
     const data = await res.json();
+    debugger
     dispatch(retrieveComments(data))
 }
 

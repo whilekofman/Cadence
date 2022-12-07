@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { fetchActivities, getActivities } from "../../store/activities";
-import { fetchComments, getComments } from "../../store/comments";
+import { fetchComments, fetchCommentsActivities, getComments } from "../../store/comments";
 import { getSession } from "../../store/session";
 import ActivityIndexItem from "./ActivityIndexItem";
 
@@ -21,17 +21,23 @@ const ActivityIndexPage = () => {
 
     const [showCommentsModel, setShowCommentsModal] = useState(false)
 
+    const activityIds = Object.keys(activities)//.map(key => activities[key])
+    console.log(activityIds)
+    const activityListElements = activities
+        .sort((a, b) => new Date(b.startTime) - new Date(a.startTime))
+        .map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem activity={activity} comments={comments} /></div>)
 
-
-    useEffect(()=> {
-            dispatch(fetchComments( ))
-        
-    }, [commentCount])
 
     // useEffect(()=> {
-    //     dispatch(fetchComments())
+    //         dispatch(fetchComments( ))
         
-    // }, [])
+    // }, [commentCount])
+
+    useEffect(()=> {
+        dispatch(fetchCommentsActivities(activityIds))
+        debugger
+        
+    }, [])
 
     useEffect(() => {
         dispatch(fetchActivities())
@@ -50,10 +56,6 @@ const ActivityIndexPage = () => {
     // updater = {() => setCommentCount(commentCount + 1)} 
     // removed from below 
 
-    const activityListElements = activities
-        // .sort((a,b) => new Date(b.startTime) - new Date(a.startTime))
-        .map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem activity={activity} comments={comments} /></div>)
-    
     return ( 
         <>
             <div className='activity-index-body'>
