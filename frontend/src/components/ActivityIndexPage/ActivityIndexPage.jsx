@@ -44,7 +44,6 @@ const ActivityIndexPage = () => {
             dispatch(fetchCommentsActivities(activityIds))
             
         }
-        console.log(activitiesLoaded)
         // debugger
         
     }, [])
