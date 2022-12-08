@@ -56,6 +56,10 @@ class Activity < ApplicationRecord
   def athlete_profile_picture
     return athlete.profile_picture.url
   end
+  
+  def likes_count
+    return likes.count
+  end
  
 
   

@@ -1,3 +1,4 @@
+import { fetchCommentsActivities } from "./comments"
 import csrfFetch from "./csrf"
 
 
@@ -37,6 +38,9 @@ export const fetchActivities = () => async dispatch => {
     const res = await csrfFetch('/api/activities')
     const data = await res.json();
     dispatch(retrieveActivities(data))
+    const activityIds = Object.keys(data)
+    dispatch(fetchCommentsActivities(activityIds))
+    
 }
 
 export const deleteActivity = activityId => async dispatch => {
