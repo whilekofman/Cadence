@@ -16,9 +16,12 @@ Rails.application.routes.draw do
       # resources :comments, only: [:activity_comments_index, :index]  
     # end
     
-    resources :comments, only: [:index, :create, :upddate, :destroy, :show] do
-      get :index, on: :collection
-    end
+    resources :comments, only: [:index, :create, :upddate, :destroy, :show] 
+
+    resources :likes, only: [:index, :create, :destroy]
+    # do
+    #   get :index, on: :collection
+    # end
     
     resource :session, only: [:show, :create, :destroy]
 
