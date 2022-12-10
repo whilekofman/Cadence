@@ -5,20 +5,22 @@ class Api::LikesController < ApplicationController
         # likeable_type = params[:likeable]
         # likeable_ids = params[:ids]
         if params[:likeable].present? && params[:ids].present?
-            likeable_type = params[:likeable]
+            type = params[:likeable]
             # debugger
-            likeable_ids = params[:ids].split(',')
-        elsif params[:likeable].present?
-            @likes = Like.where(likeable_type: params[:likeable])
-            render :index
-            return
+            ids = params[:ids].split(',')
+        # elsif params[:likeable].present?
+        #     @likes = Like.where(likeable_type: params[:likeable])
+        #     render :index
+        #     return
         end
-        if likeable_type == 'activity'
+        if type == 'activity'
             @likes = Like.where(likeable_type: :Activity)
                 .where(likeable_id: likeable_ids)
-        elsif likeable_type == 'comment'
+        elsif type == 'comment'
+            debugger
             @likes = Like.where(likeable_type: :Comment)
                 .where(likeable_id: likeable_ids)
+                
         else
             @likes = Like.all
         end
