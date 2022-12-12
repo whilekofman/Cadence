@@ -11,8 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchComments, getComments } from "../../store/comments";
 import CommentIndex from "../Comment/CommentIndex";
 
-const ActivityIndexItem = ( { activity, comments, showModal } ) => {
-
+const ActivityIndexItem = ( { activity, comments, likes } ) => {
 
     const currentUser = useSelector(getSession)
     const {
@@ -28,7 +27,9 @@ const ActivityIndexItem = ( { activity, comments, showModal } ) => {
         minutes,
         seconds,
         athleteProfilePicture,
-        athleteId
+        likesCount,
+        athleteId,
+        commentsCount
         
     } = activity
     // console.log(comments)
@@ -42,7 +43,7 @@ const ActivityIndexItem = ( { activity, comments, showModal } ) => {
     const actCommentCount = activityId => {
         let count = 0
         const actComment = []
-        comments.forEach((comment) =>{ if (comment.activityId === activityId){
+        comments.forEach((comment) => { if (comment.activityId === activityId){
             count++
             actComment.push(comment) 
         }})
@@ -57,13 +58,13 @@ const ActivityIndexItem = ( { activity, comments, showModal } ) => {
         
     // }, [])
 
-
+    
     const [showNewCommentBox, setShowNewCommentBox] = useState('do-not-show-new-comment')
     const [showCommentBox, setShowCommentBox] = useState(false)
     const [showComments, setShowComments] = useState(false)
     const [userAvitar, setUserAvitar] = useState(athleteProfilePicture ? athleteProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
+    const [likeStyle, setLikeStyle] = useState("material-symbols-outlined thumbs-up")
     
-
 
     const displayTime = new Date(startTime).toLocaleString('en-US', {timeZone: 'UTC'});
 
@@ -165,6 +166,8 @@ const ActivityIndexItem = ( { activity, comments, showModal } ) => {
                 </div>
                 
              </div>
+            <div className="like-count">{likesCount} Kudos</div>
+
              <div className="comment">
                 <button>
                     <div className="material-symbols-outlined thumbs-up">thumb_up</div>
@@ -180,6 +183,12 @@ const ActivityIndexItem = ( { activity, comments, showModal } ) => {
                     <CommentIndex comments={filterdComments} athlete={athleteId} />
                     
                 }
+                {/* <Link className="open-comments" to="" onClick={openComments}><div className="comment-count-index">{`${commentsCount} Comments`}</div></Link>
+                {showComments && 
+                    <CommentIndex comments={filterdComments} athlete={athleteId} />
+                    
+                } */}
+                
                 {/* updater={() => updater()} */}
                 {showCommentBox && 
                     <div className={showNewCommentBox}>

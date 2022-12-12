@@ -60,6 +60,10 @@ class Activity < ApplicationRecord
   def likes_count
     return likes.count
   end
+
+  def comments_count
+    return comments.count
+  end
  
 
   
