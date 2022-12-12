@@ -167,7 +167,7 @@ const ActivityIndexItem = ( { activity, comments, showModal } ) => {
              </div>
              <div className="comment">
                 <button>
-                    <div className="material-symbols-outlined thumbs-up">thumbs_up</div>
+                    <div className="material-symbols-outlined thumbs-up">thumb_up</div>
                 </button>
                 <button onClick={openCommentBox} >
                     <div className="material-symbols-outlined add-comment">speaker_notes</div>
