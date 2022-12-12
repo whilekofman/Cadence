@@ -77,6 +77,7 @@ export const newComment = (comment) => async dispatch => {
 
 
 }
+// updadte comment is not used
  
 export const updateComment = (comment) => async dispatch => {
     try {
