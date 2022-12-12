@@ -15,11 +15,11 @@ class Api::LikesController < ApplicationController
         end
         if type == 'activity'
             @likes = Like.where(likeable_type: :Activity)
-                .where(likeable_id: likeable_ids)
+                .where(likeable_id: ids)
         elsif type == 'comment'
             debugger
             @likes = Like.where(likeable_type: :Comment)
-                .where(likeable_id: likeable_ids)
+                .where(likeable_id: ids)
                 
         else
             @likes = Like.all
