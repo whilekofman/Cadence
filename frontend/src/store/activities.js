@@ -1,5 +1,6 @@
 import { fetchCommentsActivities } from "./comments"
 import csrfFetch from "./csrf"
+import { fetchLikesActivities } from "./likes"
 
 
 export const RETRIEVE_ACTIVITIES = 'activities/RETRIEVE_ACTIVITIES'
@@ -40,6 +41,8 @@ export const fetchActivities = () => async dispatch => {
     dispatch(retrieveActivities(data))
     const activityIds = Object.keys(data)
     dispatch(fetchCommentsActivities(activityIds))
+    dispatch(fetchLikesActivities(activityIds))
+
     
 }
 
