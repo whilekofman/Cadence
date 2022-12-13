@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { fetchActivity, getActivity } from "../../store/activities";
-import { fetchComments, fetchCommentsActivities, getComments } from "../../store/comments";
+import { fetchComments, getComments } from "../../store/comments";
 import { getSession } from "../../store/session";
 import { speedTypeChange, speedValue } from "../../store/util/speedconverter";
 import { ActivityEditButton, ActivityEditLink } from "./ActivityEditButton";
@@ -15,15 +15,14 @@ const ActivityShowPage = () => {
     const dispatch = useDispatch()
     const comments = useSelector(getComments)
 
-    useEffect(() => {
-        dispatch(fetchCommentsActivities(activityId))
-    }, [])
+    // useEffect(() => {
+    //     dispatch(fetchComments(activityId))
+    // }, [])
 
     useEffect(() => {
-        if (!activity) {
-            debugger
+        // if (!activity) {
             dispatch(fetchActivity(activityId))
-        }
+        // }
     }, [dispatch, activityId] )
 
     // useEffect(() => {

@@ -37,12 +37,13 @@ export const fetchComments = () => async dispatch => {
 
 export const fetchCommentsActivities = (activityIds) => async dispatch => {
     const res = await csrfFetch(`api/comments/?activity_ids=${activityIds.join(",")}`)
+    debugger
     
     const data = await res.json();
     const commentIds = Object.keys(data)
 
     dispatch(retrieveComments(data))
-    dispatch(fetchLikesComments(activityIds))
+    dispatch(fetchLikesComments(commentIds))
 
 }
 

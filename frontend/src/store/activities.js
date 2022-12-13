@@ -59,7 +59,11 @@ export const fetchActivity = id => async dispatch => {
     if (res.ok){
         const data = await res.json()
         dispatch(retrieveActivity(data))
-        return data
+        const activityId = Object.keys(data)
+        debugger
+        dispatch(fetchCommentsActivities([data.id]))
+
+        // return data
     } else { throw res }
 }
 
