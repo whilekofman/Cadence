@@ -5,6 +5,7 @@ class Api::LikesController < ApplicationController
         # likeable_type = params[:likeable]
         # likeable_ids = params[:ids]
         if params[:likeable].present? && params[:ids].present?
+            debugger
             type = params[:likeable].downcase
             # debugger
             ids = params[:ids].split(',')
@@ -17,9 +18,11 @@ class Api::LikesController < ApplicationController
 
             @likes = Like.where(likeable_type: :Activity)
                 .where(likeable_id: ids)
+                debugger
         elsif type == 'comment'
             @likes = Like.where(likeable_type: :Comment)
                 .where(likeable_id: ids)
+                debugger
                 
         else
             @likes = Like.all

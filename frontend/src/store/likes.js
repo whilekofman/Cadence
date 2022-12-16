@@ -19,27 +19,27 @@ export const getLikes = ({ likes }) => likes ? Object.values(likes) : []
 export const getLike = likeId => ({ likes }) => likes ? likes[likeId] : null 
 
 export const fetchLikesActivities = (activityIds) => async dispatch => {
-    const res = await csrfFetch(`api/likes/?likeable=activity&ids=${activityIds.join(",")}`)
+    const res = await csrfFetch(`/api/likes/?likeable=activity&ids=${activityIds.join(",")}`)
     const data = await res.json();
     dispatch(retrieveLikes(data))
 }
 
 export const fetchLikesComments = (activityIds) => async dispatch => {
-    const res = await csrfFetch(`api/likes/?likeable=comment&ids=${activityIds.join(",")}`)
+    const res = await csrfFetch(`/api/likes/?likeable=comment&ids=${activityIds.join(",")}`)
     const data = await res.json();
     
     dispatch(retrieveLikes(data))
 }
 
 export const deleteLike = likeId => async dispatch => {
-    const res = await csrfFetch (`api/likes${likeId}`, {
+    const res = await csrfFetch (`/api/likes${likeId}`, {
         method: 'DELETE'
     })
     dispatch(removeLike)  
 }
 
 export const newLike = (like) => async dispatch => {
-    const res = await csrfFetch('api/comments', {
+    const res = await csrfFetch('/api/comments', {
         method: 'POST',
         body: JSON.stringify(like),
         headers: {

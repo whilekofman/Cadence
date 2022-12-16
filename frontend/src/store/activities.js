@@ -36,7 +36,7 @@ export const removeActivities = () => async dispatch => {
 }
 
 export const fetchActivities = () => async dispatch => {
-    const res = await csrfFetch('/api/activities')
+    const res = await csrfFetch('/api/activities/')
     const data = await res.json();
     dispatch(retrieveActivities(data))
     const activityIds = Object.keys(data)
@@ -59,9 +59,11 @@ export const fetchActivity = id => async dispatch => {
     if (res.ok){
         const data = await res.json()
         dispatch(retrieveActivity(data))
-        const activityId = Object.keys(data)
-        debugger
-        dispatch(fetchCommentsActivities([data.id]))
+        dispatch(fetchCommentsActivities([id]))
+        dispatch(fetchLikesActivities([id]))
+
+        // dispatch(fetchCommentsActivities([data.id]))
+
 
         // return data
     } else { throw res }

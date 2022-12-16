@@ -3,10 +3,9 @@ class Api::CommentsController < ApplicationController
 
   def index
     # @comments = Comment.all
-      debugger
+      # debugger
     
     if params[:activity_ids].present?
-      debugger
       activity_ids = params[:activity_ids].split(",")
       @comments = Comment.where(activity_id: activity_ids)
       # params[:activity_id])
