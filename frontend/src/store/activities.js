@@ -55,6 +55,7 @@ export const deleteActivity = activityId => async dispatch => {
 }
 
 export const fetchActivity = id => async dispatch => {
+    // if(getActivity) return getActivity
     const res = await csrfFetch(`/api/activities/${id}`)
     if (res.ok){
         const data = await res.json()

@@ -9,6 +9,7 @@ class Api::CommentsController < ApplicationController
       activity_ids = params[:activity_ids].split(",")
       @comments = Comment.where(activity_id: activity_ids)
       # params[:activity_id])
+      # debugger
     else
 
       @comments = Comment.all

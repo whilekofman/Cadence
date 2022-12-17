@@ -36,6 +36,7 @@ export const fetchComments = () => async dispatch => {
 }
 
 export const fetchCommentsActivities = (activityIds) => async dispatch => {
+    
     const res = await csrfFetch(`/api/comments/?activity_ids=${activityIds.join(",")}`)
     if(res.ok){
     // const res = await csrfFetch(`api/comments/?activity_ids=3`)

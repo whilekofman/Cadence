@@ -2,57 +2,26 @@ class Api::LikesController < ApplicationController
     wrap_parameters include: Like.attribute_names + ["likerId", "likeableId", "likeableType"]
 
     def index
-        # likeable_type = params[:likeable]
-        # likeable_ids = params[:ids]
+        debugger
         if params[:likeable].present? && params[:ids].present?
-            debugger
             type = params[:likeable].downcase
-            # debugger
             ids = params[:ids].split(',')
-        # elsif params[:likeable].present?
-            # @likes = Like.where(likeable_type: params[:likeable])
-        #     render :index
-        #     return
+
         end
         if type == 'activity'
-
+            debugger
             @likes = Like.where(likeable_type: :Activity)
                 .where(likeable_id: ids)
-                debugger
         elsif type == 'comment'
             @likes = Like.where(likeable_type: :Comment)
                 .where(likeable_id: ids)
-                debugger
+                
                 
         else
             @likes = Like.all
         end
         
         render :index
-        # if params[:likeable].present?
-            
-            
-        #     case params[:likeable]
-                
-        #     when "Comment"
-        #         @likes = Like.where(likeable_type: :Comment)
-        #         debugger
-        #     when "Activity"
-        #         @likes = Like.where(likeable_type: :Activity)
-                
-                
-        #     else
-        #         @likes = "error: sorry"
-        #     end
-        #     debugger
-        #     render :index
-        
-
-
-                #['Activity', 'Comment'])
-        # end
-        # render json: {message: "sorry not sorry"}
-
     end
 
     def create

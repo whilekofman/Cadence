@@ -17,5 +17,16 @@ class Like < ApplicationRecord
 
   belongs_to :likeable,
     polymorphic: :true
+
+  # def self.find_likes(type, ids)
+  #   # @likes = []
+  #   debugger
+  #   # ids.each do |id| 
+  #     @likes = Like.where(likeable_type: type)
+  #       .where(likeable_id: ids)
+  #       debugger
+  #   # end
+  #   return @likes
+  # end
   
 end
