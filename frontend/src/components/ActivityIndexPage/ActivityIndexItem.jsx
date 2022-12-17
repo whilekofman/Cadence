@@ -145,6 +145,7 @@ const ActivityIndexItem = ( { activity, comments, likes } ) => {
             </div>
             <div className="title">
                 {/* <div className="sport">{sport}</div> */}
+                {commentsCount}
                 <div className="sport"><img src={sportImg} className='sport-logo'/></div>
 
                 <Link className="title-link" to={`/activities/${id}`}>{title}</Link>
@@ -170,7 +171,7 @@ const ActivityIndexItem = ( { activity, comments, likes } ) => {
 
              <div className="comment">
                 <button>
-                    <div className="material-symbols-outlined thumbs-up">thumb_up</div>
+                    <div className="material-symbols-outlined thumbs-up thumbs-not-liked">thumb_up</div>
                 </button>
                 <button onClick={openCommentBox} >
                     <div className="material-symbols-outlined add-comment">speaker_notes</div>
