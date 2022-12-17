@@ -2,14 +2,12 @@ class Api::LikesController < ApplicationController
     wrap_parameters include: Like.attribute_names + ["likerId", "likeableId", "likeableType"]
 
     def index
-        debugger
         if params[:likeable].present? && params[:ids].present?
             type = params[:likeable].downcase
             ids = params[:ids].split(',')
 
         end
         if type == 'activity'
-            debugger
             @likes = Like.where(likeable_type: :Activity)
                 .where(likeable_id: ids)
         elsif type == 'comment'
