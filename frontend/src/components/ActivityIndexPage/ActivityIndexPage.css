@@ -146,15 +146,30 @@
  .comment-input {
      width: 500px;
  }
-.thumbs-up {
+/* .thumbs-up {
     color: orange
-}
+} */
 .thumbs-not-liked {
     
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+}
+
+.thumbs-liked-color {
+    color: rgb(255, 165, 0)
+
+}
+
+.thumbs-liked {
+
     font-variation-settings:
         'FILL' 1,
         'wght' 400,
         'GRAD' 0,
         'opsz' 24
 }
+
 

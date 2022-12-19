@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchComments, getComments } from "../../store/comments";
 import CommentIndex from "../Comment/CommentIndex";
 import { speed, durationConvert } from "../utils/activityspeed/speedConverter";
+import Like from "../Like/Like";
 
 const ActivityIndexItem = ( { activity, comments, likes } ) => {
 
@@ -29,20 +30,42 @@ const ActivityIndexItem = ( { activity, comments, likes } ) => {
         seconds,
         athleteProfilePicture,
         likesCount,
-        athleteId,
-        commentsCount
-        
+        athleteId,        
     } = activity
 
-    const filterdComments = comments.filter((comment) => 
-        comment.activityId === id
-    )
-        
+    // const filterdComments = comments.filter((comment) => 
+    //     comment.activityId === id
+    // )
+    // comments.filter((comment) => comment.activityId === id)
+
+    const filterdComments = comments
+
+    // const filteredActivityLikes = () => {
+    //     console.log(activity.id)
+    //     let userLikesActivity
+    //     const filteredLikes = likes.filter((like) => 
+    //         // if (like.likerId === currentUser.id) userLikesActivity = true
+    //         like.likeableType ===  "Activity" && like.likeableId === activity.id
+    //     )
+    //     const currentUserLikesActivity = filteredLikes.some(like => like.likerId === userId)
+    //     return { filteredLikes, userLikesActivity}
+    // }
+    const filteredActivityLikes = likes//likes.filter((like) => 
+            // if (like.likerId === currentUser.id) userLikesActivity = true
+    //         like.likeableType ===  "Activity" && like.likeableId === activity.id
+    // )
+    const currentUserLikesActivity = filteredActivityLikes.some(like => like.likerId === currentUser.id)
+
+    // console.log(currentUserLikesActivity)
+
+    // const filteredLikes = filteredActivityLikes().filteredLikes
+    const activityLikeCount = filteredActivityLikes.length
+    
     const [showNewCommentBox, setShowNewCommentBox] = useState('do-not-show-new-comment')
     const [showCommentBox, setShowCommentBox] = useState(false)
     const [showComments, setShowComments] = useState(false)
     const [userAvitar, setUserAvitar] = useState(athleteProfilePicture ? athleteProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
-    const [likeStyle, setLikeStyle] = useState("material-symbols-outlined thumbs-up")
+    // const [likeStyle, setLikeStyle] = useState("material-symbols-outlined thumbs-up")
     
 
     const displayTime = new Date(startTime).toLocaleString('en-US', {timeZone: 'UTC'});
@@ -83,8 +106,6 @@ const ActivityIndexItem = ( { activity, comments, likes } ) => {
                 </div>
             </div>
             <div className="title">
-                {/* <div className="sport">{sport}</div> */}
-                {commentsCount}
                 <div className="sport"><img src={sportImg} className='sport-logo'/></div>
 
                 <Link className="title-link" to={`/activities/${id}`}>{title}</Link>
@@ -106,12 +127,13 @@ const ActivityIndexItem = ( { activity, comments, likes } ) => {
                 </div>
                 
              </div>
-            <div className="like-count">{likesCount} Kudos</div>
+            <div className="like-count">{activityLikeCount} Kudos</div>
 
              <div className="comment">
-                <button>
+                <Like activity={activity} likes={filteredActivityLikes}></Like>
+                {/* <button>
                     <div className="material-symbols-outlined thumbs-up thumbs-not-liked">thumb_up</div>
-                </button>
+                </button> */}
                 <button onClick={openCommentBox} >
                     <div className="material-symbols-outlined add-comment">speaker_notes</div>
                 </button>

@@ -29,7 +29,11 @@ const ActivityIndexPage = () => {
     }, [])
     const activityListElements = activities
         .sort((a, b) => new Date(b.startTime) - new Date(a.startTime))
-        .map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem activity={activity} comments={comments} likes={likes} /></div>)
+        .map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem 
+            activity={activity} 
+            comments={comments.filter((comment) => comment.activityId === activity.id)} 
+            likes={likes.filter(like => 
+                like.likeableType === 'Activity' && like.likeableId === activity.id)} /></div>)
     
     
     // const [activitiesLoaded, setActivitiesLoaded] = useState(false)
