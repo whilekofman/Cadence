@@ -11,7 +11,6 @@ const CommentIndex = ( { comments, athlete }) => {
     // <div className='comment-index-body' key={comment.id}><CommentIndexItem comment={comment} } /></div>)
     // const dispatch = useDispatch()
 
-
         const commentListElements = comments.map((comment) => <div className='comment-index-body' key={comment.id}><CommentIndexItem comment={comment} athlete={athlete} /></div>)
 
         const allComments = () => {

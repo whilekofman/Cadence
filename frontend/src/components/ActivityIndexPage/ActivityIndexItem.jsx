@@ -13,8 +13,7 @@ import CommentIndex from "../Comment/CommentIndex";
 import { speed, durationConvert } from "../utils/activityspeed/speedConverter";
 import Like from "../Like/Like";
 
-const ActivityIndexItem = ( { activity, comments, likes } ) => {
-
+const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivity } ) => {
     const currentUser = useSelector(getSession)
     const {
         id,
@@ -38,7 +37,7 @@ const ActivityIndexItem = ( { activity, comments, likes } ) => {
     // )
     // comments.filter((comment) => comment.activityId === id)
 
-    const filterdComments = comments
+    // const filterdComments = comments
 
     // const filteredActivityLikes = () => {
     //     console.log(activity.id)
@@ -50,16 +49,14 @@ const ActivityIndexItem = ( { activity, comments, likes } ) => {
     //     const currentUserLikesActivity = filteredLikes.some(like => like.likerId === userId)
     //     return { filteredLikes, userLikesActivity}
     // }
-    const filteredActivityLikes = likes//likes.filter((like) => 
+    // const filteredActivityLikes = likes//likes.filter((like) => 
             // if (like.likerId === currentUser.id) userLikesActivity = true
     //         like.likeableType ===  "Activity" && like.likeableId === activity.id
     // )
-    const currentUserLikesActivity = filteredActivityLikes.some(like => like.likerId === currentUser.id)
+    // const currentUserLikesActivity = likes.some(like => like.likerId === currentUser.id)
 
     // console.log(currentUserLikesActivity)
-
-    // const filteredLikes = filteredActivityLikes().filteredLikes
-    const activityLikeCount = filteredActivityLikes.length
+    // const activityLikeCount = filteredActivityLikes.length
     
     const [showNewCommentBox, setShowNewCommentBox] = useState('do-not-show-new-comment')
     const [showCommentBox, setShowCommentBox] = useState(false)
@@ -127,10 +124,10 @@ const ActivityIndexItem = ( { activity, comments, likes } ) => {
                 </div>
                 
              </div>
-            <div className="like-count">{activityLikeCount} Kudos</div>
+            <div className="like-count">{activityLikes.length} Kudos</div>
 
              <div className="comment">
-                <Like activity={activity} likes={filteredActivityLikes}></Like>
+                <Like activity={activity} activityLikes={activityLikes} userLikesActivity={userLikesActivity}></Like>
                 {/* <button>
                     <div className="material-symbols-outlined thumbs-up thumbs-not-liked">thumb_up</div>
                 </button> */}
@@ -138,9 +135,9 @@ const ActivityIndexItem = ( { activity, comments, likes } ) => {
                     <div className="material-symbols-outlined add-comment">speaker_notes</div>
                 </button>
 
-                <Link className="open-comments" to="" onClick={openComments}><div className="comment-count-index">{`${filterdComments.length} Comments`}</div></Link>
+                <Link className="open-comments" to="" onClick={openComments}><div className="comment-count-index">{`${comments.length} Comments`}</div></Link>
                 {showComments && 
-                    <CommentIndex comments={filterdComments} athlete={athleteId} />
+                    <CommentIndex comments={comments} athlete={athleteId} />
                     
                 }
 
