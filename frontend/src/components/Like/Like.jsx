@@ -1,28 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteLike, newLike } from "../../store/likes";
+import { deleteLike, getLikes, newLike } from "../../store/likes";
 import { getSession } from "../../store/session";
 
 const Like = ( { activity, activityLikes, userLikesActivity } ) => {
     const currentUser = useSelector(getSession)
+    const [likesActivity, setLikesActivity] = useState(userLikesActivity)
     const [likeStyle, setLikeStyle] = useState(false)
-    // console.log(userLikesActivity, activity.id)
-    // for(let i = 0; i < likes.length; i++){
-    //     if (currentUser.id === likes[i].likerId) setLikeStyle(true)//console.log('You like this') 
-    // }
-    // console.log(likes[0].likerId)
-    // if(likes[0].likerId === currentUser.id) setLikeStyle(true)//console.log("YOU LIKE THIS")
-    // if(currentUser.id === likes. )
-    const dispatch = useDispatch()
-    
-    useEffect(() => {
-        // if(userLikesActivity) setLikeStyle(userLikesActivity)
-        
-    }, [likeStyle])
 
-    // useEffect(() => {
-    //     dispatch(deleteLike)
-    // }, [])
+
+    const dispatch = useDispatch()
+    const stateLikes = useSelector(getLikes)
+
     
     const thumbCss = likeStyle === userLikesActivity ? "material-symbols-outlined thumbs-up thumbs-not-liked" : "material-symbols-outlined thumbs-up thumbs-liked thumbs-liked-color"
     // console.log(likeStyle, userLikesActivity, thumbCss, activity.id)
@@ -33,9 +22,10 @@ const Like = ( { activity, activityLikes, userLikesActivity } ) => {
         e.preventDefault()
         // console.log('Click', usersLike[0].id)
         
-        if (userLikesActivity) {
+        if (likesActivity) {
             const likeId = 
             dispatch(deleteLike(usersLike[0].id))
+            // userLikesActivity = false
         } else {
             const like = {
                 likerId: currentUser.id,
@@ -43,6 +33,7 @@ const Like = ( { activity, activityLikes, userLikesActivity } ) => {
                 likeableId: activity.id
             
             }
+            // userLikesActivity = true
             dispatch(newLike(like))
         }
         setLikeStyle((like) => !like)
@@ -50,7 +41,6 @@ const Like = ( { activity, activityLikes, userLikesActivity } ) => {
 
 
     }
-    
     
     return ( 
         <>
