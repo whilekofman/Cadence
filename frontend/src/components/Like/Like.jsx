@@ -22,7 +22,7 @@ const Like = ( { activity, activityLikes, userLikesActivity } ) => {
         e.preventDefault()
         // console.log('Click', usersLike[0].id)
         
-        if (likesActivity) {
+        if (userLikesActivity) {
             const likeId = 
             dispatch(deleteLike(usersLike[0].id))
             // userLikesActivity = false
