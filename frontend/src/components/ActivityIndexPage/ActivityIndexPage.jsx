@@ -48,7 +48,7 @@ const ActivityIndexPage = () => {
             />
         </div>)
     
-    
+    console.log(activityListElements)
     // const [activitiesLoaded, setActivitiesLoaded] = useState(false)
     // const activityIds = Object.keys(activities)//.map(key => activities[key])
     // console.log(activityIds)

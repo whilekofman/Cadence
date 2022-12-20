@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteLike } from "../../store/likes";
+import { deleteLike, newLike } from "../../store/likes";
 import { getSession } from "../../store/session";
 
 const Like = ( { activity, activityLikes, userLikesActivity } ) => {
@@ -15,10 +15,10 @@ const Like = ( { activity, activityLikes, userLikesActivity } ) => {
     // if(currentUser.id === likes. )
     const dispatch = useDispatch()
     
-    // useEffect(() => {
-    //     if(userLikesActivity) setLikeStyle(userLikesActivity)
+    useEffect(() => {
+        // if(userLikesActivity) setLikeStyle(userLikesActivity)
         
-    // }, [])
+    }, [likeStyle])
 
     // useEffect(() => {
     //     dispatch(deleteLike)
@@ -27,15 +27,26 @@ const Like = ( { activity, activityLikes, userLikesActivity } ) => {
     const thumbCss = likeStyle === userLikesActivity ? "material-symbols-outlined thumbs-up thumbs-not-liked" : "material-symbols-outlined thumbs-up thumbs-liked thumbs-liked-color"
     // console.log(likeStyle, userLikesActivity, thumbCss, activity.id)
 
+    const usersLike = activityLikes.filter(like => like.likerId === currentUser.id)
+
     const toggleLike = e => {
         e.preventDefault()
-        console.log('Click', activityLikes.filter(like => like.likerId === currentUser.id))
+        // console.log('Click', usersLike[0].id)
         
-        const thumbCssSetter = setLikeStyle((like) => !like)
-        // if (userLikesActivity) {
-        //     const likeId = 
-        //     dispatch(deleteLike())
-        // }
+        if (userLikesActivity) {
+            const likeId = 
+            dispatch(deleteLike(usersLike[0].id))
+        } else {
+            const like = {
+                likerId: currentUser.id,
+                likeableType: "Activity",
+                likeableId: activity.id
+            
+            }
+            dispatch(newLike(like))
+        }
+        setLikeStyle((like) => !like)
+
 
 
     }

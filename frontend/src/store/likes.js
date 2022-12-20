@@ -32,14 +32,14 @@ export const fetchLikesComments = (activityIds) => async dispatch => {
 }
 
 export const deleteLike = likeId => async dispatch => {
-    const res = await csrfFetch (`/api/likes${likeId}`, {
+    const res = await csrfFetch (`/api/likes/${likeId}`, {
         method: 'DELETE'
     })
     dispatch(removeLike)  
 }
 
 export const newLike = (like) => async dispatch => {
-    const res = await csrfFetch('/api/comments', {
+    const res = await csrfFetch('/api/likes', {
         method: 'POST',
         body: JSON.stringify(like),
         headers: {
