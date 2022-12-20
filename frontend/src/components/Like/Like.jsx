@@ -10,13 +10,18 @@ const Like = ( { activity, activityLikes, userLikesActivity } ) => {
 
 
     const dispatch = useDispatch()
-    const stateLikes = useSelector(getLikes)
+    // const stateLikes = useSelector(getLikes)
 
-    
-    const thumbCss = likeStyle === userLikesActivity ? "material-symbols-outlined thumbs-up thumbs-not-liked" : "material-symbols-outlined thumbs-up thumbs-liked thumbs-liked-color"
-    // console.log(likeStyle, userLikesActivity, thumbCss, activity.id)
+
 
     const usersLike = activityLikes.filter(like => like.likerId === currentUser.id)
+
+    console.log(usersLike.length, activity.id)
+
+        
+    const thumbCss = !usersLike.length ? "material-symbols-outlined thumbs-up thumbs-not-liked" : "material-symbols-outlined thumbs-up thumbs-liked thumbs-liked-color"
+    // console.log(likeStyle, userLikesActivity, thumbCss, activity.id)
+
 
     const toggleLike = e => {
         e.preventDefault()
@@ -33,10 +38,12 @@ const Like = ( { activity, activityLikes, userLikesActivity } ) => {
                 likeableId: activity.id
             
             }
+            setLikesActivity(userLikesActivity)
             // userLikesActivity = true
-            dispatch(newLike(like))
+            dispatch(newLike(like, like.likeableType, like.likeableId))
         }
         setLikeStyle((like) => !like)
+        console.log(likeStyle)
 
 
 

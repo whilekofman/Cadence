@@ -38,7 +38,7 @@ export const deleteLike = likeId => async dispatch => {
     dispatch(removeLike(likeId))  
 }
 
-export const newLike = (like) => async dispatch => {
+export const newLike = ( like, likeableType, likeableId) => async dispatch => {
     const res = await csrfFetch('/api/likes', {
         method: 'POST',
         body: JSON.stringify(like),
@@ -47,6 +47,11 @@ export const newLike = (like) => async dispatch => {
         }
     })
     const data = await res.json()
+    if (likeableType === "Activity") {
+        dispatch(fetchLikesActivities([likeableId]))
+    } else {
+        dispatch(fetchLikesComments([likeableId]))
+    }
 }
 
 const likeReducer = ( state = {}, action ) => {
@@ -56,7 +61,6 @@ const likeReducer = ( state = {}, action ) => {
             return { ...nextState, ...action.likes}
         case REMOVE_LIKE:
             delete nextState[action.likeId]
-            debugger
             return nextState
         default:
             return state;

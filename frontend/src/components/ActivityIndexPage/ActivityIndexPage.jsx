@@ -26,6 +26,7 @@ const ActivityIndexPage = () => {
 
     const filteredActivityLikes = activityId => {
         return likes.filter(like => like.likeableType === 'Activity' && like.likeableId === activityId)
+            // .map((like) => <key={like.id} > )
     }
 
     const currentUserLikesActivity = activityId => {
