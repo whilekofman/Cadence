@@ -29,9 +29,9 @@ const ActivityIndexPage = () => {
             // .map((like) => <key={like.id} > )
     }
 
-    const currentUserLikesActivity = activityId => {
-        return filteredActivityLikes(activityId).some(like => like.likerId === currentUser.id)
-    }
+    // const currentUserLikesActivity = activityId => {
+    //     return filteredActivityLikes(activityId).some(like => like.likerId === currentUser.id)
+    // }
     
 // likes={likes.filter(like => 
 //                 like.likeableType === 'Activity' && like.likeableId === activity.id)} />
@@ -45,7 +45,7 @@ const ActivityIndexPage = () => {
             activity={activity} 
             comments={comments.filter((comment) => comment.activityId === activity.id) } 
             activityLikes={filteredActivityLikes(activity.id)} 
-            userLikesActivity={currentUserLikesActivity(activity.id)}
+            // userLikesActivity={currentUserLikesActivity(activity.id)}
             />
         </div>)
     
