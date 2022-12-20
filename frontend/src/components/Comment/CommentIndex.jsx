@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import CommentIndexItem from "./CommentIndexItem";
 // import { deleteComment, fetchComments } from "../../store/comments";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getLikes } from "../../store/likes";
 
 const CommentIndex = ( { comments, athlete }) => {
         // const [cts, setCts] = useState(comments)
@@ -10,6 +11,9 @@ const CommentIndex = ( { comments, athlete }) => {
     // const commentListElements = comments.map((comment) => if (comment.id === activity) {
     // <div className='comment-index-body' key={comment.id}><CommentIndexItem comment={comment} } /></div>)
     // const dispatch = useDispatch()
+
+        const likes = useSelector(getLikes)
+        console.log(likes)
 
         const commentListElements = comments.map((comment) => <div className='comment-index-body' key={comment.id}><CommentIndexItem comment={comment} athlete={athlete} /></div>)
 
