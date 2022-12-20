@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchComments, getComments } from "../../store/comments";
 import CommentIndex from "../Comment/CommentIndex";
 import { speed, durationConvert } from "../utils/activityspeed/speedConverter";
-import Like from "../Like/Like";
+import Like from "../Like/ActivityLike";
 
 const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivity } ) => {
     const currentUser = useSelector(getSession)

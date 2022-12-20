@@ -13,7 +13,7 @@ const CommentIndex = ( { comments, athlete }) => {
     // const dispatch = useDispatch()
 
         const likes = useSelector(getLikes)
-        console.log(likes)
+        // console.log(likes)
 
         const commentListElements = comments.map((comment) => <div className='comment-index-body' key={comment.id}><CommentIndexItem comment={comment} athlete={athlete} /></div>)
 

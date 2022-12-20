@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteLike, getLikes, newLike } from "../../store/likes";
 import { getSession } from "../../store/session";
 
-const Like = ( { activity, activityLikes } ) => {
+const ActivityLike = ( { activity, activityLikes } ) => {
     const currentUser = useSelector(getSession)
 
 
@@ -44,5 +44,5 @@ const Like = ( { activity, activityLikes } ) => {
      );
 }
  
-export default Like;
+export default ActivityLike;
 

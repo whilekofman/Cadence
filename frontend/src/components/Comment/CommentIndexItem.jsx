@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteComment, fetchComments } from "../../store/comments";
 import { getSession } from "../../store/session";
+import CommentLike from "../Like/CommentLike";
 
 const CommentIndexItem = ( { comment, athlete } ) => {
 
@@ -53,7 +54,7 @@ const CommentIndexItem = ( { comment, athlete } ) => {
                     { (athlete === currentUser.id || currentUser.id === authorId )&&
                         <Link onClick={handleDeleteComment} className="delete-comment-link" to="">Delete</Link>
                     }
-                    <div className="material-symbols-outlined not-liked liked">favorite</div>
+                    <CommentLike commentId={id}/>
                 </div>
                 
             </div>

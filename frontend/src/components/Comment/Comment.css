@@ -3,3 +3,26 @@
     width: 30px;
     border-radius: 50%;
 }
+
+/* .not-liked {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+} */
+
+
+
+
+.liked {
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+}
+
+.comment-liked-color {
+    color: red
+}
