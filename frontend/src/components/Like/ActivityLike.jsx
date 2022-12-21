@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteLike, getLikes, newLike } from "../../store/likes";
+import { deleteLike, newLike } from "../../store/likes";
 import { getSession } from "../../store/session";
 
 const ActivityLike = ( { activity, activityLikes } ) => {

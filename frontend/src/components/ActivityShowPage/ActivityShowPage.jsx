@@ -14,7 +14,6 @@ const ActivityShowPage = () => {
     const currentUser = useSelector(getSession)
     const dispatch = useDispatch()
     const comments = useSelector(getComments)
-    console.log(comments)
     
 
     useEffect(() => {
