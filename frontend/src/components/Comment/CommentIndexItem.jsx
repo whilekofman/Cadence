@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteComment, fetchComments } from "../../store/comments";
 import { getSession } from "../../store/session";
-import CommentLike from "../Like/CommentLike";
+import CommentLike  from "../Like/CommentLike";
 
 const CommentIndexItem = ( { comment, athlete } ) => {
 

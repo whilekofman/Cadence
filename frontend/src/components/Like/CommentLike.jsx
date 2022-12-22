@@ -12,32 +12,32 @@ const CommentLike = ( { commentId } ) => {
         like.likeableType === "Comment" && like.likeableId === commentId)
     
     const userLike = commentLikes.filter(like => like.likerId === currentUser.id)
-    // // console.log(likesFiltered)
+    
+    const commentLikeText = commentLikes.length ? `${commentLikes.length} likes` : ``
+    // console.log(userLike)
+    // console.log(commentLikes)
+
     // let likeToggle = false
-    const heartClass = foo ? "material-symbols-outlined not-liked" :  "comment-liked-color material-symbols-outlined liked"
+    const heartClass = !userLike.length ? "material-symbols-outlined not-liked" :  "comment-liked-color material-symbols-outlined liked"
 
     
 
-    // const heartClass = ["material-symbols-outlined not-liked", "material-symbols-outlined comment-liked-color  liked"]
-    
 
     const handleCommentLike = e => {
         e.preventDefault()
-        // likeToggle = !likeToggle
-
-        // console.log(heartClass[0])
-        // const swapHeartClass = heartClass.shift()
-        // heartClass.push(swapHeartClass)
-        // console.log(heartClass[0])
-
+        
         setFoo(!foo)
         // console.log(foo, 'foo', heartClass, 'heartClass')
 
     }
 
-    return ( 
-        <button onClick={handleCommentLike} className={heartClass}>favorite</button>
+    return (
+        <>
+            <div onClick={handleCommentLike} className={heartClass}>favorite  {commentLikeText}</div>
+       
+        </>
      );
 }
+
  
 export default CommentLike;
