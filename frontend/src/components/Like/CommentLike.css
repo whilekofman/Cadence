@@ -20,7 +20,8 @@
 
 .comment-like-text{
     font-size: small;
-    color: green;
+    color: grey;
+    font-weight: heavy;
     font-family: 'MaisonNeue, Segoe UI, Helvetica Neue'
         /* -apple-system,
         system-ui,

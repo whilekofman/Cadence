@@ -28,7 +28,6 @@ const CommentLike = ( { commentId } ) => {
 
         if (userLike.length) {
             dispatch(deleteLike(userLike[0].id))
-            console.log(userLike[0].id)
         } else {
             const like = {
                 likerId: currentUser.id,
