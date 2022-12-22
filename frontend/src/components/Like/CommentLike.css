@@ -1,0 +1,47 @@
+.comment-like-container {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 8px;
+    align-items: center;
+}
+
+.comment-like-container > div{
+    padding-right: 8px;
+    font-size: 16px;
+}
+
+.comment-liked-color {
+    color: red;
+    /* padding: 8px 8px; */
+    
+}
+
+
+
+.comment-like-text{
+    font-size: small;
+    color: green;
+    font-family: 'MaisonNeue, Segoe UI, Helvetica Neue'
+        /* -apple-system,
+        system-ui,
+        BlinkMacSystemFont,
+        Roboto,
+        Arial,
+        sans-serif,
+        Apple Color Emoji,
+        Segoe UI Emoji,
+        Segoe UI Symbol'; */
+}
+
+.liked {
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 100,
+        'GRAD' 0,
+        'opsz' 24
+}
+
+.material-symbols-outlined:hover {
+    cursor: pointer
+}
+

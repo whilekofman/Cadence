@@ -32,37 +32,11 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
         athleteId,        
     } = activity
 
-    // const filterdComments = comments.filter((comment) => 
-    //     comment.activityId === id
-    // )
-    // comments.filter((comment) => comment.activityId === id)
-
-    // const filterdComments = comments
-
-    // const filteredActivityLikes = () => {
-    //     console.log(activity.id)
-    //     let userLikesActivity
-    //     const filteredLikes = likes.filter((like) => 
-    //         // if (like.likerId === currentUser.id) userLikesActivity = true
-    //         like.likeableType ===  "Activity" && like.likeableId === activity.id
-    //     )
-    //     const currentUserLikesActivity = filteredLikes.some(like => like.likerId === userId)
-    //     return { filteredLikes, userLikesActivity}
-    // }
-    // const filteredActivityLikes = likes//likes.filter((like) => 
-            // if (like.likerId === currentUser.id) userLikesActivity = true
-    //         like.likeableType ===  "Activity" && like.likeableId === activity.id
-    // )
-    // const currentUserLikesActivity = likes.some(like => like.likerId === currentUser.id)
-
-    // console.log(currentUserLikesActivity)
-    // const activityLikeCount = filteredActivityLikes.length
     
     const [showNewCommentBox, setShowNewCommentBox] = useState('do-not-show-new-comment')
     const [showCommentBox, setShowCommentBox] = useState(false)
-    const [showComments, setShowComments] = useState(false)
+    const [showComments, setShowComments] = useState(true)
     const [userAvitar, setUserAvitar] = useState(athleteProfilePicture ? athleteProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
-    // const [likeStyle, setLikeStyle] = useState("material-symbols-outlined thumbs-up")
     
 
     const displayTime = new Date(startTime).toLocaleString('en-US', {timeZone: 'UTC'});
@@ -128,9 +102,7 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
 
              <div className="comment">
                 <Like activity={activity} activityLikes={activityLikes} userLikesActivity={userLikesActivity}></Like>
-                {/* <button>
-                    <div className="material-symbols-outlined thumbs-up thumbs-not-liked">thumb_up</div>
-                </button> */}
+
                 <button onClick={openCommentBox} >
                     <div className="material-symbols-outlined add-comment">speaker_notes</div>
                 </button>
@@ -148,9 +120,6 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
                 }
              </div>
             
-
-
-
         </>
 
      );
@@ -158,3 +127,29 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
  
 export default ActivityIndexItem;
 
+
+    // const filterdComments = comments.filter((comment) => 
+    //     comment.activityId === id
+    // )
+    // comments.filter((comment) => comment.activityId === id)
+
+    // const filterdComments = comments
+
+    // const filteredActivityLikes = () => {
+    //     console.log(activity.id)
+    //     let userLikesActivity
+    //     const filteredLikes = likes.filter((like) => 
+    //         // if (like.likerId === currentUser.id) userLikesActivity = true
+    //         like.likeableType ===  "Activity" && like.likeableId === activity.id
+    //     )
+    //     const currentUserLikesActivity = filteredLikes.some(like => like.likerId === userId)
+    //     return { filteredLikes, userLikesActivity}
+    // }
+    // const filteredActivityLikes = likes//likes.filter((like) => 
+            // if (like.likerId === currentUser.id) userLikesActivity = true
+    //         like.likeableType ===  "Activity" && like.likeableId === activity.id
+    // )
+    // const currentUserLikesActivity = likes.some(like => like.likerId === currentUser.id)
+
+    // console.log(currentUserLikesActivity)
+    // const activityLikeCount = filteredActivityLikes.length

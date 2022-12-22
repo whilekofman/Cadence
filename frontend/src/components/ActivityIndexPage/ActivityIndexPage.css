@@ -7,6 +7,7 @@
     width: 99vw; */
     display: flex;
     font-family: 'Sora', sans-serif;
+    /* font-family: 'MaisonNeue, Segoe UI, Helvetica Neue'; */
     justify-content: center;
     /* background-color: #BABABB;
      */
@@ -172,18 +173,5 @@
         'opsz' 24
 }
 
-.comment-liked-color {
-    color: red
-}
 
-.liked {
-    font-variation-settings:
-        'FILL' 1,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
-}
 
-.material-symbols-outlined:hover {
-    cursor: pointer
-}

@@ -5,14 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getLikes } from "../../store/likes";
 
 const CommentIndex = ( { comments, athlete }) => {
-        // const [cts, setCts] = useState(comments)
         const [clicked, setClicked] = useState(false)
         
     // const commentListElements = comments.map((comment) => if (comment.id === activity) {
     // <div className='comment-index-body' key={comment.id}><CommentIndexItem comment={comment} } /></div>)
     // const dispatch = useDispatch()
 
-        const likes = useSelector(getLikes)
+        // const likes = useSelector(getLikes)
         // console.log(likes)
 
         const commentListElements = comments.map((comment) => <div className='comment-index-body' key={comment.id}><CommentIndexItem comment={comment} athlete={athlete} /></div>)
@@ -28,7 +27,7 @@ const CommentIndex = ( { comments, athlete }) => {
         }
         const showAllComments = e => {
                 e.preventDefault()
-                setClicked(click => !click)
+                setClicked(show => !show)
 
                 allComments()
                 
@@ -36,7 +35,7 @@ const CommentIndex = ( { comments, athlete }) => {
 
         const commentElementsDisplay = (elements) => {
                 if (elements.length <= 2){
-                return elements
+                        return elements
                 }
                 else {
                         const additionalCommentsText = clicked ? `Hide ${elements.length - 2} comments` : `See all ${elements.length} comments`

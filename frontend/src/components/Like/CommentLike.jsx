@@ -18,7 +18,7 @@ const CommentLike = ( { commentId } ) => {
     // console.log(commentLikes)
 
     // let likeToggle = false
-    const heartClass = !userLike.length ? "material-symbols-outlined not-liked" :  "comment-liked-color material-symbols-outlined liked"
+    const heartClass = !userLike.length ? "material-symbols-outlined not-liked-comment" :  "comment-liked-color material-symbols-outlined liked"
 
     
 
@@ -39,16 +39,18 @@ const CommentLike = ( { commentId } ) => {
             dispatch(newLike(like, like.likeableType, like.likeableId))
         }
 
-        setFoo(!foo)
+        // setFoo(!foo)
         // console.log(foo, 'foo', heartClass, 'heartClass')
 
     }
 
     return (
-        <>
-            <div onClick={handleCommentLike} className={heartClass}>favorite  {commentLikeText}</div>
+        <div className="comment-like-container">
+
+            <div onClick={handleCommentLike} className={heartClass}>favorite</div>
+            <div className="comment-like-text">{commentLikeText}</div>
        
-        </>
+        </div>
      );
 }
 
