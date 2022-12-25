@@ -21,6 +21,9 @@ class User < ApplicationRecord
     validates :email, length: { in: 3..255 }, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
     validates :session_token, presence: true, uniqueness: true
     validates :password, length: { in: 6..20, allow_nil: true }
+
+    validates_uniqueness_of :follows, scope: [:follower_id, :following_id]
+
     # validates :date_of_birth, :sex, presence: true
     # TODO when adding progile photo to db may add validation for presence here
     has_one_attached :profile_picture
@@ -41,7 +44,24 @@ class User < ApplicationRecord
       class_name: :Like,
       foreign_key: :liker_id,
       dependent: :destroy
+    
+    
+    has_many :follows, 
+      class_name: :Follow, 
+      foreign_key: :follower_id,
+      dependent: :destroy
 
+    has_many :following,
+      through: :follows
+
+    has_many :followed_by,
+      class_name: :Follow,
+      foreign_key: :following_id,
+      dependent: :destroy
+    
+    has_many :followers,
+      through: :followed_by,
+      source: :follower
 
 
     def self.find_by_credentials(credential, password)

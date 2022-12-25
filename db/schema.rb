@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_05_142942) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_24_162007) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,6 +75,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_142942) do
     t.index ["author_id"], name: "index_comments_on_author_id"
   end
 
+  create_table "follows", force: :cascade do |t|
+    t.bigint "follower_id", null: false
+    t.bigint "following_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id", "following_id"], name: "index_follows_on_follower_id_and_following_id", unique: true
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+    t.index ["following_id"], name: "index_follows_on_following_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.bigint "liker_id", null: false
     t.string "likeable_type", null: false
@@ -105,5 +115,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_142942) do
   add_foreign_key "activities", "users", column: "athlete_id"
   add_foreign_key "comments", "activities"
   add_foreign_key "comments", "users", column: "author_id"
+  add_foreign_key "follows", "users", column: "follower_id"
+  add_foreign_key "follows", "users", column: "following_id"
   add_foreign_key "likes", "users", column: "liker_id"
 end
