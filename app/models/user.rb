@@ -22,7 +22,6 @@ class User < ApplicationRecord
     validates :session_token, presence: true, uniqueness: true
     validates :password, length: { in: 6..20, allow_nil: true }
 
-    validates_uniqueness_of :follows, scope: [:follower_id, :following_id]
 
     # validates :date_of_birth, :sex, presence: true
     # TODO when adding progile photo to db may add validation for presence here
@@ -62,6 +61,7 @@ class User < ApplicationRecord
     has_many :followers,
       through: :followed_by,
       source: :follower
+    
 
 
     def self.find_by_credentials(credential, password)
