@@ -102,26 +102,28 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
                 </div>
                 
              </div>
-            <div className="like-count">{activityLikes.length} Kudos</div>
+            <div className="bottom-container-index">
+                <div className="like-count">{activityLikes.length} Kudos</div>
 
-             <div className="comment">
-                <Like activity={activity} activityLikes={activityLikes} userLikesActivity={userLikesActivity}></Like>
+                <div className="comment">
+                    <Like activity={activity} activityLikes={activityLikes} userLikesActivity={userLikesActivity}></Like>
 
-                <button onClick={openCommentBox} >
-                    <div className="material-symbols-outlined add-comment">speaker_notes</div>
-                </button>
+                    <button onClick={openCommentBox} >
+                        <div className="material-symbols-outlined add-comment">speaker_notes</div>
+                    </button>
 
-                <Link className="open-comments" to="" onClick={openComments}><div className="comment-count-index">{`${comments.length} Comments`}</div></Link>
-                {showComments && 
-                    <CommentIndex comments={comments} athlete={athleteId} />
-                    
-                }
+                    <Link className="open-comments" to="" onClick={openComments}><div className="comment-count-index">{`${comments.length} Comments`}</div></Link>
+                    {showComments && 
+                        <CommentIndex comments={comments} athlete={athleteId} />
+                        
+                    }
 
-                {showCommentBox && 
-                    <div className={showNewCommentBox}>
-                            <CommentForm activityId={id} authorId={currentUser.id} />
-                    </div>
-                }
+                    {showCommentBox && 
+                        <div className={showNewCommentBox}>
+                                <CommentForm activityId={id} authorId={currentUser.id} />
+                        </div>
+                    }
+                </div>
              </div>
             
         </>

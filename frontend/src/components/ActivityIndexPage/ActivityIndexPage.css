@@ -28,6 +28,7 @@
     padding-top: 15px;
     /* background-color: transparent; */
     list-style: none;
+    background-color: white;
     padding-bottom: 125px;
     display: flex;
     flex-direction: column;
@@ -167,7 +168,11 @@
 }
 
 
-
+.bottom-container-index {
+    /* padding: 0, 24px; */
+    width: 592px;
+    border: 1px solid black;
+}
 
 
 .comment{
