@@ -1,9 +1,18 @@
 class Api::FollowsController < ApplicationController
     wrap_parameters include: Follow.attribute_names + ['followingId', 'followerId', 'id']
 
+
     def index
+        # http://localhost:5000/api/users/3/follows?type= followers || following
         user = User.find(params[:user_id])
-        @follows = Follow.where(follower_id: user.id)
+        
+        case params[:type].downcase
+        when 'followers'
+            @follows =  Follow.where(following_id: user.id)
+        when 'following'
+             @follows = Follow.where(follower_id: user.id)
+        end
+        # @follows = Follow.where(follower_id: user.id)
         # debugger
         render :index
 
