@@ -12,6 +12,7 @@ import { fetchComments, getComments } from "../../store/comments";
 import CommentIndex from "../Comment/CommentIndex";
 import { speed, durationConvert } from "../utils/activityspeed/speedConverter";
 import Like, { toggleLike } from "../Like/ActivityLike";
+import { displayTimeParsed } from "../utils/datetimeparsers";
 
 const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivity } ) => {
     const currentUser = useSelector(getSession)
@@ -37,10 +38,6 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
     const [showCommentBox, setShowCommentBox] = useState(false)
     const [showComments, setShowComments] = useState(true)
     const [userAvitar, setUserAvitar] = useState(athleteProfilePicture ? athleteProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
-    
-    const displayTime = new Date(startTime).toLocaleString('en-US', {timeZone: 'UTC', month: '2-digit', day: '2-digit', year: 'numeric',  hour12: true, hour: '2-digit', minute: '2-digit' });
-
-    const displayTimeParsed = displayTime.split(',').join(' at ')
 
     const sportImg = sport === 'run' ? runlogo : sport === 'inline' ? skatelogo : bikelogo 
 
@@ -83,7 +80,7 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
                         {fname} {lname}
                     </div>
                     <div className="start-time-index">
-                        {displayTimeParsed}
+                        {displayTimeParsed(startTime)}
                     </div>
                 </div>
             </div>
