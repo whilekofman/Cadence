@@ -20,21 +20,13 @@ const ActivityIndexPage = () => {
 
     const likes = useSelector(getLikes)
     
-    // const [commentCount, setCommentCount] = useState(0)
-
     const [showCommentsModel, setShowCommentsModal] = useState(false)
 
     const filteredActivityLikes = activityId => {
         return likes.filter(like => like.likeableType === 'Activity' && like.likeableId === activityId)
-            // .map((like) => <key={like.id} > )
+
     }
 
-    // const currentUserLikesActivity = activityId => {
-    //     return filteredActivityLikes(activityId).some(like => like.likerId === currentUser.id)
-    // }
-    
-// likes={likes.filter(like => 
-//                 like.likeableType === 'Activity' && like.likeableId === activity.id)} />
 
     useEffect(() => {
         dispatch(fetchActivities())

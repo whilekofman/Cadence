@@ -38,8 +38,9 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
     const [showComments, setShowComments] = useState(true)
     const [userAvitar, setUserAvitar] = useState(athleteProfilePicture ? athleteProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
     
+    const displayTime = new Date(startTime).toLocaleString('en-US', {timeZone: 'UTC', month: '2-digit', day: '2-digit', year: 'numeric',  hour12: true, hour: '2-digit', minute: '2-digit' });
 
-    const displayTime = new Date(startTime).toLocaleString('en-US', {timeZone: 'UTC'});
+    const displayTimeParsed = displayTime.split(',').join(' at ')
 
     const sportImg = sport === 'run' ? runlogo : sport === 'inline' ? skatelogo : bikelogo 
 
@@ -62,39 +63,42 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
         <>
 
             <div className='top-bar'>
-                <div className="athlete-name-activity">
-                    <div className="profile-pic-div">
-                        {/* <i className="fa-solid fa-user"></i> */}
-                        <img className="profile-pic" src={userAvitar} />
+                <div className="profile-pic-div">
+                    {/* <i className="fa-solid fa-user"></i> */}
+                    <img className="profile-pic" src={userAvitar} />
+                </div>
+                <div className="athlete-name-start-time-index">
+                    <div className="athlete-name-index">
+                        {fname} {lname}
                     </div>
-                    <div className="name">
-                        {fname} {lname}<br />
-                        {displayTime}
+                    <div className="start-time-index">
+                        {displayTimeParsed}
                     </div>
-                    
-                    
-                    
                 </div>
             </div>
             <div className="title">
-                <div className="sport"><img src={sportImg} className='sport-logo'/></div>
-
-                <Link className="title-link" to={`/activities/${id}`}>{title}</Link>
+                <div className="sport">
+                    <img className='sport-logo' src={sportImg} />
+                </div>
+                <div className="title-text-container-index">
+                    <Link className="title-link" to={`/activities/${id}`}><div className="title-text-index">{title}</div></Link>
+                </div>
             </div>
              
             <div className="description">{description}</div>
-             <div className="matrix">
-                <div className="distance">  
-                    Distance<br></br>   
-                    {distance} mi
+
+             <div className="matrix-index">
+                <div className="matrix-box-index">  
+                    <div className="matrix-title">Distance</div>  
+                    <div className="matrix-value-index">{distance} mi</div>
                 </div>
-                <div className="speedbox">
-                    <div className="speed-type">{speedType}</div>
-                    <div className="speed">{speed({ hours, minutes, seconds, distance, sport })}{append}</div>
+                <div className="matrix-box-index">
+                    <div className="matrix-title">{speedType}</div>
+                    <div className="matrix-value-index">{speed({ hours, minutes, seconds, distance, sport })}{append}</div>
                 </div>
-                <div className="time">
-                    time <br />
-                    {durationConvert( { hours, minutes, seconds } )}
+                <div className="matrix-box-index-right">
+                    <div className="matrix-title">time</div> 
+                    <div className="matrix-value-index">{durationConvert( { hours, minutes, seconds } )}</div>
                 </div>
                 
              </div>
