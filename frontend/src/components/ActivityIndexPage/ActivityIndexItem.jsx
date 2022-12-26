@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchComments, getComments } from "../../store/comments";
 import CommentIndex from "../Comment/CommentIndex";
 import { speed, durationConvert } from "../utils/activityspeed/speedConverter";
-import Like from "../Like/ActivityLike";
+import Like, { toggleLike } from "../Like/ActivityLike";
 
 const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivity } ) => {
     const currentUser = useSelector(getSession)
@@ -44,6 +44,17 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
 
     const sportImg = sport === 'run' ? runlogo : sport === 'inline' ? skatelogo : bikelogo 
 
+    const kudosCommentLengthText = ()=> {
+        if (activityLikes.length && comments.length) {
+            return `${activityLikes.length} kudos · ${comments.length} comments`
+        } else if (activityLikes.length) {
+            return `${activityLikes.length} kudos`
+        } else if (comments.length){
+            return `${comments.length} comments`
+        } else {
+            return `${onClick=toggleLike()} Be the first to give kudos!`
+        }
+    }
 
 
     const [speedType, append] = sport === 'run' ? ['Pace', ' /mi'] : ['Speed', ' mi/h']
@@ -101,18 +112,23 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
                     <div className="matrix-value-index">{durationConvert( { hours, minutes, seconds } )}</div>
                 </div>
                 
-             </div>
+            </div>
             <div className="bottom-container-index">
-                <div className="like-count">{activityLikes.length} Kudos</div>
+                <div className="kudos-count-and-buttons-index">
+                    <div className="kudos-comment-count-index">
+                        {kudosCommentLengthText()}
+                    </div>
+                    <div className="comment-like-buttons-index">
+                        <Like activity={activity} activityLikes={activityLikes} userLikesActivity={userLikesActivity}></Like>
 
-                <div className="comment">
-                    <Like activity={activity} activityLikes={activityLikes} userLikesActivity={userLikesActivity}></Like>
+                        <button className='button-index' onClick={openCommentBox} >
+                            <div className="material-symbols-outlined add-comment material-index">speaker_notes</div>
+                        </button>
+                    </div>
+                </div>
 
-                    <button onClick={openCommentBox} >
-                        <div className="material-symbols-outlined add-comment">speaker_notes</div>
-                    </button>
 
-                    <Link className="open-comments" to="" onClick={openComments}><div className="comment-count-index">{`${comments.length} Comments`}</div></Link>
+
                     {showComments && 
                         <CommentIndex comments={comments} athlete={athleteId} />
                         
@@ -123,7 +139,6 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
                                 <CommentForm activityId={id} authorId={currentUser.id} />
                         </div>
                     }
-                </div>
              </div>
             
         </>

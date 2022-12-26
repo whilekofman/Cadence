@@ -13,10 +13,23 @@ const ActivityLike = ( { activity, activityLikes } ) => {
     const usersLike = activityLikes.filter(like => like.likerId === currentUser.id)
 
         
-    const thumbCss = !usersLike.length ? "material-symbols-outlined thumbs-up thumbs-not-liked" : "material-symbols-outlined thumbs-up thumbs-liked thumbs-liked-color"
+    const thumbCss = !usersLike.length ? "material-symbols-outlined thumbs-up thumbs-not-liked material-index" : "material-symbols-outlined thumbs-up thumbs-liked thumbs-liked-color material-index"
 
 
-    const toggleLike = e => {
+
+    
+    return ( 
+        <>
+        <button className="button-index" onClick={toggleLike}>
+            <div className={thumbCss}>thumb_up</div>
+        </button>
+        </>
+     );
+}
+ 
+export default ActivityLike;
+
+export const toggleLike = e => {
         e.preventDefault()
         
         if (usersLike.length) {
@@ -33,15 +46,4 @@ const ActivityLike = ( { activity, activityLikes } ) => {
         }
 
     }
-    
-    return ( 
-        <>
-        <button onClick={toggleLike}>
-            <div className={thumbCss}>thumb_up</div>
-        </button>
-        </>
-     );
-}
- 
-export default ActivityLike;
 
