@@ -52,7 +52,7 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
         } else if (comments.length){
             return `${comments.length} comments`
         } else {
-            return `${onClick=toggleLike()} Be the first to give kudos!`
+            return <Like activity={activity} activityLikes={activityLikes} userLikesActivity={userLikesActivity} text={true}></Like>
         }
     }
 

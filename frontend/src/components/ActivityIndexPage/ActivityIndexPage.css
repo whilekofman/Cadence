@@ -211,6 +211,10 @@
     justify-content: space-between;
 
 }
+.first-like-index:hover{
+    cursor: pointer;
+    color: rgb(128, 128, 242);
+}
 
  .comment-field {
     justify-content: center;
