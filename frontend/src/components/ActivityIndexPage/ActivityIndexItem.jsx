@@ -49,7 +49,7 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
         } else if (comments.length){
             return `${comments.length} comments`
         } else {
-            return <Like activity={activity} activityLikes={activityLikes} userLikesActivity={userLikesActivity} text={true}></Like>
+            return <Like activity={activity} activityLikes={activityLikes} userLikesActivity={userLikesActivity} firstLike={true}></Like>
         }
     }
 
@@ -124,18 +124,16 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
                     </div>
                 </div>
 
+                {showComments && 
+                    <CommentIndex comments={comments} athlete={athleteId} />
+                    
+                }
 
-
-                    {showComments && 
-                        <CommentIndex comments={comments} athlete={athleteId} />
-                        
-                    }
-
-                    {showCommentBox && 
-                        <div className={showNewCommentBox}>
-                                <CommentForm activityId={id} authorId={currentUser.id} />
-                        </div>
-                    }
+                {showCommentBox && 
+                    <div className={showNewCommentBox}>
+                            <CommentForm activityId={id} authorId={currentUser.id} />
+                    </div>
+                }
              </div>
             
         </>

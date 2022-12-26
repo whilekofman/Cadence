@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteLike, newLike } from "../../store/likes";
 import { getSession } from "../../store/session";
 
-const ActivityLike = ( { activity, activityLikes, text} ) => {
+const ActivityLike = ( { activity, activityLikes, firstLike} ) => {
     const currentUser = useSelector(getSession)
 
 
@@ -33,7 +33,7 @@ const ActivityLike = ( { activity, activityLikes, text} ) => {
         }
 
     }
-    if (text) {
+    if (firstLike) {
         return(
             <div className='first-like-index' onClick={toggleLike}>Be the first to give kudos!</div>
         ) 
