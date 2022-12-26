@@ -2,6 +2,10 @@ class Api::FollowsController < ApplicationController
     wrap_parameters include: Follow.attribute_names + ['followingId', 'followerId', 'id']
 
     def index
+        user = User.find(params[:user_id])
+        @follows = Follow.where(follower_id: user.id)
+        # debugger
+        render :index
 
     end
     
@@ -17,9 +21,8 @@ class Api::FollowsController < ApplicationController
     def destroy
         @follow = Like.find(params [:id])
         if @follow
-            @follow.destroy
-            render json: { message: "Successfully unfollowed" },
-
+            @follow.delete
+            render json: { message: "Successfully unfollowed" }
         else
             render json: { message: @follow.errors.full_messages }, status: :unprocessable_entity
         end

@@ -14,7 +14,7 @@ const CommentLike = ( { commentId } ) => {
     const userLike = commentLikes.filter(like => like.likerId === currentUser.id)
     
     const commentLikeText = commentLikes.length ? `${commentLikes.length} likes` : ``
-    console.log(userLike)
+    // console.log(userLike)
     // console.log(commentLikes)
 
     // let likeToggle = false
