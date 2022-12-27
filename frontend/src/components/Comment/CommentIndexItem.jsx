@@ -24,19 +24,9 @@ const CommentIndexItem = ( { comment, athlete } ) => {
     // debugger
     const handleDeleteComment = e => {
         e.preventDefault()
-        // updateLength()
-        dispatch(deleteComment(id))
-        // updater()
-        // setLengthComments((length) => length--)
-        // setDeleted((val) => !val)
-        
+        dispatch(deleteComment(id))   
     }
     const [userAvitar, setUserAvitar] = useState(authorProfilePicture ? authorProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
-
-    // useEffect(()=> {
-    //     dispatch(fetchComments())
-    // }, [deleted])
-
 
     return ( 
         <div className="comment-container">

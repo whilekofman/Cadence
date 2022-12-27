@@ -11,7 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchComments, getComments } from "../../store/comments";
 import CommentIndex from "../Comment/CommentIndex";
 import { speed, durationConvert } from "../utils/activityspeed/speedConverter";
-import Like from "../Like/ActivityLike";
+import Like, { toggleLike } from "../Like/ActivityLike";
+import { displayTimeParsed } from "../utils/datetimeparsers";
 
 const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivity } ) => {
     const currentUser = useSelector(getSession)
@@ -37,13 +38,20 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
     const [showCommentBox, setShowCommentBox] = useState(false)
     const [showComments, setShowComments] = useState(true)
     const [userAvitar, setUserAvitar] = useState(athleteProfilePicture ? athleteProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
-    
-    const displayTime = new Date(startTime).toLocaleString('en-US', {timeZone: 'UTC', month: '2-digit', day: '2-digit', year: 'numeric',  hour12: true, hour: '2-digit', minute: '2-digit' });
-
-    const displayTimeParsed = displayTime.split(',').join(' at ')
 
     const sportImg = sport === 'run' ? runlogo : sport === 'inline' ? skatelogo : bikelogo 
 
+    const kudosCommentLengthText = ()=> {
+        if (activityLikes.length && comments.length) {
+            return `${activityLikes.length} kudos · ${comments.length} comments`
+        } else if (activityLikes.length) {
+            return `${activityLikes.length} kudos`
+        } else if (comments.length){
+            return `${comments.length} comments`
+        } else {
+            return <Like activity={activity} activityLikes={activityLikes} userLikesActivity={userLikesActivity} firstLike={true}></Like>
+        }
+    }
 
 
     const [speedType, append] = sport === 'run' ? ['Pace', ' /mi'] : ['Speed', ' mi/h']
@@ -72,7 +80,7 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
                         {fname} {lname}
                     </div>
                     <div className="start-time-index">
-                        {displayTimeParsed}
+                        {displayTimeParsed(startTime)}
                     </div>
                 </div>
             </div>
@@ -101,17 +109,21 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
                     <div className="matrix-value-index">{durationConvert( { hours, minutes, seconds } )}</div>
                 </div>
                 
-             </div>
-            <div className="like-count">{activityLikes.length} Kudos</div>
+            </div>
+            <div className="bottom-container-index">
+                <div className="kudos-count-and-buttons-index">
+                    <div className="kudos-comment-count-index">
+                        {kudosCommentLengthText()}
+                    </div>
+                    <div className="comment-like-buttons-index">
+                        <Like activity={activity} activityLikes={activityLikes} userLikesActivity={userLikesActivity}></Like>
 
-             <div className="comment">
-                <Like activity={activity} activityLikes={activityLikes} userLikesActivity={userLikesActivity}></Like>
+                        <button className='button-index' onClick={openCommentBox} >
+                            <div className="material-symbols-outlined add-comment material-index">speaker_notes</div>
+                        </button>
+                    </div>
+                </div>
 
-                <button onClick={openCommentBox} >
-                    <div className="material-symbols-outlined add-comment">speaker_notes</div>
-                </button>
-
-                <Link className="open-comments" to="" onClick={openComments}><div className="comment-count-index">{`${comments.length} Comments`}</div></Link>
                 {showComments && 
                     <CommentIndex comments={comments} athlete={athleteId} />
                     

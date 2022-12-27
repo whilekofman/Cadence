@@ -2,18 +2,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteLike, newLike } from "../../store/likes";
 import { getSession } from "../../store/session";
 
-const ActivityLike = ( { activity, activityLikes } ) => {
+const ActivityLike = ( { activity, activityLikes, firstLike} ) => {
     const currentUser = useSelector(getSession)
 
 
     const dispatch = useDispatch()
 
-
-
+    
     const usersLike = activityLikes.filter(like => like.likerId === currentUser.id)
-
-        
-    const thumbCss = !usersLike.length ? "material-symbols-outlined thumbs-up thumbs-not-liked" : "material-symbols-outlined thumbs-up thumbs-liked thumbs-liked-color"
+    
+    
+    const thumbCss = !usersLike.length ? "material-symbols-outlined thumbs-up thumbs-not-liked material-index" : "material-symbols-outlined thumbs-up thumbs-liked thumbs-liked-color material-index"
+    
 
 
     const toggleLike = e => {
@@ -33,12 +33,17 @@ const ActivityLike = ( { activity, activityLikes } ) => {
         }
 
     }
+    if (firstLike) {
+        return(
+            <div className='first-like-index' onClick={toggleLike}>Be the first to give kudos!</div>
+        ) 
+    }
     
     return ( 
         <>
-        <button onClick={toggleLike}>
-            <div className={thumbCss}>thumb_up</div>
-        </button>
+            <button className="button-index" onClick={toggleLike}>
+                <div className={thumbCss}>thumb_up</div>
+            </button>
         </>
      );
 }
