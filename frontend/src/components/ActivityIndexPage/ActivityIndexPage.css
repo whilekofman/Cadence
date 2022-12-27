@@ -7,6 +7,7 @@
     width: 99vw; */
     display: flex;
     font-family: 'Sora', sans-serif;
+    /* font-family: 'Helvetica', 'Arial', sans-serif; */
     /* font-family: 'MaisonNeue, Segoe UI, Helvetica Neue'; */
     justify-content: center;
     /* background-color: #BABABB;
@@ -102,6 +103,11 @@
     flex-wrap: wrap;
 }
 
+.title-text-index{
+    font-weight: 600;
+    font-size: 20px;
+}
+
 
 .title-link:link {
     color: black;
@@ -126,6 +132,7 @@
     margin-top: 10px;
 }
 .description {
+    font-family: 'Helvetica', 'Arial', sans-serif;
     flex-wrap: wrap;
     max-width: 400px;
     padding-left: 100px;
@@ -133,6 +140,7 @@
     font-weight: 100;
     padding-bottom: 10px;
     padding-top: 16px;
+    height: fit-content;
 }
 
 .matrix-index {

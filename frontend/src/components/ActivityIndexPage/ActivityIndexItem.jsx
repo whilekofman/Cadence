@@ -89,7 +89,7 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
                     <img className='sport-logo' src={sportImg} />
                 </div>
                 <div className="title-text-container-index">
-                    <Link className="title-link" to={`/activities/${id}`}><div className="title-text-index">{title}</div></Link>
+                    <Link className="title-link" to={`/activities/${id}`}><h3 className="title-text-index">{title}</h3></Link>
                 </div>
             </div>
              
