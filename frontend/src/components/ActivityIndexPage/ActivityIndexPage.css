@@ -25,7 +25,7 @@
 
 .activity-container {
     width: 592px;
-    padding-top: 15px;
+    /* padding-top: 15px; */
     list-style: none;
     /* background-color: white; */
     background-color: transparent;
@@ -43,7 +43,8 @@
 .top-bar{
     display: flex;  
     flex-direction: row;
-    padding-left: 24px;
+    /* padding-left: 24px; */
+    padding: 16px 24px 0px;
     align-items: center;
 }
 
@@ -173,16 +174,19 @@
 .bottom-container-index {
     /* padding: 0, 24px; */
     /* width: 592px; */
+    margin: 6px 0px;
     display: flex;
     flex-direction: column;
-    padding-left: 24px;
+    /* padding-left: 12px; */
+    padding: 0px 24px;
     border: 1px solid black;
 }
 
 .kudos-count-and-buttons-index {
     display: flex;
+    margin: 16px 0px;
     flex-direction: row;
-    width: 490px;
+    width: 500px;
     border: 1px solid red;
     height: 32px;
     justify-content: space-between;
@@ -197,12 +201,20 @@
     font-size: 16px;
 }
 
+.button-index:hover { 
+    background-color: white;
+    border: 1px solid #a8a8b3;
+}
+
 .button-index {
     align-items: center;
     justify-content: center;
     width: 42px;
     height: 32px;
+    border: 1px solid #a8a8b3;
 }
+
+
 
 .comment-like-buttons-index {
     width: 88px;
@@ -216,14 +228,6 @@
     color: rgb(128, 128, 242);
 }
 
- .comment-field {
-    justify-content: center;
-    width: 500px;
- }
-
- .comment-input {
-     width: 500px;
- }
 /* .thumbs-up {
     color: orange
 } */
