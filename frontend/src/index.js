@@ -9,6 +9,10 @@ import csrfFetch from './store/csrf';
 import * as sessionActions from './store/session'
 import * as activitytActions from './store/activities'
 import * as userActions from './store/users'
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en.json'
+
+TimeAgo.addDefaultLocale(en)
 
 const store = configureStore();
 

@@ -21,7 +21,11 @@
     "url": "https://github.com/whilekofman/Cadence/issues"
   },
   "homepage": "https://github.com/whilekofman/Cadence#readme",
-    "engines": {
+  "engines": {
     "node": "16.x"
+  },
+  "dependencies": {
+    "javascript-time-ago": "^2.5.9",
+    "react-time-ago": "^7.2.1"
   }
 }

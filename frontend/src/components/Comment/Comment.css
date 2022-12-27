@@ -1,7 +1,36 @@
+.comment-container {
+    border: 1px solid green;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.comment-card {
+    border: 3px solid blue;
+    width: 494px;
+    display: flex;
+    flex-direction: row;
+}
+.commenter-name-comment-index {
+    display: flex;
+    flex-direction: column;
+    padding-left: 16px;
+    padding-top: 6px;
+
+    /* align-items: center; */
+
+}
+.comment-body {
+    width: 400px;
+}
 .commenter-photo {
     height: 30px;
     width: 30px;
     border-radius: 50%;
+}
+
+.delete-like-container {
+    padding-top: 6px;
 }
 
 /* .not-liked {

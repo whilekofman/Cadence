@@ -18,3 +18,4 @@ export const displayTimeParsed = startTime => {
     return today === activityDate ? `Today at ${activityTime}` : yesterdayParsed === activityDate ? `Yesterday at ${activityTime}` : displayTime.split(',').join(' at ')
 
 }
+
