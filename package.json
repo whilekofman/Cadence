@@ -25,7 +25,7 @@
     "node": "16.x"
   },
   "dependencies": {
-    "javascript-time-ago": "^2.5.9",
-    "react-time-ago": "^7.2.1"
+    "dayjs": "^1.11.7",
+    "javascript-time-ago": "^2.5.9"
   }
 }
