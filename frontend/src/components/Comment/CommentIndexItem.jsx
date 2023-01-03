@@ -4,14 +4,17 @@ import { Link } from "react-router-dom";
 import { deleteComment, fetchComments } from "../../store/comments";
 import { getSession } from "../../store/session";
 import CommentLike  from "../Like/CommentLike";
+import dayjs from "dayjs"
+import relativeTime from "dayjs/plugin/relativeTime"
+// const dayjs = require('dayjs')
+// const relativeTime = require('dayjs/plugin/relativeTime')
+dayjs.extend(relativeTime)
 
 const CommentIndexItem = ( { comment, athlete } ) => {
-    const dayjs = require('dayjs')
-    const relativeTime = require('dayjs/plugin/relativeTime')
-    dayjs.extend(relativeTime)
+
     const dispatch = useDispatch()
     const currentUser = useSelector(getSession)
-    const [deleted, setDeleted] = useState(false)
+    // const [deleted, setDeleted] = useState(false)
     const {
         id,
         fname,
@@ -23,14 +26,8 @@ const CommentIndexItem = ( { comment, athlete } ) => {
         authorId
         
     } = comment
+
     const TimeSinceComment = dayjs().to(dayjs(createdAt))
-    // const year22 = (2002, 22, 2)
-    // const date = new Date(createdAt)
-    // // console.log(((new Date() - date) / 1000) / 60, 'minutes ago')
-    // // const timeAgo = ((new Date() - date) / 1000) / 60
-    // const commentTime = new Date(createdAt)
-    // console.log(createdAt)
-    // console.log(typeof new Date(createdAt))
 
     const handleDeleteComment = e => {
         e.preventDefault()
@@ -52,12 +49,7 @@ const CommentIndexItem = ( { comment, athlete } ) => {
                     <div className="comment-body">
                         {body}  <br />
                         {TimeSinceComment}
-                        {/* {createdAt} */}
-                        {/* <TimeSinceComment createdAt<br /={createdAt} /> */}
-                        {/* <ReactTimeAgo date={createdAt} /> */}
-                        {/* {new Date() - createdAt}
-                         */}
-                         {/* <TimeAgoComment  /> */}
+
 
                     </div>
                     <CommentLike commentId={id}/>
