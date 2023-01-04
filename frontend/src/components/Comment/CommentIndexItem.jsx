@@ -28,46 +28,60 @@ const CommentIndexItem = ( { comment, athlete } ) => {
     } = comment
 
     const TimeSinceComment = dayjs().to(dayjs(createdAt))
-
+    const [show, setShow] = useState(false)
     const handleDeleteComment = e => {
         e.preventDefault()
         dispatch(deleteComment(id))   
     }
     const [userAvitar, setUserAvitar] = useState(authorProfilePicture ? authorProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
 
-    const timeFollowDelete = () => {
+    const time = () => {
         return(
         <div className="time-since-comment">
             {TimeSinceComment}
         </div>)
     }
 
+    const timeDeleteFollow = () => {
+        if (athlete === currentUser.id || currentUser.id === authorId){
+            return(<>
+                    <div className="time-since-comment">
+                        {TimeSinceComment}
+                    </div>
+                    <div className="delete-comment"> | Delete</div>
+                </>
+            )}
+            else return(
+                <div className="time-since-comment">
+                    {TimeSinceComment}
+                 </div>)
+    }
+    const [showFollowDelete, setFollowDelete] = useState(time())
+
+
 
     return ( 
         <div className="comment-container">
-            <div className="comment-card">
-                
+            <div className="comment-card"
+            onMouseEnter={() => setFollowDelete(timeDeleteFollow)}
+            onMouseLeave={() => setFollowDelete(time)}>
                 <div className="commenter-photo-container">
                     <img src={userAvitar} alt="commenter-photo" className="commenter-photo"/>
+                    <div className="commenter-name-container-index">
+                        <div className="commenter-name">
+                            {`${fname} ${lname} `}
+                        </div>
+                        <div className="time-delete-follow">
+                            {showFollowDelete}
+                        </div>
+                    </div>
                 </div>
-                <div className="commenter-name-container-index">
-                    <div className="commenter-name">
-                        {`${fname} ${lname} `}
-                    </div>
-                    <div className="comment-body">
-                        {body}  <br />
-                        {TimeSinceComment}
-                        {/* {createdAt} */}
-                        {/* <TimeSinceComment createdAt<br /={createdAt} /> */}
-                        {/* <ReactTimeAgo date={createdAt} /> */}
-                        {/* {new Date() - createdAt}
-                         */}
-                         {/* <TimeAgoComment  /> */}
 
-                    </div>
+                <div className="comment-body">
+                        {body} 
+                </div>
+                <div>
                     <CommentLike commentId={id}/>
-
-
                 </div>
                 <div className="delete-like-container">
                     { (athlete === currentUser.id || currentUser.id === authorId )&&

@@ -5,23 +5,69 @@
 
 }
 
+.commenter-photo-container {
+    display: flex;
+    flex: row;
+    align-items: center;
+}
 .comment-card {
     border: 3px solid blue;
     width: 494px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 .commenter-name-container-index {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding-left: 16px;
     padding-top: 6px;
+    justify-content: space-between;
+    width: 494px;
 
     /* align-items: center; */
+}
+
+.time-delete-follow {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    flex-wrap: nowrap;
+}
+
+.time-delete-follow > div{
+        font-family: 'Helvetica', 'Arial', sans-serif;
+        font-size: 12px;
+        margin-right: 3px;
+}
+
+.time-since-comment{
+
+    /* color: rgba(168, 168, 179, 0.9); */
+    color: #6d6d78;
+        
+}
+
+.delete-comment {
+    color: orange;
+}
+
+.delete-comment:hover {
+    cursor: pointer;
+    font-weight: bolder;
+    color: red
+}
+.commenter-name {
+    font-size: 12px;
+    font-weight: 200;
 
 }
 .comment-body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
     width: 400px;
+    border: 2px solid red;
+    margin-left: 42px;
+    font-size: 12px;
+
 }
 .commenter-photo {
     height: 30px;
