@@ -35,6 +35,14 @@ const CommentIndexItem = ( { comment, athlete } ) => {
     }
     const [userAvitar, setUserAvitar] = useState(authorProfilePicture ? authorProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
 
+    const timeFollowDelete = () => {
+        return(
+        <div className="time-since-comment">
+            {TimeSinceComment}
+        </div>)
+    }
+
+
     return ( 
         <div className="comment-container">
             <div className="comment-card">
@@ -42,7 +50,7 @@ const CommentIndexItem = ( { comment, athlete } ) => {
                 <div className="commenter-photo-container">
                     <img src={userAvitar} alt="commenter-photo" className="commenter-photo"/>
                 </div>
-                <div className="commenter-name-comment-index">
+                <div className="commenter-name-container-index">
                     <div className="commenter-name">
                         {`${fname} ${lname} `}
                     </div>
