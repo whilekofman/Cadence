@@ -49,7 +49,12 @@ const CommentIndexItem = ( { comment, athlete } ) => {
                     <div className="comment-body">
                         {body}  <br />
                         {TimeSinceComment}
-
+                        {/* {createdAt} */}
+                        {/* <TimeSinceComment createdAt<br /={createdAt} /> */}
+                        {/* <ReactTimeAgo date={createdAt} /> */}
+                        {/* {new Date() - createdAt}
+                         */}
+                         {/* <TimeAgoComment  /> */}
 
                     </div>
                     <CommentLike commentId={id}/>

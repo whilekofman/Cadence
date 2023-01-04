@@ -13,9 +13,17 @@ import CommentIndex from "../Comment/CommentIndex";
 import { speed, durationConvert } from "../utils/activityspeed/speedConverter";
 import Like, { toggleLike } from "../Like/ActivityLike";
 import { displayTimeParsed } from "../utils/datetimeparsers";
+import { getFollowers, getFollowing } from "../../store/follows";
 
 const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivity } ) => {
     const currentUser = useSelector(getSession)
+    const followers = useSelector(getFollowers)
+    const following = useSelector(getFollowing)
+    
+    // console.log('Followers: ', followers)
+    // console.log('Following: ', following)
+
+
     const {
         id,
         fname,
@@ -29,7 +37,6 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
         minutes,
         seconds,
         athleteProfilePicture,
-        likesCount,
         athleteId,        
     } = activity
 
@@ -39,7 +46,15 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
     const [showComments, setShowComments] = useState(true)
     const [userAvitar, setUserAvitar] = useState(athleteProfilePicture ? athleteProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
 
-    const sportImg = sport === 'run' ? runlogo : sport === 'inline' ? skatelogo : bikelogo 
+    const sportImg = sport === 'run' ? runlogo : sport === 'inline' ? skatelogo : bikelogo
+
+    const userFollows = () => {
+        if(athleteId in followers){
+            // debugger
+            return (<>Follows you</>)
+        }
+    }
+
 
     const kudosCommentLengthText = ()=> {
         if (activityLikes.length && comments.length) {
@@ -77,7 +92,7 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
                 </div>
                 <div className="athlete-name-start-time-index">
                     <div className="athlete-name-index">
-                        {fname} {lname}
+                        {fname} {lname} {userFollows()}
                     </div>
                     <div className="start-time-index">
                         {displayTimeParsed(startTime)}

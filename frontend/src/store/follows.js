@@ -19,7 +19,9 @@ export const removeFollow = followId => ({
     followId
 })
 
-export const getFollows = ({ follows }) => follows ? Object.values(follows) : []
+export const getFollowers = ({ followers }) => followers ? followers : []
+export const getFollowing = ({ following }) => following ? following : []
+
 
 
 export const fetchFollows = ( userId, type ) => async dispatch => {

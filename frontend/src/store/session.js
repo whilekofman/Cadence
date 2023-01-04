@@ -52,8 +52,8 @@ export const login = ({ credential, password }) => async dispatch => {
     const data = await res.json();
     storeCurrentUser(data.user)
     dispatch(setCurrentUser(data.user));
-    // dispatch(retrieveFollows(data.follows));
-    // dispatch(retrieveFollows(data.followedBy));
+    dispatch(retrieveFollowing(data.follows))
+    dispatch(retrieveFollowers(data.followedBy))
 
     return res;
 }
@@ -74,7 +74,6 @@ export const restoreSession = () => async dispatch => {
     dispatch(setCurrentUser(data.user));
     dispatch(retrieveFollowing(data.follows))
     dispatch(retrieveFollowers(data.followedBy))
-    // debugger
     return res;
 }
 
@@ -100,12 +99,8 @@ const sessionReducer = ( state = initialState, action ) => {
             // return { ...nextState, user: null };
             nextState.user = null;
             return nextState
-        // case SET_CURRENT_USER:
-        //     return { ...nextState, ...action.user };
-        // case REMOVE_CURRENT_USER:
-        //     return { ...nextState, user: null };
+
         default:
-            // return initialState;
             return state
     }
 }
