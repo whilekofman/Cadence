@@ -4,6 +4,7 @@ import activityReducer from './activities';
 import sessionReducer from './session';
 import commentReducer from './comments';
 import likeReducer from './likes';
+import followReducer, { followingReducer } from './follows';
 // import userReducer from './users'
 
 
@@ -11,7 +12,10 @@ export const rootReducer = combineReducers({
     session: sessionReducer,
     activities: activityReducer,
     comments: commentReducer,
-    likes: likeReducer
+    likes: likeReducer,
+    following: followReducer,
+    followers: followingReducer
+    
     
     // users: userReducer
 

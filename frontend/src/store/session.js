@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf";
+import { retrieveFollowers, retrieveFollowing } from "./follows";
 
 export const SET_CURRENT_USER = "session/SET_CURRENT_USER"
 export const REMOVE_CURRENT_USER = "session/REMOVE_CURRENT_USER"
@@ -51,6 +52,9 @@ export const login = ({ credential, password }) => async dispatch => {
     const data = await res.json();
     storeCurrentUser(data.user)
     dispatch(setCurrentUser(data.user));
+    // dispatch(retrieveFollows(data.follows));
+    // dispatch(retrieveFollows(data.followedBy));
+
     return res;
 }
 
@@ -68,6 +72,9 @@ export const restoreSession = () => async dispatch => {
     const data = await res.json();
     storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user));
+    dispatch(retrieveFollowing(data.follows))
+    dispatch(retrieveFollowers(data.followedBy))
+    // debugger
     return res;
 }
 

@@ -63,7 +63,6 @@ class User < ApplicationRecord
       source: :follower
     
 
-
     def self.find_by_credentials(credential, password)
       field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :null
       user = User.find_by(field => credential)
@@ -77,6 +76,7 @@ class User < ApplicationRecord
       self.session_token
     end
 
+
     private 
     def generate_unique_session_token
       loop do
@@ -88,6 +88,8 @@ class User < ApplicationRecord
     def ensure_session_token
       self.session_token ||= generate_unique_session_token
     end
+
+
 
 end
 

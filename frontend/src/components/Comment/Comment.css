@@ -33,6 +33,10 @@
     padding-top: 6px;
 }
 
+.delete-comment-link{
+    cursor: pointer;
+}
+
 /* .not-liked {
     font-variation-settings:
         'FILL' 0,
