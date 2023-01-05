@@ -24,7 +24,6 @@ const Follow = ( { location, id } ) => {
         if(id in reducedFollowing) {
             const removeFollow = reducedFollowing[id].id
             dispatch(deleteFollow(removeFollow))
-            console.log(removeFollow)
         } else {
             const follow = {
                 followerId: currentUser.id,

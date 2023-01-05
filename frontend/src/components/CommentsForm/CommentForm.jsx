@@ -8,7 +8,7 @@ const CommentForm = ({ activityId, authorId }) => {
     const [body, setBody] = useState('')
     const [submitted, setSubmitted] = useState(false)
     const currentUser = useSelector(getSession)
-    console.log(currentUser)
+    
     const athleteProfilePicture = currentUser.profileUrl
 
     const [userAvitar, setUserAvitar] = useState(athleteProfilePicture ? athleteProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
@@ -56,6 +56,7 @@ const CommentForm = ({ activityId, authorId }) => {
                         <textarea
                             name="comment" 
                             className="comment-input"
+                            autoFocus={true}
                             value={body}
                             placeholder='Add a comment'
                             onChange={e => setBody(e.target.value)}

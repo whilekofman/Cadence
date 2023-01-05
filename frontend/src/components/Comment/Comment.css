@@ -1,5 +1,5 @@
 .comment-container {
-    border: 2px solid green;
+    /* border: 2px solid green; */
     display: flex;
     flex-direction: row;
 
@@ -11,7 +11,7 @@
     align-items: center;
 }
 .comment-card {
-    border: 3px solid blue;
+    /* border: 3px solid blue; */
     width: 494px;
     display: flex;
     flex-direction: column;
@@ -66,7 +66,7 @@
 .comment-body {
     font-family: 'Helvetica', 'Arial', sans-serif;
     width: 400px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     margin-left: 42px;
     font-size: 12px;
 

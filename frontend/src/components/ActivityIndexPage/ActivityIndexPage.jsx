@@ -7,6 +7,7 @@ import { fetchComments, fetchCommentsActivities, getComments } from "../../store
 import { getFollowers, getFollowing } from "../../store/follows";
 import { getLikes } from "../../store/likes";
 import { getSession } from "../../store/session";
+import CommentFollowModule from "../CommentFollowModal/CommentFollowModal";
 import ActivityIndexItem from "./ActivityIndexItem";
 
 const ActivityIndexPage = () => {
@@ -23,6 +24,8 @@ const ActivityIndexPage = () => {
 
     const followers = useSelector(getFollowers)
     const following = useSelector(getFollowing)
+
+    const [toggleCommentsFollows, setToggleCommentsFollows] = useState(null)
     // const followersMapped = followers.map((follower) => {
     //     const followerId = follower
     //     return followerId
@@ -47,7 +50,7 @@ const ActivityIndexPage = () => {
 
     useEffect(() => {
         dispatch(fetchActivities())
-    }, [])
+    }, [toggleCommentsFollows])
 
 
     const activityListElements = activities
@@ -56,6 +59,7 @@ const ActivityIndexPage = () => {
             activity={activity} 
             comments={comments.filter((comment) => comment.activityId === activity.id) } 
             activityLikes={filteredActivityLikes(activity.id)} 
+            toggleCommentsFollows={setToggleCommentsFollows}
             // userLikesActivity={currentUserLikesActivity(activity.id)}
             />
         </div>)
@@ -79,7 +83,9 @@ const ActivityIndexPage = () => {
                 <div className="activity-container">
                     {activityListElements}
                 </div>
+                {toggleCommentsFollows ? <CommentFollowModule comments={toggleCommentsFollows}/> : null }
             </div>
+
         </>
 
      );
