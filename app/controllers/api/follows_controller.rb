@@ -28,8 +28,7 @@ class Api::FollowsController < ApplicationController
     end
 
     def destroy
-        debugger
-        @follow = Like.find(params[:id])
+        @follow = Follow.find(params[:id])
         if @follow
             @follow.destroy
             render json: { message: "Successfully unfollowed" }

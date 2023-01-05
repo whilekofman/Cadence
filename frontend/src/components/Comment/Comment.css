@@ -20,9 +20,10 @@
     display: flex;
     flex-direction: row;
     padding-left: 16px;
-    padding-top: 6px;
+    height: 14px;
     justify-content: space-between;
     width: 494px;
+    position: relative;
 
     /* align-items: center; */
 }
@@ -35,9 +36,10 @@
 }
 
 .time-delete-follow > div{
-        font-family: 'Helvetica', 'Arial', sans-serif;
-        font-size: 12px;
-        margin-right: 3px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 12px;
+    margin-right: 3px;
+    align-items: center;
 }
 
 .time-since-comment{

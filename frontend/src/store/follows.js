@@ -29,11 +29,10 @@ export const getFollowing = ({ following }) => following ? Object.values(followi
 export const fetchFollows = ( userId, type ) => async dispatch => {
     const res = await csrfFetch(`/api/users/${userId}/follows?type=${type}`)
     const data = await res.json();
-    // dispatch(retrieveFollows(data))
     if (type === 'followers'){
-        retrieveFollowers(data)
+        dispatch(retrieveFollowers(data))
     } else {
-        retrieveFollowing(data)
+        dispatch(retrieveFollowing(data))
     }
 }
 
@@ -41,11 +40,11 @@ export const deleteFollow = followId => async dispatch => {
     const res = await csrfFetch (`/api/follows/${followId}`, {
         method: 'DELETE'
     })
-    dispatch(removeFollow(followId))  
+    dispatch(removeFollow(followId)) 
 }
 
 export const newFollow = ( currentUserId, follow ) => async dispatch => {
-    const res = await csrfFetch('/api/follow', {
+    const res = await csrfFetch('/api/follows/', {
         method: 'POST',
         body: JSON.stringify(follow),
         headers: {
@@ -53,7 +52,7 @@ export const newFollow = ( currentUserId, follow ) => async dispatch => {
         }
     })
     const data = await res.json()
-    fetchFollows(currentUserId, 'following' )
+    dispatch(fetchFollows(currentUserId, 'following'))
 
 }
 
