@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@800&display=swap');
 
 .activity-index-body {
-    /* border-top: 1px solid gray; */
+    /* border-top: 10px solid gray; */
     padding-top: 1%;
     /* height: 90vh;
     width: 99vw; */
@@ -33,7 +33,7 @@
     padding-bottom: 125px;
     display: flex;
     flex-direction: column;
-    padding-bottom: 20px;
+    /* padding-bottom: 20px; */
     /* align-items: center; */
     
 }
@@ -63,10 +63,16 @@
 }
 .athlete-name-activity {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .athlete-name-index {
+    display: flex;
+    flex-direction: row;
+    width: 430px;
+    height: 24px;
+    justify-content: space-between;
+    align-items: center;
     font-size: 14px;
     font-weight: bolder;
 }

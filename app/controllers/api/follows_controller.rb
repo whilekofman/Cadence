@@ -5,15 +5,12 @@ class Api::FollowsController < ApplicationController
     def index
         # http://localhost:5000/api/users/3/follows?type= followers || following
         user = User.find(params[:user_id])
-        # debugger
-        # ids = params[user_id].split(', ')
-        # user = User.find(params[:user_id])
-
+        
         case params[:type].downcase
         when 'followers'
             @follows =  Follow.where(following_id: user.id)
         when 'following'
-             @follows = Follow.where(follower_id: user.id)
+            @follows = Follow.where(follower_id: user.id)
         end
         # @follows = Follow.where(follower_id: user.id)
         # debugger
@@ -31,9 +28,10 @@ class Api::FollowsController < ApplicationController
     end
 
     def destroy
-        @follow = Like.find(params [:id])
+        debugger
+        @follow = Like.find(params[:id])
         if @follow
-            @follow.delete
+            @follow.destroy
             render json: { message: "Successfully unfollowed" }
         else
             render json: { message: @follow.errors.full_messages }, status: :unprocessable_entity

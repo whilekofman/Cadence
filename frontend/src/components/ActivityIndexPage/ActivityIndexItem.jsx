@@ -14,16 +14,12 @@ import { speed, durationConvert } from "../utils/activityspeed/speedConverter";
 import Like, { toggleLike } from "../Like/ActivityLike";
 import { displayTimeParsed } from "../utils/datetimeparsers";
 import { getFollowers, getFollowing } from "../../store/follows";
+import Follow from "../Follow/Follow";
 
 const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivity } ) => {
     const currentUser = useSelector(getSession)
-    const followers = useSelector(getFollowers)
-    const following = useSelector(getFollowing)
+
     
-    // console.log('Followers: ', followers)
-    // console.log('Following: ', following)
-
-
     const {
         id,
         fname,
@@ -48,12 +44,12 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
 
     const sportImg = sport === 'run' ? runlogo : sport === 'inline' ? skatelogo : bikelogo
 
-    const userFollows = () => {
-        if(athleteId in followers){
-            // debugger
-            return (<>Follows you</>)
-        }
-    }
+    // const userFollows = () => {
+    //     if(athleteId in followers){
+    //         // debugger
+    //         return (<>Follows you</>)
+    //     }
+    // }
 
 
     const kudosCommentLengthText = ()=> {
@@ -82,6 +78,12 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
         e.preventDefault()
         setShowComments(show => !show)    
     }
+
+    const followButton = (athleteId) => {
+        if (athleteId !== currentUser.id) {
+            return  <Follow location={"activityIndex"} id={athleteId} />
+        }
+    }
     return (
         <>
 
@@ -92,7 +94,8 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
                 </div>
                 <div className="athlete-name-start-time-index">
                     <div className="athlete-name-index">
-                        {fname} {lname} {userFollows()}
+                        {fname} {lname}
+                        {followButton(athleteId)}
                     </div>
                     <div className="start-time-index">
                         {displayTimeParsed(startTime)}

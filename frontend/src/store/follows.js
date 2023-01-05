@@ -19,8 +19,10 @@ export const removeFollow = followId => ({
     followId
 })
 
-export const getFollowers = ({ followers }) => followers ? followers : []
-export const getFollowing = ({ following }) => following ? following : []
+export const getFollowers = ({ followers }) => followers ? Object.values(followers) : []
+export const getFollowing = ({ following }) => following ? Object.values(following) : []
+
+// export const getFollowing = ({ following }) => following ? Object.values(following) : []
 
 
 
@@ -28,6 +30,11 @@ export const fetchFollows = ( userId, type ) => async dispatch => {
     const res = await csrfFetch(`/api/users/${userId}/follows?type=${type}`)
     const data = await res.json();
     // dispatch(retrieveFollows(data))
+    if (type === 'followers'){
+        retrieveFollowers(data)
+    } else {
+        retrieveFollowing(data)
+    }
 }
 
 export const deleteFollow = followId => async dispatch => {

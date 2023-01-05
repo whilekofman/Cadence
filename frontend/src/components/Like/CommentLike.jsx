@@ -4,7 +4,6 @@ import { deleteLike, getLikes, newLike } from "../../store/likes"
 import { getSession } from "../../store/session"
 
 const CommentLike = ( { commentId } ) => {
-    const [foo, setFoo] = useState(false)
     const currentUser = useSelector(getSession)
     const likes = useSelector(getLikes)
     const dispatch = useDispatch()
@@ -37,9 +36,6 @@ const CommentLike = ( { commentId } ) => {
             }
             dispatch(newLike(like, like.likeableType, like.likeableId))
         }
-
-        // setFoo(!foo)
-        // console.log(foo, 'foo', heartClass, 'heartClass')
 
     }
 

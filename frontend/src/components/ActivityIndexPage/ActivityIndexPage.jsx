@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { fetchActivities, getActivities } from "../../store/activities";
 import { fetchComments, fetchCommentsActivities, getComments } from "../../store/comments";
+import { getFollowers, getFollowing } from "../../store/follows";
 import { getLikes } from "../../store/likes";
 import { getSession } from "../../store/session";
 import ActivityIndexItem from "./ActivityIndexItem";
@@ -19,6 +20,21 @@ const ActivityIndexPage = () => {
     const comments = useSelector(getComments)
 
     const likes = useSelector(getLikes)
+
+    const followers = useSelector(getFollowers)
+    const following = useSelector(getFollowing)
+    // const followersMapped = followers.map((follower) => {
+    //     const followerId = follower
+    //     return followerId
+    // });
+
+    console.log(following)
+
+    // const mappedFollowers = followers.map((follower) => {
+    //     return [follower.followerId, follower.followerName, follower.id]
+    // })
+
+    // console.log(mappedFollowers)
     
     const [showCommentsModel, setShowCommentsModal] = useState(false)
 
@@ -27,9 +43,13 @@ const ActivityIndexPage = () => {
 
     }
 
+    // filteredActivityFollows = 
+
     useEffect(() => {
         dispatch(fetchActivities())
     }, [])
+
+
     const activityListElements = activities
         .sort((a, b) => new Date(b.startTime) - new Date(a.startTime))
         .map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem 
