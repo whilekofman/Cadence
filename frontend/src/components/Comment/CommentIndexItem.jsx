@@ -85,11 +85,6 @@ const CommentIndexItem = ( { comment, athlete } ) => {
                 <div>
                     <CommentLike commentId={id}/>
                 </div>
-                <div className="delete-like-container">
-                    { (athlete === currentUser.id || currentUser.id === authorId )&&
-                        <div onClick={handleDeleteComment} className="delete-comment-link" to="">Delete</div>
-                    }
-                </div>
                 
             </div>
         </div>

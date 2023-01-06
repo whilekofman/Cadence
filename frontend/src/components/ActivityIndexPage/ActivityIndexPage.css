@@ -2,6 +2,7 @@
 
 button {
     cursor: pointer;
+    border: none;
 }
 
 .activity-index-body {
