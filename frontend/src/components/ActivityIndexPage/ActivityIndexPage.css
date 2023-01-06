@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@800&display=swap');
 
+button {
+    cursor: pointer;
+}
+
 .activity-index-body {
     /* border-top: 10px solid gray; */
     padding-top: 1%;
