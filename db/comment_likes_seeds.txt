@@ -1,0 +1,325 @@
+comment_like_92 = Like.create!(
+    liker_id: james.id,
+    likeable_id: comment_1.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_93 = Like.create!(
+    liker_id: ada.id,
+    likeable_id: comment_1.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_94 = Like.create!(
+    liker_id: eugene.id,
+    likeable_id: comment_1.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_95 = Like.create!(
+    liker_id: jim.id,
+    likeable_id: comment_1.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_96 = Like.create!(
+    liker_id: james.id,
+    likeable_id: comment_7.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_97 = Like.create!(
+    liker_id: ari.id,
+    likeable_id: comment_7.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_98 = Like.create!(
+    liker_id: eugene.id,
+    likeable_id: comment_7.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_99 = Like.create!(
+    liker_id: ada.id,
+    likeable_id: comment_7.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_100 = Like.create!(
+    liker_id: eugene.id,
+    likeable_id: comment_11.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_101 = Like.create!(
+    liker_id: stuart.id,
+    likeable_id: comment_11.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_102 = Like.create!(
+    liker_id: ari.id,
+    likeable_id: comment_11.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_103 = Like.create!(
+    liker_id: jennifer.id,
+    likeable_id: comment_11.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_104 = Like.create!(
+    liker_id: james.id,
+    likeable_id: comment_11.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_105 = Like.create!(
+    liker_id: jim.id,
+    likeable_id: comment_11.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_106 = Like.create!(
+    liker_id: ada.id,
+    likeable_id: comment_11.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_107 = Like.create!(
+    liker_id: stuart.id,
+    likeable_id: comment_13.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_108 = Like.create!(
+    liker_id: stuart.id,
+    likeable_id: comment_14.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_109 = Like.create!(
+    liker_id: eugene.id,
+    likeable_id: comment_14.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_110 = Like.create!(
+    liker_id: jim.id,
+    likeable_id: comment_17.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_111 = Like.create!(
+    liker_id: james.id,
+    likeable_id: comment_17.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_112 = Like.create!(
+    liker_id: jennifer.id,
+    likeable_id: comment_17.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_113 = Like.create!(
+    liker_id: ada.id,
+    likeable_id: comment_17.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_114 = Like.create!(
+    liker_id: ari.id,
+    likeable_id: comment_17.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_115 = Like.create!(
+    liker_id: stuart.id,
+    likeable_id: comment_17.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_116 = Like.create!(
+    liker_id: eugene.id,
+    likeable_id: comment_18.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_117 = Like.create!(
+    liker_id: james.id,
+    likeable_id: comment_19.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_118 = Like.create!(
+    liker_id: jim.id,
+    likeable_id: comment_19.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_119 = Like.create!(
+    liker_id: ari.id,
+    likeable_id: comment_19.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_120 = Like.create!(
+    liker_id: jennifer.id,
+    likeable_id: comment_19.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_121 = Like.create!(
+    liker_id: eugene.id,
+    likeable_id: comment_19.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_122 = Like.create!(
+    liker_id: james.id,
+    likeable_id: comment_22.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_123 = Like.create!(
+    liker_id: stuart.id,
+    likeable_id: comment_22.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_124 = Like.create!(
+    liker_id: james.id,
+    likeable_id: comment_23.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_125 = Like.create!(
+    liker_id: jim.id,
+    likeable_id: comment_23.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_126 = Like.create!(
+    liker_id: eugene.id,
+    likeable_id: comment_23.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_127 = Like.create!(
+    liker_id: stuart.id,
+    likeable_id: comment_23.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_128 = Like.create!(
+    liker_id: ada.id,
+    likeable_id: comment_23.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_129 = Like.create!(
+    liker_id: ari.id,
+    likeable_id: comment_23.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_130 = Like.create!(
+    liker_id: jennifer.id,
+    likeable_id: comment_23.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_131 = Like.create!(
+    liker_id: ada.id,
+    likeable_id: comment_24.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_132 = Like.create!(
+    liker_id: ari.id,
+    likeable_id: comment_24.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_133 = Like.create!(
+    liker_id: jennifer.id,
+    likeable_id: comment_24.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_134 = Like.create!(
+    liker_id: jim.id,
+    likeable_id: comment_24.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_135 = Like.create!(
+    liker_id: james.id,
+    likeable_id: comment_24.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_136 = Like.create!(
+    liker_id: eugene.id,
+    likeable_id: comment_24.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_137 = Like.create!(
+    liker_id: james.id,
+    likeable_id: comment_25.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_138 = Like.create!(
+    liker_id: ada.id,
+    likeable_id: comment_25.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_139 = Like.create!(
+    liker_id: jim.id,
+    likeable_id: comment_25.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_140 = Like.create!(
+    liker_id: ari.id,
+    likeable_id: comment_25.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_141 = Like.create!(
+    liker_id: jennifer.id,
+    likeable_id: comment_25.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_142 = Like.create!(
+    liker_id: jim.id,
+    likeable_id: comment_31.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_143 = Like.create!(
+    liker_id: stuart.id,
+    likeable_id: comment_31.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_144 = Like.create!(
+    liker_id: ari.id,
+    likeable_id: comment_31.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_145 = Like.create!(
+    liker_id: jennifer.id,
+    likeable_id: comment_31.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_146 = Like.create!(
+    liker_id: james.id,
+    likeable_id: comment_32.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_147 = Like.create!(
+    liker_id: james.id,
+    likeable_id: comment_34.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_148 = Like.create!(
+    liker_id: ada.id,
+    likeable_id: comment_34.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_149 = Like.create!(
+    liker_id: stuart.id,
+    likeable_id: comment_34.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_150 = Like.create!(
+    liker_id: ari.id,
+    likeable_id: comment_34.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_151 = Like.create!(
+    liker_id: eugene.id,
+    likeable_id: comment_34.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_152 = Like.create!(
+    liker_id: jim.id,
+    likeable_id: comment_34.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_153 = Like.create!(
+    liker_id: ari.id,
+    likeable_id: comment_38.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_154 = Like.create!(
+    liker_id: eugene.id,
+    likeable_id: comment_38.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_155 = Like.create!(
+    liker_id: ada.id,
+    likeable_id: comment_38.id,
+    likeable_type: 'Comment'     
+    )
+comment_like_156 = Like.create!(
+    liker_id: jennifer.id,
+    likeable_id: comment_38.id,
+    likeable_type: 'Comment'     
+    )

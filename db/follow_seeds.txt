@@ -1,0 +1,88 @@
+follow_1 = Follow.create!(
+    follower_id: jennifer.id,
+    following_id: ari.id
+)
+follow_1 = Follow.create!(
+    follower_id: james.id,
+    following_id: eugene.id
+)
+follow_1 = Follow.create!(
+    follower_id: eugene.id,
+    following_id: jim.id
+)
+follow_1 = Follow.create!(
+    follower_id: eugene.id,
+    following_id: ari.id
+)
+follow_1 = Follow.create!(
+    follower_id: ari.id,
+    following_id: jim.id
+)
+follow_1 = Follow.create!(
+    follower_id: ari.id,
+    following_id: jennifer.id
+)
+follow_1 = Follow.create!(
+    follower_id: ari.id,
+    following_id: ada.id
+)
+follow_1 = Follow.create!(
+    follower_id: ari.id,
+    following_id: james.id
+)
+follow_1 = Follow.create!(
+    follower_id: ari.id,
+    following_id: stuart.id
+)
+follow_1 = Follow.create!(
+    follower_id: ari.id,
+    following_id: eugene.id
+)
+follow_1 = Follow.create!(
+    follower_id: stuart.id,
+    following_id: james.id
+)
+follow_1 = Follow.create!(
+    follower_id: stuart.id,
+    following_id: eugene.id
+)
+follow_1 = Follow.create!(
+    follower_id: stuart.id,
+    following_id: ari.id
+)
+follow_1 = Follow.create!(
+    follower_id: stuart.id,
+    following_id: jennifer.id
+)
+follow_1 = Follow.create!(
+    follower_id: stuart.id,
+    following_id: jim.id
+)
+follow_1 = Follow.create!(
+    follower_id: jim.id,
+    following_id: james.id
+)
+follow_1 = Follow.create!(
+    follower_id: jim.id,
+    following_id: ari.id
+)
+follow_1 = Follow.create!(
+    follower_id: ada.id,
+    following_id: ari.id
+)
+follow_1 = Follow.create!(
+    follower_id: ada.id,
+    following_id: jennifer.id
+)
+follow_1 = Follow.create!(
+    follower_id: ada.id,
+    following_id: eugene.id
+)
+follow_1 = Follow.create!(
+    follower_id: ada.id,
+    following_id: stuart.id
+)
+follow_1 = Follow.create!(
+    follower_id: ada.id,
+    following_id: jim.id
+)

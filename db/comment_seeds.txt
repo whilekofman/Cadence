@@ -1,0 +1,170 @@
+comment_6 = Comment.create!(
+    author_id: jennifer.id,
+    activity_id: jennifer_activity_3.id,
+    body: 'Wish I were there'     
+    )
+comment_7 = Comment.create!(
+    author_id: eugene.id,
+    activity_id: jennifer_activity_3.id,
+    body: 'Kudos'     
+    )
+comment_8 = Comment.create!(
+    author_id: jim.id,
+    activity_id: jennifer_activity_4.id,
+    body: 'Next time I\'m in'     
+    )
+comment_9 = Comment.create!(
+    author_id: ari.id,
+    activity_id: james_activity_1.id,
+    body: 'Wish I were there'     
+    )
+comment_10 = Comment.create!(
+    author_id: ari.id,
+    activity_id: james_activity_1.id,
+    body: 'Kudos'     
+    )
+comment_11 = Comment.create!(
+    author_id: ada.id,
+    activity_id: james_activity_2.id,
+    body: 'Kudos'     
+    )
+comment_12 = Comment.create!(
+    author_id: ada.id,
+    activity_id: james_activity_2.id,
+    body: 'Next time I\'m in'     
+    )
+comment_13 = Comment.create!(
+    author_id: ari.id,
+    activity_id: eugene_activity_3.id,
+    body: 'Awesome'     
+    )
+comment_14 = Comment.create!(
+    author_id: stuart.id,
+    activity_id: eugene_activity_3.id,
+    body: 'Great Work'     
+    )
+comment_15 = Comment.create!(
+    author_id: ari.id,
+    activity_id: eugene_activity_3.id,
+    body: 'Next time I\'m in'     
+    )
+comment_16 = Comment.create!(
+    author_id: jennifer.id,
+    activity_id: eugene_activity_4.id,
+    body: 'Great Work'     
+    )
+comment_17 = Comment.create!(
+    author_id: jim.id,
+    activity_id: eugene_activity_4.id,
+    body: 'Kudos'     
+    )
+comment_18 = Comment.create!(
+    author_id: jennifer.id,
+    activity_id: stuart_activity_1.id,
+    body: 'Wish I were there'     
+    )
+comment_19 = Comment.create!(
+    author_id: jim.id,
+    activity_id: stuart_activity_1.id,
+    body: 'Wish I were there'     
+    )
+comment_20 = Comment.create!(
+    author_id: eugene.id,
+    activity_id: stuart_activity_1.id,
+    body: 'Great Work'     
+    )
+comment_21 = Comment.create!(
+    author_id: ari.id,
+    activity_id: stuart_activity_2.id,
+    body: 'WOW'     
+    )
+comment_22 = Comment.create!(
+    author_id: jim.id,
+    activity_id: stuart_activity_3.id,
+    body: 'Fast'     
+    )
+comment_23 = Comment.create!(
+    author_id: james.id,
+    activity_id: stuart_activity_3.id,
+    body: 'FANTASTIC'     
+    )
+comment_24 = Comment.create!(
+    author_id: eugene.id,
+    activity_id: stuart_activity_3.id,
+    body: 'Fast'     
+    )
+comment_25 = Comment.create!(
+    author_id: ada.id,
+    activity_id: stuart_activity_3.id,
+    body: 'Great Work'     
+    )
+comment_26 = Comment.create!(
+    author_id: james.id,
+    activity_id: jim_activity_1.id,
+    body: 'Awesome'     
+    )
+comment_27 = Comment.create!(
+    author_id: ari.id,
+    activity_id: jim_activity_1.id,
+    body: 'FANTASTIC'     
+    )
+comment_28 = Comment.create!(
+    author_id: james.id,
+    activity_id: jim_activity_1.id,
+    body: 'Kudos'     
+    )
+comment_29 = Comment.create!(
+    author_id: eugene.id,
+    activity_id: jim_activity_3.id,
+    body: 'Awesome'     
+    )
+comment_30 = Comment.create!(
+    author_id: jennifer.id,
+    activity_id: jim_activity_3.id,
+    body: 'Great Work'     
+    )
+comment_31 = Comment.create!(
+    author_id: stuart.id,
+    activity_id: jim_activity_3.id,
+    body: 'Next time I\'m in'     
+    )
+comment_32 = Comment.create!(
+    author_id: eugene.id,
+    activity_id: jim_activity_3.id,
+    body: 'Kudos'     
+    )
+comment_33 = Comment.create!(
+    author_id: james.id,
+    activity_id: jim_activity_4.id,
+    body: 'Awesome'     
+    )
+comment_34 = Comment.create!(
+    author_id: ada.id,
+    activity_id: jim_activity_4.id,
+    body: 'Kudos'     
+    )
+comment_35 = Comment.create!(
+    author_id: jim.id,
+    activity_id: ada_activity_2.id,
+    body: 'Fast'     
+    )
+comment_36 = Comment.create!(
+    author_id: eugene.id,
+    activity_id: ada_activity_2.id,
+    body: 'Great Work'     
+    )
+comment_37 = Comment.create!(
+    author_id: james.id,
+    activity_id: ada_activity_2.id,
+    body: 'WOW'     
+    )
+comment_38 = Comment.create!(
+    author_id: ada.id,
+    activity_id: ada_activity_2.id,
+    body: 'Awesome'     
+    )
+comment_39 = Comment.create!(
+    author_id: jim.id,
+    activity_id: ada_activity_3.id,
+    body: 'Next time I\'m in'     
+    )
