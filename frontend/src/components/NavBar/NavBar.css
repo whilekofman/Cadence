@@ -49,7 +49,7 @@
     font-family: 'Sora', sans-serif;
     width: 80px;
     border-radius: 5px;
-    height: 30px
+    height: 30px;
 }
 
 .signupBut {
@@ -72,6 +72,7 @@
     border-radius: 5px;
     height: 30px;
     color: white;
+    border: none;
 }
 .session-button-div {
     display: flex;
