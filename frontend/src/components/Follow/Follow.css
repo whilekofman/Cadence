@@ -1,27 +1,34 @@
-
-
-.follow-button-activityIndex {
+.follow-button {
     background-color: #fc5200;
     justify-content: center;
+    border-radius: 4px;
     width: 72px;
     color: white;
-    border-radius: 4px;
-    height: 27px;
     cursor: pointer;
     border: none;
 }
 
+.follow-button-activityIndex {
+    /* background-color: #fc5200;
+    justify-content: center;
+    width: 72px; */
+    /* color: white; */
+    /* border-radius: 4px; */
+    height: 27px;
+    /* cursor: pointer;
+    border: none; */
+}
+
 .follow-button-commentIndex{
-    background-color: #fc5200;
+    /* background-color: #fc5200;
     justify-content: center;
     border-radius: 4px;
-    border-left: 1px solid red;
-    width: 72px;
-    color: white;
+    width: 72px; */
+    /* color: white; */
     margin-left: 4px;
     font-size: 10px;
     padding-left: 4px;
-    border: none;
+    /* border: none; */
 
 }
 

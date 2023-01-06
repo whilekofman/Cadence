@@ -8,7 +8,7 @@ const Follow = ( { location, id } ) => {
     const followers = useSelector(getFollowers)
     const following = useSelector(getFollowing)
 
-    const followButtonCss = `follow-button-${location}`
+    const followButtonCss = `follow-button follow-button-${location}`
     
     const reducedFollowing = following.reduce((acc, following) =>({...acc, [following.followingId]: following}), {})
 
