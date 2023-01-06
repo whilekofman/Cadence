@@ -59,7 +59,6 @@ export const deleteComment = commentId => async dispatch => {
 }
 
 export const fetchComment = commentId => async dispatch => {
-    debugger
     const res = await csrfFetch(`/api/comments/${commentId}`)
     if (res.ok){
         const data = await res.json()

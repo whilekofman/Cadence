@@ -15,8 +15,7 @@ const ActivityForm = () => {
     const dispatch = useDispatch()
 
     const date = new Date();
-    // const isoNow = iso.hh - 5
-    // const iso = date.toISOString()
+
     const currentTime = new Date(
         date.getFullYear(),
         date.getMonth(),
@@ -25,9 +24,6 @@ const ActivityForm = () => {
         date.getMinutes()
     )
 
-    // if (date.getHours() > 12 && date.getHours() < 17) {
-    //     console.log('Its the afternoon')
-    // }
 
     const titler = (hour, sport) => {
         if (sport !== 'run') {
@@ -54,8 +50,7 @@ const ActivityForm = () => {
         }
 
     }
-    // const iso = currentTime.toISOString()
-    // console.log(`this be current time ${currentTime}, this be ISO ${iso}`)
+
     useEffect(()=> {
         if (activityId) {
             dispatch(fetchActivity(activityId))
@@ -67,7 +62,6 @@ const ActivityForm = () => {
     useEffect(()=> {
 
         if (activity){
-            // console.log(activity.sport)
         
             setTitle(activity.title)
             setDescription(activity.description)
@@ -91,7 +85,6 @@ const ActivityForm = () => {
             setHours(0)
             setMinutes(0)
             setSeconds(0)
-            // setStartTime(new Date().toISOString().slice(0, -5))
             setStartTime(currentTime.toISOString().slice(0, -5))
             setHr(0)
             setIntensity(2)

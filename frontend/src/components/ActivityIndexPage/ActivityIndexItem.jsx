@@ -44,12 +44,7 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
 
     const sportImg = sport === 'run' ? runlogo : sport === 'inline' ? skatelogo : bikelogo
 
-    // const userFollows = () => {
-    //     if(athleteId in followers){
-    //         // debugger
-    //         return (<>Follows you</>)
-    //     }
-    // }
+
 
 
     const kudosCommentLengthText = ()=> {

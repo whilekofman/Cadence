@@ -12,8 +12,7 @@ class Api::FollowsController < ApplicationController
         when 'following'
             @follows = Follow.where(follower_id: user.id)
         end
-        # @follows = Follow.where(follower_id: user.id)
-        # debugger
+
         render :index
 
     end

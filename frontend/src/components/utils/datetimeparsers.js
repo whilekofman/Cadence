@@ -13,7 +13,6 @@ export const displayTimeParsed = startTime => {
 
     const yesterdayParsed = yesterday.toLocaleString('en-US', {timeZone: 'UTC', month: '2-digit', day: '2-digit', year: 'numeric'})
 
-    // console.log(today === activityDate)
 
     return today === activityDate ? `Today at ${activityTime}` : yesterdayParsed === activityDate ? `Yesterday at ${activityTime}` : displayTime.split(',').join(' at ')
 

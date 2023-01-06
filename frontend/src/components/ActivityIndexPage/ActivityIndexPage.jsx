@@ -26,18 +26,7 @@ const ActivityIndexPage = () => {
     const following = useSelector(getFollowing)
 
     const [toggleCommentsFollows, setToggleCommentsFollows] = useState(null)
-    // const followersMapped = followers.map((follower) => {
-    //     const followerId = follower
-    //     return followerId
-    // });
 
-    console.log(following)
-
-    // const mappedFollowers = followers.map((follower) => {
-    //     return [follower.followerId, follower.followerName, follower.id]
-    // })
-
-    // console.log(mappedFollowers)
     
     const [showCommentsModel, setShowCommentsModal] = useState(false)
 
@@ -64,7 +53,6 @@ const ActivityIndexPage = () => {
             />
         </div>)
     
-    // console.log(activities)
 
 
     if (!currentUser){
@@ -93,24 +81,5 @@ const ActivityIndexPage = () => {
  
 export default ActivityIndexPage;
 
-    // console.log(activityListElements)
-    // const [activitiesLoaded, setActivitiesLoaded] = useState(false)
-    // const activityIds = Object.keys(activities)//.map(key => activities[key])
-    // console.log(activityIds)
-
-
-    // useEffect(()=> {
-    //         dispatch(fetchComments( ))
-        
-    // }, [commentCount])
-    // useEffect(()=> {
-    //     if (activities.length > 0) {
-    //         const activityIds = activities.map(activity => activity.id)
-    //         dispatch(fetchCommentsActivities(activityIds))
-            
-    //     }
-    //     // debugger
-        
-    // }, [])
 
 

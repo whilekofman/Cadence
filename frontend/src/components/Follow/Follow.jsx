@@ -12,10 +12,6 @@ const Follow = ( { location, id } ) => {
     
     const reducedFollowing = following.reduce((acc, following) =>({...acc, [following.followingId]: following}), {})
 
-    // console.log('reduced:', reducedFollowing)
-
-
-    //location === "activityIndex" ? "follow-button-activity-index" : "follow-button-comment-index"
 
     const followText = id !== currentUser.id && id in reducedFollowing  ? "Unfollow" : "Follow"
 

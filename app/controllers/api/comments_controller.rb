@@ -2,14 +2,12 @@ class Api::CommentsController < ApplicationController
   wrap_parameters include: Comment.attribute_names + ['body', 'activityId', 'authorId', 'id' ]
 
   def index
-    # @comments = Comment.all
-      # debugger
+
     
     if params[:activity_ids].present?
       activity_ids = params[:activity_ids].split(",")
       @comments = Comment.where(activity_id: activity_ids)
-      # params[:activity_id])
-      # debugger
+
     else
 
       @comments = Comment.all
@@ -21,15 +19,13 @@ class Api::CommentsController < ApplicationController
 
   def show
     @comment = Comment.find_by(activity_id:, id: params[:id])
-    # @comment = Comment.find(params[:id]) 
-    # Comment.find(activity_id: params[:activity_id])
+
     render :show
   end
 
   def create
     # @activity = Activity.find(params[:activity_id])
     @comment = Comment.new(comment_params)
-    # debugger
     if @comment.save
       render :show#json: {success: "comment saved"}
     else
@@ -37,17 +33,7 @@ class Api::CommentsController < ApplicationController
     end
   end
 
-  # def update
-  #       @activity = Activity.find(params[:activity_id])
-  #       @comment = Comment.find(params[:id])
-  #       debugger
-  #       if @comment.save
-  #           render :show
-  #       else
-  #           render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
-  #       end
-  #   end
-
+ 
     def destroy
         @comment = Comment.find(params[:id])
         if @comment

@@ -41,21 +41,9 @@ export const fetchActivities = () => async dispatch => {
     const data = await res.json();
     dispatch(retrieveActivities(data))
     const activityIds = Object.keys(data)
-    // const activities = Object.values(data)
-
-    // let followers = new Set()
-
-    // activities.forEach(activity => {
-    //     followers.add(activity.athleteId)
-    // })
-
-    // followers = [...followers]
-    // console.log('keys: ', followers)
-
 
     dispatch(fetchCommentsActivities(activityIds))
     dispatch(fetchLikesActivities(activityIds))
-    // dispatch(fetchFollows(followers, 'following'))
 
     
 }
@@ -77,10 +65,6 @@ export const fetchActivity = id => async dispatch => {
         dispatch(fetchCommentsActivities([id]))
         dispatch(fetchLikesActivities([id]))
 
-        // dispatch(fetchCommentsActivities([data.id]))
-
-
-        // return data
     } else { throw res }
 }
 
