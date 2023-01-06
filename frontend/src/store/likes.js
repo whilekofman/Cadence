@@ -15,7 +15,6 @@ export const removeLike = likeId => ({
 
 export const getLikes = ({ likes }) => likes ? Object.values(likes) : []
 
-//may not need the single like selector
 export const getLike = likeId => ({ likes }) => likes ? likes[likeId] : null 
 
 export const fetchLikesActivities = (activityIds) => async dispatch => {
@@ -27,12 +26,11 @@ export const fetchLikesActivities = (activityIds) => async dispatch => {
 export const fetchLikesComments = (activityIds) => async dispatch => {
     const res = await csrfFetch(`/api/likes/?likeable=comment&ids=${activityIds.join(",")}`)
     const data = await res.json();
-    
     dispatch(retrieveLikes(data))
 }
 
 export const deleteLike = likeId => async dispatch => {
-    const res = await csrfFetch (`/api/likes/${likeId}`, {
+    await csrfFetch (`/api/likes/${likeId}`, {
         method: 'DELETE'
     })
     dispatch(removeLike(likeId))  

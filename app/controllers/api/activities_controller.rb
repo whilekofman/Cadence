@@ -6,7 +6,6 @@ class Api::ActivitiesController < ApplicationController
             @activities = Activity.where(athlete_id: params[:athlete]).order(start_time: :desc).limit(3)
         else
             @activities = Activity.order(start_time: :desc)
-            # @activities = Activity.where(activity_id: 1)
         end
         render :index
     end

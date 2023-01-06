@@ -8,13 +8,15 @@ const Follow = ( { location, id } ) => {
     const followers = useSelector(getFollowers)
     const following = useSelector(getFollowing)
 
-    const followButtonCss = `follow-button follow-button-${location}`
     
     const reducedFollowing = following.reduce((acc, following) =>({...acc, [following.followingId]: following}), {})
-
-
-    const followText = id !== currentUser.id && id in reducedFollowing  ? "Unfollow" : "Follow"
-
+    
+    // id !== currentUser.id && 
+    
+    const followText = id in reducedFollowing  ? "Unfollow" : "Follow"
+    
+    const followButtonCss = `follow-button follow-button-${location}`
+    
     const handleFollowAction = e => {
         e.preventDefault()
         if(id in reducedFollowing) {

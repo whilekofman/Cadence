@@ -64,8 +64,4 @@ class Activity < ApplicationRecord
   def comments_count
     return comments.count
   end
- 
-
-  
-  
 end

@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { deleteComment, fetchComments } from "../../store/comments";
 import { getSession } from "../../store/session";
 import CommentLike  from "../Like/CommentLike";
@@ -13,9 +12,11 @@ dayjs.extend(relativeTime)
 
 const CommentIndexItem = ( { comment, athlete } ) => {
 
+
+
     const dispatch = useDispatch()
     const currentUser = useSelector(getSession)
-    // const [deleted, setDeleted] = useState(false)
+
     const {
         id,
         fname,
@@ -29,7 +30,7 @@ const CommentIndexItem = ( { comment, athlete } ) => {
     } = comment
 
     const TimeSinceComment = dayjs().to(dayjs(createdAt))
-    const [show, setShow] = useState(false)
+
     const handleDeleteComment = e => {
         e.preventDefault()
         dispatch(deleteComment(id))   
@@ -45,7 +46,8 @@ const CommentIndexItem = ( { comment, athlete } ) => {
 
     const timeDeleteFollow = () => {
         if (athlete === currentUser.id || currentUser.id === authorId){
-            return(<>
+            return(
+                <>
                     <div className="time-since-comment">
                         {TimeSinceComment}
                     </div>
@@ -68,7 +70,7 @@ const CommentIndexItem = ( { comment, athlete } ) => {
             onMouseEnter={() => setFollowDelete(timeDeleteFollow)}
             onMouseLeave={() => setFollowDelete(time)}>
                 <div className="commenter-photo-container">
-                    <img src={userAvitar} alt="commenter-photo" className="commenter-photo"/>
+                    <img src={userAvitar} alt="commenter" className="commenter-photo"/>
                     <div className="commenter-name-container-index">
                         <div className="commenter-name">
                             {`${fname} ${lname} `}
