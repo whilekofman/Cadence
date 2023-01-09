@@ -5,6 +5,7 @@ button {
     box-shadow: none;
 }
 
+
 .activity-index-body {
     /* border-top: 10px solid gray; */
     padding-top: 1%;
@@ -24,9 +25,23 @@ button {
     /* width: 100%; */
     height: fit-content; 
     /* left: 0; */
+}
+.index-dropdown {
+    margin: 1px 15px 0px;
+    width: 180px;
+    height: 20px;
+}
 
-    
-    
+.follow-dropdown {
+    border: none;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    width: 175px;
+}
+
+.follow-dropdown input:focus{
+    outline: none;
 }
 
 .activity-container {
