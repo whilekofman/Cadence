@@ -46,7 +46,7 @@ const ActivityIndexPage = () => {
         .sort((a, b) => new Date(b.startTime) - new Date(a.startTime))
         .map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem 
             activity={activity} 
-            comments={comments.filter((comment) => comment.activityId === activity.id) } 
+            comments={comments.filter((comment) => comment.activityId === activity.id) }
             activityLikes={filteredActivityLikes(activity.id)} 
             toggleCommentsFollows={setToggleCommentsFollows}
             // userLikesActivity={currentUserLikesActivity(activity.id)}
