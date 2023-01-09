@@ -15,8 +15,9 @@ import Like, { toggleLike } from "../Like/ActivityLike";
 import { displayTimeParsed } from "../utils/datetimeparsers";
 import { getFollowers, getFollowing } from "../../store/follows";
 import Follow from "../Follow/Follow";
+import { Modal } from "../../Context/Modal";
 
-const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivity } ) => {
+const ActivityIndexItem = ( { activity, activityLikes, userLikesActivity } ) => {
     const currentUser = useSelector(getSession)
 
     
@@ -36,13 +37,16 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
         athleteId,        
     } = activity
 
+    const [openCommentModal, setOpenCommentModal] = useState(false);
     
-    const [showNewCommentBox, setShowNewCommentBox] = useState('do-not-show-new-comment')
     const [showCommentBox, setShowCommentBox] = useState(false)
-    const [showComments, setShowComments] = useState(true)
+    
+    // const [showComments, setShowComments] = useState(true)
     const [userAvitar, setUserAvitar] = useState(athleteProfilePicture ? athleteProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
 
     const sportImg = sport === 'run' ? runlogo : sport === 'inline' ? skatelogo : bikelogo
+    const allComments = useSelector(getComments)
+    const comments = allComments.filter((comment) => comment.activityId === activity.id) 
 
 
 
@@ -69,10 +73,7 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
         setShowCommentBox(value => !value)        
     }
 
-    const openComments = e =>{
-        e.preventDefault()
-        setShowComments(show => !show)    
-    }
+
 
     const followButton = (athleteId) => {
         if (athleteId !== currentUser.id) {
@@ -81,8 +82,7 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
     }
     return (
         <>
-
-            <div className='top-bar'>
+            <div className="top-bar">
                 <div className="profile-pic-div">
                     {/* <i className="fa-solid fa-user"></i> */}
                     <img className="profile-pic" src={userAvitar} />
@@ -99,29 +99,35 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
             </div>
             <div className="title">
                 <div className="sport">
-                    <img className='sport-logo' src={sportImg} />
+                    <img className="sport-logo" src={sportImg} />
                 </div>
                 <div className="title-text-container-index">
-                    <Link className="title-link" to={`/activities/${id}`}><h3 className="title-text-index">{title}</h3></Link>
+                    <Link className="title-link" to={`/activities/${id}`}>
+                        <h3 className="title-text-index">{title}</h3>
+                    </Link>
                 </div>
             </div>
-             
+
             <div className="description">{description}</div>
 
-             <div className="matrix-index">
-                <div className="matrix-box-index">  
-                    <div className="matrix-title">Distance</div>  
+            <div className="matrix-index">
+                <div className="matrix-box-index">
+                    <div className="matrix-title">Distance</div>
                     <div className="matrix-value-index">{distance} mi</div>
                 </div>
                 <div className="matrix-box-index">
                     <div className="matrix-title">{speedType}</div>
-                    <div className="matrix-value-index">{speed({ hours, minutes, seconds, distance, sport })}{append}</div>
+                    <div className="matrix-value-index">
+                        {speed({ hours, minutes, seconds, distance, sport })}
+                        {append}
+                    </div>
                 </div>
                 <div className="matrix-box-index-right">
-                    <div className="matrix-title">time</div> 
-                    <div className="matrix-value-index">{durationConvert( { hours, minutes, seconds } )}</div>
+                    <div className="matrix-title">time</div>
+                    <div className="matrix-value-index">
+                        {durationConvert({ hours, minutes, seconds })}
+                    </div>
                 </div>
-                
             </div>
             <div className="bottom-container-index">
                 <div className="kudos-count-and-buttons-index">
@@ -129,29 +135,55 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
                         {kudosCommentLengthText()}
                     </div>
                     <div className="comment-like-buttons-index">
-                        <Like activity={activity} activityLikes={activityLikes} userLikesActivity={userLikesActivity}></Like>
+                        <Like
+                            activity={activity}
+                            activityLikes={activityLikes}
+                            userLikesActivity={userLikesActivity}
+                        ></Like>
 
-                        <button className='button-index' onClick={openCommentBox} >
-                            <div className="material-symbols-outlined add-comment material-index">speaker_notes</div>
+                        <button
+                            className="button-index"
+                            onClick={openCommentBox}
+                        >
+                            <div className="material-symbols-outlined add-comment material-index">
+                                speaker_notes
+                            </div>
                         </button>
                     </div>
                 </div>
 
-                {showComments && 
-                    <CommentIndex comments={comments} athlete={athleteId} />
-                    
-                }
+                <CommentIndex
+                    comments={comments}
+                    athlete={athleteId}
+                    activity={id}
+                />
+                <div
+                    className="additionalcomments"
+                    onClick={() => setOpenCommentModal(true)}
+                >
+                    Open additional comments
+                </div>
+                {openCommentModal && (
+                    <Modal onClose={() => setOpenCommentModal(false)} >
+                        <CommentIndex 
+                            comments={comments}
+                            athleteId={athleteId}
+                            activity={id}
+                        />
+                    </Modal>
+                )}
 
-                {showCommentBox && 
-                    <div className={showNewCommentBox}>
-                            <CommentForm activityId={id} authorId={currentUser.id} />
-                    </div>
-                }
-             </div>
-            
+                {showCommentBox && (
+                    <>
+                        <CommentForm
+                            activityId={id}
+                            authorId={currentUser.id}
+                        />
+                    </>
+                )}
+            </div>
         </>
-
-     );
+    );
 }
  
 export default ActivityIndexItem;

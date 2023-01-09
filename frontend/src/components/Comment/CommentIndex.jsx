@@ -14,7 +14,7 @@ const CommentIndex = ({ comments, athlete }) => {
             <CommentIndexItem comment={comment} athlete={athlete} />
         </div>
     ));
-    
+        
     const allComments = () => {
         return <>{commentListElements}</>;
     };

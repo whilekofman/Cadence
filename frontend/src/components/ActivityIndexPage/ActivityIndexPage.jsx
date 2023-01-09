@@ -7,6 +7,7 @@ import { fetchComments, fetchCommentsActivities, getComments } from "../../store
 import { getFollowers, getFollowing } from "../../store/follows";
 import { getLikes } from "../../store/likes";
 import { getSession } from "../../store/session";
+import CommentFollowModal from "../CommentFollowModal/CommentFollowModal";
 import CommentFollowModule from "../CommentFollowModal/CommentFollowModal";
 import ActivityIndexItem from "./ActivityIndexItem";
 
@@ -25,10 +26,10 @@ const ActivityIndexPage = () => {
     const followers = useSelector(getFollowers)
     const following = useSelector(getFollowing)
 
-    const [toggleCommentsFollows, setToggleCommentsFollows] = useState(null)
+    // const [toggleCommentsFollows, setToggleCommentsFollows] = useState(null)
 
     
-    const [showCommentsModel, setShowCommentsModal] = useState(false)
+    // const [showCommentsModel, setShowCommentsModal] = useState(false)
 
     const filteredActivityLikes = activityId => {
         return likes.filter(like => like.likeableType === 'Activity' && like.likeableId === activityId)
@@ -39,17 +40,17 @@ const ActivityIndexPage = () => {
 
     useEffect(() => {
         dispatch(fetchActivities())
-    }, [toggleCommentsFollows])
+    }, [])
 
 
     const activityListElements = activities
         .sort((a, b) => new Date(b.startTime) - new Date(a.startTime))
-        .map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem 
-            activity={activity} 
-            comments={comments.filter((comment) => comment.activityId === activity.id) }
-            activityLikes={filteredActivityLikes(activity.id)} 
-            toggleCommentsFollows={setToggleCommentsFollows}
-            // userLikesActivity={currentUserLikesActivity(activity.id)}
+        .map((activity) => <div className='activity' key={activity.id}>
+            <ActivityIndexItem 
+                activity={activity} 
+                activityLikes={filteredActivityLikes(activity.id)} 
+                // toggleCommentsFollows={setToggleCommentsFollows}
+                // userLikesActivity={currentUserLikesActivity(activity.id)}
             />
         </div>)
     
@@ -71,7 +72,7 @@ const ActivityIndexPage = () => {
                 <div className="activity-container">
                     {activityListElements}
                 </div>
-                {toggleCommentsFollows ? <CommentFollowModule comments={toggleCommentsFollows}/> : null }
+                {/* {toggleCommentsFollows ? <CommentFollowModal comments={toggleCommentsFollows}/> : null } */}
             </div>
 
         </>
