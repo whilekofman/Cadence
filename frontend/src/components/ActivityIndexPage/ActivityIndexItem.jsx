@@ -16,9 +16,11 @@ import { displayTimeParsed } from "../utils/datetimeparsers";
 import { getFollowers, getFollowing } from "../../store/follows";
 import Follow from "../Follow/Follow";
 
-const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivity } ) => {
+const ActivityIndexItem = ( { activity, activityLikes, userLikesActivity } ) => {
     const currentUser = useSelector(getSession)
+    const allComments = useSelector(getComments)
 
+    const comments = allComments.filter((comment) => comment.activityId === activity.id)  
     
     const {
         id,
@@ -36,7 +38,6 @@ const ActivityIndexItem = ( { activity, comments, activityLikes, userLikesActivi
         athleteId,        
     } = activity
 
-    
     const [showNewCommentBox, setShowNewCommentBox] = useState('do-not-show-new-comment')
     const [showCommentBox, setShowCommentBox] = useState(false)
     const [showComments, setShowComments] = useState(true)

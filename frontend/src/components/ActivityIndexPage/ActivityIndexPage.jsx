@@ -25,7 +25,6 @@ const ActivityIndexPage = () => {
     const followers = useSelector(getFollowers)
     const following = useSelector(getFollowing)
 
-    const [toggleCommentsFollows, setToggleCommentsFollows] = useState(null)
 
     
     const [showCommentsModel, setShowCommentsModal] = useState(false)
@@ -39,16 +38,14 @@ const ActivityIndexPage = () => {
 
     useEffect(() => {
         dispatch(fetchActivities())
-    }, [toggleCommentsFollows])
+    }, [])
 
 
     const activityListElements = activities
         .sort((a, b) => new Date(b.startTime) - new Date(a.startTime))
         .map((activity) => <div className='activity' key={activity.id}><ActivityIndexItem 
             activity={activity} 
-            comments={comments.filter((comment) => comment.activityId === activity.id) } 
             activityLikes={filteredActivityLikes(activity.id)} 
-            toggleCommentsFollows={setToggleCommentsFollows}
             // userLikesActivity={currentUserLikesActivity(activity.id)}
             />
         </div>)
@@ -71,7 +68,6 @@ const ActivityIndexPage = () => {
                 <div className="activity-container">
                     {activityListElements}
                 </div>
-                {toggleCommentsFollows ? <CommentFollowModule comments={toggleCommentsFollows}/> : null }
             </div>
 
         </>
