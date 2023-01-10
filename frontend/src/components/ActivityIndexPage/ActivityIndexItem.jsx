@@ -44,7 +44,7 @@ const ActivityIndexItem = ({ activity, activityLikes, userLikesActivity }) => {
     );
     const [showCommentBox, setShowCommentBox] = useState(false);
     const [showComments, setShowComments] = useState(true);
-    const [userAvitar, setUserAvitar] = useState(
+    const [profilepicture, setProfilepicture] = useState(
         athleteProfilePicture
             ? athleteProfilePicture
             : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg"
@@ -96,7 +96,7 @@ const ActivityIndexItem = ({ activity, activityLikes, userLikesActivity }) => {
             <div className="top-bar">
                 <div className="profile-pic-div">
                     {/* <i className="fa-solid fa-user"></i> */}
-                    <img className="profile-pic" src={userAvitar} />
+                    <img className="profile-pic" src={profilepicture} />
                 </div>
                 <div className="athlete-name-start-time-index">
                     <div className="athlete-name-index">
