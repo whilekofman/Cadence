@@ -71,6 +71,34 @@ ApplicationRecord.transaction do
     password: "password"
   )
   
+puts 'profile pictures'
+jennifer_profile_picture = URI.open('https://aa-cadence-dev.s3.amazonaws.com/jennifer.png')
+jennifer.profile_picture.attach(io: jennifer_profile_picture, filename: 'jennifer.png')
+
+puts 'eugene'
+eugene_profile_picture = URI.open('https://aa-cadence-dev.s3.amazonaws.com/49d3n1svubyfd3i7bt3a7gptfswo')
+eugene.profile_picture.attach(io: eugene_profile_picture, filename: '49d3n1svubyfd3i7bt3a7gptfswo')
+
+puts 'ada'
+ada_profile_picture = URI.open('https://aa-cadence-dev.s3.amazonaws.com/ada.jpeg')
+ada.profile_picture.attach(io: ada_profile_picture, filename: 'ada.jpeg')
+
+puts 'stuart'
+stuart_profile_picture = URI.open('https://aa-cadence-dev.s3.amazonaws.com/stuart.jpeg')
+stuart.profile_picture.attach(io: stuart_profile_picture, filename: 'stuart.jpeg')
+
+puts 'jim'
+jim_profile_picture = URI.open('https://aa-cadence-dev.s3.amazonaws.com/jim.jpeg')
+jim.profile_picture.attach(io: jim_profile_picture, filename: 'jim.jpeg')
+
+puts 'james picture'
+james_profile_picture = URI.open('https://aa-cadence-dev.s3.amazonaws.com/james.png')
+james.profile_picture.attach(io: james_profile_picture, filename: 'james.png')
+
+puts 'ari'
+ari_profile_picture = URI.open('https://aa-cadence-dev.s3.amazonaws.com/ari2.png')
+ari.profile_picture.attach(io: ari_profile_picture, filename: 'ari2.png')
+
 
 puts 'do a do with an activity'
 
