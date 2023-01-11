@@ -6,7 +6,7 @@ import { getSession } from "../../store/session";
 import CommentLike  from "../Like/CommentLike";
 import dayjs from "dayjs"
 import relativeTime from "dayjs/plugin/relativeTime"
-import Follow from "../Follow/Follow";
+import FollowButton from "../FollowButton";
 // const dayjs = require('dayjs')
 // const relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
@@ -55,7 +55,7 @@ const CommentIndexItem = ( { comment, athlete } ) => {
             else return(
                 <div className="time-since-comment">
                     {TimeSinceComment}
-                    <Follow location="commentIndex" id={authorId} />
+                    <FollowButton location="commentIndex" id={authorId} />
                  </div>)
     }
     const [showFollowDelete, setFollowDelete] = useState(time())

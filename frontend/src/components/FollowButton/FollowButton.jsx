@@ -6,22 +6,29 @@ import {
     newFollow,
 } from "../../store/follows";
 import { getSession } from "../../store/session";
+import { reducedUsersFollowing } from "../utils/reducers";
 
-const Follow = ({ location, id }) => {
+const FollowButton = ({ location, id }) => {
     const dispatch = useDispatch();
     const currentUser = useSelector(getSession);
     const followers = useSelector(getFollowers);
     const following = useSelector(getFollowing);
 
-    const followButtonCss = `follow-button follow-button-${location}`;
-
-    const reducedFollowing = following.reduce(
-        (acc, following) => ({ ...acc, [following.followingId]: following }),
-        {}
-    );
-
+    
+    const reducedFollowing = reducedUsersFollowing(following, currentUser.id)
+    // const reducedFollowing = following.reduce(
+        //     (acc, following) => ({ ...acc, [following.followingId]: following }),
+        //     {}
+        // );
+        
+    const followButtonCss =
+        id in reducedFollowing
+            ? `follow-button follow-button-${location} followed-button`
+            : `follow-button follow-button-${location}`; 
+    
+    
     const followText =
-        id !== currentUser.id && id in reducedFollowing ? "Unfollow" : "Follow";
+        id in reducedFollowing ? "Unfollow" : "Follow";
 
     const handleFollowAction = (e) => {
         e.preventDefault();
@@ -46,4 +53,4 @@ const Follow = ({ location, id }) => {
     );
 };
 
-export default Follow;
+export default FollowButton;

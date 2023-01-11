@@ -13,7 +13,8 @@ import { speed, durationConvert } from "../utils/activityspeed/speedConverter";
 import Like, { toggleLike } from "../Like/ActivityLike";
 import { displayTimeParsed } from "../utils/datetimeparsers";
 import { getFollowers, getFollowing } from "../../store/follows";
-import Follow from "../Follow/Follow";
+import FollowButton from "../FollowButton";
+
 
 const ActivityIndexItem = ({ activity, activityLikes, userLikesActivity }) => {
     const currentUser = useSelector(getSession);
@@ -88,7 +89,7 @@ const ActivityIndexItem = ({ activity, activityLikes, userLikesActivity }) => {
 
     const followButton = (athleteId) => {
         if (athleteId !== currentUser.id) {
-            return <Follow location={"activityIndex"} id={athleteId} />;
+            return <FollowButton location={"activityIndex"} id={athleteId} />;
         }
     };
     return (
