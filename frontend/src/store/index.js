@@ -10,12 +10,12 @@ import usersReducer from './users'
 
 export const rootReducer = combineReducers({
     session: sessionReducer,
+    users: usersReducer,
+    following: followReducer,
+    followers: followingReducer,
     activities: activityReducer,
     comments: commentReducer,
     likes: likeReducer,
-    following: followReducer,
-    followers: followingReducer,
-    users: usersReducer
     
     
     // users: userReducer

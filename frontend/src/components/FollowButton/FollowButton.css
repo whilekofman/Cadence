@@ -10,8 +10,8 @@
 
 .followed-button {
     background-color: white;
-    /* color: black; */
-    color: #fc5200;
+    color: black;
+    /* color: #fc5200; */
     border: 1px solid lightgray;
 }
 
