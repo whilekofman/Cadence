@@ -36,7 +36,7 @@ const UserShowPage = () => {
                     targetId={id}
                 />
                 {/* {fname} {lname} */}
-                <div className="athlete-name">
+                <div className="athlete-name-user-show">
                     <AthleteName fname={fname} lname={lname} targetId={id} />
                 </div>
                 {currentUser.id !== id && (

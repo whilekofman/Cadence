@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
-const AthleteName = ({ fname, lname, fullName, targetId }) => {
+const AthleteName = ({ fname, lname, fullName, targetId, page }) => {
+    
     const displayName = `${fname} ${lname}` || fullName;
     return (
         <>

@@ -24,16 +24,18 @@ const FollowIndexItem = ({ follow, userId }) => {
 
     return (
         <>
+        <div className={`profile-picture-${page}`}>
             <ProfilePicture
                 profilePictureUrl={profilePicture}
                 page={page}
                 targetId={targetId}
-            />
-            <AthleteName
+            /></div>
+            <div className={`athlete-name-${page}`}><AthleteName
                 fname={displayName.split(" ")[0]}
                 lname={displayName.split(" ")[1]}
                 targetId={targetId}
             />
+            </div>
             {targetId !== currentUser.id && (
                 <FollowButton page={page} id={targetId} />
             )}
