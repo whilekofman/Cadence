@@ -13,6 +13,7 @@ button {
     padding-top: 1%;
     /* height: 90vh;
     width: 99vw; */
+    border: solid red 1px;
     display: flex;
     font-family: 'Sora', sans-serif;
     /* font-family: 'Helvetica', 'Arial', sans-serif; */

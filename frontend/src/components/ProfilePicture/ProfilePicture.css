@@ -10,3 +10,15 @@
 .profile-pic{
     border-radius: 50%;
 }
+
+.profile-pic-comment-form {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+}
+
+.profile-pic-comment-index {
+    height: 30px;
+    width: 30px;
+    
+}

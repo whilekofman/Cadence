@@ -80,6 +80,7 @@ const FollowIndex = ({ userId, fname, loaded }) => {
         </div>
     ));
 
+
     return (
         <div className="following-wrapper">
             <h3 className="following-title">Following</h3>

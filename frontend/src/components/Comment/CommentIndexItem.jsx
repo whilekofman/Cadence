@@ -7,6 +7,8 @@ import CommentLike  from "../Like/CommentLike";
 import dayjs from "dayjs"
 import relativeTime from "dayjs/plugin/relativeTime"
 import FollowButton from "../FollowButton";
+import ProfilePicture from "../ProfilePicture";
+import AthleteName from "../AthleteName";
 // const dayjs = require('dayjs')
 // const relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
@@ -34,7 +36,7 @@ const CommentIndexItem = ( { comment, athlete } ) => {
         e.preventDefault()
         dispatch(deleteComment(id))   
     }
-    const [userAvitar, setUserAvitar] = useState(authorProfilePicture ? authorProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
+
 
     const time = () => {
         return(
@@ -50,8 +52,10 @@ const CommentIndexItem = ( { comment, athlete } ) => {
                         {TimeSinceComment}
                     </div>
                     <div className="delete-comment" onClick={handleDeleteComment}> | Delete</div>
+                    <FollowButton page="comment-index" id={authorId} />
                 </>
             )}
+        
             else return(
                 <div className="time-since-comment">
                     {TimeSinceComment}
@@ -62,33 +66,44 @@ const CommentIndexItem = ( { comment, athlete } ) => {
 
 
 
-    return ( 
+    return (
         <div className="comment-container">
-            <div className="comment-card"
-            onMouseEnter={() => setFollowDelete(timeDeleteFollow)}
-            onMouseLeave={() => setFollowDelete(time)}>
-                <div className="commenter-photo-container">
-                    <img src={userAvitar} alt="commenter-photo" className="commenter-photo"/>
-                    <div className="commenter-name-container-index">
-                        <div className="commenter-name">
-                            {`${fname} ${lname} `}
+            <div
+                className="comment-card"
+                onMouseEnter={() => setFollowDelete(timeDeleteFollow)}
+                onMouseLeave={() => setFollowDelete(time)}
+            >
+                <div className="profile-picture-name-body-like-container-comment-index">
+                    <div className="commenter-profile-picture-comment-index">
+                        <ProfilePicture
+                            profilePictureUrl={authorProfilePicture}
+                            page="comment-index"
+                            targetId={authorId}
+                        />
+                    </div>
+                    <div className="name-body-like-comment-index">
+                        <div className="commenter-name-timeago">
+                            <div className="commenter-name">
+                                <AthleteName
+                                    fname={fname}
+                                    lname={lname}
+                                    targetId={authorId}
+                                />
+                            </div>
+                            <div className="time-delete-follow">
+                                {showFollowDelete}
+                            </div>
                         </div>
-                        <div className="time-delete-follow">
-                            {showFollowDelete}
+                        <div className="comment-body">
+                            {body}
+
                         </div>
+                        <CommentLike commentId={id} />
                     </div>
                 </div>
-
-                <div className="comment-body">
-                        {body} 
-                </div>
-                <div>
-                    <CommentLike commentId={id}/>
-                </div>
-                
             </div>
         </div>
-     );
+    );
 }
  
 export default CommentIndexItem;

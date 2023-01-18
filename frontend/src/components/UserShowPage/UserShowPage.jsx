@@ -8,30 +8,32 @@ import FollowIndex from "../FollowIndex";
 import ProfilePicture from "../ProfilePicture";
 import AthleteName from "../AthleteName";
 import FollowButton from "../FollowButton";
+import { getSession } from "../../store/session";
 
 const UserShowPage = () => {
     const dispatch = useDispatch();
     const { userId } = useParams();
     const user = useSelector(getUser(userId));
-    const currentUser = useSelector(getSelection);
+    const currentUser = useSelector(getSession);
 
     const [loaded, setLoaded] = useState(false);
-
     useEffect(() => {
         dispatch(fetchUser(userId)).then(() => setLoaded(true));
         // setLoaded(true)
     }, [userId]);
-
+    
     if (!user) {
         return null;
     }
     const { id, fname, lname, profilePictureUrl } = user;
 
+    const profilePicture = profilePictureUrl
+
     return (
         <div className="user-show-wrapper">
             <div className="user-show-items">
                 <ProfilePicture
-                    profilePictureUrl={profilePictureUrl}
+                    profilePictureUrl={profilePicture}
                     page={"user"}
                     targetId={id}
                 />

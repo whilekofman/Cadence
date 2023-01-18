@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as commentActions from "../../store/comments"
 import { getSession } from "../../store/session";
+import ProfilePicture from "../ProfilePicture";
 
 const CommentForm = ({ activityId, authorId }) => {
     const dispatch = useDispatch()
@@ -50,7 +51,8 @@ const CommentForm = ({ activityId, authorId }) => {
             <div className="comment-container">
                 <form action="" className="comment-form">
                     <div className="comment-form-picture-container">
-                        <img className="comment-profile-photo" src={userAvitar}></img>
+                        <ProfilePicture profilePictureUrl={athleteProfilePicture} page={"comment-form"} targetId={currentUser.id} />
+                        {/* <img className="comment-profile-photo" src={userAvitar}></img> */}
                     </div>
                     <div className="comment-field">
                         <textarea

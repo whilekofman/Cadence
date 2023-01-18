@@ -7,7 +7,7 @@ import { getLikes } from "../../store/likes";
 const CommentIndex = ( { comments, athlete }) => {
         const [clicked, setClicked] = useState(false)
         
-        const commentListElements = comments.map((comment) => <div className='comment-index-body' key={comment.id}><CommentIndexItem comment={comment} athlete={athlete} /></div>)
+        const commentListElements = comments.map((comment) => <div key={comment.id}><CommentIndexItem comment={comment} athlete={athlete} /></div>)
 
         const allComments = () => {
                 return (
@@ -39,16 +39,16 @@ const CommentIndex = ( { comments, athlete }) => {
                         {elements[1]} */}
                         {elements.shift()}
                         {elements.shift()}
-                        <div className="see-all-comments-container">
+                        {/* <div className="see-all-comments-container"> */}
                         {clicked && 
                                 <div className="comments">{elements} </div>
                                 
                         }
                                 <div className="see-all-comments-link" onClick={showAllComments} >
                                 {/* See all {elements.length + 2} comments */}
-                                {additionalCommentsText}
+                                        {additionalCommentsText}
                                 </div>
-                        </div>
+                        {/* </div> */}
                         
 
                         </>
@@ -57,12 +57,12 @@ const CommentIndex = ( { comments, athlete }) => {
                 }
         }
 
-    return ( 
-            <div className='comment-index-body'>               
-                    {/* {commentListElements} */}
-                    {commentElementsDisplay(commentListElements)}
+    return (
+            <div className="comment-index-body">
+                {/* {commentListElements} */}
+                {commentElementsDisplay(commentListElements)}
             </div>
-     );
+    );
 }
  
 export default CommentIndex;

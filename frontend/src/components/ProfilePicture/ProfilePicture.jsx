@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
 
 const ProfilePicture = ({ profilePictureUrl, page, targetId }) => {
-    const profilePicture = profilePictureUrl;
+    
+    const profilePicture =
+        profilePictureUrl ||
+        "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg";
 
     const imgCss = `profile-pic-${page} profile-pic`;
     const divCss = `profile-pic-div-${page}`;
 
     return (
-        <div className={divCss}>
+        // <div className={divCss}>
             <Link to={`/users/${targetId}`}>
                 <img
                     src={profilePicture}
@@ -15,7 +18,7 @@ const ProfilePicture = ({ profilePictureUrl, page, targetId }) => {
                     className={imgCss}
                 />
             </Link>
-        </div>
+        // </div>
     );
 };
 

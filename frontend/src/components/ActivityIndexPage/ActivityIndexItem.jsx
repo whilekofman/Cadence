@@ -47,11 +47,7 @@ const ActivityIndexItem = ({ activity, activityLikes, userLikesActivity }) => {
     );
     const [showCommentBox, setShowCommentBox] = useState(false);
     const [showComments, setShowComments] = useState(true);
-    const [profilePictureUrl, setProfilepicture] = useState(
-        athleteProfilePicture
-            ? athleteProfilePicture
-            : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg"
-    );
+
 
     const sportImg =
         sport === "run" ? runlogo : sport === "inline" ? skatelogo : bikelogo;
@@ -98,7 +94,7 @@ const ActivityIndexItem = ({ activity, activityLikes, userLikesActivity }) => {
         <>
             <div className="top-bar">
                 <ProfilePicture
-                    profilePictureUrl={profilePictureUrl}
+                    profilePictureUrl={athleteProfilePicture}
                     page={"index"}
                     targetId={athleteId}
                 />

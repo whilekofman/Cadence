@@ -50,9 +50,14 @@ const FollowButton = ({ page, id }) => {
 
     return (
         <>
-            <button onClick={handleFollowAction} className={followButtonCss}>
-                {followText}
-            </button>
+            {currentUser.id !== id && (
+                <button
+                    onClick={handleFollowAction}
+                    className={followButtonCss}
+                >
+                    {followText}
+                </button>
+            )}
         </>
     );
 };

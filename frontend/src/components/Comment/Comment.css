@@ -1,36 +1,46 @@
 .comment-container {
-    /* border: 2px solid green; */
-    display: flex;
-    flex-direction: row;
-
+    width: 494px;
+       
+}
+.see-all-comments-container {
+    margin-bottom: 5px;
 }
 
-.commenter-photo-container {
-    display: flex;
-    flex: row;
-    align-items: center;
+.see-all-comments-link{
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.see-all-comments-link:hover {
+    color: rgb(128, 128, 242);
 }
 .comment-card {
-    /* border: 3px solid blue; */
-    width: 494px;
-    display: flex;
-    flex-direction: column;
-}
-.commenter-name-container-index {
+    margin: 6px 0px 6px;
     display: flex;
     flex-direction: row;
-    padding-left: 16px;
-    height: 14px;
+    height: fit-content;
     justify-content: space-between;
-    width: 494px;
-    position: relative;
-
-    /* align-items: center; */
 }
+.profile-picture-name-body-like-container-comment-index {
+    display: flex;
+    flex: column;
+    align-items: flex-start;
+}
+.commenter-profile-picture-comment-index{
+    height: max-content;
+}
+.name-body-like-comment-index {
+    display: flex;
+    flex-direction: column;
+    padding-left: 16px;
+    justify-content: left;
+    position: relative;
+}
+
+
 
 .time-delete-follow {
     display: flex;
-    flex-direction: row;
     width: fit-content;
     flex-wrap: nowrap;
 }
@@ -43,7 +53,6 @@
 }
 
 .time-since-comment{
-
     /* color: rgba(168, 168, 179, 0.9); */
     color: #6d6d78;
         
@@ -58,6 +67,16 @@
     font-weight: bolder;
     color: red
 }
+
+.commenter-name-timeago{
+    width: 450px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 7px;
+    justify-content: space-between;
+}
+
 .commenter-name {
     font-size: 12px;
     font-weight: 200;
@@ -65,44 +84,9 @@
 }
 .comment-body {
     font-family: 'Helvetica', 'Arial', sans-serif;
-    width: 400px;
-    /* border: 2px solid red; */
-    margin-left: 46px;
+    justify-content: left;
+    margin-top: 5px;
+    width: 425px;
     font-size: 12px;
-
-}
-.commenter-photo {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
 }
 
-.delete-like-container {
-    padding-top: 6px;
-}
-
-.delete-comment-link{
-    cursor: pointer;
-}
-
-/* .not-liked {
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
-} */
-
-
-/* .comment-liked-color {
-    color: red
-}
-
-.liked {
-    font-variation-settings:
-        'FILL' 1,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
-}
- */
