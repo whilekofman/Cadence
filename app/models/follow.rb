@@ -13,6 +13,13 @@ class Follow < ApplicationRecord
         follower.fname + ' ' + follower.lname
     end
 
+    def follower_profile_picture
+        follower.profile_picture.url
+    end
+
+    def followee_profile_picture
+        following.profile_picture.url
+    end
     
 
 end

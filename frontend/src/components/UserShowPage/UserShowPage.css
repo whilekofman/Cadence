@@ -1,0 +1,23 @@
+.user-show-wrapper {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px 150px;
+}
+
+.user-show-itmes {
+    width: 1250px;
+    margin: 20px 150px;
+}
+
+.athlete-name-user-show {
+    font-family: "Sora", sans-serif;
+    display: flex;
+    flex-direction: row;
+    width: 430px;
+    margin: 6px 0px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 26px;
+}

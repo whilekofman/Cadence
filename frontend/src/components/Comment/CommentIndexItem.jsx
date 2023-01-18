@@ -1,21 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { deleteComment, fetchComments } from "../../store/comments";
 import { getSession } from "../../store/session";
-import CommentLike  from "../Like/CommentLike";
-import dayjs from "dayjs"
-import relativeTime from "dayjs/plugin/relativeTime"
-import Follow from "../Follow/Follow";
-// const dayjs = require('dayjs')
-// const relativeTime = require('dayjs/plugin/relativeTime')
-dayjs.extend(relativeTime)
+import CommentLike from "../Like/CommentLike";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+import FollowButton from "../FollowButton";
+import ProfilePicture from "../ProfilePicture";
+import AthleteName from "../AthleteName";
 
-const CommentIndexItem = ( { comment, athlete } ) => {
+dayjs.extend(relativeTime);
 
-    const dispatch = useDispatch()
-    const currentUser = useSelector(getSession)
-    // const [deleted, setDeleted] = useState(false)
+const CommentIndexItem = ({ comment, athlete }) => {
+    const dispatch = useDispatch();
+    const currentUser = useSelector(getSession);
     const {
         id,
         fname,
@@ -24,71 +22,80 @@ const CommentIndexItem = ( { comment, athlete } ) => {
         body,
         createdAt,
         activityId,
-        authorId
-        
-    } = comment
+        authorId,
+    } = comment;
 
-    const TimeSinceComment = dayjs().to(dayjs(createdAt))
-    const [show, setShow] = useState(false)
-    const handleDeleteComment = e => {
-        e.preventDefault()
-        dispatch(deleteComment(id))   
-    }
-    const [userAvitar, setUserAvitar] = useState(authorProfilePicture ? authorProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
+    const TimeSinceComment = dayjs().to(dayjs(createdAt));
+    const [show, setShow] = useState(false);
+    const handleDeleteComment = (e) => {
+        e.preventDefault();
+        dispatch(deleteComment(id));
+    };
 
     const time = () => {
-        return(
-        <div className="time-since-comment">
-            {TimeSinceComment}
-        </div>)
-    }
+        return <div className="time-since-comment">{TimeSinceComment}</div>;
+    };
 
     const timeDeleteFollow = () => {
-        if (athlete === currentUser.id || currentUser.id === authorId){
-            return(<>
-                    <div className="time-since-comment">
-                        {TimeSinceComment}
+        if (athlete === currentUser.id || currentUser.id === authorId) {
+            return (
+                <>
+                    <div className="time-since-comment">{TimeSinceComment}</div>
+                    <div
+                        className="delete-comment"
+                        onClick={handleDeleteComment}
+                    >
+                        {" "}
+                        | Delete
                     </div>
-                    <div className="delete-comment" onClick={handleDeleteComment}> | Delete</div>
+                    <FollowButton page="comment-index" id={authorId} />
                 </>
-            )}
-            else return(
+            );
+        } else
+            return (
                 <div className="time-since-comment">
                     {TimeSinceComment}
-                    <Follow location="commentIndex" id={authorId} />
-                 </div>)
-    }
-    const [showFollowDelete, setFollowDelete] = useState(time())
+                    <FollowButton page="comment-index" id={authorId} />
+                </div>
+            );
+    };
+    const [showFollowDelete, setFollowDelete] = useState(time());
 
-
-
-    return ( 
+    return (
         <div className="comment-container">
-            <div className="comment-card"
-            onMouseEnter={() => setFollowDelete(timeDeleteFollow)}
-            onMouseLeave={() => setFollowDelete(time)}>
-                <div className="commenter-photo-container">
-                    <img src={userAvitar} alt="commenter-photo" className="commenter-photo"/>
-                    <div className="commenter-name-container-index">
-                        <div className="commenter-name">
-                            {`${fname} ${lname} `}
+            <div
+                className="comment-card"
+                onMouseEnter={() => setFollowDelete(timeDeleteFollow)}
+                onMouseLeave={() => setFollowDelete(time)}
+            >
+                <div className="profile-picture-name-body-like-container-comment-index">
+                    <div className="commenter-profile-picture-comment-index">
+                        <ProfilePicture
+                            profilePictureUrl={authorProfilePicture}
+                            page="comment-index"
+                            targetId={authorId}
+                        />
+                    </div>
+                    <div className="name-body-like-comment-index">
+                        <div className="commenter-name-timeago">
+                            <div className="commenter-name">
+                                <AthleteName
+                                    fname={fname}
+                                    lname={lname}
+                                    targetId={authorId}
+                                />
+                            </div>
+                            <div className="time-delete-follow">
+                                {showFollowDelete}
+                            </div>
                         </div>
-                        <div className="time-delete-follow">
-                            {showFollowDelete}
-                        </div>
+                        <div className="comment-body">{body}</div>
+                        <CommentLike commentId={id} />
                     </div>
                 </div>
-
-                <div className="comment-body">
-                        {body} 
-                </div>
-                <div>
-                    <CommentLike commentId={id}/>
-                </div>
-                
             </div>
         </div>
-     );
-}
- 
+    );
+};
+
 export default CommentIndexItem;

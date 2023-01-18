@@ -6,6 +6,7 @@ import { fetchActivities, getActivities } from "../../store/activities";
 import { getFollowers, getFollowing } from "../../store/follows";
 import { getLikes } from "../../store/likes";
 import { getSession } from "../../store/session";
+import { reducedUsersFollowers, reducedUsersFollowing } from "../utils/followsreducers";
 import ActivityIndexItem from "./ActivityIndexItem";
 
 const ActivityIndexPage = () => {
@@ -31,21 +32,9 @@ const ActivityIndexPage = () => {
         );
     };
 
-    const reducedFollowing = following.reduce(
-        (acc, following) => ({
-            ...acc,
-            [following.followingId]: following,
-        }),
-        {}
-    );
+    const reducedFollowing = reducedUsersFollowing(following, currentUser.id)
 
-    const reducedFollowers = followers.reduce(
-        (acc, follower) => ({
-            ...acc,
-            [follower.followerId]: follower,
-        }),
-        {}
-    );
+    const reducedFollowers = reducedUsersFollowers(followers, currentUser.id)
 
     const userActivities = activities.filter((activity) => {
         return currentUser.id === activity.athleteId

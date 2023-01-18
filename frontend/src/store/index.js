@@ -5,16 +5,17 @@ import sessionReducer from './session';
 import commentReducer from './comments';
 import likeReducer from './likes';
 import followReducer, { followingReducer } from './follows';
-// import userReducer from './users'
+import usersReducer from './users'
 
 
 export const rootReducer = combineReducers({
     session: sessionReducer,
+    users: usersReducer,
+    following: followReducer,
+    followers: followingReducer,
     activities: activityReducer,
     comments: commentReducer,
     likes: likeReducer,
-    following: followReducer,
-    followers: followingReducer
     
     
     // users: userReducer

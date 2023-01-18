@@ -1,6 +1,6 @@
 import LoginFormPage from "./components/LoginFormPage";
 import { Switch } from "react-router-dom";
-import { Route } from "react-router-dom"
+import { Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import SignUpFormPage from "./components/SignUpFormPage";
 import HomePage from "./components/HomePage";
@@ -12,55 +12,55 @@ import ActivityShowPage from "./components/ActivityShowPage";
 import ActivityForm from "./components/EditActivityForm";
 import Footer from "./components/Footer";
 import CommentForm from "./components/CommentsForm";
-
+import UserShowPage from "./components/UserShowPage";
 
 // <UserIndexPage />
 function App() {
-  const sessionUser = useSelector(getSession)
-  
-  // const userPath = sessionUser ? <UserIndexPage />  : <HomePage />
-  const userPath = sessionUser ? <ActivityIndexPage />  : <HomePage />
-  const redirectPath = sessionUser ? <ActivityForm /> : <LoginFormPage />
-  // const editPath =`/activities/${activityId}/edit`
-  const activityPath = "/activities/:activityId"
+    const sessionUser = useSelector(getSession);
 
-  return (
-    <>
-    <NavBar />
-      <Switch>
-        <Route exact path="/">
-          
-          {userPath}
-          {/* <HomePage /> */}
-        </Route>
-        <Route exact path="/login">
-          <LoginFormPage />
-        </Route>
-        <Route exact path="/activities/:activityId/edit">
-          {redirectPath}
-        </Route>
-        <Route exact path="/activities/new">
-          {/* <NewActivityForm /> */}
-          {redirectPath}
+    // const userPath = sessionUser ? <UserIndexPage />  : <HomePage />
+    const userPath = sessionUser ? <ActivityIndexPage /> : <HomePage />;
+    const redirectPath = sessionUser ? <ActivityForm /> : <LoginFormPage />;
+    // const editPath =`/activities/${activityId}/edit`
+    const activityPath = "/activities/:activityId";
 
-        </Route>
+    return (
+        <>
+            <NavBar />
+            <Switch>
+                <Route exact path="/">
+                    {userPath}
+                    {/* <HomePage /> */}
+                </Route>
+                <Route exact path="/login">
+                    <LoginFormPage />
+                </Route>
+                <Route exact path="/activities/:activityId/edit">
+                    {redirectPath}
+                </Route>
+                <Route exact path="/activities/new">
+                    {/* <NewActivityForm /> */}
+                    {redirectPath}
+                </Route>
 
-        <Route exact path={activityPath}>
-          <ActivityShowPage />
-        </Route>
+                <Route exact path="/activities/:activityId">
+                    <ActivityShowPage />
+                </Route>
 
-        <Route exact path="/activities">
-          <ActivityIndexPage />          
-        </Route>
+                <Route exact path="/activities">
+                    <ActivityIndexPage />
+                </Route>
 
-        <Route exact path="/signup" >
-          <SignUpFormPage />
-        </Route>
-      </Switch>
-    <Footer />
-
-    </>
-  );
+                <Route exact path="/signup">
+                    <SignUpFormPage />
+                </Route>
+                <Route exact path="/users/:userId">
+                    <UserShowPage />
+                </Route>
+            </Switch>
+            <Footer />
+        </>
+    );
 }
 
 export default App;

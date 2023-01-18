@@ -1,0 +1,80 @@
+.comment-container {
+    /* border: 2px solid green; */
+    display: flex;
+    flex-direction: row;
+}
+
+.commenter-photo-container {
+    display: flex;
+    flex: row;
+    align-items: center;
+}
+
+.comment-card {
+    /* border: 3px solid blue; */
+    width: 494px;
+    display: flex;
+    flex-direction: column;
+}
+
+.commenter-name-container-index {
+    display: flex;
+    flex-direction: row;
+    padding-left: 16px;
+    height: 14px;
+    justify-content: space-between;
+    width: 494px;
+    position: relative;
+
+    /* align-items: center; */
+}
+
+.time-delete-follow {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    flex-wrap: nowrap;
+}
+
+.time-delete-follow > div {
+    font-family: "Helvetica", "Arial", sans-serif;
+    font-size: 12px;
+    margin-right: 3px;
+    align-items: center;
+}
+
+.time-since-comment {
+    /* color: rgba(168, 168, 179, 0.9); */
+    color: #6d6d78;
+}
+
+.delete-comment {
+    color: orange;
+}
+
+.delete-comment:hover {
+    cursor: pointer;
+    font-weight: bolder;
+    color: red;
+}
+
+.commenter-name {
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.comment-body {
+    font-family: "Helvetica", "Arial", sans-serif;
+    width: 400px;
+    /* border: 2px solid red; */
+    margin-left: 48px;
+    font-size: 12px;
+}
+
+.delete-like-container {
+    padding-top: 6px;
+}
+
+.delete-comment-link {
+    cursor: pointer;
+}

@@ -1,0 +1,45 @@
+.follow-button {
+    background-color: #fc5200;
+    justify-content: center;
+    border-radius: 4px;
+    width: 72px;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.followed-button {
+    background-color: white;
+    color: black;
+    border: 1px solid lightgray;
+}
+
+.followed-button:hover{
+    background-color: #fc5200;
+    color: white;
+    border: none;
+}
+
+.follow-button-activity-index {
+    height: 27px;
+}
+
+.follow-button-comment-index{
+
+    margin-left: 4px;
+    font-size: 10px;
+    padding-left: 4px;
+
+}
+
+.follow-button-user-show {
+    width: 100px;
+    height: 34px;
+}
+
+
+.follow-button-follow-index {
+    height: 30px;
+    width: 100px;
+}
+

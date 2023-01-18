@@ -13,7 +13,10 @@ import { speed, durationConvert } from "../utils/activityspeed/speedConverter";
 import Like, { toggleLike } from "../Like/ActivityLike";
 import { displayTimeParsed } from "../utils/datetimeparsers";
 import { getFollowers, getFollowing } from "../../store/follows";
-import Follow from "../Follow/Follow";
+import FollowButton from "../FollowButton";
+import ProfilePicture from "../ProfilePicture";
+import AthleteName from "../AthleteName";
+
 
 const ActivityIndexItem = ({ activity, activityLikes, userLikesActivity }) => {
     const currentUser = useSelector(getSession);
@@ -44,11 +47,7 @@ const ActivityIndexItem = ({ activity, activityLikes, userLikesActivity }) => {
     );
     const [showCommentBox, setShowCommentBox] = useState(false);
     const [showComments, setShowComments] = useState(true);
-    const [userAvitar, setUserAvitar] = useState(
-        athleteProfilePicture
-            ? athleteProfilePicture
-            : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg"
-    );
+
 
     const sportImg =
         sport === "run" ? runlogo : sport === "inline" ? skatelogo : bikelogo;
@@ -88,19 +87,24 @@ const ActivityIndexItem = ({ activity, activityLikes, userLikesActivity }) => {
 
     const followButton = (athleteId) => {
         if (athleteId !== currentUser.id) {
-            return <Follow location={"activityIndex"} id={athleteId} />;
+            return <FollowButton page={"activity-index"} id={athleteId} />;
         }
     };
     return (
         <>
             <div className="top-bar">
-                <div className="profile-pic-div">
-                    {/* <i className="fa-solid fa-user"></i> */}
-                    <img className="profile-pic" src={userAvitar} />
-                </div>
+                <ProfilePicture
+                    profilePictureUrl={athleteProfilePicture}
+                    page={"index"}
+                    targetId={athleteId}
+                />
                 <div className="athlete-name-start-time-index">
                     <div className="athlete-name-index">
-                        {fname} {lname}
+                        <AthleteName
+                            fname={fname}
+                            lname={lname}
+                            targetId={athleteId}
+                        />
                         {followButton(athleteId)}
                     </div>
                     <div className="start-time-index">
