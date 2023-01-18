@@ -1,6 +1,6 @@
 .following-wrapper {
     width: 750px;
-    font-family: 'Sora', sans-serif;
+    font-family: "Sora", sans-serif;
 }
 
 .following-title {
@@ -9,14 +9,14 @@
 }
 
 .followers-dropdown-container {
-    margin-bottom: 20px
+    margin-bottom: 20px;
 }
 
 .followers-dropdown {
     font-size: 14px;
     height: 32px;
     width: 180px;
-    border: solid gray 1px
+    border: solid gray 1px;
 }
 
 .follows {
@@ -30,17 +30,15 @@
     height: 56px;
     align-items: center;
     justify-content: space-between;
-    /* border-bottom: 1px solid gray; */
     border-bottom: 1px solid rgba(168, 168, 179, 0.4);
 }
 
-.profile-picture-name-container-follow-index{
+.profile-picture-name-container-follow-index {
     display: flex;
     flex-direction: row;
     align-items: center;
-
 }
 
 .athlete-name-follow-index {
-    margin-left: 20px
+    margin-left: 20px;
 }

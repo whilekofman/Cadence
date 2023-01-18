@@ -1,4 +1,4 @@
-.profile-pic-user{
+.profile-pic-user {
     border-radius: 50%;
     width: 136px;
     height: 136px;
@@ -7,7 +7,7 @@
     height: 32px;
     width: 32px;
 }
-.profile-pic{
+.profile-pic {
     border-radius: 50%;
 }
 
@@ -20,5 +20,4 @@
 .profile-pic-comment-index {
     height: 30px;
     width: 30px;
-    
 }

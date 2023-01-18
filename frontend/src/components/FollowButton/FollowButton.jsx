@@ -15,26 +15,19 @@ const FollowButton = ({ page, id }) => {
     const followers = useSelector(getFollowers);
     const following = useSelector(getFollowing);
 
-    
-    const reducedFollowing = reducedUsersFollowing(following, currentUser.id)
-    // const reducedFollowing = following.reduce(
-        //     (acc, following) => ({ ...acc, [following.followingId]: following }),
-        //     {}
-        // );
-        
+    const reducedFollowing = reducedUsersFollowing(following, currentUser.id);
+
     const followButtonCss =
         id in reducedFollowing
             ? `follow-button follow-button-${page} followed-button`
-            : `follow-button follow-button-${page}`; 
-    
-    
-    const followText =
-        id in reducedFollowing ? "Unfollow" : "Follow";
+            : `follow-button follow-button-${page}`;
+
+    const followText = id in reducedFollowing ? "Unfollow" : "Follow";
 
     const handleFollowAction = (e) => {
         e.preventDefault();
-        if (!currentUser){
-            <Redirect to="/login" />
+        if (!currentUser) {
+            <Redirect to="/login" />;
         }
         if (id in reducedFollowing) {
             const removeFollow = reducedFollowing[id].id;

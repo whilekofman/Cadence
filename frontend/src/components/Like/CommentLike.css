@@ -4,37 +4,27 @@
     padding: 8px 0px 8px 0px;
 
     align-items: center;
-
 }
 
-.comment-like-container > div:nth-child(1){
+.comment-like-container > div:nth-child(1) {
     padding-right: 8px;
     font-size: 16px;
-
 }
 
 .comment-liked-color {
     color: red;
-    
 }
 
-
-
-.comment-like-text{
+.comment-like-text {
     font-size: 12px;
     color: grey;
-    font-family: 'MaisonNeue, Segoe UI, Helvetica Neue'
+    font-family: "MaisonNeue, Segoe UI, Helvetica Neue";
 }
 
 .liked {
-    font-variation-settings:
-        'FILL' 1,
-        'wght' 100,
-        'GRAD' 0,
-        'opsz' 24
+    font-variation-settings: "FILL" 1, "wght" 100, "GRAD" 0, "opsz" 24;
 }
 
 .material-symbols-outlined:hover {
-    cursor: pointer
+    cursor: pointer;
 }
-

@@ -1,12 +1,11 @@
 .comment-container {
     width: 494px;
-       
 }
 .see-all-comments-container {
     margin-bottom: 5px;
 }
 
-.see-all-comments-link{
+.see-all-comments-link {
     font-size: 11px;
     cursor: pointer;
 }
@@ -26,7 +25,7 @@
     flex: column;
     align-items: flex-start;
 }
-.commenter-profile-picture-comment-index{
+.commenter-profile-picture-comment-index {
     height: max-content;
 }
 .name-body-like-comment-index {
@@ -37,25 +36,22 @@
     position: relative;
 }
 
-
-
 .time-delete-follow {
     display: flex;
     width: fit-content;
     flex-wrap: nowrap;
 }
 
-.time-delete-follow > div{
-    font-family: 'Helvetica', 'Arial', sans-serif;
+.time-delete-follow > div {
+    font-family: "Helvetica", "Arial", sans-serif;
     font-size: 12px;
     margin-right: 3px;
     align-items: center;
 }
 
-.time-since-comment{
+.time-since-comment {
     /* color: rgba(168, 168, 179, 0.9); */
     color: #6d6d78;
-        
 }
 
 .delete-comment {
@@ -65,10 +61,10 @@
 .delete-comment:hover {
     cursor: pointer;
     font-weight: bolder;
-    color: red
+    color: red;
 }
 
-.commenter-name-timeago{
+.commenter-name-timeago {
     width: 450px;
     display: flex;
     flex-direction: row;
@@ -80,13 +76,11 @@
 .commenter-name {
     font-size: 12px;
     font-weight: 200;
-
 }
 .comment-body {
-    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-family: "Helvetica", "Arial", sans-serif;
     justify-content: left;
     margin-top: 5px;
     width: 425px;
     font-size: 12px;
 }
-

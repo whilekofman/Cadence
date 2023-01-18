@@ -43,7 +43,6 @@ const FollowIndexItem = ({ follow, userId }) => {
             {targetId !== currentUser.id && (
                 <FollowButton page={page} id={targetId} />
             )}
-            {/* {followerId} {followingId} */}
         </>
     );
 };

@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getFollowers, getFollowing } from "../../store/follows";
+import { Redirect, useParams } from "react-router-dom";
 import { fetchUser, getUser } from "../../store/users";
-import FollowIndexItem from "../FollowIndex/FollowIndexItem";
 import FollowIndex from "../FollowIndex";
 import ProfilePicture from "../ProfilePicture";
 import AthleteName from "../AthleteName";
@@ -19,15 +17,17 @@ const UserShowPage = () => {
     const [loaded, setLoaded] = useState(false);
     useEffect(() => {
         dispatch(fetchUser(userId)).then(() => setLoaded(true));
-        // setLoaded(true)
     }, [userId]);
-    
+
+    if (!currentUser) {
+        return <Redirect to="/login" />;
+    }
     if (!user) {
         return null;
     }
     const { id, fname, lname, profilePictureUrl } = user;
 
-    const profilePicture = profilePictureUrl
+    const profilePicture = profilePictureUrl;
 
     return (
         <div className="user-show-wrapper">
@@ -37,7 +37,6 @@ const UserShowPage = () => {
                     page={"user"}
                     targetId={id}
                 />
-                {/* {fname} {lname} */}
                 <div className="athlete-name-user-show">
                     <AthleteName fname={fname} lname={lname} targetId={id} />
                 </div>

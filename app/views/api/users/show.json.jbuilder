@@ -1,11 +1,4 @@
-# json.user do
-#   json.partial! 'user', user: @user
-# end
 
-# 
-
-# json.user do
-# end
 json.user do
   json.extract! @user, :id, :email, :fname, :lname
   json.profile_picture_url @user.profile_picture.url
