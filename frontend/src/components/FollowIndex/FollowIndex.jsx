@@ -82,7 +82,7 @@ const FollowIndex = ({ userId, fname, loaded }) => {
 
     return (
         <div className="following-wrapper">
-            <h1 className="following-title">Following</h1>
+            <h3 className="following-title">Following</h3>
             <div className="followers-dropdown-container">
                 <select
                     className="followers-dropdown"
@@ -99,13 +99,13 @@ const FollowIndex = ({ userId, fname, loaded }) => {
                         <option value="both">Athletes you both follow</option>
                     )}
                 </select>
-                <div className="follows">
-                    {followingElements}
-                </div>
-                {!displayFollows.length && (
-                    <div className="no-followers">{noFollowersText()}</div>
-                )}
             </div>
+            <div className="follows">
+                {followingElements}
+            </div>
+            {!displayFollows.length && (
+                <div className="no-followers">{noFollowersText()}</div>
+            )}
         </div>
     );
 };

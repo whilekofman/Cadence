@@ -24,22 +24,26 @@ const FollowIndexItem = ({ follow, userId }) => {
 
     return (
         <>
-        <div className={`profile-picture-${page}`}>
-            <ProfilePicture
-                profilePictureUrl={profilePicture}
-                page={page}
-                targetId={targetId}
-            /></div>
-            <div className={`athlete-name-${page}`}><AthleteName
-                fname={displayName.split(" ")[0]}
-                lname={displayName.split(" ")[1]}
-                targetId={targetId}
-            />
+            <div className={`profile-picture-name-container-${page}`}>
+                <div className={`profile-picture-${page}`}>
+                    <ProfilePicture
+                        profilePictureUrl={profilePicture}
+                        page={page}
+                        targetId={targetId}
+                    />
+                </div>
+                <div className={`athlete-name-${page}`}>
+                    <AthleteName
+                        fname={displayName.split(" ")[0]}
+                        lname={displayName.split(" ")[1]}
+                        targetId={targetId}
+                    />
+                </div>
             </div>
             {targetId !== currentUser.id && (
                 <FollowButton page={page} id={targetId} />
             )}
-            {followerId} {followingId}
+            {/* {followerId} {followingId} */}
         </>
     );
 };

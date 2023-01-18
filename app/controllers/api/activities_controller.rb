@@ -1,5 +1,6 @@
 class Api::ActivitiesController < ApplicationController
     wrap_parameters include: Activity.attribute_names + ["athleteId", "startTime"]
+    
     def index
 
         if params[:athlete].present?
