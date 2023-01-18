@@ -8,7 +8,7 @@
 # end
 json.user do
   json.extract! @user, :id, :email, :fname, :lname
-  json.profileurl @user.profile_picture.url
+  json.profile_picture_url @user.profile_picture.url
 
 end
 

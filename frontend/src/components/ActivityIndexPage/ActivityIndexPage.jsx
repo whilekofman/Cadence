@@ -6,7 +6,7 @@ import { fetchActivities, getActivities } from "../../store/activities";
 import { getFollowers, getFollowing } from "../../store/follows";
 import { getLikes } from "../../store/likes";
 import { getSession } from "../../store/session";
-import { reducedUsersFollowing } from "../utils/reducers";
+import { reducedUsersFollowing } from "../utils/followsreducers";
 import ActivityIndexItem from "./ActivityIndexItem";
 
 const ActivityIndexPage = () => {

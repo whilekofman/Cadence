@@ -6,53 +6,56 @@ import { fetchUser, getUser } from "../../store/users";
 import FollowIndexItem from "../FollowIndex/FollowIndexItem";
 import FollowIndex from "../FollowIndex";
 import ProfilePicture from "../ProfilePicture";
-import { reducedUsersFollowers, reducedUsersFollowing } from "../utils/reducers";
+import AthleteName from "../AthleteName";
+import FollowButton from "../FollowButton";
 
 const UserShowPage = () => {
-    const dispatch = useDispatch() 
-    const { userId } = useParams()
-    const [userFollowing, setUserFollowing] = useState([])
-    const user = useSelector(getUser(userId))
-  
-    const [loaded, setLoaded] = useState(false) 
+    const dispatch = useDispatch();
+    const { userId } = useParams();
+    const user = useSelector(getUser(userId));
+    const currentUser = useSelector(getSelection);
 
-    
+    const [loaded, setLoaded] = useState(false);
+
     useEffect(() => {
-        dispatch(fetchUser(userId)).then(()=> setLoaded(true))
+        dispatch(fetchUser(userId)).then(() => setLoaded(true));
         // setLoaded(true)
-    }, [userId])
-    
+    }, [userId]);
 
     if (!user) {
         return null;
     }
-    
-    const { id, fname, lname, profileurl } = user;
-
-    // const userFollowers = reducedUsersFollowers(followers, id)
-
-    // console.log("User Followers: ", userFollowers);
-
-
-
-
-
+    const { id, fname, lname, profilePictureUrl } = user;
 
     return (
-        <>
-            <ProfilePicture url={profileurl} page={"user"} />
-            {fname} {lname}
-            {loaded &&
-            <div className="following">
-                <FollowIndex
-                    userId={id}
-                    fname={fname}
-                    // loaded={loaded}
+        <div className="user-show-wrapper">
+            <div className="user-show-items">
+                <ProfilePicture
+                    profilePictureUrl={profilePictureUrl}
+                    page={"user"}
+                    targetId={id}
                 />
+                {/* {fname} {lname} */}
+                <div className="athlete-name">
+                    <AthleteName fname={fname} lname={lname} targetId={id} />
+                </div>
+                {currentUser.id !== id && (
+                    <div className="follow-button-user-show-container">
+                        <FollowButton page="user-show" id={id} />
+                    </div>
+                )}
+                {loaded && (
+                    <div className="following">
+                        <FollowIndex
+                            userId={id}
+                            fname={fname}
+                            loaded={loaded}
+                        />
+                    </div>
+                )}
             </div>
-            }
-        </>
+        </div>
     );
-}
- 
+};
+
 export default UserShowPage;

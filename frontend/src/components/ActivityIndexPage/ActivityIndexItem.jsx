@@ -14,6 +14,8 @@ import Like, { toggleLike } from "../Like/ActivityLike";
 import { displayTimeParsed } from "../utils/datetimeparsers";
 import { getFollowers, getFollowing } from "../../store/follows";
 import FollowButton from "../FollowButton";
+import ProfilePicture from "../ProfilePicture";
+import AthleteName from "../AthleteName";
 
 
 const ActivityIndexItem = ({ activity, activityLikes, userLikesActivity }) => {
@@ -45,7 +47,7 @@ const ActivityIndexItem = ({ activity, activityLikes, userLikesActivity }) => {
     );
     const [showCommentBox, setShowCommentBox] = useState(false);
     const [showComments, setShowComments] = useState(true);
-    const [profilepicture, setProfilepicture] = useState(
+    const [profilePictureUrl, setProfilepicture] = useState(
         athleteProfilePicture
             ? athleteProfilePicture
             : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg"
@@ -89,19 +91,24 @@ const ActivityIndexItem = ({ activity, activityLikes, userLikesActivity }) => {
 
     const followButton = (athleteId) => {
         if (athleteId !== currentUser.id) {
-            return <FollowButton location={"activityIndex"} id={athleteId} />;
+            return <FollowButton page={"activity-index"} id={athleteId} />;
         }
     };
     return (
         <>
             <div className="top-bar">
-                <div className="profile-pic-div">
-                    {/* <i className="fa-solid fa-user"></i> */}
-                    <img className="profile-pic" src={profilepicture} />
-                </div>
+                <ProfilePicture
+                    profilePictureUrl={profilePictureUrl}
+                    page={"index"}
+                    targetId={athleteId}
+                />
                 <div className="athlete-name-start-time-index">
                     <div className="athlete-name-index">
-                        {fname} {lname}
+                        <AthleteName
+                            fname={fname}
+                            lname={lname}
+                            targetId={athleteId}
+                        />
                         {followButton(athleteId)}
                     </div>
                     <div className="start-time-index">

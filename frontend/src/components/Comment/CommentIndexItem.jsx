@@ -55,7 +55,7 @@ const CommentIndexItem = ( { comment, athlete } ) => {
             else return(
                 <div className="time-since-comment">
                     {TimeSinceComment}
-                    <FollowButton location="commentIndex" id={authorId} />
+                    <FollowButton page="comment-index" id={authorId} />
                  </div>)
     }
     const [showFollowDelete, setFollowDelete] = useState(time())

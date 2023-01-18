@@ -1,15 +1,20 @@
-const ProfilePicture = ({ url, page }) => {
-    const profilePicture = url;
+import { Link } from "react-router-dom";
 
-    const imgCss = `profile-pic-${page}`;
+const ProfilePicture = ({ profilePictureUrl, page, targetId }) => {
+    const profilePicture = profilePictureUrl;
+
+    const imgCss = `profile-pic-${page} profile-pic`;
     const divCss = `profile-pic-div-${page}`;
+
     return (
         <div className={divCss}>
-            <img
-                src={profilePicture}
-                alt="User profile image"
-                className={imgCss}
-            />
+            <Link to={`/users/${targetId}`}>
+                <img
+                    src={profilePicture}
+                    alt="User profile image"
+                    className={imgCss}
+                />
+            </Link>
         </div>
     );
 };

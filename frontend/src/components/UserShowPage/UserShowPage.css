@@ -1,0 +1,12 @@
+.user-show-wrapper {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px 150px
+}
+
+.user-show-itmes {
+    width: 1250px;
+    margin: 20px 150px 
+}

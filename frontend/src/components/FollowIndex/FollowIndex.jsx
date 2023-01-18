@@ -5,76 +5,109 @@ import { getFollowers, getFollowing } from "../../store/follows";
 import { getSession } from "../../store/session";
 import { getUser } from "../../store/users";
 import {
+    bothUsersFollow,
     reducedUsersFollowers,
     reducedUsersFollowing,
-} from "../utils/reducers";
+} from "../utils/followsreducers";
 import FollowIndexItem from "./FollowIndexItem";
 
-const FollowIndex = ({ userId, fname }) => {
-    const [selectDropDown, setSelectDropDown] = useState("");
-    
+const FollowIndex = ({ userId, fname, loaded }) => {
+    const [selectDropDown, setSelectDropDown] = useState("following");
+
     const [displayFollows, setDisplayFollows] = useState([]);
+
+    const [following, setFollowing] = useState([]);
+
+    const [followers, setFollowers] = useState([]);
 
     const currentUser = useSelector(getSession);
     const followingStore = useSelector(getFollowing);
     const followersStore = useSelector(getFollowers);
+
+    useEffect(() => {
+        setFollowing(followingStore);
+        setFollowers(followersStore);
+        setSelectDropDown("following");
+    }, [userId]);
+
+    const currentUserPage = userId === currentUser.id;
+
     const athleteFollowing = Object.values(
         reducedUsersFollowing(followingStore, userId)
     );
     const athleteFollowers = Object.values(
         reducedUsersFollowers(followersStore, userId)
     );
-    const currentUserFollowing = Object.values(
-        reducedUsersFollowing(followingStore, currentUser.id)
+    const bothFollowing = Object.values(
+        bothUsersFollow(followingStore, currentUser.id, userId)
     );
 
-    const athletesFirstName = userId !== currentUser.id ? fname : "I'm" 
+    const noFollowersText = () => {
+        if (selectDropDown === "following") {
+            return !currentUserPage
+                ? `${fname} is not following any athletes yet`
+                : "You are not following any athletes yet";
+        } else if (selectDropDown === "folllowers") {
+            return !currentUser
+                ? `${fname} does not have any athletes following them`
+                : "You do not have any athletes following you";
+        } else {
+            return "You do not follow any of the same athletes";
+        }
+    };
 
-    
+    const athletesFollowingText = !currentUserPage
+        ? `${fname} is Following`
+        : "I'm Following";
+
+    const athletesFollowersText = !currentUserPage
+        ? `Following ${fname}`
+        : "Following me";
+
     useEffect(() => {
         if (selectDropDown === "following") {
             setDisplayFollows(athleteFollowing);
         } else if (selectDropDown === "followers") {
-            console.log("work")
             setDisplayFollows(athleteFollowers);
         } else {
-            setDisplayFollows(currentUserFollowing);
+            setDisplayFollows(bothFollowing);
         }
-    }, [selectDropDown]);
+    }, [selectDropDown, followersStore]);
 
-    const test = "test";
-  
     const followingElements = displayFollows.map((follow) => (
         <div className="follows-index-item" key={follow.id}>
-            <FollowIndexItem follow={follow} test={test} />
+            <FollowIndexItem follow={follow} userId={userId} />
         </div>
     ));
 
-    if (displayFollows.length !== 0) {
-        return (
-            <div className="following-wrapper">
-                <h1 className="following-title">Following</h1>
-                <div className="followers-dropdown-container">
-                    <select
-                        className="followers-dropdown"
-                        value={selectDropDown}
-                        onChange={(e) => e.target.value}
-                    >
-                        <option value="following">
-                            {`${athletesFirstName} is Following`}
-                        </option>
-                        <option value={"followers"}>
-                            {`Following ${athletesFirstName}`}
-                        </option>
-                    </select>
-
+    return (
+        <div className="following-wrapper">
+            <h1 className="following-title">Following</h1>
+            <div className="followers-dropdown-container">
+                <select
+                    className="followers-dropdown"
+                    value={selectDropDown}
+                    onChange={(e) => setSelectDropDown(e.target.value)}
+                >
+                    <option value="following">
+                        {`${athletesFollowingText}`}
+                    </option>
+                    <option value={"followers"}>
+                        {`${athletesFollowersText}`}
+                    </option>
+                    {!currentUserPage && (
+                        <option value="both">Athletes you both follow</option>
+                    )}
+                </select>
+                <div className="follows">
                     {followingElements}
                 </div>
+                {!displayFollows.length && (
+                    <div className="no-followers">{noFollowersText()}</div>
+                )}
             </div>
-        );
-    } else {
-        return <div>noFollowers</div>;
-    }
+        </div>
+    );
 };
 
 export default FollowIndex;

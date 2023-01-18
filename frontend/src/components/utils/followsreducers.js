@@ -1,7 +1,7 @@
-export const reducedUsersFollowing = (following, userId, array) => {
+export const reducedUsersFollowing = (following, userId) => {
     // debugger
     const userFollowing = following.filter((follow) => {
-        return userId == follow.followerId
+        return userId === follow.followerId
     })
     
 
@@ -17,7 +17,7 @@ export const reducedUsersFollowing = (following, userId, array) => {
 
 export const reducedUsersFollowers = (followers, userId) => {
     const usersFollowers = followers.filter((follow) => {
-        return userId == follow.followingId
+        return userId === follow.followingId
     })
 
     return usersFollowers.reduce((acc, followers) => ({
@@ -33,3 +33,20 @@ export const reducedUsersFollowers = (followers, userId) => {
     //     }),
     //     {}
     // );
+
+export const bothUsersFollow = (followers, currentUserId, athleteUserId) => {
+    const currentUserFollowing = reducedUsersFollowing(followers, currentUserId)
+    const athleteFollowing = reducedUsersFollowing(
+        followers,
+        athleteUserId
+    );
+    const bothFollowing = {}
+    
+    for(const key in currentUserFollowing){
+        if (key in athleteFollowing) {
+            bothFollowing[key] = athleteFollowing[key] 
+        }
+    }
+    return bothFollowing
+
+}
