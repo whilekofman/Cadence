@@ -15,6 +15,7 @@ const FollowIndexItem = ({ follow, userId }) => {
         followerProfilePicture,
         followeeProfilePicture,
     } = follow;
+    
     const displayName = followingName || followerName;
     const fname = displayName.split(" ")[0];
     const lname = displayName.split(" ")[1];

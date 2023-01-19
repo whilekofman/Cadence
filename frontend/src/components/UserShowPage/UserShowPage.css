@@ -4,6 +4,17 @@
     flex-direction: column;
     justify-content: center;
     margin: 20px 150px;
+    font-family: "Sora", sans-serif;
+
+}
+
+.following-wrapper {
+    width: 750px;
+}
+
+.following-title {
+    font-size: 18px;
+    font-weight: 200;
 }
 
 .user-show-itmes {
@@ -21,3 +32,37 @@
     align-items: center;
     font-size: 26px;
 }
+.display-buttons-content{
+    width: 750px;
+}
+.display-buttons {
+    padding-top: 15px;
+    z-index: 1;
+    border-bottom: lightgray solid 1px;
+}
+
+.display-buttons > button{
+    width: 122px;
+    height: 40px;
+    border: none;
+    border-bottom: none;
+    /* z-index: 2; */
+    background-color: white;
+    border-top: red solid 2px;
+    border-left: lightgray solid 1px;
+    border-right: lightgray solid 1px;
+}
+
+.left-right {
+    display: flex;
+    width: 1220px;
+}
+
+.right {
+    margin-left: 120px;
+    margin-top: 52px;
+    border-top: lightgray solid 1px;
+    width: 360px;
+}
+
+
