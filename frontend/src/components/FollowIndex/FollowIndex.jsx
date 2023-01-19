@@ -28,7 +28,6 @@ const FollowIndex = ({ userId, fname, all, right, displayFollowsStateValue, setD
     const currentUser = useSelector(getSession);
     const followingStore = useSelector(getFollowing);
     const followersStore = useSelector(getFollowers);
-
     console.log(displayFollowsStateValue)
     useEffect(() => {
         // setFollowers(followersStore);
@@ -51,6 +50,9 @@ const FollowIndex = ({ userId, fname, all, right, displayFollowsStateValue, setD
     const bothFollowing = Object.values(
         bothUsersFollow(followingStore, currentUser.id, userId)
     );
+    console.log("Athlete Following Store", athleteFollowing);
+    console.log("Athlete Followers Store", athleteFollowers);
+    console.log("FOLLOWING STORE: ", followingStore);
 
     const noFollowersText = () => {
         if (selectDropDown === "following") {

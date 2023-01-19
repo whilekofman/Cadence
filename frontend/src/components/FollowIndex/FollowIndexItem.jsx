@@ -6,6 +6,7 @@ import ProfilePicture from "../ProfilePicture";
 
 const FollowIndexItem = ({ follow, userId }) => {
     const currentUser = useSelector(getSession);
+    
     const {
         id,
         followerName,

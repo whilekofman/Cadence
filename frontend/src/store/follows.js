@@ -32,6 +32,7 @@ export const fetchFollows = ( userId, type ) => async dispatch => {
     if (type === 'followers'){
         dispatch(retrieveFollowers(data))
     } else {
+        debugger
         dispatch(retrieveFollowing(data))
     }
 }
@@ -40,7 +41,7 @@ export const deleteFollow = followId => async dispatch => {
     const res = await csrfFetch (`/api/follows/${followId}`, {
         method: 'DELETE'
     })
-    dispatch(removeFollow(followId)) 
+    dispatch(removeFollow(followId))
 }
 
 export const newFollow = ( currentUserId, follow ) => async dispatch => {
