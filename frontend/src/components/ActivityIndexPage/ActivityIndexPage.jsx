@@ -9,7 +9,7 @@ import { getSession } from "../../store/session";
 import { reducedUsersFollowers, reducedUsersFollowing } from "../utils/followsreducers";
 import ActivityIndexItem from "./ActivityIndexItem";
 
-const ActivityIndexPage = () => {
+const ActivityIndexPage = ({ page, userId, userShowActivities }) => {
     const dispatch = useDispatch();
     const activities = useSelector(getActivities);
 
@@ -31,38 +31,54 @@ const ActivityIndexPage = () => {
                 like.likeableId === activityId
         );
     };
+    const cssPage = page || "dashboard";
 
-    const reducedFollowing = reducedUsersFollowing(following, currentUser.id)
+    const reducedFollowing = reducedUsersFollowing(following, currentUser.id);
 
-    const reducedFollowers = reducedUsersFollowers(followers, currentUser.id)
+    const reducedFollowers = reducedUsersFollowers(followers, currentUser.id);
 
-    const userActivities = activities.filter((activity) => {
-        return currentUser.id === activity.athleteId
+    const currentUserActivities = activities.filter((activity) => {
+        return currentUser.id === activity.athleteId;
     });
 
     const followingActivities = activities.filter((activity) => {
-        return activity.athleteId in reducedFollowing; 
+        return activity.athleteId in reducedFollowing;
     });
 
     const followersActivities = activities.filter((activity) => {
         return activity.athleteId in reducedFollowers;
     });
+    // const userShowActivities =
+    //     userId === currentUser.id
+    //         ? currentUserActivities
+    //         : activities.filter((activity) => {
+    //               return userId === activity.athleteId;
+    //           });
 
     useEffect(() => {
-        setSelectDropDown("all");
+        if (page !== "userShow") {
+            setSelectDropDown("all");
+        } else {
+            setSelectDropDown("")
+        }
         dispatch(fetchActivities());
     }, []);
 
     useEffect(() => {
-        if (selectDropDown === "all") {
-            setDisplayActivities(activities);
-        } else if (selectDropDown === "following") {
-            setDisplayActivities(followingActivities);
-        } else if (selectDropDown === "followers") {
-            setDisplayActivities(followersActivities)
-        } else setDisplayActivities(userActivities)
+        if (page !== "userShow"){
+            if (selectDropDown === "all") {
+                setDisplayActivities(activities);
+            } else if (selectDropDown === "following") {
+                setDisplayActivities(followingActivities);
+            } else if (selectDropDown === "followers") {
+                setDisplayActivities(followersActivities);
+            } else if (selectDropDown === "currentUser") {
+                setDisplayActivities(currentUserActivities);
+        }} else {
+            setDisplayActivities(userShowActivities);
+        }
 
-    }, [activities, selectDropDown]);
+    }, [activities, selectDropDown, userId, userShowActivities]);
 
     const activityListElements = displayActivities
         .sort((a, b) => new Date(b.startTime) - new Date(a.startTime))
@@ -84,26 +100,28 @@ const ActivityIndexPage = () => {
 
     return (
         <>
-            <div className="activity-index-body">
+            <div className={`activity-index-body-${cssPage}`}>
                 <div className="activity-container">
-                    <div className="index-dropdown">
-                        <select
-                            className="follow-dropdown"
-                            value={selectDropDown}
-                            onChange={handleSelect}
-                        >
-                            <option value="all">All athletes</option>
-                            <option value="following">
-                                Athletes your following
-                            </option>
-                            <option value="followers">
-                                Athletes following you
-                            </option>
-                            <option value="user">
-                                Your activites
-                            </option>
-                        </select>
-                    </div>
+                    {page !== "userShow" && (
+                        <div className="index-dropdown">
+                            <select
+                                className="follow-dropdown"
+                                value={selectDropDown}
+                                onChange={handleSelect}
+                            >
+                                <option value="all">All athletes</option>
+                                <option value="following">
+                                    Athletes your following
+                                </option>
+                                <option value="followers">
+                                    Athletes following you
+                                </option>
+                                <option value="cuurentUser">
+                                    Your activites
+                                </option>
+                            </select>
+                        </div>
+                    )}
                     {activityListElements}
                 </div>
             </div>

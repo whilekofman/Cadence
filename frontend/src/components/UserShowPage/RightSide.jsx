@@ -8,8 +8,8 @@ const RightSide = ({ userId, fname, selectDropDown, changeSelectDropDown }) => {
                 <FollowIndex
                     userId={userId}
                     fname={fname}
-                    right={true}
-                    // selectDropDown={selectDropDown} 
+                    side={"right"}
+                    selectDropDown={selectDropDown} 
                     changeSelectDropDown={changeSelectDropDown}
                 />
             </div>

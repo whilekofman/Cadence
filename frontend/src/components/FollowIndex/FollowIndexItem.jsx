@@ -4,7 +4,7 @@ import AthleteName from "../AthleteName";
 import FollowButton from "../FollowButton";
 import ProfilePicture from "../ProfilePicture";
 
-const FollowIndexItem = ({ follow, userId }) => {
+const FollowIndexItem = ({ follow, userId, side }) => {
     const currentUser = useSelector(getSession);
     
     const {
@@ -23,7 +23,7 @@ const FollowIndexItem = ({ follow, userId }) => {
     const profilePicture = followerProfilePicture || followeeProfilePicture;
     const targetId = userId === followingId ? followerId : followingId;
     const page = "follow-index";
-
+    if (side === "left"){
     return (
         <>
             <div className={`profile-picture-name-container-${page}`}>
@@ -45,8 +45,19 @@ const FollowIndexItem = ({ follow, userId }) => {
             {targetId !== currentUser.id && (
                 <FollowButton page={page} id={targetId} />
             )}
+
         </>
+    )} else {return (
+        <div className={`profile-picture-${page}-${side}`}>
+            <ProfilePicture
+                profilePictureUrl={profilePicture}
+                page={page}
+                targetId={targetId}
+            />
+        </div>
     );
+    }
+    
 };
 
 export default FollowIndexItem;

@@ -15,7 +15,7 @@ const FollowIndex = ({
     userId,
     fname,
     all,
-    right,
+    side,
     selectDropDown,
     changeSelectDropDown,
 }) => {
@@ -68,16 +68,20 @@ const FollowIndex = ({
         } else {
             setDisplayFollows(bothFollowing);
         }
+        if (side === "right") {
+            setDisplayFollows(bothFollowing)
+        }
     }, [selectDropDown, followingStore, clickCount]);
     const followingElements = displayFollows.map((follow) => (
-        <div className="follows-index-item" key={follow.id}>
-            <FollowIndexItem follow={follow} userId={userId} />
+        <div className={`follows-index-item-${side}`} key={follow.id}>
+            <FollowIndexItem follow={follow} userId={userId} side={side} />
         </div>
     ));
+    // console.log(side)
 
     return (
         <div className="following-wrapper">
-            {all && (
+            {side === "left" && (
                 <>
                     <h3 className="following-title">Following</h3>
 
@@ -108,7 +112,7 @@ const FollowIndex = ({
                     )}
                 </>
             )}
-            {right && (
+            {side === "right" && (
                 <>
                     <div className="social-stats-container">
                         <h3 className="social-stats">Social Stats</h3>
@@ -143,7 +147,14 @@ const FollowIndex = ({
                         </div>
 
                         {bothFollowing.length > 0 && (
-                            <h3 className="both-following">Both Following</h3>
+                            <>
+                                <h3 className="both-following">
+                                    Both Following
+                                </h3>
+                                <div className="both-following-pics">
+                                    {followingElements}
+                                </div>
+                            </>
                         )}
                     </div>
                 </>
