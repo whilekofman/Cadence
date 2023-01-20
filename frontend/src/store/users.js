@@ -1,3 +1,4 @@
+import { retrieveActivities } from "./activities";
 import csrfFetch from "./csrf";
 import { retrieveFollowers, retrieveFollowing } from "./follows";
 
@@ -38,6 +39,7 @@ export const fetchUser = (user) => async (dispatch) => {
     dispatch(retrieveUser(data.user));
     dispatch(retrieveFollowing(data.follows));
     dispatch(retrieveFollowers(data.followedBy));
+    dispatch(retrieveActivities(data.activities));
 };
 
 const usersReducer = (state = {}, action) => {

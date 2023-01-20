@@ -17,7 +17,6 @@ import FollowButton from "../FollowButton";
 import ProfilePicture from "../ProfilePicture";
 import AthleteName from "../AthleteName";
 
-
 const ActivityIndexItem = ({ activity, activityLikes, userLikesActivity }) => {
     const currentUser = useSelector(getSession);
     const allComments = useSelector(getComments);
@@ -47,7 +46,6 @@ const ActivityIndexItem = ({ activity, activityLikes, userLikesActivity }) => {
     );
     const [showCommentBox, setShowCommentBox] = useState(false);
     const [showComments, setShowComments] = useState(true);
-
 
     const sportImg =
         sport === "run" ? runlogo : sport === "inline" ? skatelogo : bikelogo;

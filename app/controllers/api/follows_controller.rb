@@ -5,10 +5,12 @@ class Api::FollowsController < ApplicationController
     def index
         # http://localhost:5000/api/users/3/follows?type= followers || following
         user = User.find(params[:user_id])
+        puts user
         
         case params[:type].downcase
         when 'followers'
-            @follows =  Follow.where(following_id: user.id)
+            # @follow =  Follow.where(following_id: user.id)
+            @followed_by = Follow.where(following_id: user.id)
         when 'following'
             @follows = Follow.where(follower_id: user.id)
         end

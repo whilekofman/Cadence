@@ -24,7 +24,7 @@
     flex-direction: column;
 }
 
-.follows-index-item {
+.follows-index-item-left {
     display: flex;
     flex-direction: row;
     height: 56px;
@@ -35,10 +35,46 @@
 
 .profile-picture-name-container-follow-index {
     display: flex;
-    flex-direction: row;
     align-items: center;
 }
+.social-stats-container {
+    width: 360px;
+}
 
-.athlete-name-follow-index {
-    margin-left: 20px;
+.social-stats-container > h3 {
+    font-size: 18px;
+    font-weight: 200;
+}
+
+.follows-followers-count-container {
+    display: flex;
+    flex-direction: row;
+    width: 165px;
+    justify-content: space-between;
+}
+
+.follows-followers-count-container > div {
+    display: flex;
+    flex-direction: column;
+}
+.follow-count-text {
+    font-size: 12px;
+    color: gray;
+}
+
+.following-count {
+    font-size: 24px;
+    color: #007fb6;
+    margin-top: 7px;
+}
+
+.following-count:hover {
+    cursor: pointer;
+}
+
+.profile-picture-follow-index-right {
+    margin-right: 10px;
+}
+.both-following-pics {
+    display: flex;
 }

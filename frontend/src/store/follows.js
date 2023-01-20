@@ -40,7 +40,7 @@ export const deleteFollow = followId => async dispatch => {
     const res = await csrfFetch (`/api/follows/${followId}`, {
         method: 'DELETE'
     })
-    dispatch(removeFollow(followId)) 
+    dispatch(removeFollow(followId))
 }
 
 export const newFollow = ( currentUserId, follow ) => async dispatch => {

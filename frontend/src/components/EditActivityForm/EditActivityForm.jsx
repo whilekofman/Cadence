@@ -108,12 +108,10 @@ const ActivityForm = () => {
         if (!activity) {
             const currentHour = new Date(startTime).getHours();
             setTitle(titler(currentHour, sport));
-            // setTitle(titler(dateObject.getHours(), sport))
         }
     }, [sport, startTime]);
 
     if (activity && currentUser && currentUser.id !== activity.athleteId) {
-        // debugger
         return (
             <h1 className="Errors">
                 You can't edit someone else activity silly!

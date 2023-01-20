@@ -11,24 +11,20 @@ import {
 } from "../utils/followsreducers";
 import FollowIndexItem from "./FollowIndexItem";
 
-const FollowIndex = ({ userId, fname, loaded }) => {
-    const [selectDropDown, setSelectDropDown] = useState("following");
-
+const FollowIndex = ({
+    userId,
+    fname,
+    all,
+    side,
+    selectDropDown,
+    changeSelectDropDown,
+}) => {
     const [displayFollows, setDisplayFollows] = useState([]);
-
-    const [following, setFollowing] = useState([]);
-
-    const [followers, setFollowers] = useState([]);
+    const [clickCount, setClickCount] = useState(false);
 
     const currentUser = useSelector(getSession);
     const followingStore = useSelector(getFollowing);
     const followersStore = useSelector(getFollowers);
-
-    useEffect(() => {
-        setFollowing(followingStore);
-        setFollowers(followersStore);
-        setSelectDropDown("following");
-    }, [userId]);
 
     const currentUserPage = userId === currentUser.id;
 
@@ -55,7 +51,6 @@ const FollowIndex = ({ userId, fname, loaded }) => {
             return "You do not follow any of the same athletes";
         }
     };
-
     const athletesFollowingText = !currentUserPage
         ? `${fname} is Following`
         : "I'm Following";
@@ -72,40 +67,95 @@ const FollowIndex = ({ userId, fname, loaded }) => {
         } else {
             setDisplayFollows(bothFollowing);
         }
-    }, [selectDropDown, followersStore]);
-
+        if (side === "right") {
+            setDisplayFollows(bothFollowing);
+        }
+    }, [selectDropDown, followingStore, clickCount]);
     const followingElements = displayFollows.map((follow) => (
-        <div className="follows-index-item" key={follow.id}>
-            <FollowIndexItem follow={follow} userId={userId} />
+        <div className={`follows-index-item-${side}`} key={follow.id}>
+            <FollowIndexItem follow={follow} userId={userId} side={side} />
         </div>
     ));
 
-
     return (
         <div className="following-wrapper">
-            <h3 className="following-title">Following</h3>
-            <div className="followers-dropdown-container">
-                <select
-                    className="followers-dropdown"
-                    value={selectDropDown}
-                    onChange={(e) => setSelectDropDown(e.target.value)}
-                >
-                    <option value="following">
-                        {`${athletesFollowingText}`}
-                    </option>
-                    <option value={"followers"}>
-                        {`${athletesFollowersText}`}
-                    </option>
-                    {!currentUserPage && (
-                        <option value="both">Athletes you both follow</option>
+            {side === "left" && (
+                <>
+                    <h3 className="following-title">Following</h3>
+
+                    <div className="followers-dropdown-container">
+                        <select
+                            className="followers-dropdown"
+                            value={selectDropDown}
+                            onChange={(e) =>
+                                changeSelectDropDown(e.target.value)
+                            }
+                        >
+                            <option value="following">
+                                {`${athletesFollowingText}`}
+                            </option>
+                            <option value="followers">
+                                {`${athletesFollowersText}`}
+                            </option>
+                            {!currentUserPage && (
+                                <option value="both">
+                                    Athletes you both follow
+                                </option>
+                            )}
+                        </select>
+                    </div>
+                    <div className="follows">{followingElements}</div>
+                    {!displayFollows.length && (
+                        <div className="no-followers">{noFollowersText()}</div>
                     )}
-                </select>
-            </div>
-            <div className="follows">
-                {followingElements}
-            </div>
-            {!displayFollows.length && (
-                <div className="no-followers">{noFollowersText()}</div>
+                </>
+            )}
+            {side === "right" && (
+                <>
+                    <div className="social-stats-container">
+                        <h3 className="social-stats">Social Stats</h3>
+                        <div className="follows-followers-count-container">
+                            <div className="follows-single-count-container">
+                                <div className="follow-count-text">
+                                    Following
+                                </div>
+                                <div
+                                    className="following-count"
+                                    onClick={() =>
+                                        changeSelectDropDown("following")
+                                    }
+                                >
+                                    {athleteFollowing.length}
+                                </div>
+                            </div>
+                            <div className="follows-single-count-container">
+                                <div className="follow-count-text">
+                                    Followers
+                                </div>
+                                <div
+                                    className="following-count"
+                                    key="followers"
+                                    onClick={() =>
+                                        changeSelectDropDown("followers")
+                                    }
+                                >
+                                    {athleteFollowers.length}
+                                </div>
+                            </div>
+                        </div>
+
+                        {bothFollowing.length > 0 && (
+                            <>
+                                <h3 className="both-following">
+                                    Both Following
+                                </h3>
+                                <div className="both-following-pics">
+                                    {followingElements}
+                                </div>
+                            </>
+                        )}
+                    </div>
+                </>
             )}
         </div>
     );
