@@ -15,3 +15,7 @@
 .athlete-name-follow-index:hover {
     text-decoration: underline;
 }
+
+.athlete-name-follow-index-default {
+    color: black
+}
