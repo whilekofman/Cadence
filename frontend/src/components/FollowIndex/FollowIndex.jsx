@@ -11,14 +11,18 @@ import {
 } from "../utils/followsreducers";
 import FollowIndexItem from "./FollowIndexItem";
 
-const FollowIndex = ({ userId, fname, all, right, displayFollowsStateValue, setDisplayFollowsState }) => {
-
-    const [selectDropDown, setSelectDropDown] = useState(
-        "following"
-    );
+const FollowIndex = ({
+    userId,
+    fname,
+    all,
+    right,
+    selectDropDown,
+    changeSelectDropDown,
+}) => {
+    // const [selectDropDown, setSelectDropDown] = useState(followsState);
 
     const [displayFollows, setDisplayFollows] = useState([]);
-    const [clickCount, setClickCount] = useState(false)
+    const [clickCount, setClickCount] = useState(false);
 
     const [following, setFollowing] = useState([]);
     // const [athleteFollowing, setAthleteFollowing] = useState([])
@@ -28,16 +32,19 @@ const FollowIndex = ({ userId, fname, all, right, displayFollowsStateValue, setD
     const currentUser = useSelector(getSession);
     const followingStore = useSelector(getFollowing);
     const followersStore = useSelector(getFollowers);
-    console.log(displayFollowsStateValue)
-    useEffect(() => {
-        // setFollowers(followersStore);
-        // setAthleteFollowing(
-        //     Object.values(reducedUsersFollowing(followingStore, userId))
-        // );
-        setSelectDropDown("following");
-    }, [userId]);
+    // console.log("Index:", followsState)
+    // console.log("dropdown:", selectDropDown);
 
+    // useEffect(() => {
+    //     // setFollowers(followersStore);
+    //     // setAthleteFollowing(
+    //     //     Object.values(reducedUsersFollowing(followingStore, userId))
+    //     // );
+    //     setSelectDropDown(followsState || "following");
+    // }, [userId]);
 
+    console.log(changeSelectDropDown);
+    // const cfs = changeSelectDropDown;
 
     const currentUserPage = userId === currentUser.id;
 
@@ -50,9 +57,8 @@ const FollowIndex = ({ userId, fname, all, right, displayFollowsStateValue, setD
     const bothFollowing = Object.values(
         bothUsersFollow(followingStore, currentUser.id, userId)
     );
-    console.log("Athlete Following Store", athleteFollowing);
-    console.log("Athlete Followers Store", athleteFollowers);
-    console.log("FOLLOWING STORE: ", followingStore);
+    // console.log("Athlete Followers Store", athleteFollowers);
+    // console.log("FOLLOWING STORE: ", followingStore);
 
     const noFollowersText = () => {
         if (selectDropDown === "following") {
@@ -68,12 +74,15 @@ const FollowIndex = ({ userId, fname, all, right, displayFollowsStateValue, setD
         }
     };
     // debugger;
-    
-    const handleClickFollowCount = () => {
-        setClickCount(value => !value)
-        setDisplayFollowsState("followers");
-        console.log(selectDropDown, clickCount)
-    } 
+
+    const handleClickFollowCount = (e) => {
+        // setClickCount((value) => !value);
+        // debugger;
+        // console.log(e.target.id, clickCount);
+        // console.log(cthishangeFollowsState);
+        console.log(e.target)
+        // changeSelectDropDown(e);
+    };
 
     const athletesFollowingText = !currentUserPage
         ? `${fname} is Following`
@@ -83,25 +92,22 @@ const FollowIndex = ({ userId, fname, all, right, displayFollowsStateValue, setD
         ? `Following ${fname}`
         : "Following me";
 
+    // console.log("DROP DOWN: ", selectDropDown);
     useEffect(() => {
         if (selectDropDown === "following") {
             setDisplayFollows(athleteFollowing);
-            console.log(athleteFollowing)
         } else if (selectDropDown === "followers") {
             setDisplayFollows(athleteFollowers);
-            console.log(athleteFollowing);
-
         } else {
             setDisplayFollows(bothFollowing);
         }
     }, [selectDropDown, followingStore, clickCount]);
-
+    // console.log("display", displayFollows);
     const followingElements = displayFollows.map((follow) => (
         <div className="follows-index-item" key={follow.id}>
             <FollowIndexItem follow={follow} userId={userId} />
         </div>
     ));
-
 
     return (
         <div className="following-wrapper">
@@ -113,12 +119,14 @@ const FollowIndex = ({ userId, fname, all, right, displayFollowsStateValue, setD
                         <select
                             className="followers-dropdown"
                             value={selectDropDown}
-                            onChange={(e) => setSelectDropDown(e.target.value)}
+                            onChange={(e) =>
+                                changeSelectDropDown(e.target.value)
+                            }
                         >
                             <option value="following">
                                 {`${athletesFollowingText}`}
                             </option>
-                            <option value={"followers"}>
+                            <option value="followers">
                                 {`${athletesFollowersText}`}
                             </option>
                             {!currentUserPage && (
@@ -147,11 +155,16 @@ const FollowIndex = ({ userId, fname, all, right, displayFollowsStateValue, setD
                                     {athleteFollowing.length}
                                 </div>
                             </div>
-                            <div className="follows-single-count-container">                            
+                            <div className="follows-single-count-container">
                                 <div className="follow-count-text">
                                     Followers
                                 </div>
-                                <div className="following-count" onClick={handleClickFollowCount}>
+                                <div
+                                    className="following-count"
+                                    key="followers"
+                                    value="x"
+                                    onClick={() => changeSelectDropDown("followers")}
+                                >
                                     {athleteFollowers.length}
                                 </div>
                             </div>

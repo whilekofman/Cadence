@@ -15,21 +15,37 @@ const UserShowPage = () => {
     const { userId } = useParams();
     const user = useSelector(getUser(userId));
     const currentUser = useSelector(getSession);
-    const [displayFollowsState, setDisplayFollowsState] = useState("following");
+    const [selectDropDown, setSelectDropDown] = useState("following");
     // const followingStore = 
+    // const [selectDropDown, setSelectDropDown] = useState("following");
 
+    // useEffect(() => {
+
+    // }, [selectDropDown])
+
+    const changeSelectDropDown = (e) => {
+        // console.log(e.target.value)
+        debugger
+        setSelectDropDown(e)
+        console.log(selectDropDown);
+    }
+
+    
     const [loaded, setLoaded] = useState(false);
-
+    
     const [display, setDisplay] = useState()
     
     useEffect(() => {
-        dispatch(fetchUser(userId)).then(() => setLoaded(true))//.then(() => setDisplayFollowsState("following")));
+        dispatch(fetchUser(userId)).then(() =>
+        setLoaded(true),
+        setSelectDropDown("following")
+        );
     }, [userId]);
-
+    
     if (!currentUser) {
         return <Redirect to="/login" />;
     }
-
+    
     if (!user) {
         return null;
     }
@@ -69,10 +85,8 @@ const UserShowPage = () => {
                                 <LeftSide
                                     userId={id}
                                     fname={fname}
-                                    followsState={displayFollowsState}
-                                    displayFollowsState={
-                                        setDisplayFollowsState
-                                    }
+                                    selectDropDown={selectDropDown}
+                                    changeSelectDropDown={changeSelectDropDown}
                                 />
                             </div>
 
@@ -86,7 +100,14 @@ const UserShowPage = () => {
                         )}
                     </div>
                     <div className="right">
-                        {loaded && <RightSide userId={id} fname={fname} />}
+                        {loaded && (
+                            <RightSide
+                                userId={id}
+                                fname={fname}
+                                selectDropDown={selectDropDown}
+                                changeSelectDropDown={changeSelectDropDown}
+                            />
+                        )}
                     </div>
                 </div>
             </div>

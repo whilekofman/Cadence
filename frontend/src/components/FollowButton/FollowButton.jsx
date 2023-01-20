@@ -38,7 +38,6 @@ const FollowButton = ({ page, id }) => {
                 followingId: id,
             };
             dispatch(newFollow(currentUser.id, follow));
-            console.log("reducedFollowing: ", reducedFollowing)
         }
     };
 

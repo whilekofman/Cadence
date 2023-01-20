@@ -1,8 +1,11 @@
 import FollowIndex from "../FollowIndex";
 
-const LeftSide = ({ userId, fname, followsState, setDisplayFollowsState }) => {
+const LeftSide = ({ userId, fname, selectDropDown, changeSelectDropDown }) => {
     // const displayFollowsStateValue = followsState || "following"
-    // console.log(displayFollowsStateValue)
+    // console.log("leftSide: ", followsState);
+    console.log("left:" ,changeSelectDropDown)
+    // debugger
+
     return (
         <>
             <div className="following">
@@ -10,12 +13,12 @@ const LeftSide = ({ userId, fname, followsState, setDisplayFollowsState }) => {
                     userId={userId}
                     fname={fname}
                     all={true}
-                    displayFollowsStateValue={followsState}
-                    setDisplayFollowsState={setDisplayFollowsState}
+                    selectDropDown={selectDropDown}
+                    changeSelectDropDown={changeSelectDropDown}
                 />
             </div>
         </>
     );
-}
+};
  
 export default LeftSide;

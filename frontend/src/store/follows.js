@@ -32,7 +32,6 @@ export const fetchFollows = ( userId, type ) => async dispatch => {
     if (type === 'followers'){
         dispatch(retrieveFollowers(data))
     } else {
-        debugger
         dispatch(retrieveFollowing(data))
     }
 }
