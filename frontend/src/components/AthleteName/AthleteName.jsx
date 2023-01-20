@@ -6,7 +6,9 @@ const AthleteName = ({ fname, lname, fullName, targetId, page }) => {
     return (
         <>
             <Link className="athlete-name-link" to={`/users/${targetId}`}>
-                {displayName}
+                <div className={`athlete-name-${page}`}>
+                    {displayName}
+                </div>
             </Link>
         </>
     );

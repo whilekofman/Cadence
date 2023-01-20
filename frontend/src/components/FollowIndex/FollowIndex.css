@@ -35,10 +35,10 @@
 
 
 
-.athlete-name-follow-index {
-    margin-left: 20px;
+.profile-picture-name-container-follow-index {
+    display: flex;
+    align-items: center;
 }
-
 .social-stats-container {
     width: 360px;
 }

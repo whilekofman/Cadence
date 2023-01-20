@@ -77,7 +77,6 @@ const FollowIndex = ({
             <FollowIndexItem follow={follow} userId={userId} side={side} />
         </div>
     ));
-    // console.log(side)
 
     return (
         <div className="following-wrapper">

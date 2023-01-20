@@ -25,7 +25,6 @@
     width: 960px;
     border: 1px solid black;
     height: fit-content;
-    /* background-color: white; */
 
 }
 
@@ -47,9 +46,7 @@
     padding-right: 10px;
 }
 
-/* .sport {
-    padding-right: 50px;
-} */
+
 
 .title-box-left {
     width: 519px;

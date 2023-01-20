@@ -34,20 +34,18 @@ const FollowIndexItem = ({ follow, userId, side }) => {
                         targetId={targetId}
                     />
                 </div>
-                <div className={`athlete-name-${page}`}>
-                    <AthleteName
-                        fname={displayName.split(" ")[0]}
-                        lname={displayName.split(" ")[1]}
-                        targetId={targetId}
-                    />
-                </div>
+                <AthleteName
+                    fname={displayName.split(" ")[0]}
+                    lname={displayName.split(" ")[1]}
+                    targetId={targetId}
+                    page={page}
+                />
             </div>
             {targetId !== currentUser.id && (
                 <FollowButton page={page} id={targetId} />
             )}
-
         </>
-    )} else {return (
+    );} else {return (
         <div className={`profile-picture-${page}-${side}`}>
             <ProfilePicture
                 profilePictureUrl={profilePicture}

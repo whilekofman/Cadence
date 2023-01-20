@@ -31,7 +31,7 @@ const ActivityIndexPage = ({ page, userId, userShowActivities }) => {
                 like.likeableId === activityId
         );
     };
-    const cssPage = page || "dashboard";
+    const cssPage = page || "index";
 
     const reducedFollowing = reducedUsersFollowing(following, currentUser.id);
 
@@ -48,12 +48,6 @@ const ActivityIndexPage = ({ page, userId, userShowActivities }) => {
     const followersActivities = activities.filter((activity) => {
         return activity.athleteId in reducedFollowers;
     });
-    // const userShowActivities =
-    //     userId === currentUser.id
-    //         ? currentUserActivities
-    //         : activities.filter((activity) => {
-    //               return userId === activity.athleteId;
-    //           });
 
     useEffect(() => {
         if (page !== "userShow") {
@@ -97,7 +91,6 @@ const ActivityIndexPage = ({ page, userId, userShowActivities }) => {
     if (!currentUser) {
         return <Redirect to="/login" />;
     }
-
     return (
         <>
             <div className={`activity-index-body-${cssPage}`}>

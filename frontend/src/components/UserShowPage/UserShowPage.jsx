@@ -47,13 +47,22 @@ const UserShowPage = () => {
     }
     const { id, fname, lname, profilePictureUrl } = user;
 
+    const activitiesButtonCss =
+        leftDisplay === "activities"
+            ? "display-button-user-show button-active"
+            : "display-button-user-show button-inactive-activities";
 
+
+    const followsButtonCss =
+        leftDisplay === "follows"
+            ? "display-button-user-show button-active"
+            : "display-button-user-show button-inactive-follows";
+        
     const userShowActivities = activitiesStore.filter((activity) => {
         return id === activity.athleteId;
     })
 
     const activitiesLastMonth = activitiesInLast30(userShowActivities) 
-    console.log(activitiesLastMonth)
     const profilePicture = profilePictureUrl;
 
     return (
@@ -103,7 +112,8 @@ const UserShowPage = () => {
                     <div className="display-buttons-content">
                         <div className="display-buttons">
                             <button
-                                className="activities-button-user-show"
+                            className={activitiesButtonCss}
+                                // className="diplay-button-user-show"
                                 value={"activities"}
                                 onClick={(e) => setLeftDisplay(e.target.value)}
                             >
@@ -111,7 +121,8 @@ const UserShowPage = () => {
                             </button>
 
                             <button
-                                className="following-button-user-show"
+                                // className="display-button-user-show"
+                                className={followsButtonCss}
                                 value={"follows"}
                                 onClick={(e) => setLeftDisplay(e.target.value)}
                             >
@@ -131,13 +142,6 @@ const UserShowPage = () => {
                                 />
                             </div>
 
-                            // <div className="following">
-                            //     {/* <FollowIndex
-                            //         userId={id}
-                            //         fname={fname}
-                            //         all={true}
-                            //     /> */}
-                            // </div>
                         )}
                     </div>
                     <div className="right">
