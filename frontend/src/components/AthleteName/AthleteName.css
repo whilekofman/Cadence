@@ -1,13 +1,10 @@
 .athlete-name-link:link {
     text-decoration: none;
-    /* color: black; */
 }
 
-.athlete-name-follow-index{
+.athlete-name-follow-index {
     color: #007fb6;
     font-size: 12px;
-    
-
 }
 .athlete-name-follow-index {
     text-decoration: none;
@@ -15,7 +12,6 @@
     font-size: 12px;
 }
 
-.athlete-name-follow-index:hover{
+.athlete-name-follow-index:hover {
     text-decoration: underline;
 }
-

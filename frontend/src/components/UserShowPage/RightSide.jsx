@@ -1,7 +1,6 @@
 import FollowIndex from "../FollowIndex";
 
 const RightSide = ({ userId, fname, selectDropDown, changeSelectDropDown }) => {
-
     return (
         <>
             <div className="right-follows">
@@ -9,12 +8,12 @@ const RightSide = ({ userId, fname, selectDropDown, changeSelectDropDown }) => {
                     userId={userId}
                     fname={fname}
                     side={"right"}
-                    selectDropDown={selectDropDown} 
+                    selectDropDown={selectDropDown}
                     changeSelectDropDown={changeSelectDropDown}
                 />
             </div>
         </>
     );
 };
- 
+
 export default RightSide;

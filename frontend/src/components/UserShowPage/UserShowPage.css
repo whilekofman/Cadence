@@ -6,10 +6,7 @@
     align-items: center;
     margin: 20px 150px;
     font-family: "Sora", sans-serif;
-
 }
-
-
 
 .user-show-items {
     width: 1220px;
@@ -21,7 +18,6 @@
     flex-direction: column;
     flex-wrap: wrap;
     margin-bottom: 20px;
-    
 }
 
 .activity-count-container {
@@ -35,21 +31,18 @@
     color: gray;
 }
 
-.activity-count-container > h3{
+.activity-count-container > h3 {
     font-size: 15px;
     font-weight: 200;
 }
-.activities-last-mounth-count{
+.activities-last-mounth-count {
     font-size: 72px;
 }
-
 
 .under-profile-pic-user-show {
     display: flex;
     flex-direction: row;
-    
 }
-
 
 .athlete-name-user-show {
     font-family: "Sora", sans-serif;
@@ -61,7 +54,7 @@
     align-items: center;
     font-size: 26px;
 }
-.display-buttons-content{
+.display-buttons-content {
     width: 750px;
 }
 .display-buttons {
@@ -69,7 +62,6 @@
     z-index: 1;
     border-bottom: lightgray solid 1px;
 }
-
 
 .display-button-user-show {
     width: 122px;
@@ -84,16 +76,15 @@
 .button-active {
     border-top: red solid 2px;
     border-bottom: none;
-
 }
 .button-inactive-activities {
     border-left: none;
 }
-.button-inactive-follows{
+.button-inactive-follows {
     border-right: none;
 }
 
-.display-button-user-show:hover{
+.display-button-user-show:hover {
     background-color: rgba(168, 168, 179, 0.1);
 }
 
@@ -108,5 +99,3 @@
     border-top: lightgray solid 1px;
     width: 360px;
 }
-
-

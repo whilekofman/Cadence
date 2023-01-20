@@ -16,14 +16,14 @@ const UserShowPage = () => {
     const dispatch = useDispatch();
     const { userId } = useParams();
     const user = useSelector(getUser(userId));
-    const activitiesStore = useSelector(getActivities)
+    const activitiesStore = useSelector(getActivities);
     const currentUser = useSelector(getSession);
     const [selectDropDown, setSelectDropDown] = useState("following");
-    const [leftDisplay, setLeftDisplay] = useState()
+    const [leftDisplay, setLeftDisplay] = useState();
 
     const changeSelectDropDown = (e) => {
         setSelectDropDown(e);
-        setLeftDisplay("follows")
+        setLeftDisplay("follows");
     };
 
     const [loaded, setLoaded] = useState(false);
@@ -52,17 +52,16 @@ const UserShowPage = () => {
             ? "display-button-user-show button-active"
             : "display-button-user-show button-inactive-activities";
 
-
     const followsButtonCss =
         leftDisplay === "follows"
             ? "display-button-user-show button-active"
             : "display-button-user-show button-inactive-follows";
-        
+
     const userShowActivities = activitiesStore.filter((activity) => {
         return id === activity.athleteId;
-    })
+    });
 
-    const activitiesLastMonth = activitiesInLast30(userShowActivities) 
+    const activitiesLastMonth = activitiesInLast30(userShowActivities);
     const profilePicture = profilePictureUrl;
 
     return (
@@ -96,15 +95,11 @@ const UserShowPage = () => {
                             )}
                         </div>
                         <div className="activity-count-container">
-                            <h3>
-                                Last 4 weeks
-                            </h3>
+                            <h3>Last 4 weeks</h3>
                             <div className="activities-last-mounth-count">
-                                    {activitiesLastMonth.length}
+                                {activitiesLastMonth.length}
                             </div>
-                            <div className="total-text">
-                                Total Activities
-                            </div>
+                            <div className="total-text">Total Activities</div>
                         </div>
                     </div>
                 </div>
@@ -112,7 +107,7 @@ const UserShowPage = () => {
                     <div className="display-buttons-content">
                         <div className="display-buttons">
                             <button
-                            className={activitiesButtonCss}
+                                className={activitiesButtonCss}
                                 // className="diplay-button-user-show"
                                 value={"activities"}
                                 onClick={(e) => setLeftDisplay(e.target.value)}
@@ -141,7 +136,6 @@ const UserShowPage = () => {
                                     userShowActivities={userShowActivities}
                                 />
                             </div>
-
                         )}
                     </div>
                     <div className="right">

@@ -37,7 +37,6 @@ const FollowIndex = ({
     const bothFollowing = Object.values(
         bothUsersFollow(followingStore, currentUser.id, userId)
     );
- 
 
     const noFollowersText = () => {
         if (selectDropDown === "following") {
@@ -69,7 +68,7 @@ const FollowIndex = ({
             setDisplayFollows(bothFollowing);
         }
         if (side === "right") {
-            setDisplayFollows(bothFollowing)
+            setDisplayFollows(bothFollowing);
         }
     }, [selectDropDown, followingStore, clickCount]);
     const followingElements = displayFollows.map((follow) => (

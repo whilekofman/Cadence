@@ -1,5 +1,3 @@
-
-
 export const displayTimeParsed = (startTime) => {
     const today = new Date().toLocaleString("en-US", {
         timeZone: "UTC",
@@ -48,21 +46,13 @@ export const displayTimeParsed = (startTime) => {
         : displayTime.split(",").join(" at ");
 };
 
-// export const activitiesInLast30 = (startTime) => {
-//     const milisecondsSince = new Date() - new Date(startTime)
-//     if (milisecondsSince / (1000 * 60 * 60 * 24) < 30){
-//         return true
-//     }
-    
-// }
-
 export const activitiesInLast30 = (activities) => {
-    const today = new Date()
-    
+    const today = new Date();
+
     const filteredActivities = activities.filter((activity) => {
-        const startTime = new Date(activity.startTime)
-        const daysSince = (today - startTime) / (1000 * 60 * 60 * 24)
-        return daysSince < 30     
-    })
-    return filteredActivities
-} 
+        const startTime = new Date(activity.startTime);
+        const daysSince = (today - startTime) / (1000 * 60 * 60 * 24);
+        return daysSince < 30;
+    });
+    return filteredActivities;
+};

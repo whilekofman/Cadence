@@ -6,7 +6,10 @@ import { fetchActivities, getActivities } from "../../store/activities";
 import { getFollowers, getFollowing } from "../../store/follows";
 import { getLikes } from "../../store/likes";
 import { getSession } from "../../store/session";
-import { reducedUsersFollowers, reducedUsersFollowing } from "../utils/followsreducers";
+import {
+    reducedUsersFollowers,
+    reducedUsersFollowing,
+} from "../utils/followsreducers";
 import ActivityIndexItem from "./ActivityIndexItem";
 
 const ActivityIndexPage = ({ page, userId, userShowActivities }) => {
@@ -53,13 +56,13 @@ const ActivityIndexPage = ({ page, userId, userShowActivities }) => {
         if (page !== "userShow") {
             setSelectDropDown("all");
         } else {
-            setSelectDropDown("")
+            setSelectDropDown("");
         }
         dispatch(fetchActivities());
     }, []);
 
     useEffect(() => {
-        if (page !== "userShow"){
+        if (page !== "userShow") {
             if (selectDropDown === "all") {
                 setDisplayActivities(activities);
             } else if (selectDropDown === "following") {
@@ -68,10 +71,10 @@ const ActivityIndexPage = ({ page, userId, userShowActivities }) => {
                 setDisplayActivities(followersActivities);
             } else if (selectDropDown === "currentUser") {
                 setDisplayActivities(currentUserActivities);
-        }} else {
+            }
+        } else {
             setDisplayActivities(userShowActivities);
         }
-
     }, [activities, selectDropDown, userId, userShowActivities]);
 
     const activityListElements = displayActivities
