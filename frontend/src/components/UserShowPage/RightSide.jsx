@@ -1,7 +1,6 @@
 import FollowIndex from "../FollowIndex";
 
 const RightSide = ({ userId, fname, selectDropDown, changeSelectDropDown }) => {
-    console.log("right:", changeSelectDropDown);
 
     return (
         <>
@@ -10,7 +9,7 @@ const RightSide = ({ userId, fname, selectDropDown, changeSelectDropDown }) => {
                     userId={userId}
                     fname={fname}
                     right={true}
-                    selectDropDown={selectDropDown}
+                    // selectDropDown={selectDropDown} 
                     changeSelectDropDown={changeSelectDropDown}
                 />
             </div>

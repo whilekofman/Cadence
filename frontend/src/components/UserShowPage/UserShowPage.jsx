@@ -16,36 +16,27 @@ const UserShowPage = () => {
     const user = useSelector(getUser(userId));
     const currentUser = useSelector(getSession);
     const [selectDropDown, setSelectDropDown] = useState("following");
-    // const followingStore = 
-    // const [selectDropDown, setSelectDropDown] = useState("following");
-
-    // useEffect(() => {
-
-    // }, [selectDropDown])
+    const [leftDisplay, setLeftDisplay] = useState()
 
     const changeSelectDropDown = (e) => {
-        // console.log(e.target.value)
-        debugger
-        setSelectDropDown(e)
-        console.log(selectDropDown);
-    }
+        setSelectDropDown(e);
+    };
 
-    
     const [loaded, setLoaded] = useState(false);
-    
-    const [display, setDisplay] = useState()
-    
+
+    const [display, setDisplay] = useState();
+
     useEffect(() => {
-        dispatch(fetchUser(userId)).then(() =>
-        setLoaded(true),
-        setSelectDropDown("following")
+        dispatch(fetchUser(userId)).then(
+            () => setLoaded(true),
+            setSelectDropDown("following")
         );
     }, [userId]);
-    
+
     if (!currentUser) {
         return <Redirect to="/login" />;
     }
-    
+
     if (!user) {
         return null;
     }
@@ -72,10 +63,18 @@ const UserShowPage = () => {
                 <div className="left-right">
                     <div className="display-buttons-content">
                         <div className="display-buttons">
-                            <button className="following-button-user-show">
+                            <button
+                                className="following-button-user-show"
+                                value={"follows"}
+                                onClick={(e) => setLeftDisplay(e.target.value)}
+                            >
                                 Following
                             </button>
-                            <button className="activities-button-user-show">
+                            <button
+                                className="activities-button-user-show"
+                                value={"activities"}
+                                onClick={(e) => setLeftDisplay(e.target.value)}
+                            >
                                 Activities
                             </button>
                         </div>

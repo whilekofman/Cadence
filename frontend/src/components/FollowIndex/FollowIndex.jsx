@@ -19,32 +19,12 @@ const FollowIndex = ({
     selectDropDown,
     changeSelectDropDown,
 }) => {
-    // const [selectDropDown, setSelectDropDown] = useState(followsState);
-
     const [displayFollows, setDisplayFollows] = useState([]);
     const [clickCount, setClickCount] = useState(false);
-
-    const [following, setFollowing] = useState([]);
-    // const [athleteFollowing, setAthleteFollowing] = useState([])
-
-    const [followers, setFollowers] = useState([]);
 
     const currentUser = useSelector(getSession);
     const followingStore = useSelector(getFollowing);
     const followersStore = useSelector(getFollowers);
-    // console.log("Index:", followsState)
-    // console.log("dropdown:", selectDropDown);
-
-    // useEffect(() => {
-    //     // setFollowers(followersStore);
-    //     // setAthleteFollowing(
-    //     //     Object.values(reducedUsersFollowing(followingStore, userId))
-    //     // );
-    //     setSelectDropDown(followsState || "following");
-    // }, [userId]);
-
-    console.log(changeSelectDropDown);
-    // const cfs = changeSelectDropDown;
 
     const currentUserPage = userId === currentUser.id;
 
@@ -57,8 +37,7 @@ const FollowIndex = ({
     const bothFollowing = Object.values(
         bothUsersFollow(followingStore, currentUser.id, userId)
     );
-    // console.log("Athlete Followers Store", athleteFollowers);
-    // console.log("FOLLOWING STORE: ", followingStore);
+ 
 
     const noFollowersText = () => {
         if (selectDropDown === "following") {
@@ -73,17 +52,6 @@ const FollowIndex = ({
             return "You do not follow any of the same athletes";
         }
     };
-    // debugger;
-
-    const handleClickFollowCount = (e) => {
-        // setClickCount((value) => !value);
-        // debugger;
-        // console.log(e.target.id, clickCount);
-        // console.log(cthishangeFollowsState);
-        console.log(e.target)
-        // changeSelectDropDown(e);
-    };
-
     const athletesFollowingText = !currentUserPage
         ? `${fname} is Following`
         : "I'm Following";
@@ -92,7 +60,6 @@ const FollowIndex = ({
         ? `Following ${fname}`
         : "Following me";
 
-    // console.log("DROP DOWN: ", selectDropDown);
     useEffect(() => {
         if (selectDropDown === "following") {
             setDisplayFollows(athleteFollowing);
@@ -102,7 +69,6 @@ const FollowIndex = ({
             setDisplayFollows(bothFollowing);
         }
     }, [selectDropDown, followingStore, clickCount]);
-    // console.log("display", displayFollows);
     const followingElements = displayFollows.map((follow) => (
         <div className="follows-index-item" key={follow.id}>
             <FollowIndexItem follow={follow} userId={userId} />
@@ -151,7 +117,12 @@ const FollowIndex = ({
                                 <div className="follow-count-text">
                                     Following
                                 </div>
-                                <div className="following-count">
+                                <div
+                                    className="following-count"
+                                    onClick={() =>
+                                        changeSelectDropDown("following")
+                                    }
+                                >
                                     {athleteFollowing.length}
                                 </div>
                             </div>
@@ -162,15 +133,18 @@ const FollowIndex = ({
                                 <div
                                     className="following-count"
                                     key="followers"
-                                    value="x"
-                                    onClick={() => changeSelectDropDown("followers")}
+                                    onClick={() =>
+                                        changeSelectDropDown("followers")
+                                    }
                                 >
                                     {athleteFollowers.length}
                                 </div>
                             </div>
                         </div>
 
-                        <h3 className="both-following">Both Following</h3>
+                        {bothFollowing.length > 0 && (
+                            <h3 className="both-following">Both Following</h3>
+                        )}
                     </div>
                 </>
             )}

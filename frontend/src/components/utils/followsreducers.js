@@ -27,12 +27,16 @@ export const reducedUsersFollowers = (followers, userId) => {
 };
 
 export const bothUsersFollow = (followers, currentUserId, athleteUserId) => {
+    const bothFollowing = {};
+
+    if (currentUserId === athleteUserId) {
+        return bothFollowing
+    }
     const currentUserFollowing = reducedUsersFollowing(
         followers,
         currentUserId
     );
     const athleteFollowing = reducedUsersFollowing(followers, athleteUserId);
-    const bothFollowing = {};
 
     for (const key in currentUserFollowing) {
         if (key in athleteFollowing) {
