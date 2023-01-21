@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
 import { fetchUser, getUser } from "../../store/users";
-import FollowIndex from "../FollowIndex";
 import ProfilePicture from "../ProfilePicture";
 import AthleteName from "../AthleteName";
 import FollowButton from "../FollowButton";

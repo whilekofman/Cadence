@@ -13,6 +13,7 @@ import ActivityForm from "./components/EditActivityForm";
 import Footer from "./components/Footer";
 import CommentForm from "./components/CommentsForm";
 import UserShowPage from "./components/UserShowPage";
+import Dashboard from "./components/DashBoard";
 
 // <UserIndexPage />
 function App() {
@@ -56,6 +57,9 @@ function App() {
                 </Route>
                 <Route exact path="/users/:userId">
                     <UserShowPage />
+                </Route>
+                <Route exact path="/Dashboard" > 
+                    <Dashboard />
                 </Route>
             </Switch>
             <Footer />

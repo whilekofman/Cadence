@@ -1,0 +1,50 @@
+.user-widget {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 292px;
+    position: sticky;
+    align-self: flex-start;
+    background-color: white;
+    margin-top: 64px;
+    box-shadow: 0px 8px 8px 0px lightgray;
+    font-family: "Sora", sans-serif;
+}
+
+.pic-container-widget {
+    margin-top: -35px;
+    border: solid yellow;
+}
+
+.name-and-counts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.counts-widget {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: solid;
+    width: 249px;
+
+    
+ 
+    
+}
+.count-title-value-container-widget {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.counts-title-widget {
+    display: flex;
+    flex-direction: column;
+
+}
+.count-title-widget {
+    font-size: 10px;
+    font-weight: 100;
+}

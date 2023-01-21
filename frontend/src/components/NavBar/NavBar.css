@@ -11,12 +11,7 @@
 
 
 }
-/* .test{ 
-    background-color: black;
-    color: white;
-    position: fixed;
-    z-index: 100;
-} */
+
 .navbar {
     display: flex;
     max-width: 100%;
@@ -30,19 +25,12 @@
     z-index: 100;
     
 }
-/* .cadencetitle {
-    font-family: 'Sora', sans-serif;
-    color: orange;
-} */
+
 
 .logo {
     height: 56px;
     z-index: 100;    
 }
-
-/* .orange {
-    background-color: orange;
-} */
 
 .loginBut {
     background-color: white;
@@ -63,9 +51,7 @@
 }
 
 .logoutBut {
-    /* background-color: rgb(255, 123, 0);
-    background-color: #fc5200;
-     */
+
     background-color: #fc5200;
     font-family: 'Sora', sans-serif;
     width: 80px;
