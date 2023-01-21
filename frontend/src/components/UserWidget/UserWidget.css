@@ -13,25 +13,23 @@
 
 .pic-container-widget {
     margin-top: -35px;
-    border: solid yellow;
 }
 
 .name-and-counts{
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-bottom: solid gray;
 
 }
 .counts-widget {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    border: solid;
+    /* border: solid; */
     width: 249px;
 
-    
- 
-    
+  
 }
 .count-title-value-container-widget {
     display: flex;
@@ -39,12 +37,22 @@
     align-items: center;
 
 }
-.counts-title-widget {
-    display: flex;
-    flex-direction: column;
 
-}
 .count-title-widget {
+    margin-bottom: 5px;
+
     font-size: 10px;
     font-weight: 100;
+
+
+}
+.count-value-widget{
+    font-size: 20px;
+    margin-bottom: 5px;
+    border-bottom: gray;
+
+}
+
+.count-value-widget:hover{
+    color: #007fb6;
 }
