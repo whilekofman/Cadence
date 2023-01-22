@@ -12,7 +12,7 @@ import {
 } from "../utils/followsreducers";
 import ActivityIndexItem from "./ActivityIndexItem";
 
-const ActivityIndexPage = ({ page, userId, userShowActivities, loaded }) => {
+const ActivityIndexPage = ({ page, userId, userShowActivities, setLoaded }) => {
     const dispatch = useDispatch();
     const activities = useSelector(getActivities);
 
@@ -58,11 +58,7 @@ const ActivityIndexPage = ({ page, userId, userShowActivities, loaded }) => {
         } else {
             setSelectDropDown("");
         }
-        if(!loaded){
-            // debugger
-            dispatch(fetchActivities());
-        }
-        //.then(()=> setLoaded(true));
+        dispatch(fetchActivities()).then(()=> setLoaded(true));
     }, []);
 
     useEffect(() => {
@@ -73,7 +69,7 @@ const ActivityIndexPage = ({ page, userId, userShowActivities, loaded }) => {
                 setDisplayActivities(followingActivities);
             } else if (selectDropDown === "followers") {
                 setDisplayActivities(followersActivities);
-            } else {
+            } else if (selectDropDown === "currentUser") {
                 setDisplayActivities(currentUserActivities);
             }
         } else {
