@@ -3,9 +3,11 @@ import UserWidget from "../UserWidget";
 
 const Dashboard = () => {
     return (
-        <div className="dashboard-outter-wrapper">
-            <div className="dashboard-left">
-                <UserWidget />
+        <div className="dashboard-outer-wrapper">
+            <div className="dashboard-outer-left">
+                <div className="dashboard-left">
+                    <UserWidget />
+                </div>
             </div>
             <div className="dashboard-middle">
                 <ActivityIndexPage />

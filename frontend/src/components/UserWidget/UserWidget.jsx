@@ -1,9 +1,12 @@
+import { useState } from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getActivities } from "../../store/activities";
 import { getFollowers, getFollowing } from "../../store/follows";
 import { getSession } from "../../store/session";
 import AthleteName from "../AthleteName";
 import ProfilePicture from "../ProfilePicture";
+import { displayTimeParsed } from "../utils/datetimeparsers";
 import {
     reducedUsersFollowers,
     reducedUsersFollowing,
@@ -14,6 +17,12 @@ const UserWidget = () => {
     const followingStore = useSelector(getFollowing);
     const followerStore = useSelector(getFollowers);
     const activities = useSelector(getActivities);
+    // const [loaded, setLoaded] = useState(false)
+    // useEffect(() =>{
+    //     if(activities.length) {
+    //         setLoaded(true)
+    //     }
+    // },[])
 
     const { id, fname, lname, profilePictureUrl } = currentUser;
     const userFollowingCount = Object.values(
@@ -23,10 +32,20 @@ const UserWidget = () => {
         reducedUsersFollowers(followerStore, id)
     ).length;
 
-    const currentUserActivities = activities.filter((activity) => {
-        return currentUser.id === activity.athleteId;
+    const currentUserActivities = activities.filter(
+        (activity) => currentUser.id === activity.athleteId
+    );
+    const currentUserActivitiesSorted = currentUserActivities.sort((a, b) => {
+        return new Date(b.startTime) - new Date(a.startTime);
     });
+    const mostRecentActivity = currentUserActivities[0];
 
+    let mostRecentDate;
+    if (currentUserActivitiesSorted.length > 0) {
+        mostRecentDate = new Date(mostRecentActivity.startTime).toDateString();
+    }
+
+    console.log(mostRecentDate);
     return (
         <>
             <div className="user-widget">
@@ -65,6 +84,20 @@ const UserWidget = () => {
                         </div>
                     </div>
                 </div>
+                <div className="line-under"></div>
+                {currentUserActivitiesSorted.length > 0 && (
+                    <div className="most-recent-activity-container">
+                        <div className="latest-activity-text">
+                            Latest activity
+                        </div>
+                        <div className="activity-title-widget">
+                            {mostRecentActivity.title}
+                            <div className="activty-start-time-widget">
+                                {mostRecentDate}
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
         </>
     );
