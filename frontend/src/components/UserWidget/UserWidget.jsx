@@ -12,7 +12,7 @@ import {
     reducedUsersFollowing,
 } from "../utils/followsreducers";
 
-const UserWidget = () => {
+const UserWidget = (loaded) => {
     const currentUser = useSelector(getSession);
     const followingStore = useSelector(getFollowing);
     const followerStore = useSelector(getFollowers);

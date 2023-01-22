@@ -12,7 +12,7 @@ import {
 } from "../utils/followsreducers";
 import ActivityIndexItem from "./ActivityIndexItem";
 
-const ActivityIndexPage = ({ page, userId, userShowActivities }) => {
+const ActivityIndexPage = ({ page, userId, userShowActivities, setLoaded }) => {
     const dispatch = useDispatch();
     const activities = useSelector(getActivities);
 
@@ -58,7 +58,7 @@ const ActivityIndexPage = ({ page, userId, userShowActivities }) => {
         } else {
             setSelectDropDown("");
         }
-        dispatch(fetchActivities());
+        dispatch(fetchActivities()).then(()=> setLoaded(true));
     }, []);
 
     useEffect(() => {
