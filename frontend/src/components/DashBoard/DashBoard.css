@@ -1,6 +1,6 @@
 .dashboard-outer-wrapper {
     max-width: 100vw;
-    padding-top: 10px;
+    /* padding-top: 10px; */
     display: flex;
     flex-direction: row;
     background-color: rgb(247, 247, 250);
