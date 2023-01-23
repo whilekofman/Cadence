@@ -20,7 +20,7 @@ function App() {
     const sessionUser = useSelector(getSession);
 
     // const userPath = sessionUser ? <UserIndexPage />  : <HomePage />
-    const userPath = sessionUser ? <ActivityIndexPage /> : <HomePage />;
+    const userPath = sessionUser ? <Dashboard /> : <HomePage />;
     const redirectPath = sessionUser ? <ActivityForm /> : <LoginFormPage />;
     // const editPath =`/activities/${activityId}/edit`
     const activityPath = "/activities/:activityId";

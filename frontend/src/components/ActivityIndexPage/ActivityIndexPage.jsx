@@ -60,7 +60,7 @@ const ActivityIndexPage = ({ page, userId, userShowActivities, loaded }) => {
         }
         if(!loaded){
             // debugger
-            dispatch(fetchActivities());
+            // dispatch(fetchActivities());
         }
         //.then(()=> setLoaded(true));
     }, []);

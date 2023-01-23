@@ -32,6 +32,7 @@ const UserShowPage = () => {
     useEffect(() => {
         dispatch(fetchUser(userId)).then(
             () => setLoaded(true),
+        
             setSelectDropDown("following"),
             setLeftDisplay("activities")
         );
@@ -115,7 +116,6 @@ const UserShowPage = () => {
                             </button>
 
                             <button
-                                // className="display-button-user-show"
                                 className={followsButtonCss}
                                 value={"follows"}
                                 onClick={(e) => setLeftDisplay(e.target.value)}

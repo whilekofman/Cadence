@@ -8,9 +8,6 @@
     margin-top: 64px;
     box-shadow: 0px 8px 8px 0px lightgray;
     font-family: "Sora", sans-serif; 
-    position: sticky;
-    position: -webkit-sticky;
-    top: 60px;
     max-height: 350px;
 
     
@@ -47,6 +44,7 @@
 
 }
 .count-title-value-container-widget {
+    font-family: "Helvetica", "Arial", sans-serif; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,8 +53,7 @@
 
 .count-title-widget {
     margin-bottom: 5px;
-
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 100;
 
 
@@ -76,18 +73,33 @@
 
 .most-recent-activity-container {
     padding: 16px;
-    border: solid;
 }
 
 .latest-activity-text{
     font-size: 10px;
+    margin-bottom: 8px;
 }
 .activity-title-widget {
     font-size: 16px;
     font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
 
 }
-.activity-start-time-widget {
-    font-family: "Helvetica", "Arial", sans-serif;
+.latest-activity-link{
+    text-decoration: none;
+}
+.activity-title-widget:hover{
+    color: orangered;
+}
+.activity-title-widget > div {
+    font-family: "Helvetica", "Arial", sans-serif; 
+    margin-left: 10px;
 
+}
+
+.activty-start-time-widget {
+    font-size: 14px;
+    font-weight: 400;
 }

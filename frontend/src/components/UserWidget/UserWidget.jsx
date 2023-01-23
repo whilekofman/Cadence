@@ -6,23 +6,17 @@ import { getFollowers, getFollowing } from "../../store/follows";
 import { getSession } from "../../store/session";
 import AthleteName from "../AthleteName";
 import ProfilePicture from "../ProfilePicture";
-import { displayTimeParsed } from "../utils/datetimeparsers";
 import {
     reducedUsersFollowers,
     reducedUsersFollowing,
 } from "../utils/followsreducers";
+import dayjs from "dayjs";
+import { Link } from "react-router-dom";
 
-const UserWidget = (loaded) => {
+const UserWidget = ({ currentUserActivities }) => {
     const currentUser = useSelector(getSession);
     const followingStore = useSelector(getFollowing);
     const followerStore = useSelector(getFollowers);
-    const activities = useSelector(getActivities);
-    // const [loaded, setLoaded] = useState(false)
-    // useEffect(() =>{
-    //     if(activities.length) {
-    //         setLoaded(true)
-    //     }
-    // },[])
 
     const { id, fname, lname, profilePictureUrl } = currentUser;
     const userFollowingCount = Object.values(
@@ -32,9 +26,6 @@ const UserWidget = (loaded) => {
         reducedUsersFollowers(followerStore, id)
     ).length;
 
-    const currentUserActivities = activities.filter(
-        (activity) => currentUser.id === activity.athleteId
-    );
     const currentUserActivitiesSorted = currentUserActivities.sort((a, b) => {
         return new Date(b.startTime) - new Date(a.startTime);
     });
@@ -42,10 +33,12 @@ const UserWidget = (loaded) => {
 
     let mostRecentDate;
     if (currentUserActivitiesSorted.length > 0) {
-        mostRecentDate = new Date(mostRecentActivity.startTime).toDateString();
+        mostRecentDate = dayjs(mostRecentDate).format("MMMM D YYYY");
+    }
+    const handleClickFollows = e => {
+        console.log(e.target.id)
     }
 
-    console.log(mostRecentDate);
     return (
         <>
             <div className="user-widget">
@@ -66,13 +59,13 @@ const UserWidget = (loaded) => {
                     <div className="counts-widget">
                         <div className="count-title-value-container-widget">
                             <div className="count-title-widget">Following</div>
-                            <b className="count-value-widget">
+                            <b className="count-value-widget" id="following">
                                 {userFollowingCount}
                             </b>
                         </div>
                         <div className="count-title-value-container-widget">
                             <div className="count-title-widget">Followers</div>
-                            <b className="count-value-widget">
+                            <b className="count-value-widget" id="followers" onClick={(e) => handleClickFollows(e)}>
                                 {usersFollowersCount}
                             </b>
                         </div>
@@ -90,12 +83,18 @@ const UserWidget = (loaded) => {
                         <div className="latest-activity-text">
                             Latest activity
                         </div>
-                        <div className="activity-title-widget">
-                            {mostRecentActivity.title}
-                            <div className="activty-start-time-widget">
-                                {mostRecentDate}
+                        <Link
+                            className="latest-activity-link"
+                            to={`/users/${id}`}
+                        >
+                            <div className="activity-title-widget">
+                                {mostRecentActivity.title}
+                                <div>•</div>
+                                <div className="activty-start-time-widget">
+                                    {mostRecentDate}
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
                 )}
             </div>
