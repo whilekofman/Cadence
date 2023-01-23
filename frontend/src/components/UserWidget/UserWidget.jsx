@@ -35,9 +35,6 @@ const UserWidget = ({ currentUserActivities }) => {
     if (currentUserActivitiesSorted.length > 0) {
         mostRecentDate = dayjs(mostRecentDate).format("MMMM D YYYY");
     }
-    const handleClickFollows = e => {
-        console.log(e.target.id)
-    }
 
     return (
         <>
@@ -59,21 +56,48 @@ const UserWidget = ({ currentUserActivities }) => {
                     <div className="counts-widget">
                         <div className="count-title-value-container-widget">
                             <div className="count-title-widget">Following</div>
-                            <b className="count-value-widget" id="following">
-                                {userFollowingCount}
-                            </b>
+                            <Link
+                                className="user-show-link-followers"
+                                to={{
+                                    pathname: `/users/${id}`,
+                                    state: { dashboardFollowers: "following" },
+                                }}
+                            >
+                                <b
+                                    className="count-value-widget"
+                                    id="following"
+                                >
+                                    {userFollowingCount}
+                                </b>
+                            </Link>
                         </div>
                         <div className="count-title-value-container-widget">
                             <div className="count-title-widget">Followers</div>
-                            <b className="count-value-widget" id="followers" onClick={(e) => handleClickFollows(e)}>
-                                {usersFollowersCount}
-                            </b>
+                            <Link
+                                className="user-show-link-followers"
+                                to={{
+                                    pathname: `/users/${id}`,
+                                    state: { dashboardFollowers: "followers" },
+                                }}
+                            >
+                                <b
+                                    className="count-value-widget"
+                                    id="followers"
+                                >
+                                    {usersFollowersCount}
+                                </b>
+                            </Link>
                         </div>
                         <div className="count-title-value-container-widget">
                             <div className="count-title-widget">Activities</div>
-                            <b className="count-value-widget">
-                                {currentUserActivities.length}
-                            </b>
+                            <Link
+                                className="user-show-link-followers"
+                                to={`/users/${id}`}
+                            >
+                                <b className="count-value-widget">
+                                    {currentUserActivities.length}
+                                </b>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -85,7 +109,7 @@ const UserWidget = ({ currentUserActivities }) => {
                         </div>
                         <Link
                             className="latest-activity-link"
-                            to={`/users/${id}`}
+                            to={`/activities/${mostRecentActivity.id}`}
                         >
                             <div className="activity-title-widget">
                                 {mostRecentActivity.title}
