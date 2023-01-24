@@ -1,168 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@800&display=swap');
 
-.activity-show {
-    padding-top: 1%;
-    display: flex;
-    font-family: 'Sora', sans-serif;
-    justify-content: center;
-    align-items: top;
-    background-color: white;
-    margin: 10;
-    position: relative;
+.activity-show-wrapper{
     width: 100%;
-    height: 100%;
-    left: 0;
-}
-
-.add-description:link,
-:visited {
-    text-decoration: none;
-    color: black
-}
-.activity-show-box {
     display: flex;
     flex-direction: column;
-    width: 960px;
-    border: 1px solid black;
-    height: fit-content;
+    align-items: center;
+    margin-top: 30px;
+}
+.activity-show-card {
+    width: 1250px;
+    font-family: "Helvetica", "Arial", sans-serif;
 
 }
 
-.topbar{
+.activity-show-card-header{
+    width: 1250px;
     display: flex;
     flex-direction: row;
-    background-color: #BABABB;
-    border: 1px solid grey;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: large;
+    background-color: #F7F7Fa; 
+    border: solid 1px rgba(168, 168, 179, 0.6);
+    width: 100%;
+    height: 45px;
+    align-items: center;
+    justify-content: space-between;
+
 }
 
-.dash {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-
-
-.title-box-left {
-    width: 519px;
-    height: 134px;
-    border: 1px solid black;
+.athlete-name-activity-show-container {
+    margin-left: 20px;
+    font-size: 20px;
     display: flex;
-
 }
-.profile-pic-show {
-    height: 120px;
-    width: 120px;
-    display: flex;
-    flex-direction: column;
-    padding-top: 7px;
-    padding-bottom: 7px;
-    margin-left: 10px;
-    /* border: 1px solid black; */
-
+.title-activity-show{
+    margin-left: 8px;
 }
 
-.profile-picture-image {
-    height: 120px;
-    width: auto;
-    border-radius: 50%;
-    /* justify-content: center; */
-    /* align-items: center; */
+.buttons-activity-show{
+    margin-right: 20px;
 }
 
-.activity-start{
-    padding-top: 15px;
-    padding-left: 20px;
-    font-size: x-small;
+.edit-activity-button { 
+    background-color: #F7F7Fa; 
+    justify-content: center;
+    border-radius: 4px;
+    width: 77px;
+    font-size: px;
+    color: black;
+    cursor: pointer;
+    border: none;
 }
 
-.activity-title {
-    font-size: xx-large;
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
-
-.description-show {
-    justify-content: left;
-}
-.topbox {
-    display: flex;
-    /* border: 3px solid red; */
-}
-.add-description{
-    padding-left: 6px;
-    padding-right: 6px;
-    background-color: lightgray;
-    width: fit-content;
-    font-size: .7rem;
-    
-}
-
-
-
-.details-box-right{
-    display: flex;
-    align-content: center;
-    padding-top: 3px;
-    padding-left: 5px;
-
-}
-.distance-show-box{
-    padding-right: 20px;
-    padding-top: 3px;
-    padding-left: 5px;   
-}
-
-.distance-show-value{
-    font-size: larger;
-}
-
-.moving-time-value{
-    font-size: larger;
-}
-
-.moving-time-box{
-    padding-top: 3px;
-    padding-left: 10px;
-    padding-right: 20px;
-    display: flex;
-    flex-direction: column;
-}
-
-.distance-word {
-    font-size: x-small;
-}
-.moving-time-word{
-    font-size: x-small;
-}
-
-.moving-time-box{
-    padding-top: 3px;
-    padding-left: 5px;
-}
-.speed-box-show {
-    padding-top: 3px;
-    padding-left: 10px;
-    padding-right: 20px;
-    display: flex;
-    flex-direction: column;
-
-}
-
-.speed-value {
-    font-size: larger;
-}
-.speed-text{
-    font-size: x-small;
-}
-.hr-box {
-    padding-top: 3px;
-}
-.hr-value{
-    font-size: larger;
-}
-.hr-word{
-    font-size: x-small;
+.edit-activity-button:hover{
+    background-color: rgba(250, 250, 250, 1)
+    /* color: black; */
 }

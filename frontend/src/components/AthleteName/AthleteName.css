@@ -1,24 +1,22 @@
 .athlete-name-link:link {
     text-decoration: none;
 }
-.athlete-name:hover{
+.athlete-name:hover {
     color: #007fb6;
-
 }
 
 .athlete-name-follow-index {
     color: #007fb6;
     font-size: 12px;
-    margin-left: 10px
+    margin-left: 10px;
 }
-
 
 .athlete-name-follow-index:hover {
     text-decoration: underline;
 }
 
 .athlete-name-default {
-    color: black
+    color: black;
 }
 
 .athlete-name-user-widget {
@@ -28,6 +26,12 @@
     color: black;
 }
 
+.athlete-name-activity-show {
+    font-family: "Helvetica", "Arial", sans-serif;
+    font-size: 20px;
+    color: black;
 
-
-
+}
+.athlete-name-activity-show:hover{
+    text-decoration: underline;
+}

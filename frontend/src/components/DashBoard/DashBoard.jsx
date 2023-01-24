@@ -19,9 +19,9 @@ const Dashboard = () => {
         return currentUser.id === activity.athleteId;
     });
     return (
-        <>
+        <div className="dashboard-outer">
             {loaded && (
-                <div className="dashboard-outer-wrapper">
+                <div className="dashboard-inner-wrapper">
                     <div className="dashboard-left">
                         <UserWidget
                             currentUserActivities={currentUserActivities}
@@ -37,7 +37,7 @@ const Dashboard = () => {
                     </div>
                 </div>
             )}
-        </>
+        </div>
     );
 };
 

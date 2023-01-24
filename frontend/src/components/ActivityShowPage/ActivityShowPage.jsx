@@ -10,6 +10,7 @@ import {
 } from "../../store/comments";
 import { getSession } from "../../store/session";
 import { speedTypeChange, speedValue } from "../../store/util/speedconverter";
+import AthleteName from "../AthleteName";
 import { ActivityEditButton, ActivityEditLink } from "./ActivityEditButton";
 
 const ActivityShowPage = () => {
@@ -23,11 +24,6 @@ const ActivityShowPage = () => {
         dispatch(fetchActivity(activityId));
     }, [dispatch, activityId]);
 
-    // useEffect(() => {
-    //     dispatch(fetchCommentsActivities(activityId))
-    // }, [])
-
-    // useEffect(() => {
     if (!activity) {
         return null;
     }
@@ -85,74 +81,27 @@ const ActivityShowPage = () => {
         sport === "run" ? ["Pace", " /mi"] : ["Speed", " mi/h"];
 
     return (
-        <div className="activity-show">
-            <div className="activity-show-box">
-                <div className="topbar">
-                    <div className="athlete-name">
-                        {fname} {lname}
+        <div className="activity-show-wrapper">
+            <div className="activity-show-card">
+                <div className="activity-show-card-header">
+                    <div className="athlete-name-activity-show-container">
+                        <AthleteName
+                            fname={fname}
+                            lname={lname}
+                            targetId={athleteId}
+                            page="activity-show"
+                        />
+                        <div className="title-activity-show">- {title}</div>
                     </div>
-                    <div className="dash">-</div>
-                    <div className="sport">{sport}</div>
-                </div>
-                <div className="topbox">
-                    <div className="title-box-left">
-                        <div className="profile-pic-show">
-                            <img
-                                className="profile-picture-image"
-                                src={profilePicture}
-                                alt="help me please"
-                            />
-                        </div>
-                        <div className="inner-title-box">
-                            <div className="activity-start">
-                                {new Date(startTime).toLocaleString("en-US", {
-                                    timeZone: "UTC",
-                                })}
-                                <div className="activity-title">{title}</div>
-                                {setDisplayDescription(description)}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="details-box-right">
-                        <div className="distance-show-box">
-                            <div className="distance-show-value">
-                                {distance} mi
-                            </div>
-                            <div className="distance-word">Distance</div>
-                        </div>
-                        <div className="moving-time-box">
-                            <div className="moving-time-value">
-                                {hours}:{minutes}:{seconds}
-                            </div>
-                            <div className="moving-time-word">Moving Time</div>
-                        </div>
-                        <div className="speed-box-show">
-                            <div className="speed-value">
-                                {speedValue({
-                                    hours,
-                                    minutes,
-                                    seconds,
-                                    distance,
-                                    sport,
-                                })}
-                            </div>
-                            <div className="speed-text">{append}</div>
-                        </div>
-                        <div className="hr-box">
-                            <div className="hr-value">{hr}</div>
-                            <div className="hr-word">Heart Rate</div>
-                        </div>
-
+                    <div className="buttons-activity-show">
                         {editButton}
                     </div>
                 </div>
-                {/* {intensity} intensity
-                {pnotes}
-                {tags}
-                {purpose}  */}
             </div>
         </div>
     );
+       
 };
 
 export default ActivityShowPage;
+

@@ -4,8 +4,12 @@ export const ActivityEditButton = ({actId}) => {
 
     const path = `/activities/${actId}/edit`
     return (
-        <Link to={path}><button className="edit-activity-button">EDIT</button></Link>
-    )
+        <Link to={path}>
+            <button className="edit-activity-button">
+                <span class="material-symbols-outlined">edit</span>
+            </button>
+        </Link>
+    );
     
 }
 
