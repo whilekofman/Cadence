@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect, useLocation, useParams } from "react-router-dom";
 import { fetchUser, getUser } from "../../store/users";
-import FollowIndex from "../FollowIndex";
 import ProfilePicture from "../ProfilePicture";
 import AthleteName from "../AthleteName";
 import FollowButton from "../FollowButton";
@@ -13,6 +12,7 @@ import { getActivities } from "../../store/activities";
 import { activitiesInLast30 } from "../utils/datetimeparsers";
 
 const UserShowPage = () => {
+    const location = useLocation();
     const dispatch = useDispatch();
     const { userId } = useParams();
     const user = useSelector(getUser(userId));
@@ -20,21 +20,27 @@ const UserShowPage = () => {
     const currentUser = useSelector(getSession);
     const [selectDropDown, setSelectDropDown] = useState("following");
     const [leftDisplay, setLeftDisplay] = useState();
+    const [loaded, setLoaded] = useState(false);
+    const [display, setDisplay] = useState();
+    // // const
 
     const changeSelectDropDown = (e) => {
         setSelectDropDown(e);
         setLeftDisplay("follows");
     };
 
-    const [loaded, setLoaded] = useState(false);
-
-    const [display, setDisplay] = useState();
+    const dashboardFollowers = location.state
+        ? location.state.dashboardFollowers
+        : null;
+    const iniitialState = dashboardFollowers
+        ? [dashboardFollowers, "follows"]
+        : ["following", "activities"];
 
     useEffect(() => {
         dispatch(fetchUser(userId)).then(
             () => setLoaded(true),
-            setSelectDropDown("following"),
-            setLeftDisplay("activities")
+            setSelectDropDown(iniitialState[0]),
+            setLeftDisplay(iniitialState[1])
         );
     }, [userId]);
 
@@ -116,7 +122,6 @@ const UserShowPage = () => {
                             </button>
 
                             <button
-                                // className="display-button-user-show"
                                 className={followsButtonCss}
                                 value={"follows"}
                                 onClick={(e) => setLeftDisplay(e.target.value)}

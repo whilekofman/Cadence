@@ -1,16 +1,17 @@
 .athlete-name-link:link {
     text-decoration: none;
 }
+.athlete-name:hover{
+    color: #007fb6;
+
+}
 
 .athlete-name-follow-index {
     color: #007fb6;
     font-size: 12px;
+    margin-left: 10px
 }
-.athlete-name-follow-index {
-    text-decoration: none;
-    margin-left: 10px;
-    font-size: 12px;
-}
+
 
 .athlete-name-follow-index:hover {
     text-decoration: underline;
@@ -19,3 +20,14 @@
 .athlete-name-default {
     color: black
 }
+
+.athlete-name-user-widget {
+    font-size: 20px;
+    font-weight: 550;
+    padding: 16px;
+    color: black;
+}
+
+
+
+

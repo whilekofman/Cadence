@@ -13,7 +13,7 @@ button {
     height: fit-content;
 }
 .activity-index-body-index {
-    padding-top: 1%;
+    /* padding-top: 1%; */
     display: flex;
     font-family: "Sora", sans-serif;
     justify-content: center;
@@ -22,9 +22,10 @@ button {
 }
 
 .index-dropdown {
-    margin: 1px 15px 0px;
+    margin: 0px 15px 0px;
     width: 180px;
-    height: 20px;
+    height: 50px;
+    
 }
 
 .follow-dropdown {
@@ -33,6 +34,7 @@ button {
     position: relative;
     justify-content: center;
     width: 175px;
+    height: 43px
 }
 
 .follow-dropdown input:focus {
@@ -43,7 +45,7 @@ button {
     width: 592px;
     list-style: none;
     background-color: transparent;
-    padding-bottom: 125px;
+    padding-bottom: 20px;
     display: flex;
     flex-direction: column;
 }

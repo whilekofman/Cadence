@@ -13,13 +13,14 @@ import ActivityForm from "./components/EditActivityForm";
 import Footer from "./components/Footer";
 import CommentForm from "./components/CommentsForm";
 import UserShowPage from "./components/UserShowPage";
+import Dashboard from "./components/DashBoard";
 
 // <UserIndexPage />
 function App() {
     const sessionUser = useSelector(getSession);
 
     // const userPath = sessionUser ? <UserIndexPage />  : <HomePage />
-    const userPath = sessionUser ? <ActivityIndexPage /> : <HomePage />;
+    const userPath = sessionUser ? <Dashboard /> : <HomePage />;
     const redirectPath = sessionUser ? <ActivityForm /> : <LoginFormPage />;
     // const editPath =`/activities/${activityId}/edit`
     const activityPath = "/activities/:activityId";
@@ -42,23 +43,20 @@ function App() {
                     {/* <NewActivityForm /> */}
                     {redirectPath}
                 </Route>
-
                 <Route exact path="/activities/:activityId">
                     <ActivityShowPage />
                 </Route>
-
-                <Route exact path="/activities">
-                    <ActivityIndexPage />
-                </Route>
-
                 <Route exact path="/signup">
                     <SignUpFormPage />
                 </Route>
                 <Route exact path="/users/:userId">
                     <UserShowPage />
                 </Route>
+                <Route exact path="/Dashboard">
+                    <Dashboard />
+                </Route>
             </Switch>
-            <Footer />
+            {!sessionUser && <Footer />}
         </>
     );
 }
