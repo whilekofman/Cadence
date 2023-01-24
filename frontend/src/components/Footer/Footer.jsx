@@ -12,15 +12,11 @@ const Footer = () => {
                     </a>
                 </div>
                 <div className="linkedin">
-                    <a href='https://www.linkedin.com/in/eugene-kofman-1119aa189/'>
-                        
+                    <a href='https://www.linkedin.com/in/eugene-kofman-1119aa189/'>  
                         <img src={li} className='li-logo'/>
                     </a>
 
                 </div>
-            </div>
-            <div className="plus-icon-credit">
-                <a target="_blank" href="https://icons8.com/icon/103162/plus">Plus</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>" 
             </div>
          </div>
      );

@@ -62,7 +62,9 @@ function App() {
                     <Dashboard />
                 </Route>
             </Switch>
+            {!sessionUser &&
             <Footer />
+            }
         </>
     );
 }

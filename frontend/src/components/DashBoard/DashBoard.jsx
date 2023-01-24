@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchActivities, getActivities } from "../../store/activities";
 import { getSession } from "../../store/session";
 import ActivityIndexPage from "../ActivityIndexPage";
+import DeveloperWidget from "../DeveloperWidget";
 import UserWidget from "../UserWidget";
 
 const Dashboard = () => {
@@ -32,9 +33,7 @@ const Dashboard = () => {
                         />
                     </div>
                     <div className="dashboard-right">
-                        <UserWidget
-                            currentUserActivities={currentUserActivities}
-                        />
+                        <DeveloperWidget />
                     </div>
                 </div>
             )}

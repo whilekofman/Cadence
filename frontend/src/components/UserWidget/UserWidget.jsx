@@ -38,7 +38,7 @@ const UserWidget = ({ currentUserActivities }) => {
 
     return (
         <>
-            <div className="user-widget">
+            <div className="widget">
                 <div className="pic-container-widget">
                     <ProfilePicture
                         profilePictureUrl={profilePictureUrl}
@@ -46,16 +46,16 @@ const UserWidget = ({ currentUserActivities }) => {
                         page={"user-widget"}
                     />
                 </div>
-                <div className="name-and-counts">
+                <div className="below-pic-widget-container">
                     <AthleteName
                         fname={fname}
                         lname={lname}
                         targetId={id}
                         page="user-widget"
                     />
-                    <div className="counts-widget">
-                        <div className="count-title-value-container-widget">
-                            <div className="count-title-widget">Following</div>
+                    <div className="stats-widget">
+                        <div className="stat-title-value-widget">
+                            <div className="stat-title-widget">Following</div>
                             <Link
                                 className="user-show-link-followers"
                                 to={{
@@ -65,14 +65,13 @@ const UserWidget = ({ currentUserActivities }) => {
                             >
                                 <b
                                     className="count-value-widget"
-                                    id="following"
                                 >
                                     {userFollowingCount}
                                 </b>
                             </Link>
                         </div>
-                        <div className="count-title-value-container-widget">
-                            <div className="count-title-widget">Followers</div>
+                        <div className="stat-title-value-widget">
+                            <div className="stat-title-widget">Followers</div>
                             <Link
                                 className="user-show-link-followers"
                                 to={{
@@ -88,8 +87,8 @@ const UserWidget = ({ currentUserActivities }) => {
                                 </b>
                             </Link>
                         </div>
-                        <div className="count-title-value-container-widget">
-                            <div className="count-title-widget">Activities</div>
+                        <div className="stat-title-value-widget">
+                            <div className="stat-title-widget">Activities</div>
                             <Link
                                 className="user-show-link-followers"
                                 to={`/users/${id}`}
@@ -103,8 +102,8 @@ const UserWidget = ({ currentUserActivities }) => {
                 </div>
                 <div className="line-under"></div>
                 {currentUserActivitiesSorted.length > 0 && (
-                    <div className="most-recent-activity-container">
-                        <div className="latest-activity-text">
+                    <div className="widget-bottom">
+                        <div className="widget-bottom-text">
                             Latest activity
                         </div>
                         <Link

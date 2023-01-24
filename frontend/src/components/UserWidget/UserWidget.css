@@ -1,7 +1,8 @@
-.user-widget {
+.widget {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 292px;
     background-color: white;
     margin-top: 64px;
@@ -14,14 +15,14 @@
     margin-top: -35px;
 }
 
-.name-and-counts {
+.below-pic-widget-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 16px;
 }
 
-.counts-widget {
+.stats-widget {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -33,14 +34,14 @@
     /* border-bottom: solid gray 1px; */
     border-bottom: solid 1px rgba(168, 168, 179, 0.6);
 }
-.count-title-value-container-widget {
+.stat-title-value-widget {
     font-family: "Helvetica", "Arial", sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.count-title-widget {
+.stat-title-widget {
     margin-bottom: 5px;
     font-size: 11px;
     font-weight: 100;
@@ -56,11 +57,11 @@
     color: #007fb6;
 }
 
-.most-recent-activity-container {
+.widget-bottom {
     padding: 16px;
 }
 
-.latest-activity-text {
+.widget-bottom-text {
     font-size: 10px;
     margin-bottom: 8px;
 }
