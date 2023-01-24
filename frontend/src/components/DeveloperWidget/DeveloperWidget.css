@@ -17,5 +17,8 @@ a {
 }
 .wellfound-logo-widget {
     max-height: 50px;
-    /* max-height: 40px; */
+}
+
+.dev-bottom-widget {
+    margin-bottom: -15px;
 }

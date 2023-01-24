@@ -29,7 +29,7 @@ const Dashboard = () => {
                     </div>
                     <div className="dashboard-middle">
                         <ActivityIndexPage
-                            currentUserActivities={currentUserActivities}
+                            userActivities={currentUserActivities}
                         />
                     </div>
                     <div className="dashboard-right">

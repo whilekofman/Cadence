@@ -43,28 +43,20 @@ function App() {
                     {/* <NewActivityForm /> */}
                     {redirectPath}
                 </Route>
-
                 <Route exact path="/activities/:activityId">
                     <ActivityShowPage />
                 </Route>
-
-                <Route exact path="/activities">
-                    <ActivityIndexPage />
-                </Route>
-
                 <Route exact path="/signup">
                     <SignUpFormPage />
                 </Route>
                 <Route exact path="/users/:userId">
                     <UserShowPage />
                 </Route>
-                <Route exact path="/Dashboard" > 
+                <Route exact path="/Dashboard">
                     <Dashboard />
                 </Route>
             </Switch>
-            {!sessionUser &&
-            <Footer />
-            }
+            {!sessionUser && <Footer />}
         </>
     );
 }

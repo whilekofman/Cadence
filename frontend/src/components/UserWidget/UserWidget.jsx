@@ -63,13 +63,12 @@ const UserWidget = ({ currentUserActivities }) => {
                                     state: { dashboardFollowers: "following" },
                                 }}
                             >
-                                <b
-                                    className="count-value-widget"
-                                >
+                                <b className="count-value-widget">
                                     {userFollowingCount}
                                 </b>
                             </Link>
                         </div>
+                        <hr />
                         <div className="stat-title-value-widget">
                             <div className="stat-title-widget">Followers</div>
                             <Link
@@ -87,6 +86,8 @@ const UserWidget = ({ currentUserActivities }) => {
                                 </b>
                             </Link>
                         </div>
+                        <hr />
+
                         <div className="stat-title-value-widget">
                             <div className="stat-title-widget">Activities</div>
                             <Link

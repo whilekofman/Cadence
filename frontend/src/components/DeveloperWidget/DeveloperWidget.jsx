@@ -63,7 +63,7 @@ const DeveloperWidget = () => {
                     </div>
                 </div>
                 <div className="line-under"></div>
-                <div className="widget-bottom">
+                <div className="widget-bottom dev-bottom-widget">
                     <a
                         href="https://github.com/whilekofman/Cadence#readme"
                         target="_blank"

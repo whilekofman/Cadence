@@ -45,7 +45,7 @@ button {
     width: 592px;
     list-style: none;
     background-color: transparent;
-    padding-bottom: 125px;
+    padding-bottom: 20px;
     display: flex;
     flex-direction: column;
 }

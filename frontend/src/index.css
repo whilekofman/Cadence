@@ -4,6 +4,9 @@
 
 /* @import-normalize; */
 @import './assets/CssReset.css';
+html {
+    margin: -8px 0px 0px -8px;
+}
 /* @import './components/NavBar/NavBar.css'; */
 /* @import './components/HomePage/HomePage.css'; */
 /* @import './components/SignUpFormPage/SignUpFormPage.css'; */
