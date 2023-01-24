@@ -78,6 +78,7 @@ hr {
 }
 .latest-activity-link {
     text-decoration: none;
+    color:black;
 }
 .activity-title-widget:hover {
     color: orangered;
