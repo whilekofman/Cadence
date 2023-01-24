@@ -10,7 +10,16 @@ import {
 } from "../../store/comments";
 import { getSession } from "../../store/session";
 import { speedTypeChange, speedValue } from "../../store/util/speedconverter";
+import AthleteName from "../AthleteName";
+import ProfilePicture from "../ProfilePicture";
 import { ActivityEditButton, ActivityEditLink } from "./ActivityEditButton";
+import dayjs from "dayjs";
+import localizedFormat from "dayjs/plugin/localizedFormat";
+import utc from "dayjs/plugin/utc";
+import { speed, durationConvert } from "../utils/activityspeed/speedConverter";
+
+dayjs.extend(localizedFormat);
+dayjs.extend(utc);
 
 const ActivityShowPage = () => {
     const { activityId } = useParams();
@@ -23,11 +32,6 @@ const ActivityShowPage = () => {
         dispatch(fetchActivity(activityId));
     }, [dispatch, activityId]);
 
-    // useEffect(() => {
-    //     dispatch(fetchCommentsActivities(activityId))
-    // }, [])
-
-    // useEffect(() => {
     if (!activity) {
         return null;
     }
@@ -46,17 +50,24 @@ const ActivityShowPage = () => {
         minutes,
         seconds,
         hr,
-        speed,
         athleteProfilePicture,
-        // intensity,
-        // pnotes,
-        // tags,
-        // purpose
-    } = activity;
-    // (<button className="edit-activity-button"><Link to={editPath}>Edit</Link></button>)
-    // const editPath = `/activities/${activityId}/edit`
-    // const [userAvitar, setUserAvitar] = useState(athleteProfilePicture ? athleteProfilePicture : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg")
 
+    } = activity;
+
+    const daysOfWeek = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+    ];
+
+    const sportName = sport.slice(0, 1).toUpperCase() + sport.slice(1);
+    const formatedDate = dayjs(startTime).utc().format(`LT on dddd LL`);
+
+    const page = "activity-show";
     const editButton =
         !currentUser || currentUser.id !== athleteId ? (
             ""
@@ -64,13 +75,10 @@ const ActivityShowPage = () => {
             <ActivityEditButton actId={activityId} />
         );
 
-    const profilePicture = athleteProfilePicture
-        ? athleteProfilePicture
-        : "https://aa-cadence-dev.s3.amazonaws.com/adyson.jpeg";
     const setDisplayDescription = (desc) => {
         if (!desc && currentUser && currentUser.id === athleteId) {
             return (
-                <div className="add-description">
+                <div className="add-description-activity-show">
                     <ActivityEditLink
                         className="add-description-link"
                         actId={activityId}
@@ -78,78 +86,93 @@ const ActivityShowPage = () => {
                 </div>
             );
         } else {
-            return <div className="description-show">{desc}</div>;
+            return <div className="description-activity-show">{desc}</div>;
         }
     };
     const [speedType, append] =
         sport === "run" ? ["Pace", " /mi"] : ["Speed", " mi/h"];
 
     return (
-        <div className="activity-show">
-            <div className="activity-show-box">
-                <div className="topbar">
-                    <div className="athlete-name">
-                        {fname} {lname}
+        <div className="activity-show-wrapper">
+            <div className="activity-show-card">
+                <div className="activity-show-card-header">
+                    <div className="athlete-name-activity-show-container">
+                        <AthleteName
+                            fname={fname}
+                            lname={lname}
+                            targetId={athleteId}
+                            page="activity-show"
+                        />
+                        <div className="sport-activity-show">- {sportName}</div>
                     </div>
-                    <div className="dash">-</div>
-                    <div className="sport">{sport}</div>
+                    <div className="buttons-activity-show">{editButton}</div>
                 </div>
-                <div className="topbox">
-                    <div className="title-box-left">
-                        <div className="profile-pic-show">
-                            <img
-                                className="profile-picture-image"
-                                src={profilePicture}
-                                alt="help me please"
+                <div className="activity-show-details-container">
+                    <div className="activity-show-left-side">
+                        <div className="athlete-picture-activty-show">
+                            <ProfilePicture
+                                profilePictureUrl={athleteProfilePicture}
+                                page="activity-show"
+                                targetId={athleteId}
                             />
                         </div>
-                        <div className="inner-title-box">
-                            <div className="activity-start">
-                                {new Date(startTime).toLocaleString("en-US", {
-                                    timeZone: "UTC",
-                                })}
-                                <div className="activity-title">{title}</div>
+                        <div className="time-title-description-activity-show">
+                            <time className="start-time-activity-show">
+                                {formatedDate}
+                            </time>
+                            <h3 className="title-activity-show">{title}</h3>
+                            <div className="description-activity-show">
                                 {setDisplayDescription(description)}
                             </div>
                         </div>
                     </div>
-                    <div className="details-box-right">
-                        <div className="distance-show-box">
-                            <div className="distance-show-value">
-                                {distance} mi
+                    <div className="activity-show-right-side">
+                        <div className="stat-container-activity-show">
+                            <div className="stat-activity-show">
+                                {`${distance}`}
                             </div>
-                            <div className="distance-word">Distance</div>
-                        </div>
-                        <div className="moving-time-box">
-                            <div className="moving-time-value">
-                                {hours}:{minutes}:{seconds}
+                            <div className="stat-label-activity-show">
+                                Distance
                             </div>
-                            <div className="moving-time-word">Moving Time</div>
                         </div>
-                        <div className="speed-box-show">
-                            <div className="speed-value">
-                                {speedValue({
+                        <div className="stat-container-activity-show">
+                            <div className="stat-activity-show">
+                                {durationConvert({
+                                    hours,
+                                    minutes,
+                                    seconds,
+                                    page,
+                                })}
+                            </div>
+                            <div className="stat-label-activity-show">
+                                Moving Time
+                            </div>
+                        </div>
+                        <div className="stat-container-activity-show">
+                            <div className="stat-activity-show">
+                                {speed({
                                     hours,
                                     minutes,
                                     seconds,
                                     distance,
                                     sport,
                                 })}
+                                <div className="speed-type-activity-show">{`${append}`}</div>
                             </div>
-                            <div className="speed-text">{append}</div>
+                            <div className="stat-label-activity-show">
+                                {`Avg ${speedType} `}
+                            </div>
                         </div>
-                        <div className="hr-box">
-                            <div className="hr-value">{hr}</div>
-                            <div className="hr-word">Heart Rate</div>
-                        </div>
-
-                        {editButton}
+                        {hr > 0 && (
+                            <div className="stat-container-activity-show">
+                                <div className="stat-activity-show">{hr}</div>
+                                <div className="stat-label-activity-show">
+                                    Heart Rate
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
-                {/* {intensity} intensity
-                {pnotes}
-                {tags}
-                {purpose}  */}
             </div>
         </div>
     );
