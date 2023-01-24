@@ -149,7 +149,7 @@ const ActivityForm = () => {
         // dispatch(activityActions.fetchActivities)
         // <Redirect to='/' />
         // )
-        history.push(`/activities`);
+        history.push(`/dashboard`);
     };
 
     const handleSelect = (e) => {
@@ -157,7 +157,6 @@ const ActivityForm = () => {
     };
     const handleClick = (e) => {
         e.preventDefault();
-        // startTime = startTime.split('T').join(' ') //.concat('.000Z')
         if (distance === 0) {
             setErrors([
                 "Distance can not be zero, sitting still is not an activity",

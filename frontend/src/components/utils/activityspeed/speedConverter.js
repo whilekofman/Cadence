@@ -18,8 +18,7 @@ export const speed = ( { hours, minutes, seconds, distance, sport } ) => {
 
     const speed = sport === 'run' ? 
 
-        runningSpeed( { hours, minutes, seconds, distance } )
-        // formatRunMinutes + formatRunSeconds
+        `${runningSpeed( { hours, minutes, seconds, distance } )}`
     
         :  
     
@@ -28,16 +27,21 @@ export const speed = ( { hours, minutes, seconds, distance, sport } ) => {
     return speed
 }
 
-export const durationConvert = ( { hours, minutes, seconds } ) => {
-        if ( hours > 0 ) {
-            return hours.toString() + ' h ' + minutes.toString() + ' m'
-            // return {hours, minutes} 
-        } else {
-            return minutes.toString() + ' m ' +  seconds.toString() + ' s'
-        }
+export const durationConvert = ( { hours, minutes, seconds, page } ) => {
+        const activityShowMinutes = minutes < 10 ? `0${minutes}` : minutes 
+        const activityShowSeconds = seconds < 10 ? `0${seconds}` : seconds;    
 
+
+        if ( hours > 0 ) {
+            return page === "activity-show"
+                ? `${hours}:${activityShowMinutes}:${activityShowSeconds}`
+                : `${hours} h ${minutes} m`;
+        } else {
+            return page === "activity-show"
+                ? `${activityShowMinutes}:${activityShowSeconds}`
+                : `${minutes} m ${seconds} s`;
+        }
+        
     }
 
-
-//REMOVED FROM ACTIVITY INDEX ITEM 85 - 107runningSpeed
 

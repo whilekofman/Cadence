@@ -1,5 +1,5 @@
 .dashboard-outer {
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     background-color: rgb(247, 247, 250);
