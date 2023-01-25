@@ -33,7 +33,7 @@ const UserWidget = ({ currentUserActivities }) => {
 
     let mostRecentDate;
     if (currentUserActivitiesSorted.length > 0) {
-        mostRecentDate = dayjs(mostRecentDate).format("MMMM D YYYY");
+        mostRecentDate = dayjs(mostRecentActivity.startTime).format("MMMM D YYYY");
     }
 
     return (
