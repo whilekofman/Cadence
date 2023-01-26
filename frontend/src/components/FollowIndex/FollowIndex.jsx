@@ -78,9 +78,9 @@ const FollowIndex = ({
     ));
 
     return (
-        <div className="following-wrapper">
+        <>
             {side === "left" && (
-                <>
+                <div className="following-wrapper">
                     <h3 className="following-title">Following</h3>
 
                     <div className="followers-dropdown-container">
@@ -108,7 +108,7 @@ const FollowIndex = ({
                     {!displayFollows.length && (
                         <div className="no-followers">{noFollowersText()}</div>
                     )}
-                </>
+                </div>
             )}
             {side === "right" && (
                 <>
@@ -157,7 +157,7 @@ const FollowIndex = ({
                     </div>
                 </>
             )}
-        </div>
+        </>
     );
 };
 

@@ -137,5 +137,25 @@ html {
     -moz-text-size-adjust: none;
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
+    overflow-x: none;
+    margin: -8px 0px 0px -8px;
+
+}
+html, body, #root .app{
+    height: 100%;
+    width: 100%;
+}
+.app{
+    /* border:solid red */
+}
+#root {
+    border: solid purple
+}
+html{
+    border: solid green;
+}
+
+body{
+    border: solid blue;
 }
 /* @import url('https://fonts.googleapis.com/css2?family=Sora:wght@800&display=swap'); */

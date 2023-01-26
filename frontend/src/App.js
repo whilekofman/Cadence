@@ -26,7 +26,7 @@ function App() {
     const activityPath = "/activities/:activityId";
 
     return (
-        <>
+        <div className="app">
             <NavBar />
             <Switch>
                 <Route exact path="/">
@@ -57,7 +57,7 @@ function App() {
                 </Route>
             </Switch>
             {!sessionUser && <Footer />}
-        </>
+        </div>
     );
 }
 
