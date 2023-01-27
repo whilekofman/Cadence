@@ -1,47 +1,60 @@
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import * as sessionActions from '../../store/session'
 import { getSession } from "../../store/session";
-import AddActivtyButton from './AddActivityButton';
-// import { useState } from 'react';
+import ProfilePicture from "../ProfilePicture";
+import { useState } from "react";
+import DropDown from "./DropDown";
 
 const SessionButton = () => {
-    const dispatch = useDispatch()
-    const sessionUser = useSelector(getSession);
-    
+    const currentUser = useSelector(getSession);
+    const dispatch = useDispatch();
+    const [showDropDown, setShowDropDown] = useState(false);
     const usePath = () => {
         const location = useLocation();
         return location.pathname;
-    }
+    };
 
-    const buttonText = usePath() === '/login' ? "Sign Up" : sessionUser ? "Log Out" : "Log In"
+    const buttonText = usePath() === "/login" ? "Sign Up" : "Log In";
 
-    
-    const buttonLink = usePath() === '/login' ? "/signup" : "/login"
+    const buttonLink = usePath() === "/login" ? "/signup" : "/login";
+    const buttonClassName =
+        usePath() === "/login"
+            ? "signupBut"
+            : currentUser
+            ? "logoutBut"
+            : "loginBut";
 
-    const buttonClassName = usePath() === '/login' ? 'signupBut' : sessionUser ? 'logoutBut' : 'loginBut' 
-
-    const handleSubmit = e => {
-        e.preventDefault();
-        dispatch(sessionActions.logout({ }))        
-    }
-    const buttonReturned = sessionUser ? 
-        (
-            <form onSubmit={handleSubmit}>                
-                <button className={buttonClassName}>Log Out</button>
-            </form>           
-        ) 
-        : 
-        ( 
-            <div className="logout-add">
-                <NavLink to={buttonLink}>
-                    <button className={buttonClassName}>{buttonText}</button>
-                </NavLink>
-                
+    const buttonReturned = currentUser ? (
+        <div
+            className="profile-pic-drop-down-wrapper"
+            onMouseEnter={() => setShowDropDown(true)}
+            onMouseLeave={() => setShowDropDown(false)}
+        >
+            <div className="profile-pic-drop-down-inner">
+                <ProfilePicture
+                    profilePictureUrl={currentUser.profilePictureUrl}
+                    targetId={currentUser.id}
+                    page="navbar"
+                />
+                <div className="material-symbols-outlined chevron">
+                    expand_more
+                </div>
             </div>
-        );
-    return buttonReturned
-}
- 
+            {showDropDown && (
+                <div className="drop-down-session">
+                    <DropDown currentUser={currentUser} />
+                </div>
+            )}
+        </div>
+    ) : (
+        <div className="logout-add">
+            <NavLink to={buttonLink}>
+                <button className={buttonClassName}>{buttonText}</button>
+            </NavLink>
+        </div>
+    );
+    return buttonReturned;
+};
+
 export default SessionButton;

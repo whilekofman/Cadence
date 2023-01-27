@@ -21,8 +21,8 @@ const CommentLike = ({ commentId }) => {
         : ``;
 
     const heartClass = !userLike.length
-        ? "material-symbols-outlined not-liked-comment"
-        : "comment-liked-color material-symbols-outlined liked";
+        ? "material-symbols-outlined not-liked-comment comment-heart"
+        : "comment-liked-color material-symbols-outlined liked comment-heart";
 
     const handleCommentLike = (e) => {
         e.preventDefault();
