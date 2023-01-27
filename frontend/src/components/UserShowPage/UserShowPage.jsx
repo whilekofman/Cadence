@@ -42,7 +42,7 @@ const UserShowPage = () => {
             setSelectDropDown(iniitialState[0]),
             setLeftDisplay(iniitialState[1])
         );
-    }, [userId]);
+    }, [userId, location.state]);
 
     if (!currentUser) {
         return <Redirect to="/login" />;
