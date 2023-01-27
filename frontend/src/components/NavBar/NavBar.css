@@ -9,7 +9,8 @@
     top: 0;
     position: sticky;
     background-color: white;
-    box-shadow: 0px .5px .5px 0px lightgray;
+    box-shadow: 0px .7px 0px 0px lightgray;
+
     justify-content: center;
 
 
@@ -87,3 +88,90 @@
   'opsz' 48
 }
 
+.profile-pic-drop-down-wrapper{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+
+.profile-pic-drop-down-inner{
+    display: flex;
+    width: 80px;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 60px;
+    top: 0;
+}
+.profile-pic-drop-down-wrapper:hover{
+    /* border: 1px solid; */
+    /* box-shadow: 0px 0px .8px 0px lightgray; */
+    border-left: .8px lightgray solid;
+    border-right: .8px lightgrey solid;
+    border-bottom: .8px white solid;
+    z-index: 250;
+    
+
+
+}
+
+.chevron {
+    color: #494950;
+    cursor: default;
+
+}
+.drop-down-session {
+    position: fixed;
+    margin-top: 60px;
+    z-index: 90;
+    border-left: .8px solid lightgray;
+    border-right: .8px solid lightgray;
+    border-bottom: .8px solid lightgray;
+
+
+
+}
+
+.drop-down-session{
+    margin-left: -107.5px;
+    font-size: 12px;
+
+    border-left: .8px solid lightgray;
+    border-right: .8px solid lightgray;
+    border-bottom: .8px solid lightgray;
+}
+.session-drop-down-element{
+    font-family: "Helvetica", "Arial", sans-serif;
+    padding: 14px 12px;
+    width: 163px;
+    background-color: white;
+
+}
+
+.session-drop-down-element:hover{
+    background-color: rgb(214, 213, 213);
+    cursor: pointer;
+}
+
+.session-link-following{
+    color: orangered;
+    width: 90px;
+    font: 14px;
+}
+
+.session-drop-down-top{
+    display:flex;
+
+}
+
+
+.session-drop-down-top-right{
+    border: white 1px;
+    min-width: 80px;
+}
+.session-drop-down-top-left{
+    border-top: .8px solid lightgray;
+}
+
+.session-link{
+    color: black;
+}
