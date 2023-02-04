@@ -1,7 +1,8 @@
 .page-outer-wrapper {
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 
 }
 .user-settings-inner-wrapper {
@@ -40,9 +41,12 @@
     align-items: flex-end;
     justify-content: end;
 }
-.user-setting-edit-profile-picture-container{
+.user-setting-profile-picture-container{
     align-items: center;
     display: flex;
+}
+.user-setting-profile-picture-container:hover{
+    cursor: pointer;
 }
 
 .user-settings-plus-icon {
@@ -64,16 +68,21 @@
 
 
 
-.user-settings-link{
-    padding-top: 20px;
-    width: 125px;
+.user-settings-link, .cancel-link{
+    
     font-size: 14px;
     justify-content: center;
     display: flex;
     color: #007fb6;
 
 }
-.user-settings-link:hover{
+
+.user-settings-link {
+    padding-top: 20px;
+    width: 125px;
+    margin-left: -1px;
+}
+.user-settings-link:hover, .cancel-link:hover{
     cursor:pointer;
     text-decoration: underline;
 }
@@ -84,4 +93,47 @@
 
 .hover-effect:hover{
     background-color: rgba(168, 168, 179, 0.1);
+}
+
+.profile-pic-user-settings {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+}
+
+.photo-input-button {
+    display: none;
+}
+
+.edit-photo-instructions {
+    font-size: 14px;
+}
+
+.buttons-edit-photo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 34px;
+}
+.save-button-edit-photo{
+    background-color: white;
+    width: 52px;
+    height: 34px;
+    /* background-color: rgba(168, 168, 179, 0.1); */
+    border: solid rgba(168, 168, 179, 0.1);
+    border-radius: 5%;
+    margin-right: 10px;
+}
+
+.cancel-link {
+    padding-left: 10px;
+    border-left: 1px solid gray;
+}
+
+
+.edit-image-container {
+    width: 600px;
+    height: 600px;
+    position: relative;
+    border:solid;
 }
