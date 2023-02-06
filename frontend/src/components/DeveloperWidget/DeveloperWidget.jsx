@@ -40,7 +40,7 @@ const DeveloperWidget = () => {
                         <div className="stat-title-widget">LinkedIn</div>
                         <div className="profesional-links linked-in-logo">
                             <a
-                                href="https://www.linkedin.com/in/eugene-kofman-1119aa189/"
+                                href="https://www.linkedin.com/in/eugenekofman/"
                                 target="_blank"
                             >
                                 <img src={li} className="li-logo-widget" />
