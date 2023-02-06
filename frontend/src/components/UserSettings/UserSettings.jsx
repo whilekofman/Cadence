@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { getSession } from "../../store/session";
@@ -10,22 +10,12 @@ import UserValue from "./UserValue";
 const UserSettings = () => {
     const dispatch = useDispatch()
     const currentUser = useSelector(getSession)
-    // const [user, setUser] = useState({})
-    // const [profilePictureUrlState, setProfilePictureUrlState] = useState('')
     const [photoFile, setPhotoFile] = useState(null);
-    const [imageUrl, setImageUrl] = useState(null)
-    useEffect(() => {
-        if(photoFile){
-            const reader = new FileReader();
-            const url = reader.readAsDataURL(photoFile);
-            setImageUrl(url)
-        }
-    }, [photoFile])
-    console.log(photoFile)
+
     if (!currentUser) {
         return <Redirect to="/login" />;
     }
-        
+    console.log()
     const {id, fname, lname, email, profilePictureUrl} = currentUser
     const currentUserArray = Object.values(currentUser).slice(1,-1) 
     return (
@@ -40,7 +30,7 @@ const UserSettings = () => {
             )}
             {currentUser &&
                 <div className="user-settings-inner-wrapper">
-                    <EditProfilePhoto setPhotoFile={setPhotoFile} photoFile={imageUrl} />
+                    <EditProfilePhoto setPhotoFile={setPhotoFile} photoFile={photoFile} />
                 </div>
             }
         </div>

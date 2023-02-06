@@ -10,15 +10,15 @@ const UserPhotoContainer = ({ profilePictureUrl, setPhotoFile }) => {
 
     };
 
-    const handleFileChange = e => {
+    const handleFileChange = async (e) => {
         const photo = e.currentTarget.files[0]
         if (!photo){
             return;
         }
-        console.log(photo)
         e.target.value = null;
-
-        setPhotoFile(photo)
+        let imageDataUrl = await readFile(photo)
+        // setPhotoFile(photo)
+        setPhotoFile(imageDataUrl)
     }
     return (
         <span className="user-settings-section-outer">
@@ -50,3 +50,11 @@ const UserPhotoContainer = ({ profilePictureUrl, setPhotoFile }) => {
 };
 
 export default UserPhotoContainer;
+
+function readFile(file) {
+    return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.addEventListener("load", () => resolve(reader.result), false);
+        reader.readAsDataURL(file);
+    });
+}

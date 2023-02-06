@@ -60,7 +60,6 @@ function App() {
                     <Dashboard />
                 </Route>
             </Switch>
-            <Route path="*" >No such route</Route>
             {!sessionUser && <Footer />}
         </div>
     );
