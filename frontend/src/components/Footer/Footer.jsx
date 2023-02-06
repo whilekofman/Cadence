@@ -12,7 +12,7 @@ const Footer = () => {
                     </a>
                 </div>
                 <div className="linkedin">
-                    <a href="https://www.linkedin.com/in/eugene-kofman-1119aa189/">
+                    <a href="https://www.linkedin.com/in/eugenekofman/">
                         <img src={li} className="li-logo" />
                     </a>
                 </div>
