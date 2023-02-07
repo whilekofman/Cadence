@@ -1,7 +1,9 @@
 import { useCallback, useEffect } from "react";
 import { useState } from "react";
 import Cropper from "react-easy-crop";
-import { getCroppedImage } from "../utils/canvas";
+import { useDispatch, useSelector } from "react-redux";
+import { getSession } from "../../store/session";
+import { getCroppedImg } from "../utils/canvas";
 
 const EditProfilePhoto = ({ photoFile, setPhotoFile }) => {
     const [crop, setCrop] = useState({ x: 0, y: 0 });
@@ -15,11 +17,18 @@ const EditProfilePhoto = ({ photoFile, setPhotoFile }) => {
     const handleUpdateProfilePicture =  () => {
     }
 
+    const dispatch = useDispatch()
+    const currentUser = useSelector(getSession)
+    const {id, fname, lname, email} = currentUser
+    console.log(imageAfterCrop);
     const onSaveClick = async (e) => {
       e.preventDefault()
-      const imgAfterCrop = await(getCroppedImage(imageUrl, croppedAreaPixels))
-      console.log(imgAfterCrop)
-      setImageAfterCrop(imageAfterCrop)
+      const {file, url} = await(getCroppedImg(imageUrl, croppedAreaPixels))
+      setImageAfterCrop(url)
+      // const user = {id, fname, lname, email }
+
+
+
 
     }
 
@@ -29,9 +38,9 @@ const EditProfilePhoto = ({ photoFile, setPhotoFile }) => {
     };
 
 
-      const showCroppedImage = useCallback(async () => {
+    const showCroppedImage = useCallback(async () => {
           try {
-              const croppedImage = await getCroppedImage(
+              const croppedImage = await getCroppedImg(
                   photoFile,
                   croppedAreaPixels,
                   rotation
@@ -41,7 +50,7 @@ const EditProfilePhoto = ({ photoFile, setPhotoFile }) => {
           } catch (e) {
               console.error(e);
           }
-      }, [photoFile, croppedAreaPixels, rotation]);
+      }, [photoFile, croppedAreaPixels, rotation, imageAfterCrop]);
 
     const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
           console.log(croppedArea, croppedAreaPixels);
@@ -50,46 +59,10 @@ const EditProfilePhoto = ({ photoFile, setPhotoFile }) => {
       }, []);
     return (
         <>
-            <div className="edit-photo-top">
-                <h1 className="title">Edit Photo</h1>
-                <p className="edit-photo-instructions">
-                    Select the portion of the photo you'd like to use.
-                </p>
+
+            <div className="after">
+                <img src={photoFile} />
             </div>
-            <div className="buttons-edit-photo">
-                <button
-                    className="save-button-edit-photo"
-                    onClick={onSaveClick}
-                >
-                    Save
-                </button>
-                <div className="cancel-link" onClick={handleCancel}>
-                    Cancel
-                </div>
-            </div>
-            <div className="edit-image-container">
-                {photoFile && (
-                    <Cropper
-                        image={photoFile}
-                        crop={crop}
-                        zoom={zoom}
-                        rotation={rotation}
-                        aspect={1}
-                        showGrid={true}
-                        onCropChange={setCrop}
-                        onCropComplete={onCropComplete}
-                        onZoomChange={setZoom}
-                        style={{
-                            containerStyle: {
-                                width: "100%",
-                                height: "80%",
-                                backgroundColor: "#fff",
-                            },
-                        }}
-                    />
-                )}
-            </div>
-            <img src={imageAfterCrop} />
         </>
     );
 };

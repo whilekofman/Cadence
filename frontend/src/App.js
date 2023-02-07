@@ -59,6 +59,9 @@ function App() {
                 <Route exact path="/Dashboard">
                     <Dashboard />
                 </Route>
+                <Route path="*">
+                    This page does not exist
+                </Route>
             </Switch>
             {!sessionUser && <Footer />}
         </div>

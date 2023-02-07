@@ -33,6 +33,14 @@ export const fetchUsers = () => async (dispatch) => {
     dispatch(retrieveUsers(data));
 };
 
+const updateUser = (user, formData) => async (dispatch) =>{
+    const res = await csrfFetch(`/api/users/${user.id}`,{ 
+        method: 'PATCH',
+        body: formData
+    }) 
+    fetchUser(user)
+}
+
 export const fetchUser = (user) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${user}`);
     const data = await res.json();
