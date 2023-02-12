@@ -11,6 +11,7 @@ const UserSettings = () => {
     const dispatch = useDispatch()
     const currentUser = useSelector(getSession)
     const [photoFile, setPhotoFile] = useState(null);
+    const [photoFileUrl, setPhotoFileUrl] = useState(null);
 
     if (!currentUser) {
         return <Redirect to="/login" />;
@@ -23,14 +24,14 @@ const UserSettings = () => {
             {currentUser && !photoFile && (
                 <div className="user-settings-inner-wrapper">
                     <h1 className="user-settings-title">My Profile</h1>
-                    <UserPhotoContainer profilePictureUrl={profilePictureUrl} targetId={id} setPhotoFile={setPhotoFile}/>
+                    <UserPhotoContainer profilePictureUrl={profilePictureUrl} targetId={id} setPhotoFile={setPhotoFile} setPhotoFileUrl={setPhotoFileUrl}/>
                     <UserValue fname={fname} lname={lname} />
                     <UserValue email={email} />
                 </div>
             )}
             {currentUser &&
                 <div className="user-settings-inner-wrapper">
-                    <EditProfilePhoto setPhotoFile={setPhotoFile} photoFile={photoFile} />
+                    <EditProfilePhoto setPhotoFile={setPhotoFile} photoFile={photoFile} photoFileUrl={photoFileUrl} setPhotoFileUrl={photoFileUrl} />
                 </div>
             }
         </div>

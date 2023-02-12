@@ -61,6 +61,8 @@ class User < ApplicationRecord
     has_many :followers,
       through: :followed_by,
       source: :follower
+
+    
     
 
     def self.find_by_credentials(credential, password)

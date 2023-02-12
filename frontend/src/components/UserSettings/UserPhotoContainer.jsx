@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import ProfilePicture from "../ProfilePicture";
 
-const UserPhotoContainer = ({ profilePictureUrl, setPhotoFile }) => {
+const UserPhotoContainer = ({ profilePictureUrl, setPhotoFileUrl, setPhotoFile }) => {
     const inputRef = useRef();
     // const [photoFile, setPhotoFile] = useState(null);
 
@@ -17,8 +17,8 @@ const UserPhotoContainer = ({ profilePictureUrl, setPhotoFile }) => {
         }
         e.target.value = null;
         let imageDataUrl = await readFile(photo)
-        // setPhotoFile(photo)
-        setPhotoFile(imageDataUrl)
+        setPhotoFile(photo)
+        setPhotoFileUrl(imageDataUrl)
     }
     return (
         <span className="user-settings-section-outer">
@@ -32,6 +32,7 @@ const UserPhotoContainer = ({ profilePictureUrl, setPhotoFile }) => {
                 >
                     <input type="file" className="photo-input-button" 
                     ref={inputRef}
+                    accepts="image/jpeg, image/png, image/jpg"
                     onChange={handleFileChange}
                     />
 
