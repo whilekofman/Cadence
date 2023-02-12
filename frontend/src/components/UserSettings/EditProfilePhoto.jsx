@@ -26,15 +26,10 @@ const EditProfilePhoto = ({ photoFile, setPhotoFile, photoFileUrl, setPhotoFileU
         e.preventDefault();
 
         const formData = new FormData();
-        formData.append("user[profile_picture]", photoFileUrl);
+        formData.append("user[profile_picture]", photoFile);
         dispatch(updateUserProfilePicture(currentUser, formData));
-        // window.location.reload(true)
     };
-    //   const {file, url} = await(getCroppedImg(imageUrl, croppedAreaPixels))
-    //   setImageAfterCrop(url)
-    //   // const user = {id, fname, lname, email }
 
-    // console.log(photoFile, "edit")
     const handleCancel = () => {
         setPhotoFile(null);
     };

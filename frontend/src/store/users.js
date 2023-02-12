@@ -40,6 +40,8 @@ export const updateUserProfilePicture = (user, formData) => async (dispatch) =>{
         body: formData,
     }) 
 
+    window.location.reload(true);
+
     // (retrieveUser(user)
     // dispatch(retrieveUser(data));
 

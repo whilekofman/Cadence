@@ -13,11 +13,11 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    photo_attached = false
     if params[:user].has_key?(:profile_picture)
-      @user.profile_picture.attach(params[:profile_picture])
-      debugger
-      photo_attached = true
+      new_profile_picture = params[:user][:profile_picture]
+      @user.profile_picture.attach(new_profile_picture)
+      # @user.profile_picture.attach(params[:profile_picture])
+      @user.save
     end
     if @user.save
       render :show
