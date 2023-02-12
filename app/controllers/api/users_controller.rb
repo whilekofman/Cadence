@@ -19,7 +19,6 @@ class Api::UsersController < ApplicationController
         @user.profile_picture.purge
       else
         @user.profile_picture.attach(new_profile_picture)
-      # @user.profile_picture.attach(params[:profile_picture])
       end
       @user.save
     end

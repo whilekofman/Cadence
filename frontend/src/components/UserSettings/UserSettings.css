@@ -136,3 +136,10 @@
     width: 600px;
     height: 600px;
 }
+.new-photo-container{
+    margin-top: 20px;
+}
+.new-photo{
+    width: 150px;
+    height: 150px;
+}

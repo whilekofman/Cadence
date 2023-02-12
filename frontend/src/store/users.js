@@ -39,11 +39,8 @@ export const updateUserProfilePicture = (user, formData) => async (dispatch) =>{
         method: 'PATCH',
         body: formData,
     }) 
-
     window.location.reload(true);
 
-    // (retrieveUser(user)
-    // dispatch(retrieveUser(data));
 
 }
 

@@ -13,6 +13,10 @@ const UserSettings = () => {
     const [photoFile, setPhotoFile] = useState(null);
     const [photoFileUrl, setPhotoFileUrl] = useState(null);
 
+    useEffect(() => {
+        
+    }, [currentUser.profilePictureUrl])
+
     if (!currentUser) {
         return <Redirect to="/login" />;
     }
@@ -29,7 +33,7 @@ const UserSettings = () => {
                     <UserValue email={email} />
                 </div>
             )}
-            {currentUser &&
+            {currentUser && photoFile &&
                 <div className="user-settings-inner-wrapper">
                     <EditProfilePhoto setPhotoFile={setPhotoFile} photoFile={photoFile} photoFileUrl={photoFileUrl} setPhotoFileUrl={setPhotoFileUrl} />
                 </div>

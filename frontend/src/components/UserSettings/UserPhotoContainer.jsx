@@ -42,21 +42,29 @@ const UserPhotoContainer = ({ profilePictureUrl, setPhotoFileUrl, setPhotoFile }
                     onClick={handleClick}
                     className="user-setting-profile-picture-container"
                 >
-                    <input type="file" className="photo-input-button" 
-                    ref={inputRef}
-                    accepts="image/jpeg, image/png, image/jpg"
-                    onChange={handleFileChange}
+                    <input
+                        type="file"
+                        className="photo-input-button"
+                        ref={inputRef}
+                        accepts="image/jpeg, image/png, image/jpg"
+                        onChange={handleFileChange}
                     />
 
                     <img
                         className="profile-pic-user-settings"
-                        src={profilePictureUrl}
+                        src={
+                            profilePictureUrl ||
+                            "https://aa-cadence-dev.s3.amazonaws.com/default.png"
+                        }
                     />
                     <span className="material-symbols-outlined user-settings-plus-icon">
                         add_circle
                     </span>
                 </div>
-                <div className="user-settings-link" onClick={handleRemovePhoto}>Remove</div>
+                {profilePictureUrl &&
+                <div className="user-settings-link" onClick={handleRemovePhoto}>
+                    Remove
+                </div>}
             </div>
         </span>
     );
