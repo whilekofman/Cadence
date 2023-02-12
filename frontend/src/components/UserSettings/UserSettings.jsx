@@ -31,7 +31,7 @@ const UserSettings = () => {
             )}
             {currentUser &&
                 <div className="user-settings-inner-wrapper">
-                    <EditProfilePhoto setPhotoFile={setPhotoFile} photoFile={photoFile} photoFileUrl={photoFileUrl} setPhotoFileUrl={photoFileUrl} />
+                    <EditProfilePhoto setPhotoFile={setPhotoFile} photoFile={photoFile} photoFileUrl={photoFileUrl} setPhotoFileUrl={setPhotoFileUrl} />
                 </div>
             }
         </div>

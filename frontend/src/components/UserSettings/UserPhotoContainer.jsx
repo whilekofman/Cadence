@@ -1,10 +1,17 @@
 import { useRef, useState } from "react";
 import ProfilePicture from "../ProfilePicture";
+import { readFile } from "../utils/readFile";
+import { updateUserProfilePicture } from "../../store/users";
+import { useDispatch, useSelector } from "react-redux";
+import { getSession } from "../../store/session";
+
+
 
 const UserPhotoContainer = ({ profilePictureUrl, setPhotoFileUrl, setPhotoFile }) => {
     const inputRef = useRef();
     // const [photoFile, setPhotoFile] = useState(null);
-
+    const currentUser = useSelector(getSession);
+    const dispatch = useDispatch();
     const handleClick = ()=> {
         inputRef.current.click();
 
@@ -19,6 +26,11 @@ const UserPhotoContainer = ({ profilePictureUrl, setPhotoFileUrl, setPhotoFile }
         let imageDataUrl = await readFile(photo)
         setPhotoFile(photo)
         setPhotoFileUrl(imageDataUrl)
+    }
+    const handleRemovePhoto = () => {
+        const formData = new FormData();
+        formData.append("user[profile_picture]", "remove");
+        dispatch(updateUserProfilePicture(currentUser, formData));
     }
     return (
         <span className="user-settings-section-outer">
@@ -44,7 +56,7 @@ const UserPhotoContainer = ({ profilePictureUrl, setPhotoFileUrl, setPhotoFile }
                         add_circle
                     </span>
                 </div>
-                <div className="user-settings-link">Remove</div>
+                <div className="user-settings-link" onClick={handleRemovePhoto}>Remove</div>
             </div>
         </span>
     );
@@ -52,10 +64,4 @@ const UserPhotoContainer = ({ profilePictureUrl, setPhotoFileUrl, setPhotoFile }
 
 export default UserPhotoContainer;
 
-function readFile(file) {
-    return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.addEventListener("load", () => resolve(reader.result), false);
-        reader.readAsDataURL(file);
-    });
-}
+

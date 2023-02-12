@@ -15,8 +15,12 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
     if params[:user].has_key?(:profile_picture)
       new_profile_picture = params[:user][:profile_picture]
-      @user.profile_picture.attach(new_profile_picture)
+      if new_profile_picture == "remove"
+        @user.profile_picture.purge
+      else
+        @user.profile_picture.attach(new_profile_picture)
       # @user.profile_picture.attach(params[:profile_picture])
+      end
       @user.save
     end
     if @user.save

@@ -20,10 +20,8 @@ const EditProfilePhoto = ({ photoFile, setPhotoFile, photoFileUrl, setPhotoFileU
 
     const dispatch = useDispatch();
     const currentUser = useSelector(getSession);
-    const { id, fname, lname, email } = currentUser;
-    console.log(imageAfterCrop);
-    const onSaveClick = async (e) => {
-        e.preventDefault();
+
+    const onSaveClick = () => {
 
         const formData = new FormData();
         formData.append("user[profile_picture]", photoFile);
@@ -31,6 +29,7 @@ const EditProfilePhoto = ({ photoFile, setPhotoFile, photoFileUrl, setPhotoFileU
     };
 
     const handleCancel = () => {
+        setPhotoFileUrl(null);
         setPhotoFile(null);
     };
 
@@ -75,16 +74,11 @@ const EditProfilePhoto = ({ photoFile, setPhotoFile, photoFileUrl, setPhotoFileU
             <div className="after">
                 <img src={photoFileUrl} />
             </div>
+
         </>
     );
 };
 
 export default EditProfilePhoto;
 
-function readFile(file) {
-    return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.addEventListener("load", () => resolve(reader.result), false);
-        reader.readAsDataURL(file);
-    });
-}
+
