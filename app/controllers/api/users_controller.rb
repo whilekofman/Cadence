@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  wrap_parameters include: User.attribute_names + ['password']
+  wrap_parameters include: User.attribute_names + ['password', 'profilePictureUrl', ':profilePicture']
 
   def index
     @users = User.all
@@ -9,6 +9,33 @@ class Api::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     render :show
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if params[:user].has_key?(:profile_picture)
+      new_profile_picture = params[:user][:profile_picture]
+      if new_profile_picture == "remove"
+        @user.profile_picture.purge
+      else
+        @user.profile_picture.attach(new_profile_picture)
+      end
+      @user.save
+    end
+    if @user.save
+      render :show
+    else 
+      render json: { errors: @user.errors.full_messages, status: :unprocessable_entity }
+    end
+    
+
+    
+
+    # if @user.id === current_user.id && @user.update(user_params)
+    #   render :show
+    # else 
+    #   render json: { errors: @user.errors.full_messages, status: :unprocessable_entity }
+    # end
   end
 
   def create
@@ -24,6 +51,10 @@ class Api::UsersController < ApplicationController
   private 
 
   def user_params
-    params.require(:user).permit(:email, :fname, :lname, :password)
+    params.require(:user).permit(:email, :fname, :lname, :password, :profile_picture_url, :profile_picture)
+  end
+
+  def update_params
+    params.require(:user).permit(:password, :profile_picture_url, :fname, :lname, :email)
   end
 end

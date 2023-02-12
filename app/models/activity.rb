@@ -56,16 +56,23 @@ class Activity < ApplicationRecord
   def athlete_profile_picture
     return athlete.profile_picture.url
   end
-  
-  def likes_count
-    return likes.count
+
+  def duration_in_seconds 
+    return (self.hours * 3600) + (self.minutes * 60) + self.seconds
+  end
+  def speed
+    if self.sport == 'run'
+      float_pace = (duration_in_seconds / self.distance)  / 60.0
+      pace_minutes = ((duration_in_seconds / self.distance) / 60).to_i
+      pace_seconds =((60 * (float_pace - pace_minutes)) / 100.0).floor(2)
+      return pace_minutes + pace_seconds
+    else
+      return ((self.distance / (duration_in_seconds / 3600) * 100) / 100.0).floor(2)
+    end
   end
 
-  def comments_count
-    return comments.count
+  def duration
+    return "#{hours}:#{minutes}:#{seconds}"
   end
- 
 
-  
-  
 end

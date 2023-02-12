@@ -3,7 +3,8 @@
     width: 136px;
     height: 136px;
 }
-.profile-pic-follow-index, .profile-pic-navbar {
+.profile-pic-follow-index,
+.profile-pic-navbar {
     height: 32px;
     width: 32px;
 }
@@ -21,12 +22,14 @@
     height: 30px;
     width: 30px;
 }
-.profile-pic-user-widget{
+.profile-pic-user-widget {
     width: 70px;
     height: 70px;
 }
 
-.profile-pic-activity-show{
+.profile-pic-activity-show {
     width: 100px;
     height: 100px;
 }
+
+

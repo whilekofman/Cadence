@@ -25,6 +25,9 @@ const DropDown = ({ currentUser }) => {
             <Link className="session-link" to={`/users/${id}`}>
                 <div className="session-drop-down-element">My Profile</div>
             </Link>
+            <Link className="session-link" to={`/settings/profile`}>
+                <div className="session-drop-down-element">Settings</div>
+            </Link>
             <div
                 className="session-drop-down-element"
                 onClick={() => dispatch(sessionActions.logout())}

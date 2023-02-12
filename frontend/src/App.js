@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 import CommentForm from "./components/CommentsForm";
 import UserShowPage from "./components/UserShowPage";
 import Dashboard from "./components/DashBoard";
+import UserSettings from "./components/UserSettings";
 
 // <UserIndexPage />
 function App() {
@@ -52,8 +53,14 @@ function App() {
                 <Route exact path="/users/:userId">
                     <UserShowPage />
                 </Route>
+                <Route exact path="/settings/profile">
+                    <UserSettings />
+                </Route>
                 <Route exact path="/Dashboard">
                     <Dashboard />
+                </Route>
+                <Route path="*">
+                    This page does not exist
                 </Route>
             </Switch>
             {!sessionUser && <Footer />}
