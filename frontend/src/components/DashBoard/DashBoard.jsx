@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { fetchActivities, getActivities } from "../../store/activities";
 import { getSession } from "../../store/session";
 import ActivityIndexPage from "../ActivityIndexPage";
@@ -14,6 +15,10 @@ const Dashboard = () => {
     useEffect(() => {
         dispatch(fetchActivities()).then(() => setLoaded(true));
     }, []);
+    
+    if(!currentUser){
+        return <Redirect to="/login" />
+    }
 
     const currentUserActivities = activities.filter((activity) => {
         return currentUser.id === activity.athleteId;

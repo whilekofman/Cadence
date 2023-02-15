@@ -145,10 +145,7 @@ const ActivityForm = () => {
     const handleSubmitDelete = (e) => {
         e.preventDefault();
 
-        dispatch(activityActions.deleteActivity(activity.id)); //.then(
-        // dispatch(activityActions.fetchActivities)
-        // <Redirect to='/' />
-        // )
+        dispatch(activityActions.deleteActivity(activity.id)); 
         history.push(`/dashboard`);
     };
 

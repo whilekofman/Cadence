@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { getSession } from "../../store/session";
 import EditProfilePhoto from "./EditProfilePhoto";
@@ -8,14 +8,10 @@ import UserValue from "./UserValue";
 
 
 const UserSettings = () => {
-    const dispatch = useDispatch()
     const currentUser = useSelector(getSession)
     const [photoFile, setPhotoFile] = useState(null);
     const [photoFileUrl, setPhotoFileUrl] = useState(null);
 
-    useEffect(() => {
-        
-    }, [currentUser.profilePictureUrl])
 
     if (!currentUser) {
         return <Redirect to="/login" />;
@@ -39,6 +35,7 @@ const UserSettings = () => {
                 </div>
             }
         </div>
+
     );
 }
  
