@@ -1,10 +1,17 @@
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 
 const DropDown = ({ currentUser }) => {
     const { id, fname, lname, profilePictureUrl } = currentUser;
     const dispatch = useDispatch();
+    const history = useHistory();
+
+    const handleLogout = () => {
+        dispatch(sessionActions.logout());
+        history.push("/login");
+    
+    };
 
     const sessionLinks = [
         {
@@ -43,7 +50,7 @@ const DropDown = ({ currentUser }) => {
             </Link>
             <div
                 className="session-drop-down-element"
-                onClick={() => dispatch(sessionActions.logout())}
+                onClick={handleLogout}
             >
                 <div className="log-out-link">Log Out</div>
             </div>
