@@ -1,10 +1,10 @@
 import { NavLink, useLocation } from "react-router-dom";
-
 import { useDispatch, useSelector } from "react-redux";
 import { getSession } from "../../store/session";
 import ProfilePicture from "../ProfilePicture";
 import { useState } from "react";
 import DropDown from "./DropDown";
+
 
 const SessionButton = () => {
     const currentUser = useSelector(getSession);
@@ -14,6 +14,7 @@ const SessionButton = () => {
         const location = useLocation();
         return location.pathname;
     };
+    
 
     const buttonText = usePath() === "/login" ? "Sign Up" : "Log In";
 
@@ -25,6 +26,7 @@ const SessionButton = () => {
             ? "logoutBut"
             : "loginBut";
 
+    
     const buttonReturned = currentUser ? (
         <div
             className="profile-pic-drop-down-wrapper"

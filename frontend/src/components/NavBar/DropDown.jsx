@@ -6,6 +6,19 @@ const DropDown = ({ currentUser }) => {
     const { id, fname, lname, profilePictureUrl } = currentUser;
     const dispatch = useDispatch();
 
+    const sessionLinks = [
+        {
+            text: "Following",
+            to: {
+                pathname: `/users/${id}`,
+                state: { dashboardFollowers: "following" },
+            },
+        },
+        { text: "My Profile", to: `/users/${id}` },
+        { text: "Settings", to: `/settings/profile` },
+        // { text: "Log Out", to: () => dispatch(sessionActions.logout()) },
+    ];
+
     return (
         <>
             <div className="session-drop-down-top">
@@ -34,6 +47,13 @@ const DropDown = ({ currentUser }) => {
             >
                 <div className="log-out-link">Log Out</div>
             </div>
+            {sessionLinks.map((link, idx) => {
+                return (
+                    <div key={idx} className="session-drop-down-element">
+                        <Link to={link.to} className="session-link">{link.text}</Link>
+                    </div>
+                );
+                })}
         </>
     );
 };
