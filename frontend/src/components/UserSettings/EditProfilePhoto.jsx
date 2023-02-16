@@ -70,7 +70,7 @@ const EditProfilePhoto = ({
                     Crop
                 </button>
                 <button
-                    className="save-button-edit-photo"
+                    className="save-button-edit-photo confirm-button-edit-photo"
                     onClick={onConfirmClick}
                 >
                     Confirm

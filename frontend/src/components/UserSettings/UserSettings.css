@@ -169,3 +169,8 @@
 .crop-preview-after{
     padding-left: 20px;
 }
+
+.confirm-button-edit-photo{
+    background-color: #fc5200;
+    color: white;
+}
