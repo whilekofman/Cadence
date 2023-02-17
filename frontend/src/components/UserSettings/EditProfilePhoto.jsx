@@ -42,7 +42,6 @@ const EditProfilePhoto = ({
                 photoFileUrl,
                 croppedAreaPixels
             );
-            console.log("donee", { url, file });
             setCroppedPhotoUrl(url);
             setCroppedPhotoFile(file);
         } catch (e) {

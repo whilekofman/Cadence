@@ -45,7 +45,7 @@ const SessionButton = () => {
             </div>
             {showDropDown && (
                 <div className="drop-down-session">
-                    <DropDown currentUser={currentUser} />
+                    <DropDown currentUser={currentUser} location="session"/>
                 </div>
             )}
         </div>
