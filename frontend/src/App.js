@@ -16,10 +16,8 @@ import UserShowPage from "./components/UserShowPage";
 import Dashboard from "./components/DashBoard";
 import UserSettings from "./components/UserSettings";
 
-// <UserIndexPage />
 function App() {
     const sessionUser = useSelector(getSession);
-
     // const userPath = sessionUser ? <UserIndexPage />  : <HomePage />
     const userPath = sessionUser ? <Dashboard /> : <HomePage />;
     const redirectPath = sessionUser ? <ActivityForm /> : <LoginFormPage />;
