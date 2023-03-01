@@ -145,8 +145,7 @@ const ActivityForm = () => {
     const handleSubmitDelete = (e) => {
         e.preventDefault();
 
-        dispatch(activityActions.deleteActivity(activity.id)); 
-        history.push(`/dashboard`);
+        dispatch(activityActions.deleteActivity(activity.id, history)); 
     };
 
     const handleSelect = (e) => {

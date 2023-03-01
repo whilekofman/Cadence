@@ -49,12 +49,14 @@ export const fetchActivities = () => async (dispatch) => {
     dispatch(fetchLikesActivities(activityIds));
 };
 
-export const deleteActivity = (activityId) => async (dispatch) => {
+export const deleteActivity = (activityId, history) => async (dispatch) => {
     const res = await csrfFetch(`/api/activities/${activityId}`, {
         method: "DELETE",
     });
     dispatch(removeActivity(activityId));
     dispatch(fetchActivities);
+    history.push(`/dashboard`);
+
 };
 
 export const fetchActivity = (id) => async (dispatch) => {
@@ -110,8 +112,7 @@ const activityReducer = (state = {}, action) => {
             return { ...nextState };
         case REMOVE_ACTIVITY:
             delete nextState[action.activityId];
-
-            return nextState;
+            return { ...nextState };
         case CLEAR_ACTIVITY:
             return {};
         default:
