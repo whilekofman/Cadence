@@ -136,7 +136,7 @@ const ActivityIndexItem = ({ activity, activityLikes, userLikesActivity }) => {
                     </div>
                 </div>
                 <div className="matrix-box-index-right">
-                    <div className="matrix-title">time</div>
+                    <div className="matrix-title">Time</div>
                     <div className="matrix-value-index">
                         {durationConvert({ hours, minutes, seconds })}
                     </div>
