@@ -10,7 +10,7 @@ const CommentForm = ({ activityId, authorId }) => {
     const [submitted, setSubmitted] = useState(false);
     const currentUser = useSelector(getSession);
 
-    const athleteProfilePicture = currentUser.profileUrl;
+    const athleteProfilePicture = currentUser.profilePictureUrl;
 
     const hanldeCommentSubmit = (e) => {
         e.preventDefault();
